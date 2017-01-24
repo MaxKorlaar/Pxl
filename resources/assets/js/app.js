@@ -6,4 +6,4 @@
  */
 
 require('./bootstrap');
-console.info('PiXL by Max Korlaar');
+console.info('Pxl by Max Korlaar – github/MaxKorlaar/pxl');

@@ -4,14 +4,14 @@
 
         /*
         |--------------------------------------------------------------------------
-        | PiXL
+        | Pxl
         |--------------------------------------------------------------------------
         |
-        | Change PiXL settings here
+        | Change Pxl settings here
         |
         */
 
-        'public_signups' => false,
+        'public_signups' => true,
         'force_2fa'      => true,
 
     ];
