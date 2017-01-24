@@ -6,4 +6,4 @@
  */
 
 require('./bootstrap');
-alert(1);
+console.info('PiXL by Max Korlaar');

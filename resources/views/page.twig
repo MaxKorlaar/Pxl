@@ -1,11 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-    {% include 'head' %}
+    {% include 'head.twig' %}
+    <title>{% block title %}{{ config_get('app.name') }}{% endblock %}</title>
 </head>
 <body>
-
-
-<script></script>
+{% block body %}
+{% block navigation %}
+    <nav class="blue" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="#"><img class="brand-logo" src="{{ asset('img/logo/Px-logo-cut.png') }}"></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#">Navbar Link</a></li>
+            </ul>
+            <ul id="nav-mobile" class="side-nav">
+                <li><a href="#">Navbar Link</a></li>
+            </ul>
+            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
+{% endblock %}
+{% block scripts %}
+    <script src="{{ asset('js/app.js?v=1.0') }}"></script>
+    <script src="{{ asset('js/pixl.js?v=12') }}"></script>
+{% endblock %}
+{% endblock %}
 </body>
 </html>

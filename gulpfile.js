@@ -15,5 +15,9 @@ require('laravel-elixir-vue-2');
 
 elixir((mix) => {
     mix.sass('app.scss')
-       .webpack('app.js');
+        .scripts([
+            'pixl.js',
+            'materialize.js'
+        ], 'public/js/pixl.js')
+        .webpack('app.js')
 });
