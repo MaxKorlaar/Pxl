@@ -7,18 +7,7 @@
 <body>
 {% block body %}
 {% block navigation %}
-    <nav class="light-blue" role="navigation">
-        <div class="nav-wrapper">
-            <a href="{{ url('/') }}"><img class="brand-logo center" src="{{ asset('img/logo/Px-logo-cut.png') }}"></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="#">Log in</a></li>
-            </ul>
-            <ul id="nav-mobile" class="side-nav">
-                <li><a href="#">Log in</a></li>
-            </ul>
-            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-        </div>
-    </nav>
+    {% include 'navigation.twig' %}
 {% endblock %}
 {% block scripts %}
     <script src="{{ asset('js/app.js?v=1.0') }}"></script>
