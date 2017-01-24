@@ -2,15 +2,15 @@
     <div class="nav-wrapper">
         <a href="{{ url('/') }}"><img class="brand-logo center" src="{{ asset('img/logo/Px-logo-cut-small.png') }}"></a>
         <ul class="right hide-on-med-and-down">
-            <li><a href="{{ url('login') }}"><i class="material-icons">input</i> Log in</a></li>
+            <li><a href="{{ url('login') }}"><i class="material-icons left">input</i> Log in</a></li>
             {% if config_get('pixl.public_signups') %}
-                <li><a href="{{ url('register') }}"><i class="material-icons">person add</i> Register</a></li>
+                <li><a href="{{ url('register') }}"><i class="material-icons left">person add</i> Sign up</a></li>
             {% endif %}
         </ul>
         <ul id="nav-mobile" class="side-nav">
             <li><a href="{{ url('login') }}">Log in</a></li>
             {% if config_get('pixl.public_signups') %}
-                <li><a href="{{ url('register') }}">Register</a></li>
+                <li><a href="{{ url('register') }}">Sign up</a></li>
             {% endif %}
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
