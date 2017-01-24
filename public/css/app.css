@@ -1,7 +1,55 @@
-@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons|Lato:100);
 nav .brand-logo {
   max-height: 64px;
   padding: 10px 10px 10px;
+}
+
+.welcome-msg, .welcome-msg h2 {
+  font-family: Lato, serif;
+  font-weight: 100;
+}
+
+.welcome-msg img, .welcome-msg h2 img {
+  max-height: 400px;
+}
+
+.error-page {
+  height: 100%;
+}
+
+.error-page body, .error-page html {
+  height: 100%;
+}
+
+.error-page body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  color: #B0BEC5;
+  display: table;
+  font-weight: 100;
+  font-family: 'Lato', sans-serif;
+}
+
+.error-page .container {
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.error-page .content {
+  text-align: center;
+  display: inline-block;
+}
+
+.error-page .title {
+  font-size: 72px;
+  margin-bottom: 40px;
+}
+
+.error-page img {
+  max-height: 250px;
+  padding-bottom: 20px;
 }
 
 /*# sourceMappingURL=app.css.map */

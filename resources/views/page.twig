@@ -2,12 +2,41 @@
 <html>
 <head>
     {% include 'head.twig' %}
-    <title>{% block title %}{{ config_get('app.name') }}{% endblock %}</title>
+    <title>{% block title %}?{% endblock %} – {{ config_get('app.name') }}</title>
 </head>
 <body>
 {% block body %}
-{% block navigation %}
-    {% include 'navigation.twig' %}
+    {% block navigation %}
+        {% include 'navigation.twig' %}
+    {% endblock %}
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+{% block footer %}
+    <footer class="page-footer orange">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">{{ config_get('app.name') }}</h5>
+
+                    <p class="grey-text text-lighten-4">PiXL is an open source project that allows you to upload and share images on your own website.</p>
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                        <li><a class="white-text" href="https://github.com/maxkorlaar/pixl">Github</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                PiXL by <a class="orange-text text-lighten-3" href="http://maxkorlaar.com">Max Korlaar</a>
+            </div>
+        </div>
+    </footer>
 {% endblock %}
 {% block scripts %}
     <script src="{{ asset('js/app.js?v=1.0') }}"></script>
