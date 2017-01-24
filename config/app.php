@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'PiXL',
+    'name' => env('APP_NAME_BRAND', 'PiXL'),
 
     /*
     |--------------------------------------------------------------------------
