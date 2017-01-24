@@ -1,3 +1,3 @@
-/**
- * Created by Max on 24-01-17.
- */
+$(document).ready(function() {
+    $(".button-collapse").sideNav();
+});
