@@ -12,5 +12,6 @@
         */
 
         'public_signups' => false,
+        'force_2fa'      => true,
 
     ];
