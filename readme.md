@@ -1,6 +1,12 @@
 # Pxl
 Pxl.lt's open source clone. Made in Laravel, in which I currently do not have experience.
-Please feel free to join the project and contribute to it.
+Please feel free to join the project and contribute to it. The sooner you would like
+to see this project up and running on your own site, the sooner you should help us out
+and contribute! Currently I am working on this by myself, in my spare time.
+
+If you plan on helping out, please do get in touch so I can set up a Trello board to plan some kind of roadmap.
+
+[Twitter](https://twitter.com/MaxKorlaar) &bull; [Blog](https://maxkorlaar.com/blog)
 
 A short guide on setting it up server-side:
 * Upload all files, except for the ones listed in the .gitignore file, to your server
