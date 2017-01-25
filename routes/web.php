@@ -19,7 +19,6 @@
         return view('login');
     });
     Route::get('/users', function () {
-        exit('what');
         $users = App\User::all();
         var_dump($users);
         foreach ($users as $user) {
