@@ -11,9 +11,18 @@
     |
     */
 
+
     Route::get('/', function () {
         return view('welcome');
     });
     Route::get('/login', function () {
         return view('login');
+    });
+    Route::get('/users', function () {
+
+        $users = App\User::all();
+        var_dump($users);
+        foreach ($users as $user) {
+            echo $user->name;
+        }
     });
