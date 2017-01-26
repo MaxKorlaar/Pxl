@@ -11,7 +11,7 @@
         |
         */
 
-        'public_signups' => true,
-        'force_2fa'      => true,
+        'public_signups' => env('PUBLIC_SIGNUPS', true),
+        'force_2fa'      => env('FORCE_2FA', true),
 
     ];
