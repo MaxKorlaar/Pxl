@@ -15,12 +15,12 @@
         return view('welcome');
     });
     Route::get('/login', function () {
-        return view('login');
+        return view('auth/login');
     });
 
     Route::get('/register', function () {
         if (config('pxl.public_signups')) {
-            return view('register');
+            return view('auth/register');
         }
         return response(view('errors.403'), 403);
     });
