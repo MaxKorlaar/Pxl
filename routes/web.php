@@ -22,7 +22,7 @@
         if (config('pxl.public_signups')) {
             return view('register');
         }
-        return Response::view('errors/403', [], 403);
+        return response(view('errors.403'), 403);
     });
 
     Route::get('gallery', function () {
