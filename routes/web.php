@@ -11,7 +11,6 @@
     |
     */
 
-
     Route::get('/', function () {
         return view('welcome');
     });
@@ -20,10 +19,14 @@
     });
 
     Route::get('/register', function () {
-        if(config('pxl.public_signups')) {
+        if (config('pxl.public_signups')) {
             return view('register');
         }
-        return 403;
+        return view('errors/403');
+    });
+
+    Route::get('gallery', function () {
+        redirect('user/gallery');
     });
 
     Route::group(['prefix' => 'user'], function () {
