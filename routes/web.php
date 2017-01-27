@@ -17,9 +17,9 @@
 
     Route::group(['namespace' => 'Auth', 'as' => 'auth'], function () {
         // Controllers Within The "App\Http\Controllers\Auth" Namespace
-        Route::get('/login', function () {
+        Route::get('/login', ['as' => 'login', 'uses' => function () {
             return view('auth/login');
-        })->name('auth.login');
+        }]);
 
         Route::get('/register', function () {
             if (config('pxl.public_signups')) {

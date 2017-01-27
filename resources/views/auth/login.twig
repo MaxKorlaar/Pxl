@@ -33,6 +33,7 @@
                                             <input type="checkbox" id="remember-me"/>
                                             <label for="remember-me">{{ trans('auth.remember_me') }}</label>
                                         </div>
+                                        {{ csrf_field() }}
                                     </div>
                                 </div>
                                 <div class="loader-wrapper hide valign-wrapper">
