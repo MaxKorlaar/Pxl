@@ -60,6 +60,29 @@
         }
 
         /**
+         * Redirect the user after determining they are locked out.
+         *
+         * @param  \Illuminate\Http\Request $request
+         *
+         * @return \Illuminate\Http\RedirectResponse
+         */
+        protected function sendLockoutResponse(Request $request) {
+            $seconds = $this->limiter()->availableIn(
+                $this->throttleKey($request)
+            );
+
+            $message = trans('auth.throttle', ['seconds' => $seconds]);
+
+            if($request->ajax()) {
+                return response(['success' => false, 'error' => $message], 403);
+            } else {
+                return redirect()->back()
+                    ->withInput($request->only($this->username(), 'remember'))
+                    ->withErrors([$this->username() => $message]);
+            }
+
+        }
+        /**
          * The user has been authenticated.
          *
          * @param  \Illuminate\Http\Request $request
