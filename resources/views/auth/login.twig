@@ -10,7 +10,7 @@
         {% block content %}
             <div class="row fullheight">
                 <div class="fullheight col s12 m6 offset-m3 valign-wrapper">
-                    <div class="card valign">
+                    <div class="card login-card valign">
                         <form method="POST" action="{{ route('auth/do_login') }}">
                             <div class="card-content">
                                 <div class="center-align">
@@ -91,6 +91,10 @@
                 data:     $('form').serialize(),
                 success:  function (data) {
                     console.info(data);
+                    if(data.success) {
+                        $('.login-card').addClass('green');
+                        window.location.href = data.redirect;
+                    }
                 },
                 error:    function (data) {
                     if (typeof data.responseJSON !== 'undefined') {
