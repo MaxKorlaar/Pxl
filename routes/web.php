@@ -74,7 +74,7 @@
 
     Route::get('/users', function () {
         $users = App\User::all();
-        var_dump($users);
+        return $users;
         foreach ($users as $user) {
             echo $user->name;
         }
