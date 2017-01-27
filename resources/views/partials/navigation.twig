@@ -2,9 +2,18 @@
     <div class="nav-wrapper">
         <a href="{{ url('/') }}"><img class="brand-logo center" src="{{ asset('img/logo/Px-logo-cut-small.png') }}"></a>
         <ul class="right hide-on-med-and-down">
-            <li><a href="{{ route('auth/login') }}"><i class="material-icons left">input</i> Log in</a></li>
-            {% if config_get('pxl.public_signups') %}
-                <li><a href="{{ route('auth/register') }}"><i class="material-icons left">person_add</i> Sign up</a></li>
+            {% if auth_user() %}
+                <li>
+                    <form method="POST" action="{{ route('logout') }}">
+                        {{ csrf_field() }}
+                        <button><i class="material-icons left">input</i> Log in</button>
+                    </form>
+                </li>
+            {% else %}
+                <li><a href="{{ route('auth/login') }}"><i class="material-icons left">input</i> Log in</a></li>
+                {% if config_get('pxl.public_signups') %}
+                    <li><a href="{{ route('auth/register') }}"><i class="material-icons left">person_add</i> Sign up</a></li>
+                {% endif %}
             {% endif %}
         </ul>
         <ul id="nav-mobile" class="side-nav">
