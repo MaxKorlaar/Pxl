@@ -12,7 +12,9 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-
+    'log_in' => 'Log in',
+    'username' => 'Username or email',
+    'password' => 'Password',
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
