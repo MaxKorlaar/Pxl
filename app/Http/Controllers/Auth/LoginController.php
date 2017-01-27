@@ -4,6 +4,7 @@
 
     use App\Http\Controllers\Controller;
     use Illuminate\Foundation\Auth\AuthenticatesUsers;
+    use Illuminate\Http\Request;
 
     /**
      * Class LoginController
@@ -39,6 +40,25 @@
             $this->middleware('guest', ['except' => 'logout']);
         }
 
+        /**
+         * Get the failed login response instance.
+         *
+         * @param  \Illuminate\Http\Request $request
+         *
+         * @return \Illuminate\Http\RedirectResponse
+         */
+        protected function sendFailedLoginResponse(Request $request) {
+            if($request->ajax()) {
+                return response(['success' => false, 'error' => trans('auth.failed')], 400);
+            } else {
+                return redirect()->back()
+                    ->withInput($request->only($this->username(), 'remember'))
+                    ->withErrors([
+                        $this->username() => trans('auth.failed'),
+                    ]);
+            }
+
+        }
         /**
          * @return string
          */
