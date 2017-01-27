@@ -17,7 +17,7 @@ return [
     'password' => 'Password',
     'forgot_password' => 'Forgot password?',
     'remember_me' => 'Remember me',
-    'failed' => 'These credentials do not match our records.',
+    'failed' => 'These credentials are invalid.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
 ];
