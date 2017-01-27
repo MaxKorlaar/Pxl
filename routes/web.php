@@ -15,7 +15,7 @@
         return view('welcome');
     });
 
-    Route::group(['namespace' => 'Auth', 'as' => 'auth'], function () {
+    Route::group(['namespace' => 'Auth'], function () {
         // Controllers Within The "App\Http\Controllers\Auth" Namespace
         Route::get('/login', function () {
             return view('auth/login');
