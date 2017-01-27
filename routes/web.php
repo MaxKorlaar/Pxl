@@ -19,11 +19,16 @@
         // It's rather stupid that I have to add the slash to auth/ myself, for referring to the routes later with route('auth/login').
         // Controllers Within The "App\Http\Controllers\Auth" Namespace
         Route::get('/login', 'LoginController@showLoginForm')->name('login');
+        Route::post('/login', 'LoginController@login')->name('do_login');
+
         Route::post('/logout', 'LoginController@logout')->name('logout');
+
         Route::get('/register', 'RegisterController@showRegistrationForm')->name('register');
         Route::post('/register', 'RegisterController@register')->name('do_register');
+
         Route::get('/forgot-password', 'ForgotPasswordController@showLinkRequestForm')->name('forgot_password');
         Route::post('/forgot-password', 'ForgotPasswordController@sendResetLinkEmail')->name('do_forgot_password');
+
         Route::get('/reset-password/{token}', 'ResetPasswordController@showResetForm')->name('reset_password');
         Route::post('/reset-password', 'ResetPasswordController@reset')->name('do_reset_password');
 
