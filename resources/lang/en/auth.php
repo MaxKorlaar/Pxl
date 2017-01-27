@@ -15,6 +15,7 @@ return [
     'log_in' => 'Log in',
     'username' => 'Username or email',
     'password' => 'Password',
+    'forgot_password' => 'Forgot password?',
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 

@@ -9,11 +9,11 @@
                         <div class="center-align">
                             <img class="login-logo" src="{{ asset('img/logo/Px-logo-cut-small.png') }}" alt="{{ config_get('app.name') }}">
                         </div>
-                        <span class="card-title">{{ trans('auth.log_in') }}</span>
+                        <span class="card-title text-center">{{ trans('auth.log_in') }}</span>
 
                         <div class="row">
                             <div class="input-field col s12">
-                                <input required placeholder="{{ trans('auth.username') }}" name="username" id="username" type="text" class="validate">
+                                <input required name="username" id="username" type="text" class="validate">
                                 <label for="username">{{ trans('auth.username') }}</label>
                             </div>
                             <div class="input-field col s12">
