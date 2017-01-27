@@ -4,7 +4,7 @@
         <ul class="right hide-on-med-and-down">
             {% if auth_user() %}
                 <li>
-                    <form method="POST" action="{{ route('logout') }}">
+                    <form method="POST" action="{{ route('auth/logout') }}">
                         {{ csrf_field() }}
                         <button><i class="material-icons left">input</i> Log in</button>
                     </form>
