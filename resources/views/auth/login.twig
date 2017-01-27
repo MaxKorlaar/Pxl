@@ -20,9 +20,11 @@
                                     <div class="card-title center-align">{{ trans('auth.log_in') }}</div>
                                     {% if errors.any %}
                                         <div class="card red white-text center-align">
-                                            {% for error in errors.all %}
-                                                <p><i class="material-icons">warning</i> {{ error }}</p>
-                                            {% endfor %}
+                                            <div class="card-content center-align">
+                                                {% for error in errors.all %}
+                                                    <p><span class="material-icons left">warning</span> {{ error }}</p>
+                                                {% endfor %}
+                                            </div>
                                         </div>
                                     {% endif %}
                                     <div class="row">
