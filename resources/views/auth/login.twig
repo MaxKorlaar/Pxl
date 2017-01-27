@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="loader-wrapper hide valign-wrapper">
                                     <div class="preloader-wrapper big active valign">
-                                        <div class="spinner-layer spinner-green">
+                                        <div class="spinner-layer spinner-green-only">
                                             <div class="circle-clipper left">
                                                 <div class="circle"></div>
                                             </div>
@@ -67,15 +67,17 @@
     <script src="{{ asset('js/pxl.js?v=13') }}"></script>
     <script>
         $('form').on('submit', function (e) {
-            var formHeight;
+            var formHeight, formWidth;
             e.preventDefault();
             formHeight = $('.login-form').height();
+            formWidth  = $('.login-form').width();
             $('.login-form').addClass('hide');
-            $('.loader-wrapper').css('height', formHeight + 'px').removeClass('hide');
+            $('.loader-wrapper').css({height: formHeight + 'px', width: formWidth + 'px'}).removeClass('hide');
             $('.card-action .btn').addClass('disabled');
             $.post('{{ route('auth/do_login') }}', $('form').serialize(), function (data) {
                 console.info(data);
             }, 'json').fail(function (error, data) {
+                console.log(error);
                 if (typeof error.responseJSON !== 'undefined') {
                     console.info(error.responseJSON);
                 }
