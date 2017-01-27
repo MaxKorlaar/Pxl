@@ -20,7 +20,7 @@
         Route::get('/login', function () {
 
             var_dump(Route::current()->uri(), Route::current());
-
+            return 'nice';
             return view('auth/login');
         })->name('login');
 
