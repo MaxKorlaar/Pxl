@@ -5,6 +5,10 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a6000000', endColorstr='#00000000', GradientType=0);
 }
 
+.login-page .fullheight {
+  height: 100%;
+}
+
 body, html {
   height: 100%;
 }
