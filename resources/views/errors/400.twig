@@ -9,7 +9,7 @@
     <div class="content">
         <img src="{{ asset('img/logo/Px-logo-cut.png') }}">
 
-        <div class="title">{{ error || Bad Request }}</div>
+        <div class="title">{{ error | default('Bad Request') }}</div>
     </div>
 </div>
 </body>
