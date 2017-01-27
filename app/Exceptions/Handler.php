@@ -51,7 +51,7 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         if($exception instanceof TokenMismatchException) {
-            return response(view('errors.400', ['error' => 'Token mismatch']), 400);
+            return response(view('errors.400', ['error' => 'CSRF Token mismatch']), 400);
         }
         return parent::render($request, $exception);
     }
