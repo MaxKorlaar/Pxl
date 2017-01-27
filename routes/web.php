@@ -18,6 +18,9 @@
     Route::group(['namespace' => 'Auth', 'as' => 'auth'], function () {
         // Controllers Within The "App\Http\Controllers\Auth" Namespace
         Route::get('/login', function () {
+
+            var_dump(Route::current()->uri(), Route::current());
+
             return view('auth/login');
         })->name('login');
 
