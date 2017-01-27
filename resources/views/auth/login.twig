@@ -74,16 +74,29 @@
             $('.login-form').addClass('hide');
             $('.loader-wrapper').css({height: formHeight + 'px', width: formWidth + 'px'}).removeClass('hide');
             $('.card-action .btn').addClass('disabled');
-            $.post('{{ route('auth/do_login') }}', $('form').serialize(), function (data) {
-                console.info(data);
-            }, 'json').fail(function (error, data) {
-                console.log(error);
-                if (typeof error.responseJSON !== 'undefined') {
-                    console.info(error.responseJSON);
+
+            $.ajax({
+                url:      '{{ route('auth/do_login') }}',
+                type:     'POST',
+                dataType: 'json',
+                data: $('form').serialize(),
+                success:  function (data) {
+                    console.info(data);
+                },
+                error:    function (data) {
+                    if (typeof data.responseJSON !== 'undefined') {
+                        console.info(data.responseJSON);
+                        if(typeof data.responseJSON.password !== 'undefined') {
+                            $('#password').addClass('invalid');
+                        }
+                        if (typeof data.responseJSON.username !== 'undefined') {
+                            $('#password').addClass('invalid');
+                        }
+                    }
+                    $('.card-action .btn').removeClass('disabled');
+                    $('.login-form').removeClass('hide');
+                    $('.loader-wrapper').addClass('hide');
                 }
-                $('.card-action .btn').removeClass('disabled');
-                $('.login-form').removeClass('hide');
-                $('.loader-wrapper').addClass('hide');
             });
             return false;
         });
