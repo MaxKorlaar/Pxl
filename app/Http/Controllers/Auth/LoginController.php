@@ -48,7 +48,7 @@
          * @return \Illuminate\Http\RedirectResponse
          */
         protected function sendFailedLoginResponse(Request $request) {
-            if($request->ajax()) {
+            if ($request->ajax()) {
                 return response(['success' => false, 'error' => trans('auth.failed')], 403);
             } else {
                 return redirect()->back()
@@ -57,8 +57,23 @@
                         $this->username() => trans('auth.failed'),
                     ]);
             }
-
         }
+
+        /**
+         * The user has been authenticated.
+         *
+         * @param  \Illuminate\Http\Request $request
+         * @param  mixed                    $user
+         *
+         * @return mixed
+         */
+        protected function authenticated(Request $request, $user) {
+            if ($request->ajax()) {
+                return response(['success' => true, 'redirect' => redirect()->intended($this->redirectPath())->getTargetUrl()], 200);
+            }
+            return null;
+        }
+
         /**
          * @return string
          */
