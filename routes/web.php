@@ -64,9 +64,11 @@
 
     Route::group(['prefix' => 'user'], function () {
         Route::get('gallery', function () {
+            abort(404);
             // /user/gallery
         })->name('gallery');
         Route::get('account', function () {
+            abort(404);
             // /user/account
             // My account
         })->name('my-account');
