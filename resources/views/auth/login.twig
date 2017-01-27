@@ -16,26 +16,43 @@
                                 <div class="center-align">
                                     <img class="login-logo" src="{{ asset('img/logo/Px-logo-cut-small.png') }}" alt="{{ config_get('app.name') }}">
                                 </div>
-                                <div class="card-title center-align">{{ trans('auth.log_in') }}</div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <i class="material-icons prefix">account_circle</i>
-                                        <input required name="username" id="username" type="text" class="validate">
-                                        <label for="username">{{ trans('auth.username') }}</label>
+                                <div class="login-form">
+                                    <div class="card-title center-align">{{ trans('auth.log_in') }}</div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">account_circle</i>
+                                            <input required name="username" id="username" type="text" class="validate">
+                                            <label for="username">{{ trans('auth.username') }}</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">https</i>
+                                            <input required id="password" name="password" type="password" class="validate">
+                                            <label for="password">{{ trans('auth.password') }}</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input type="checkbox" id="remember-me"/>
+                                            <label for="remember-me">{{ trans('auth.remember_me') }}</label>
+                                        </div>
                                     </div>
-                                    <div class="input-field col s12">
-                                        <i class="material-icons prefix">https</i>
-                                        <input required id="password" name="password" type="password" class="validate">
-                                        <label for="password">{{ trans('auth.password') }}</label>
-                                    </div>
-                                    <div class="input-field col s12">
-                                        <input type="checkbox" id="remember-me"/>
-                                        <label for="remember-me">{{ trans('auth.remember_me') }}</label>
+                                </div>
+                                <div class="loader-wrapper hide">
+                                    <div class="preloader-wrapper big active">
+                                        <div class="spinner-layer spinner-blue-only">
+                                            <div class="circle-clipper left">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="gap-patch">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="circle-clipper right">
+                                                <div class="circle"></div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-action">
-                                <a href="#">{{ trans('auth.log_in') }}</a>
+                                <a href="#" class="login-button" id="btn_login">{{ trans('auth.log_in') }}</a>
                                 <a href="#">{{ trans('auth.forgot_password') }}</a>
                             </div>
                         </form>
@@ -47,6 +64,12 @@
 {% block scripts %}
     <script src="{{ asset('js/app.js?v=1.0') }}"></script>
     <script src="{{ asset('js/pxl.js?v=13') }}"></script>
+    <script>
+        $('#btn_login').on('click', function () {
+            var formHeight = $('.login-form').height().addClass('hide');
+            $('.loader-wrapper').css('height', formHeight + 'px').removeClass('hide');
+        });
+    </script>
 {% endblock %}
 {% endblock %}
 </body>
