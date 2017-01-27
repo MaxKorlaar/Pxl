@@ -21,7 +21,9 @@
         Route::get('/login', function () {
             return view('auth/login');
         })->name('login');
-
+        Route::get('/forgot-password', function () {
+            return view('auth/password-reset');
+        })->name('forgot-password');
         Route::get('/register', function () {
             if (config('pxl.public_signups')) {
                 return view('auth/register');
