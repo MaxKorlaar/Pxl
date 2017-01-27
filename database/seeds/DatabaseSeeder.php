@@ -14,6 +14,6 @@ use Illuminate\Database\Seeder;
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
     }
 }
