@@ -18,10 +18,16 @@
     Route::group(['namespace' => 'Auth', 'as' => 'auth/'], function () {
         // It's rather stupid that I have to add the slash to auth/ myself, for referring to the routes later with route('auth/login').
         // Controllers Within The "App\Http\Controllers\Auth" Namespace
-        Route::get('/login', function () {
-            return view('auth/login');
-        })->name('login');
-        Route::get('/forgot-password', function () {
+        Route::get('/login', 'LoginController@showLoginForm')->name('login');
+        Route::post('/logout', 'LoginController@logout')->name('logout');
+        Route::get('/register', 'RegisterController@showRegistrationForm')->name('register');
+        Route::post('/register', 'RegisterController@register')->name('do_register');
+        Route::get('/forgot-password', 'ForgotPasswordController@showLinkRequestForm')->name('forgot_password');
+        Route::post('/forgot-password', 'ForgotPasswordController@sendResetLinkEmail')->name('do_forgot_password');
+        Route::get('/reset-password/{token}', 'ResetPasswordController@showResetForm')->name('reset_password');
+        Route::post('/reset-password', 'ResetPasswordController@reset')->name('do_reset_password');
+
+        /*Route::get('/forgot-password', function () {
             return view('auth/password-reset');
         })->name('forgot-password');
         Route::get('/register', function () {
@@ -29,7 +35,22 @@
                 return view('auth/register');
             }
             return response(view('errors.403'), 403);
-        })->name('register');
+        })->name('register');*/
+        /*
+         * $this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
+        $this->post('login', 'Auth\LoginController@login');
+        $this->post('logout', 'Auth\LoginController@logout')->name('logout');
+
+        // Registration Routes...
+        $this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+        $this->post('register', 'Auth\RegisterController@register');
+
+        // Password Reset Routes...
+        $this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
+        $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+        $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
+        $this->post('password/reset', 'Auth\ResetPasswordController@reset');
+         */
     });
 
     Route::get('/gallery', function () {
@@ -53,3 +74,6 @@
             echo $user->name;
         }
     });
+
+
+    //Route::get('/home', 'HomeController@index');

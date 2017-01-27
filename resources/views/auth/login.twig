@@ -11,7 +11,7 @@
             <div class="row fullheight">
                 <div class="fullheight col s12 m6 offset-m3 valign-wrapper">
                     <div class="card red accent-2 valign">
-                        <form>
+                        <form method="POST" action="{{ route('auth/do_login') }}">
                             <div class="card-content white-text">
                                 <div class="center-align">
                                     <img class="login-logo" src="{{ asset('img/logo/Px-logo-cut-small.png') }}" alt="{{ config_get('app.name') }}">
@@ -21,7 +21,7 @@
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">account_circle</i>
-                                            <input required name="username" id="username" type="text" class="validate">
+                                            <input required autofocus name="username" id="username" type="text" class="validate">
                                             <label for="username">{{ trans('auth.username') }}</label>
                                         </div>
                                         <div class="input-field col s12">
