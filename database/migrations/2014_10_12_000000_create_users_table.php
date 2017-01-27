@@ -4,7 +4,10 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+    /**
+     * Class CreateUsersTable
+     */
+    class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -22,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->ipAddress('last_ip');
             $table->string('rank');
+            $table->boolean('active');
             $table->timestamps();
         });
     }
