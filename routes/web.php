@@ -15,12 +15,10 @@
         return view('welcome');
     });
 
-    Route::group(['namespace' => 'Auth', 'as' => 'auth'], function () {
+    Route::group(['namespace' => 'Auth', 'as' => 'auth/'], function () {
+        // It's rather stupid that I have to add the slash to auth/ myself, for referring to the routes later with route('auth/login').
         // Controllers Within The "App\Http\Controllers\Auth" Namespace
         Route::get('/login', function () {
-
-            //var_dump(Route::current()->uri(), Route::current());
-            //return 'nice';
             return view('auth/login');
         })->name('login');
 
