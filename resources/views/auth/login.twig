@@ -75,7 +75,10 @@
             $('.card-action .btn').addClass('disabled');
             $.post('{{ route('auth/do_login') }}', $('form').serialize(), function (data) {
                 console.info(data);
-            }, 'json').fail(function (error) {
+            }, 'json').fail(function (error, data) {
+                if (typeof error.responseJSON !== 'undefined') {
+                    console.info(error.responseJSON);
+                }
                 $('.card-action .btn').removeClass('disabled');
                 $('.login-form').removeClass('hide');
                 $('.loader-wrapper').addClass('hide');
