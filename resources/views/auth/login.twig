@@ -94,7 +94,9 @@
                 },
                 error:    function (data) {
                     if (typeof data.responseJSON !== 'undefined') {
-                        console.info(data.responseJSON);
+                        if (typeof data.responseJSON.success !== 'undefined') {
+                            Materialize.toast(data.responseJSON.error, 10000);
+                        }
                         if (typeof data.responseJSON.password !== 'undefined') {
                             Materialize.toast(data.responseJSON.password[0], 10000);
                             $('#password').addClass('invalid');

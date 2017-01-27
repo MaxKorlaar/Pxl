@@ -49,7 +49,7 @@
          */
         protected function sendFailedLoginResponse(Request $request) {
             if($request->ajax()) {
-                return response(['success' => false, 'error' => trans('auth.failed')], 400);
+                return response(['success' => false, 'error' => trans('auth.failed')], 403);
             } else {
                 return redirect()->back()
                     ->withInput($request->only($this->username(), 'remember'))
