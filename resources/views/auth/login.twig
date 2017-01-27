@@ -97,13 +97,17 @@
                         if (typeof data.responseJSON.success !== 'undefined') {
                             Materialize.toast(data.responseJSON.error, 10000);
                         }
+                        if(data.status == 403) {
+                            $('#password').addClass('invalid');
+                            $('#username').addClass('invalid');
+                        }
                         if (typeof data.responseJSON.password !== 'undefined') {
                             Materialize.toast(data.responseJSON.password[0], 10000);
                             $('#password').addClass('invalid');
                         }
                         if (typeof data.responseJSON.username !== 'undefined') {
                             Materialize.toast(data.responseJSON.username[0], 10000);
-                            $('#password').addClass('invalid');
+                            $('#username').addClass('invalid');
                         }
                     }
                     $('.card-action .btn').removeClass('disabled');
