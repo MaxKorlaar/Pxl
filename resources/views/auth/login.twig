@@ -66,11 +66,19 @@
     <script src="{{ asset('js/app.js?v=1.0') }}"></script>
     <script src="{{ asset('js/pxl.js?v=13') }}"></script>
     <script>
-        $('#btn_login').on('click', function () {
-            var formHeight = $('.login-form').height();
+        $('form').on('submit', function (e) {
+            var formHeight;
+            e.preventDefault();
+            formHeight = $('.login-form').height();
             $('.login-form').addClass('hide');
             $('.loader-wrapper').css('height', formHeight + 'px').removeClass('hide');
             $('.card-action .btn').addClass('disabled');
+            $.post('{{ route('auth/do_login') }}', $('form').serialize(), function (data) {
+
+            }, 'json').fail(function (error) {
+
+            });
+            return false;
         });
     </script>
 {% endblock %}
