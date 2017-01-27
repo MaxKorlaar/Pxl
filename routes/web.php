@@ -14,18 +14,22 @@
     Route::get('/', function () {
         return view('welcome');
     });
-    Route::get('/login', function () {
-        return view('auth/login');
+
+    Route::group(['namespace' => 'Auth'], function () {
+        // Controllers Within The "App\Http\Controllers\Auth" Namespace
+        Route::get('/login', function () {
+            return view('auth/login');
+        });
+
+        Route::get('/register', function () {
+            if (config('pxl.public_signups')) {
+                return view('auth/register');
+            }
+            return response(view('errors.403'), 403);
+        });
     });
 
-    Route::get('/register', function () {
-        if (config('pxl.public_signups')) {
-            return view('auth/register');
-        }
-        return response(view('errors.403'), 403);
-    });
-
-    Route::get('gallery', function () {
+    Route::get('/gallery', function () {
         redirect('user/gallery');
     });
 

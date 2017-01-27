@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="login-page">
 <head>
-    {% include 'head.twig' %}
+    {% include 'partials/head.twig' %}
     <title>{% block title %}Log in{% endblock %} – {{ config_get('app.name') }}</title>
 </head>
 <body>
@@ -37,7 +37,7 @@
                                 </div>
                                 <div class="loader-wrapper hide valign-wrapper">
                                     <div class="preloader-wrapper big active valign">
-                                        <div class="spinner-layer spinner-blue">
+                                        <div class="spinner-layer spinner-green">
                                             <div class="circle-clipper left">
                                                 <div class="circle"></div>
                                             </div>
@@ -53,7 +53,7 @@
                             </div>
                             <div class="card-action">
                                 <a href="#" class="login-button btn" id="btn_login">{{ trans('auth.log_in') }}</a>
-                                <a href="#" class="btn">{{ trans('auth.forgot_password') }}</a>
+                                <a href="{{ route('auth/register') }}" class="btn">{{ trans('auth.forgot_password') }}</a>
                             </div>
                         </form>
                     </div>
@@ -69,6 +69,7 @@
             var formHeight = $('.login-form').height();
             $('.login-form').addClass('hide');
             $('.loader-wrapper').css('height', formHeight + 'px').removeClass('hide');
+            $('.card-action .btn').addClass('disabled');
         });
     </script>
 {% endblock %}

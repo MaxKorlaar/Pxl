@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    {% include 'head.twig' %}
+    {% include 'partials/head.twig' %}
     <title>{% block title %}?{% endblock %} – {{ config_get('app.name') }}</title>
 </head>
 <body>
 {% block body %}
     {% block navigation %}
-        {% include 'navigation.twig' %}
+        {% include 'partials/navigation.twig' %}
     {% endblock %}
 
     <div class="container page-content">
