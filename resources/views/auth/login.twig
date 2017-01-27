@@ -18,16 +18,21 @@
                                 </div>
                                 <div class="login-form">
                                     <div class="card-title center-align">{{ trans('auth.log_in') }}</div>
+                                    {% if errors.any %}
+                                        {% for error in errors.all %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">account_circle</i>
                                             <input required autofocus name="username" id="username" type="text" class="validate">
-                                            <label for="username">{{ trans('auth.username') }}</label>
+                                            <label for="username" id="username_label">{{ trans('auth.username') }}</label>
                                         </div>
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">https</i>
                                             <input required id="password" name="password" type="password" class="validate">
-                                            <label for="password">{{ trans('auth.password') }}</label>
+                                            <label for="password" id="password_label">{{ trans('auth.password') }}</label>
                                         </div>
                                         <div class="input-field col s12">
                                             <input type="checkbox" id="remember-me"/>
@@ -79,17 +84,19 @@
                 url:      '{{ route('auth/do_login') }}',
                 type:     'POST',
                 dataType: 'json',
-                data: $('form').serialize(),
+                data:     $('form').serialize(),
                 success:  function (data) {
                     console.info(data);
                 },
                 error:    function (data) {
                     if (typeof data.responseJSON !== 'undefined') {
                         console.info(data.responseJSON);
-                        if(typeof data.responseJSON.password !== 'undefined') {
+                        if (typeof data.responseJSON.password !== 'undefined') {
+                            Materialize.toast(data.responseJSON.password[0], 10000);
                             $('#password').addClass('invalid');
                         }
                         if (typeof data.responseJSON.username !== 'undefined') {
+                            Materialize.toast(data.responseJSON.username[0], 10000);
                             $('#password').addClass('invalid');
                         }
                     }
