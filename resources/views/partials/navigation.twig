@@ -6,7 +6,7 @@
                 <li>
                     <form method="POST" id="logout_form" action="{{ route('auth/logout') }}">
                         {{ csrf_field() }}
-                        <a id="logout_button" href="{{ route('auth/logout') }}"><i class="material-icons left">output</i> Log out</a>
+                        <a id="logout_button" href="{{ route('auth/logout') }}"><i class="material-icons left">lock</i> Log out</a>
                     </form>
                 </li>
             {% else %}
