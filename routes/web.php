@@ -26,7 +26,7 @@
                 return view('auth/register');
             }
             return response(view('errors.403'), 403);
-        });
+        })->name('register');
     });
 
     Route::get('/gallery', function () {
