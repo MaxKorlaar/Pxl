@@ -19,9 +19,11 @@
                                 <div class="login-form">
                                     <div class="card-title center-align">{{ trans('auth.log_in') }}</div>
                                     {% if errors.any %}
-                                        {% for error in errors.all %}
-                                            <p>{{ error }}</p>
-                                        {% endfor %}
+                                        <div class="card red white-text center-align">
+                                            {% for error in errors.all %}
+                                                <p><i class="material-icons">warning</i> {{ error }}</p>
+                                            {% endfor %}
+                                        </div>
                                     {% endif %}
                                     <div class="row">
                                         <div class="input-field col s12">
