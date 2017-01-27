@@ -19,7 +19,7 @@
         // Controllers Within The "App\Http\Controllers\Auth" Namespace
         Route::get('/login', function () {
             return view('auth/login');
-        })->name('login');
+        })->name('auth.login');
 
         Route::get('/register', function () {
             if (config('pxl.public_signups')) {
