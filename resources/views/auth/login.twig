@@ -66,7 +66,8 @@
     <script src="{{ asset('js/pxl.js?v=13') }}"></script>
     <script>
         $('#btn_login').on('click', function () {
-            var formHeight = $('.login-form').height().addClass('hide');
+            var formHeight = $('.login-form').height();
+            $('.login-form').addClass('hide');
             $('.loader-wrapper').css('height', formHeight + 'px').removeClass('hide');
         });
     </script>
