@@ -1,1 +1,0 @@
-{"version":3,"sources":["app.scss"],"names":[],"mappings":"AAEA,qEAAY;AAKZ;EACE,iBAAiB;EACjB,wBAAwB;CACzB","file":"app.css","sourcesContent":["\n// Fonts\n@import url(https://fonts.googleapis.com/icon?family=Material+Icons);\n\n// Variables\n@import \"variables\";\n\nnav .brand-logo {\n  max-height: 64px;\n  padding: 10px 10px 10px;\n}"]}
