@@ -9,6 +9,10 @@
   height: 100%;
 }
 
+.login-page .preloader-wrapper {
+  margin: auto;
+}
+
 body, html {
   height: 100%;
 }
