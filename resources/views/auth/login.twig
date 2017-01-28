@@ -114,6 +114,8 @@
                             Materialize.toast(data.responseJSON.username[0], 10000);
                             $('#username').addClass('invalid');
                         }
+                    } else {
+                        Materialize.toast(data.responseText, 10000);
                     }
                     $('.card-action .btn').removeClass('disabled');
                     $('.login-form').removeClass('hide');
