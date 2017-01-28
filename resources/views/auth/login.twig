@@ -115,12 +115,11 @@
                             $('#username').addClass('invalid');
                         }
                     } else {
-                        if(data.status !== 200) {
+                        if (data.status !== 200) {
                             Materialize.toast("Unknown response: " + data.status, 10000);
                         } else {
                             $('.login-card').addClass('green');
-                            console.info(data);
-                            //window.location.href = data.url;
+                            window.location.href = '{{ route('home') }}';
                         }
                     }
                     $('.card-action .btn').removeClass('disabled');
