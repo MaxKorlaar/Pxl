@@ -20,7 +20,7 @@
                 if ($request->ajax()) {
                     return response(['success' => true, 'info' => 'Already authenticated', 'redirect' => route('home')]);
                 }
-                return redirect(route('home') . '/somewhererandom'); // If the user is already logged in, redirect them back to the home page
+                return redirect(route('home')); // If the user is already logged in, redirect them back to the home page
             }
 
             return $next($request);
