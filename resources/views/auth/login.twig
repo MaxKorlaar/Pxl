@@ -21,8 +21,9 @@
                                     {% if errors.any %}
                                         <div class="card red white-text center-align">
                                             <div class="card-content center-align">
+                                                <span class="material-icons left">warning</span>
                                                 {% for error in errors.all %}
-                                                    <p class="center-align"><span class="material-icons left">warning</span> {{ error }}</p>
+                                                    <p class="center-align">{{ error }}</p>
                                                 {% endfor %}
                                             </div>
                                         </div>
@@ -91,7 +92,7 @@
                 data:     $('form').serialize(),
                 success:  function (data) {
                     console.info(data);
-                    if(data.success) {
+                    if (data.success) {
                         $('.login-card').addClass('green');
                         window.location.href = data.redirect;
                     }
@@ -101,7 +102,7 @@
                         if (typeof data.responseJSON.success !== 'undefined') {
                             Materialize.toast(data.responseJSON.error, 10000);
                         }
-                        if(data.status == 403) {
+                        if (data.status == 403) {
                             $('#password').addClass('invalid');
                             $('#username').addClass('invalid');
                         }

@@ -4,10 +4,7 @@
         <ul class="right hide-on-med-and-down">
             {% if auth_user() %}
                 <li>
-                    <form method="POST" id="logout_form" action="{{ route('auth/logout') }}">
-                        {{ csrf_field() }}
-                        <a id="logout_button" href="{{ route('auth/logout') }}"><i class="material-icons left">lock</i> Log out</a>
-                    </form>
+                    <a href="{{ route('auth/logout', ['token' => csrf_token()]) }}"><i class="material-icons left">lock</i> Log out</a>
                 </li>
             {% else %}
                 <li><a href="{{ route('auth/login') }}"><i class="material-icons left">input</i> Log in</a></li>
