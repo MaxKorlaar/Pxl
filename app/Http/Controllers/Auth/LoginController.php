@@ -104,7 +104,6 @@
          * @param         $token
          *
          * @return \Illuminate\Http\Response
-         * @throws TokenMismatchException
          */
         public function checkLogoutToken(Request $request, $token) {
             if ($token != $request->session()->token()) {
