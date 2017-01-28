@@ -39,7 +39,7 @@
          */
         public function __construct() {
             $this->redirectTo = route('user/gallery');
-            $this->middleware('guest', ['except' => 'logout']);
+            $this->middleware('guest', ['except' => 'checkLogoutToken']);
         }
 
         /**
