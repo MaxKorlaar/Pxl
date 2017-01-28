@@ -102,15 +102,14 @@
          * @param Request $request
          * @param         $token
          *
+         * @return \Illuminate\Http\Response
          * @throws TokenMismatchException
          */
         public function checkLogoutToken(Request $request, $token) {
-            var_dump($token, $request->session()->token());
-            return [$token, $request->session()->token()];
             if ($token != $request->session()->token()) {
                 throw new TokenMismatchException;
             }
-            $this->logout($request);
+            return $this->logout($request);
         }
 
         /**
