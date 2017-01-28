@@ -4,7 +4,7 @@
         <ul class="right hide-on-med-and-down">
             {% if auth_user() %}
                 <li>
-                    <a href="{{ route('auth/logout', ['token' => csrf_token()]) }}"><i class="material-icons left">lock</i> Log out</a>
+                    <a href="{{ route('auth/logout', {'token': csrf_token()}) }}"><i class="material-icons left">lock</i> Log out</a>
                 </li>
             {% else %}
                 <li><a href="{{ route('auth/login') }}"><i class="material-icons left">input</i> Log in</a></li>
