@@ -119,7 +119,8 @@
                             Materialize.toast("Unknown response: " + data.status, 10000);
                         } else {
                             $('.login-card').addClass('green');
-                            window.location.href = data.url;
+                            console.info(data);
+                            //window.location.href = data.url;
                         }
                     }
                     $('.card-action .btn').removeClass('disabled');
