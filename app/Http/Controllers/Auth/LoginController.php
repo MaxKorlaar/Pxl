@@ -107,7 +107,7 @@
          */
         public function checkLogoutToken(Request $request, $token) {
             if ($token != $request->session()->token()) {
-                throw new TokenMismatchException;
+                return redirect()->back(302, [], route('home'))->withErrors(['logout' => 'token_invalid']);
             }
             return $this->logout($request);
         }
