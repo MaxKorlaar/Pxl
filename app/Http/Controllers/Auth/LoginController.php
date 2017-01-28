@@ -105,6 +105,8 @@
          * @throws TokenMismatchException
          */
         public function checkLogoutToken(Request $request, $token) {
+            var_dump($token, $request->session()->token());
+            exit();
             if ($token != $request->session()->token()) {
                 throw new TokenMismatchException;
             }
