@@ -115,7 +115,7 @@
                             $('#username').addClass('invalid');
                         }
                     } else {
-                        Materialize.toast(data.statusText, 10000);
+                        Materialize.toast("Unknown response: " + data.status, 10000);
                     }
                     $('.card-action .btn').removeClass('disabled');
                     $('.login-form').removeClass('hide');
