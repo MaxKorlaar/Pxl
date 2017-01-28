@@ -64,7 +64,7 @@
         redirect('user/gallery');
     });
 
-    Route::group(['prefix' => 'user'], function () {
+    Route::group(['prefix' => 'user', 'namespace' => 'User', 'as' => 'user/'], function () {
         Route::get('gallery', function () {
             abort(404);
             // /user/gallery

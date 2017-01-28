@@ -31,13 +31,14 @@
          *
          * @var string
          */
-        protected $redirectTo = '/user/gallery';
+        protected $redirectTo = '/';
 
         /**
          * Create a new controller instance.
          *
          */
         public function __construct() {
+            $this->redirectTo = route('user/gallery');
             $this->middleware('guest', ['except' => 'logout']);
         }
 
