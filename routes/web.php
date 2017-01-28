@@ -23,7 +23,7 @@
         Route::get('/login', 'LoginController@showLoginForm')->name('login');
         Route::post('/login', 'LoginController@login')->name('do_login');
 
-        Route::get('/logout/{token}', 'LoginController@logout')->name('logout');
+        Route::get('/logout/{token}', 'LoginController@checkLogoutToken')->name('logout');
 
         Route::get('/register', 'RegisterController@showRegistrationForm')->name('register');
         Route::post('/register', 'RegisterController@register')->name('do_register');
