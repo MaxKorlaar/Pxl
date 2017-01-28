@@ -5,6 +5,7 @@
     use App\Http\Controllers\Controller;
     use Illuminate\Foundation\Auth\AuthenticatesUsers;
     use Illuminate\Http\Request;
+    use Illuminate\Session\TokenMismatchException;
 
     /**
      * Class LoginController
@@ -95,6 +96,36 @@
                 return $request->only('email', 'password');
             }
             return $request->only($this->username(), 'password');
+        }
+
+        /**
+         * @param Request $request
+         * @param         $token
+         *
+         * @throws TokenMismatchException
+         */
+        public function checkLogoutToken(Request $request, $token) {
+            if ($token != $request->session()->token()) {
+                throw new TokenMismatchException;
+            }
+            $this->logout($request);
+        }
+
+        /**
+         * Log the user out of the application.
+         *
+         * @param \Illuminate\Http\Request $request
+         *
+         * @return \Illuminate\Http\Response
+         */
+        public function logout(Request $request) {
+            $this->guard()->logout();
+
+            $request->session()->flush();
+
+            $request->session()->regenerate();
+
+            return redirect(route('home'));
         }
 
         /**
