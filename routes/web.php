@@ -13,7 +13,7 @@
 
     Route::get('/', function () {
         return view('welcome');
-    });
+    })->name('home');
 
     Route::group(['namespace' => 'Auth', 'as' => 'auth/'], function () {
         // It's rather stupid that I have to add the slash to auth/ myself, for referring to the routes later with route('auth/login').
