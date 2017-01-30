@@ -53,6 +53,7 @@ It should be similar to the small guide below.
 * Set up Pxl by installing composer and executing `php composer install` in Pxl's directory
 (should be the one where this readme is located).
 * Using `php artisan up` and `php artisan down` you may toggle maintenance mode.
+* You may update your database by using `php artisan migrate` and clean it by using `php artisan migrate:reset` **Warning!** This will most likely clear your database. Don't execute this on your PRODUCTION machine.
 
 It's built on top of Laravel, so please do read their (quickstart) documentation,
 on setting up the project on your development machine. (Hint: It also involves composer.)
