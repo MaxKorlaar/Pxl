@@ -12,6 +12,7 @@ If you plan on helping out, please do get in touch so I can set up a Trello boar
 ### Functions (planned)
 I do plan on keeping the core functionality of the previous Pxl.lt, as that is what made it stand out.
 Task list, not in particular order:
+- [ ] Login, registration system (public and private)
 - [ ] Personal account management
 - [ ] Admin account management
 - [ ] Admin site settings (different from the settings in .env)
