@@ -12,21 +12,21 @@ If you plan on helping out, please do get in touch so I can set up a Trello boar
 ### Functions (planned)
 I do plan on keeping the core functionality of the previous Pxl.lt, as that is what made it stand out.
 Task list, not in particular order:
-- [] Personal account management
-- [] Admin account management
-- [] Admin site settings (different from the settings in .env)
-- [] Image upload support
-- [] Gallery
-- [] View others' galleries (as admin, make it an option?)
-- [] Custom domain support, custom storage location support (This will be difficult with Laravel.
+- [ ] Personal account management
+- [ ] Admin account management
+- [ ] Admin site settings (different from the settings in .env)
+- [ ] Image upload support
+- [ ] Gallery
+- [ ] View others' galleries (as admin, make it an option?)
+- [ ] Custom domain support, custom storage location support (This will be difficult with Laravel.
 It would be possible to set up your webserver to link a specific directory to a specific domain,
 but additional configuration **will** be required for setting up preview pages - aka links without extensions)
-- [] Image preview page, somehow linked to that custom location most likely
-- [] Image preview page that can be overridden via template. Custom template name or database?
-- [] ShareX support via copy/paste JSON-based config
-- [] Access tokens for users, resettable. Required for uploading
-- [] JSON-based API for simple requests, mostly for ShareX support
-- [] (Maybe??) Amazon S3 support via Laravel
+- [ ] Image preview page, somehow linked to that custom location most likely
+- [ ] Image preview page that can be overridden via template. Custom template name or database?
+- [ ] ShareX support via copy/paste JSON-based config
+- [ ] Access tokens for users, resettable. Required for uploading
+- [ ] JSON-based API for simple requests, mostly for ShareX support
+- [ ] (Maybe??) Amazon S3 support via Laravel
 
 ## Helping out
 I would love to see people help out! So, if you were doubting about forking it or even submitting
