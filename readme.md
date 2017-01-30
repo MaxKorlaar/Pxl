@@ -28,6 +28,8 @@ but additional configuration **will** be required for setting up preview pages -
 - [ ] Access tokens for users, resettable. Required for uploading
 - [ ] JSON-based API for simple requests, mostly for ShareX support
 - [ ] (Maybe??) Amazon S3 support via Laravel
+- [ ] Social media metadata on the image preview page (in the head tag and via some web standard of which I
+forgot the name, Slack and Discord support it)
 
 ## Helping out
 I would love to see people help out! So, if you were doubting about forking it or even submitting
