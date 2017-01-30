@@ -48,11 +48,13 @@ It should be similar to the small guide below.
 
 ### A short guide on setting it up server-side:
 * Upload all files, except for the ones listed in the .gitignore file, to your server
+    * If you can use `git`, then use this instead. Clone this repo in your the desired location.
 * In your web server, change the root directory to '/path/to/pxl/public'.
 * Configure Pxl by renaming env.example to .env and editing the environment configuration.
 * Set up Pxl by installing composer **first** and executing `php composer install` in Pxl's directory (_Unless your composer
 file is named `composer.phar`, then it's `php composer.phar install`_)
 (should be the one where this readme is located).
+* Blank screen? Check if you have set up everything. To be sure, check Laravel's docs and make sure all directory permissions are set up correctly!
 * Using `php artisan up` and `php artisan down` you may toggle maintenance mode.
 * You may update your database by using `php artisan migrate` and clean it by using `php artisan migrate:reset` **Warning!** This will most likely clear your database. Don't execute this on your PRODUCTION machine.
 
