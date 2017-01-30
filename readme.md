@@ -17,6 +17,7 @@ Task list, not in particular order:
 - [ ] Admin account management
 - [ ] Admin site settings (different from the settings in .env)
 - [ ] Image upload support
+- [ ] Automatic deletion for images. Default & per-image setting. (A personal favourite, must have for limited space)
 - [ ] Gallery
 - [ ] View others' galleries (as admin, make it an option?)
 - [ ] Custom domain support, custom storage location support (This will be difficult with Laravel.
@@ -31,6 +32,7 @@ but additional configuration **will** be required for setting up preview pages -
 - [ ] Social media metadata on the image preview page (in the head tag and via some web standard of which I
 forgot the name, Slack and Discord support it)
 - [ ] Account deletion (Admin setting?)
+- [ ] Enforce limits on accounts? Images / space / etc?
 - [ ] Pxl-goodbye: Zip download of all your data? (Note:
 May have performance and timeout issues in PHP. Must look into it in detail later.)
 
