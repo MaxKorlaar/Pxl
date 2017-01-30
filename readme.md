@@ -30,6 +30,9 @@ but additional configuration **will** be required for setting up preview pages -
 - [ ] (Maybe??) Amazon S3 support via Laravel
 - [ ] Social media metadata on the image preview page (in the head tag and via some web standard of which I
 forgot the name, Slack and Discord support it)
+- [ ] Account deletion (Admin setting?)
+- [ ] Pxl-goodbye: Zip download of all your data? (Note:
+May have performance and timeout issues in PHP. Must look into it in detail later.)
 
 ## Helping out
 I would love to see people help out! So, if you were doubting about forking it or even submitting
