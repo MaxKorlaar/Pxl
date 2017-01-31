@@ -21,7 +21,7 @@
          * @return mixed
          */
         public function handle($request, Closure $next, $guard = null) {
-            if (Auth::guard($guard)->check() && Auth::guard($guard)->user->isAdmin()) {
+            if (Auth::guard($guard)->check() && Auth::user()->isAdmin()) {
                 return $next($request);
             }
             return redirect(route('home'))->withErrors(['access_denied']); // todo: check errors
