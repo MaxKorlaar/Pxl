@@ -1,34 +1,47 @@
 <?php
 
-namespace App;
+    namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-
-/**
- * Class User
- *
- * @package App
- */
-class User extends Authenticatable
-{
-    use Notifiable;
+    use Illuminate\Notifications\Notifiable;
+    use Illuminate\Foundation\Auth\User as Authenticatable;
 
     /**
-     * The attributes that are mass assignable.
+     * Class User
      *
-     * @var array
+     * @package App
      */
-    protected $fillable = [
-        'username', 'email', 'password', '2fa_token', 'active', 'rank'
-    ];
+    class User extends Authenticatable {
+        use Notifiable;
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token', '2fa_token'
-    ];
-}
+        /**
+         * The attributes that are mass assignable.
+         *
+         * @var array
+         */
+        protected $fillable = [
+            'username', 'email', 'password', '2fa_token'
+        ];
+
+        /**
+         * The attributes that should be hidden for arrays.
+         *
+         * @var array
+         */
+        protected $hidden = [
+            'password', 'remember_token', '2fa_token', 'last_ip'
+        ];
+
+        /**
+         * @return bool
+         */
+        function isActive() {
+            return $this->active == 1;
+        }
+
+        /**
+         * @return bool
+         */
+        function isAdmin() {
+            return $this->rank == 'admin';
+        }
+    }
