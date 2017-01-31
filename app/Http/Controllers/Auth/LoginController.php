@@ -61,6 +61,7 @@
                     return $this->sendLoginResponse($request);
                 } else {
                     $this->guard()->logout();
+                    return $this->sendInactiveAccountResponse($request);
                 }
             }
             $this->incrementLoginAttempts($request);
@@ -176,5 +177,22 @@
          */
         public function username() {
             return 'username';
+        }
+
+        /**
+         * @param $request
+         *
+         * @return $this|\Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+         */
+        protected function sendInactiveAccountResponse(Request $request) {
+            if ($request->ajax()) {
+                return response(['success' => false, 'error' => trans('auth.account_inactive')], 403);
+            } else {
+                return redirect()->back()
+                    ->withInput($request->only($this->username(), 'remember'))
+                    ->withErrors([
+                        $this->username() => trans('auth.account_inactive'),
+                    ]);
+            }
         }
     }

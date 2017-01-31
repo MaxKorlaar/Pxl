@@ -18,6 +18,7 @@ return [
     'forgot_password' => 'Forgot password?',
     'remember_me' => 'Remember me',
     'failed' => 'These credentials are invalid.',
+    'account_inactive' => 'This account is currently not enabled',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
 ];
