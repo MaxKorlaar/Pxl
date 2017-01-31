@@ -1,24 +1,24 @@
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons|Lato:100);
 @-webkit-keyframes backgroundColours {
   0% {
-    background-position: 92% 0%;
+    background-position: 0 51%;
   }
   50% {
-    background-position: 9% 100%;
+    background-position: 100% 50%;
   }
   100% {
-    background-position: 92% 0%;
+    background-position: 0 51%;
   }
 }
 @keyframes backgroundColours {
   0% {
-    background-position: 92% 0%;
+    background-position: 0 51%;
   }
   50% {
-    background-position: 9% 100%;
+    background-position: 100% 50%;
   }
   100% {
-    background-position: 92% 0%;
+    background-position: 0 51%;
   }
 }
 
