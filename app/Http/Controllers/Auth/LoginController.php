@@ -3,6 +3,7 @@
     namespace App\Http\Controllers\Auth;
 
     use App\Http\Controllers\Controller;
+    use App\User;
     use Illuminate\Foundation\Auth\AuthenticatesUsers;
     use Illuminate\Http\Request;
 
@@ -161,11 +162,13 @@
          * The user has been authenticated.
          *
          * @param  \Illuminate\Http\Request $request
-         * @param  mixed                    $user
+         * @param  User                    $user
          *
          * @return mixed
          */
-        protected function authenticated(Request $request, $user) {
+        protected function authenticated(Request $request, User $user) {
+            $user->last_login = time();
+            $user->save();
             if ($request->ajax()) {
                 return response(['success' => true, 'redirect' => redirect()->intended($this->redirectPath())->getTargetUrl()], 200);
             }
