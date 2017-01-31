@@ -32,6 +32,15 @@
         ];
 
         /**
+         * Get the format for database stored dates.
+         *
+         * @return string
+         */
+        protected function getDateFormat() {
+            return 'U';
+        }
+
+        /**
          * @return bool
          */
         function isActive() {

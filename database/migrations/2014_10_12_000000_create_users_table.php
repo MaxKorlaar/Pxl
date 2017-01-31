@@ -26,6 +26,7 @@ use Illuminate\Database\Migrations\Migration;
             $table->ipAddress('last_ip');
             $table->boolean('active')->default(false);
             $table->string('rank')->default('member');
+            $table->timestamp('last_login')->nullable();
             $table->timestamps();
         });
     }
