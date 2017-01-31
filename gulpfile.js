@@ -14,6 +14,9 @@ require('laravel-elixir-vue-2');
  */
 
 elixir((mix) => {
+    if (Elixir.inProduction) {
+        process.env.NODE_ENV = 'production';
+    }
     mix.sass('app.scss')
         .scripts([
             'pxl.js',
