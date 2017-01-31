@@ -41,6 +41,32 @@
             $this->middleware('guest', ['except' => 'checkLogoutToken']);
         }
 
+
+        /**
+         * Handle a login request to the application.
+         *
+         * @param  \Illuminate\Http\Request $request
+         *
+         * @return \Illuminate\Http\Response
+         */
+        public function login(Request $request) {
+            $this->validateLogin($request);
+            if ($this->hasTooManyLoginAttempts($request)) {
+                $this->fireLockoutEvent($request);
+
+                return $this->sendLockoutResponse($request);
+            }
+            if ($this->attemptLogin($request)) {
+                if($this->guard()->user()->isActive()) {
+                    return $this->sendLoginResponse($request);
+                }
+            }
+            $this->incrementLoginAttempts($request);
+
+            return $this->sendFailedLoginResponse($request);
+        }
+
+
         /**
          * Get the failed login response instance.
          *
