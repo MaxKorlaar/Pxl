@@ -57,8 +57,10 @@
                 return $this->sendLockoutResponse($request);
             }
             if ($this->attemptLogin($request)) {
-                if($this->guard()->user()->isActive()) {
+                if ($this->guard()->user()->isActive()) {
                     return $this->sendLoginResponse($request);
+                } else {
+                    $this->guard()->logout();
                 }
             }
             $this->incrementLoginAttempts($request);
