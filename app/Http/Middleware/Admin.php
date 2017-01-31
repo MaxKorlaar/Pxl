@@ -24,6 +24,6 @@
             if (Auth::guard($guard)->check() && Auth::user()->isAdmin()) {
                 return $next($request);
             }
-            return redirect(route('home'))->withErrors(['access_denied']); // todo: check errors
+            return abort(403);
         }
     }
