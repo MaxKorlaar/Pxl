@@ -20,5 +20,11 @@ return [
     'failed' => 'These credentials are invalid.',
     'account_inactive' => 'This account is currently not enabled',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'register' => [
+        'username' => 'Username',
+        'password' => 'Password',
+        'email' => 'Email address',
+        'confirm_email' => 'Confirm email address'
+    ]
 
 ];
