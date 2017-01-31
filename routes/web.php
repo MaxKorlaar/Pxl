@@ -79,9 +79,6 @@
     Route::get('/users', function () {
         $users = App\User::all();
         return $users;
-        foreach ($users as $user) {
-            echo $user->name;
-        };
     });
 
 
