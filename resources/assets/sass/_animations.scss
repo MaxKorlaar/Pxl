@@ -1,0 +1,10 @@
+@keyframes backgroundColours {
+  0% { background-position: 92% 0% }
+  50% { background-position: 9% 100% }
+  100% { background-position: 92% 0% }
+}
+
+@mixin colour-gradient-animated {
+  background: linear-gradient(239deg, #4BC114, #1499C1, #E90B1F, #0E16AF, #FED631);
+  background-size: 1000% 1000%;
+}

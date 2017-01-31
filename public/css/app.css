@@ -1,8 +1,31 @@
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons|Lato:100);
-.login-page html, .login-page body {
-  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.63) 3%, transparent 100%);
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.63) 3%, transparent 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a6000000', endColorstr='#00000000', GradientType=0);
+@-webkit-keyframes backgroundColours {
+  0% {
+    background-position: 92% 0%;
+  }
+  50% {
+    background-position: 9% 100%;
+  }
+  100% {
+    background-position: 92% 0%;
+  }
+}
+@keyframes backgroundColours {
+  0% {
+    background-position: 92% 0%;
+  }
+  50% {
+    background-position: 9% 100%;
+  }
+  100% {
+    background-position: 92% 0%;
+  }
+}
+
+.login-page body {
+  background: -webkit-linear-gradient(211deg, #4BC114, #1499C1, #E90B1F, #0E16AF, #FED631);
+  background: linear-gradient(239deg, #4BC114, #1499C1, #E90B1F, #0E16AF, #FED631);
+  background-size: 1000% 1000%;
 }
 
 .login-page .fullheight {
@@ -11,28 +34,6 @@
 
 .login-page .preloader-wrapper {
   margin: auto;
-}
-
-body, html {
-  height: 100%;
-}
-
-nav .brand-logo {
-  max-height: 64px;
-  padding: 10px 10px 10px;
-}
-
-.welcome-msg, .welcome-msg h2 {
-  font-family: Lato, serif;
-  font-weight: 100;
-}
-
-.welcome-msg img, .welcome-msg h2 img {
-  max-height: 400px;
-}
-
-.page-content {
-  min-height: 75vh;
 }
 
 .error-page {
@@ -51,6 +52,9 @@ nav .brand-logo {
   display: table;
   font-weight: 100;
   font-family: 'Lato', sans-serif;
+  background: -webkit-linear-gradient(211deg, #4BC114, #1499C1, #E90B1F, #0E16AF, #FED631);
+  background: linear-gradient(239deg, #4BC114, #1499C1, #E90B1F, #0E16AF, #FED631);
+  background-size: 1000% 1000%;
 }
 
 .error-page .container {
@@ -72,6 +76,30 @@ nav .brand-logo {
 .error-page img {
   max-height: 250px;
   padding-bottom: 20px;
+}
+
+body, html {
+  height: 100%;
+  -webkit-animation: backgroundColours 30s ease infinite;
+  animation: backgroundColours 30s ease infinite;
+}
+
+nav .brand-logo {
+  max-height: 64px;
+  padding: 10px 10px 10px;
+}
+
+.welcome-msg, .welcome-msg h2 {
+  font-family: Lato, serif;
+  font-weight: 100;
+}
+
+.welcome-msg img, .welcome-msg h2 img {
+  max-height: 400px;
+}
+
+.page-content {
+  min-height: 75vh;
 }
 
 /*# sourceMappingURL=app.css.map */
