@@ -1,7 +1,7 @@
 const elixir = require('laravel-elixir');
 
 require('laravel-elixir-vue-2');
-
+// Note: use `gulp --production` when building for production
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -19,5 +19,8 @@ elixir((mix) => {
             'pxl.js',
             'materialize.js'
         ], 'public/js/pxl.js')
+        .scripts([
+            'login.js'
+        ], 'public/js/login.js')
         .webpack('app.js')
 });
