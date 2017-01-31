@@ -24,7 +24,8 @@ use Illuminate\Database\Migrations\Migration;
             $table->string('2fa_token')->nullable();
             $table->rememberToken();
             $table->ipAddress('last_ip');
-            $table->boolean('active');
+            $table->boolean('active')->default(false);
+            $table->string('rank')->default('member');
             $table->timestamps();
         });
     }

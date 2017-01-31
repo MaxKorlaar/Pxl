@@ -64,7 +64,7 @@
         redirect('user/gallery');
     });
 
-    Route::group(['prefix' => 'user', 'namespace' => 'User', 'as' => 'user/'], function () {
+    Route::group(['prefix' => 'user', 'namespace' => 'User', 'as' => 'user/', 'middleware' => ['auth']], function () {
         Route::get('gallery', function () {
             abort(404);
             // /user/gallery
@@ -75,10 +75,16 @@
             // My account
         })->name('my-account');
     });
-
-    Route::get('/users', function () {
-        $users = App\User::all();
-        return $users;
+    Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin/', 'middleware' => ['auth', 'admin']], function () {
+        Route::get('users', function () {
+            $users = App\User::all();
+            return $users;
+        })->name('users');
+        Route::get('settings', function () {
+            abort(404);
+            // /user/account
+            // My account
+        })->name('settings');
     });
 
 
