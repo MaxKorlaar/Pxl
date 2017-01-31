@@ -16,6 +16,35 @@
             display: table;
             font-weight: 100;
             font-family: 'Lato', sans-serif;
+            -webkit-animation: backgroundColours 30s ease infinite;
+            animation: backgroundColours 30s ease infinite;
+            background: -webkit-linear-gradient(211deg, #4BC114, #1499C1, #E90B1F, #0E16AF, #FED631);
+            background: linear-gradient(239deg, #4BC114, #1499C1, #E90B1F, #0E16AF, #FED631);
+            background-size: 1000% 1000%;
+        }
+
+        @-webkit-keyframes backgroundColours {
+            0% {
+                background-position: 0 51%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0 51%;
+            }
+        }
+
+        @keyframes backgroundColours {
+            0% {
+                background-position: 0 51%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0 51%;
+            }
         }
 
         .container {
@@ -33,9 +62,10 @@
             font-size: 72px;
             margin-bottom: 40px;
         }
+
         img {
-            max-height:250px;
-            padding-bottom:20px;
+            max-height: 250px;
+            padding-bottom: 20px;
         }
     </style>
 </head>
