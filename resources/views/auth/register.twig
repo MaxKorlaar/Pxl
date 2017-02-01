@@ -45,14 +45,13 @@
                                         </div>
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">lock</i>
-                                            <input required id="password" name="password" type="password" class="validate {{ errors.has('password') ? 'invalid' : '' }}">
+                                            <input required id="password" name="password" type="password" value="{{ old('password') }}" class="validate {{ errors.has('password') ? 'invalid' : '' }}">
                                             <label class="{{ errors.has('password') ? 'active' : '' }}" for="password" id="password_label" data-error="{{ errors.first('password') }}">{{ trans('auth.register.password') }}</label>
-                                            class="{{ errors.has('password') ? 'active' : '' }}"
                                             <p class="help">{{ trans('auth.register.password_help') }}</p>
                                         </div>
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">lock</i>
-                                            <input required id="confirm_password" name="password_confirmation" type="password" class="validate {{ errors.has('password_confirmation') ? 'invalid' : '' }}">
+                                            <input required id="confirm_password" name="password_confirmation" type="password" value="{{ old('password_confirmation') }}" class="validate {{ errors.has('password_confirmation') ? 'invalid' : '' }}">
                                             <label class="{{ errors.has('password_confirmation') ? 'active' : '' }}" for="confirm_password" id="confirm_password_label" data-error="{{ errors.first('password_confirmation') }}">{{ trans('auth.register.confirm_password') }}</label>
                                         </div>
                                         {{ csrf_field() }}
