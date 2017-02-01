@@ -31,12 +31,12 @@
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">account_circle</i>
-                                            <input required autofocus name="username" value="{{ old('username') }}" id="username" type="text" class="validate">
+                                            <input required autofocus name="username" value="{{ old('username') }}" id="username" type="text" class="validate {{ errors.has('username') ? 'invalid' : '' }}">
                                             <label for="username" id="username_label">{{ trans('auth.register.username') }}</label>
                                         </div>
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">envelope</i>
-                                            <input required autofocus name="username" value="{{ old('username') }}" id="email" type="email" class="validate">
+                                            <input required autofocus name="username" value="{{ old('username') }}" id="email" type="email" class="validate {{ errors.has('email') ? 'invalid' : '' }}">
                                             <label for="email" id="email_label">{{ trans('auth.register.email') }}</label>
                                         </div>
                                         <div class="input-field col s12">
