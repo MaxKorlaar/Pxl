@@ -85,11 +85,12 @@
          * @return User
          */
         protected function create(array $data) {
-            return User::create([
-                'username' => $data['username'],
-                'email'    => $data['email'],
-                'password' => bcrypt($data['password']),
-                'last_ip' => Request::capture()->ip()
-            ]);
+            $user           = new User;
+            $user->username = $data['username'];
+            $user->email    = $data['email'];
+            $user->setPassword($data['password']);
+            $user->last_ip = Request::capture()->ip();
+            $user->save();
+            return $user;
         }
     }

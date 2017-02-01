@@ -53,4 +53,13 @@
         function isAdmin() {
             return $this->rank == 'admin';
         }
+
+        /**
+         * @param $password
+         *
+         * @return string
+         */
+        function setPassword($password) {
+            return $this->password = bcrypt($password);
+        }
     }
