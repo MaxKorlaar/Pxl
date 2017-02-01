@@ -23,7 +23,7 @@
                                             <div class="card-content center-align">
                                                 <span class="material-icons left">warning</span>
 
-                                                <p class="center-align">{{ trans('auth.register.errors_occurred', errors.count()) }}</p>
+                                                <p class="center-align">{{ trans_choice('auth.register.errors_occurred', errors.count()) }}</p>
                                             </div>
                                         </div>
                                     {% endif %}
@@ -40,7 +40,7 @@
                                         </div>
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">email</i>
-                                            <input required autofocus name="confirm_email" value="{{ old('confirm_email') }}" id="confirm_email" type="email" class="validate {{ errors.has('confirm_email') ? 'invalid' : '' }}">
+                                            <input required autofocus name="email_confirmation" value="{{ old('confirm_email') }}" id="confirm_email" type="email" class="validate {{ errors.has('confirm_email') ? 'invalid' : '' }}">
                                             <label for="confirm_email" id="confirm_email_label" data-error="{{ errors.first('email') }}">{{ trans('auth.register.confirm_email') }}</label>
                                         </div>
                                         <div class="input-field col s12">
@@ -52,7 +52,7 @@
                                         </div>
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">lock</i>
-                                            <input required id="confirm_password" name="confirm_password" type="password" class="validate">
+                                            <input required id="confirm_password" name="password_confirmation" type="password" class="validate">
                                             <label for="confirm_password" id="confirm_password_label">{{ trans('auth.register.confirm_password') }}</label>
                                         </div>
                                         {{ csrf_field() }}
