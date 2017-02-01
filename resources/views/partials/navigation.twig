@@ -5,7 +5,6 @@
             {% if auth_user() %}
                 {{ dump (auth_check()) }}
                 {{ dump(auth_user()) }}
-                {{ dump(session_get()) }}
                 <li>
                     <a href=""><i class="material-icons left">user</i> {{ trans('nav.dropdown_greeting', {name: Auth.user().name}) }}</a>
                 </li>
