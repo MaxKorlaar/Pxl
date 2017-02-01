@@ -22,9 +22,8 @@
                                         <div class="card red white-text center-align">
                                             <div class="card-content center-align">
                                                 <span class="material-icons left">warning</span>
-                                                {% for error in errors.all %}
-                                                    <p class="center-align">{{ error }}</p>
-                                                {% endfor %}
+
+                                                <p class="center-align">{{ trans('auth.register.errors_occurred', errors.count()) }}</p>
                                             </div>
                                         </div>
                                     {% endif %}
@@ -35,14 +34,26 @@
                                             <label for="username" id="username_label" data-error="{{ errors.first('username') }}">{{ trans('auth.register.username') }}</label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <i class="material-icons prefix">envelope</i>
-                                            <input required autofocus name="username" value="{{ old('username') }}" id="email" type="email" class="validate {{ errors.has('email') ? 'invalid' : '' }}">
+                                            <i class="material-icons prefix">email</i>
+                                            <input required autofocus name="email" value="{{ old('email') }}" id="email" type="email" class="validate {{ errors.has('email') ? 'invalid' : '' }}">
                                             <label for="email" id="email_label" data-error="{{ errors.first('email') }}">{{ trans('auth.register.email') }}</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">email</i>
+                                            <input required autofocus name="confirm_email" value="{{ old('confirm_email') }}" id="confirm_email" type="email" class="validate {{ errors.has('confirm_email') ? 'invalid' : '' }}">
+                                            <label for="confirm_email" id="confirm_email_label" data-error="{{ errors.first('email') }}">{{ trans('auth.register.confirm_email') }}</label>
                                         </div>
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">lock</i>
                                             <input required id="password" name="password" type="password" class="validate">
-                                            <label for="password" id="password_label">{{ trans('auth.password') }}</label>
+                                            <label for="password" id="password_label">{{ trans('auth.register.password') }}</label>
+
+                                            <p class="help">{{ trans('auth.register.password_help') }}</p>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">lock</i>
+                                            <input required id="confirm_password" name="confirm_password" type="password" class="validate">
+                                            <label for="confirm_password" id="confirm_password_label">{{ trans('auth.register.confirm_password') }}</label>
                                         </div>
                                         {{ csrf_field() }}
                                     </div>
