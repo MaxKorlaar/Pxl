@@ -4,7 +4,14 @@
         <ul class="right hide-on-med-and-down">
             {% if auth_user() %}
                 <li>
-                    <a href=""><i class="material-icons left">person</i> {{ trans('nav.dropdown_greeting', {name: auth_user().username}) }}</a>
+                    <a href="#user-dropdown" data-activates="user-dropdown"><i class="material-icons left">person</i> {{ trans('nav.dropdown_greeting', {name: auth_user().username}) }}
+                    </a>
+                    <ul id="user-dropdown" class="dropdown-content">
+                        <li><a href="{{ route('user/account') }}">My Account</a></li>
+                        <li class="divider"></li>
+                        <li><a href="{{ route('auth/logout', {'token': csrf_token()}) }}">Log out</a></li>
+                    </ul>
+                    l
                 </li>
             {% else %}
                 <li><a href="{{ route('auth/login') }}"><i class="material-icons left">input</i> Log in</a></li>
@@ -13,6 +20,7 @@
                 {% endif %}
             {% endif %}
         </ul>
+        {# Sidebar navigation on small screens #}
         <ul id="nav-mobile" class="side-nav">
             <li><a href="{{ route('auth/login') }}">Log in</a></li>
             {% if config_get('pxl.public_signups') %}
@@ -21,9 +29,4 @@
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
-    <ul id="user-dropdown" class="dropdown-content">
-        <li><a href="#!">My Account</a></li>
-        <li class="divider"></li>
-        <li><a href="{{ route('auth/logout', {'token': csrf_token()}) }}">Log out</a></li>
-    </ul>
 </nav>
