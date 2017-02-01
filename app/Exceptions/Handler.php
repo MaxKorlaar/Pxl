@@ -1,74 +1,77 @@
 <?php
 
-namespace App\Exceptions;
+    namespace App\Exceptions;
 
-use Exception;
-use Illuminate\Auth\AuthenticationException;
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Illuminate\Session\TokenMismatchException;
-
-/**
- * Class Handler
- *
- * @package App\Exceptions
- */
-class Handler extends ExceptionHandler
-{
-    /**
-     * A list of the exception types that should not be reported.
-     *
-     * @var array
-     */
-    protected $dontReport = [
-        \Illuminate\Auth\AuthenticationException::class,
-        \Illuminate\Auth\Access\AuthorizationException::class,
-        \Symfony\Component\HttpKernel\Exception\HttpException::class,
-        \Illuminate\Database\Eloquent\ModelNotFoundException::class,
-        \Illuminate\Session\TokenMismatchException::class,
-        \Illuminate\Validation\ValidationException::class,
-    ];
+    use Exception;
+    use Illuminate\Auth\AuthenticationException;
+    use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+    use Illuminate\Session\TokenMismatchException;
+    use Symfony\Component\Debug\Exception\FlattenException;
 
     /**
-     * Report or log an exception.
+     * Class Handler
      *
-     * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
-     *
-     * @param  \Exception  $exception
-     * @return void
+     * @package App\Exceptions
      */
-    public function report(Exception $exception)
-    {
-        parent::report($exception);
-    }
+    class Handler extends ExceptionHandler {
+        /**
+         * A list of the exception types that should not be reported.
+         *
+         * @var array
+         */
+        protected $dontReport = [
+            \Illuminate\Auth\AuthenticationException::class,
+            \Illuminate\Auth\Access\AuthorizationException::class,
+            \Symfony\Component\HttpKernel\Exception\HttpException::class,
+            \Illuminate\Database\Eloquent\ModelNotFoundException::class,
+            \Illuminate\Session\TokenMismatchException::class,
+            \Illuminate\Validation\ValidationException::class,
+        ];
 
-    /**
-     * Render an exception into an HTTP response.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $exception
-     * @return \Illuminate\Http\Response
-     */
-    public function render($request, Exception $exception)
-    {
-        if($exception instanceof TokenMismatchException) {
-            return response(view('errors.400', ['error' => 'CSRF Token mismatch']), 400);
-        }
-        return parent::render($request, $exception);
-    }
-
-    /**
-     * Convert an authentication exception into an unauthenticated response.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Illuminate\Auth\AuthenticationException  $exception
-     * @return \Illuminate\Http\Response
-     */
-    protected function unauthenticated($request, AuthenticationException $exception)
-    {
-        if ($request->expectsJson()) {
-            return response()->json(['error' => 'Unauthenticated.'], 401);
+        /**
+         * Report or log an exception.
+         *
+         * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
+         *
+         * @param  \Exception $exception
+         *
+         * @return void
+         */
+        public function report(Exception $exception) {
+            parent::report($exception);
         }
 
-        return redirect()->guest('login');
+        /**
+         * Render an exception into an HTTP response.
+         *
+         * @param  \Illuminate\Http\Request $request
+         * @param  \Exception               $exception
+         *
+         * @return \Illuminate\Http\Response
+         */
+        public function render($request, Exception $exception) {
+            if ($exception instanceof TokenMismatchException) {
+                return response(view('errors.400', ['error' => 'CSRF Token mismatch']), 400);
+            }
+
+            return response(view('errors.500', ['exception' => $exception]), 500);
+
+            return parent::render($request, $exception);
+        }
+
+            /**
+         * Convert an authentication exception into an unauthenticated response.
+         *
+         * @param  \Illuminate\Http\Request                 $request
+         * @param  \Illuminate\Auth\AuthenticationException $exception
+         *
+         * @return \Illuminate\Http\Response
+         */
+        protected function unauthenticated($request, AuthenticationException $exception) {
+            if ($request->expectsJson()) {
+                return response()->json(['error' => 'Unauthenticated.'], 401);
+            }
+
+            return redirect()->guest('login');
+        }
     }
-}

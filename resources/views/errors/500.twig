@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html class="error-page">
+<head>
+    {% include 'partials/head.twig' %}
+    <title>Error – {{ config_get('app.name') }}</title>
+</head>
+<body class="error-page">
+<div class="container">
+    <div class="content">
+        <img src="{{ asset('img/logo/Px-logo-cut.png') }}">
+
+        {{ dump(exception) }}
+
+        <div class="title">{{ exception.name | default('Something went wrong') }}</div>
+    </div>
+</div>
+</body>
+</html>
