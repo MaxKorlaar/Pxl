@@ -27,8 +27,7 @@ but additional configuration **will** be required for setting up preview pages -
 - [ ] ShareX support via copy/paste JSON-based config
 - [ ] Access tokens for users, resettable. Required for uploading
 - [ ] JSON-based API for simple requests, mostly for ShareX support
-- [ ] Social media metadata on the image preview page (in the head tag and via some web standard of which I
-forgot the name, Slack and Discord support it)
+- [ ] Social media metadata on the image preview page (OpenGraph, oEmbed)
 - [ ] Account deletion (Admin setting?)
 - [ ] Enforce limits on accounts? Images / space / etc?
 - [ ] Amazon S3 support via Laravel (Maybe?)
