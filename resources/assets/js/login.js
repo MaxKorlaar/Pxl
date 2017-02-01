@@ -51,3 +51,6 @@ $('form').on('submit', function (e) {
     });
     return false;
 });
+$(document).ready(function () {
+    Materialize.updateTextFields();
+});

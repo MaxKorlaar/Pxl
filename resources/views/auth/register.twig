@@ -72,6 +72,10 @@
 {% block scripts %}
     <script src="{{ asset('js/app.js?v=1.0') }}"></script>
     <script src="{{ asset('js/pxl.js?v=13') }}"></script>
+    <script>
+        $(document).ready(function () {
+            Materialize.updateTextFields();
+        });</script>
 {% endblock %}
 {% endblock %}
 </body>
