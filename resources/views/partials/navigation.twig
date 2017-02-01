@@ -4,7 +4,7 @@
         <ul class="right hide-on-med-and-down">
             {% if auth_user() %}
                 <li>
-                    <a href=""><i class="material-icons left">user</i> {{ trans('nav.dropdown_greeting', {name: Auth.user().name}) }}</a>
+                    <a href=""><i class="material-icons left">user</i> {{ trans('nav.dropdown_greeting', {name: 'wat'}) }}</a>
                 </li>
             {% else %}
                 <li><a href="{{ route('auth/login') }}"><i class="material-icons left">input</i> Log in</a></li>
