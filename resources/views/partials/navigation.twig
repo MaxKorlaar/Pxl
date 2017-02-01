@@ -6,6 +6,7 @@
                 {{ dump(Auth) }}
                 {{ dump(Auth.user()) }}
                 {{ dump(Auth.user) }}
+                {{ dump(auth) }}
                 <li>
                     <a href=""><i class="material-icons left">user</i> {{ trans('nav.dropdown_greeting', {name: Auth.user().name}) }}</a>
                 </li>
