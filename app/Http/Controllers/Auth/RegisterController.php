@@ -89,6 +89,7 @@
                 'username' => $data['username'],
                 'email'    => $data['email'],
                 'password' => bcrypt($data['password']),
+                'last_ip' => Request::capture()->ip()
             ]);
         }
     }
