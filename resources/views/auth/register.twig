@@ -47,7 +47,7 @@
                                             <i class="material-icons prefix">lock</i>
                                             <input required id="password" name="password" type="password" class="validate {{ errors.has('password') ? 'invalid' : '' }}">
                                             <label class="{{ errors.has('password') ? 'active' : '' }}" for="password" id="password_label" data-error="{{ errors.first('password') }}">{{ trans('auth.register.password') }}</label>
-
+                                            class="{{ errors.has('password') ? 'active' : '' }}"
                                             <p class="help">{{ trans('auth.register.password_help') }}</p>
                                         </div>
                                         <div class="input-field col s12">
