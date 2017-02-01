@@ -46,14 +46,14 @@
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">lock</i>
                                             <input required id="password" name="password" type="password" class="validate {{ errors.has('password') ? 'invalid' : '' }}">
-                                            <label for="password" id="password_label" data-error="{{ errors.first('password') }}">{{ trans('auth.register.password') }}</label>
+                                            <label class="{{ errors.has('password') ? 'active' : '' }}" for="password" id="password_label" data-error="{{ errors.first('password') }}">{{ trans('auth.register.password') }}</label>
 
                                             <p class="help">{{ trans('auth.register.password_help') }}</p>
                                         </div>
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">lock</i>
                                             <input required id="confirm_password" name="password_confirmation" type="password" class="validate {{ errors.has('password_confirmation') ? 'invalid' : '' }}">
-                                            <label for="confirm_password" id="confirm_password_label" data-error="{{ errors.first('password_confirmation') }}">{{ trans('auth.register.confirm_password') }}</label>
+                                            <label class="{{ errors.has('password_confirmation') ? 'active' : '' }}" for="confirm_password" id="confirm_password_label" data-error="{{ errors.first('password_confirmation') }}">{{ trans('auth.register.confirm_password') }}</label>
                                         </div>
                                         {{ csrf_field() }}
                                     </div>
