@@ -7,7 +7,7 @@
     use Illuminate\Auth\Events\Registered;
     use Illuminate\Support\Facades\Validator;
     use Illuminate\Foundation\Auth\RegistersUsers;
-    use Request;
+    use Illuminate\Http\Request;
 
     /**
      * Class RegisterController
