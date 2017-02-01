@@ -53,9 +53,6 @@
             if ($exception instanceof TokenMismatchException) {
                 return response(view('errors.400', ['error' => 'CSRF Token mismatch']), 400);
             }
-
-            return response(view('errors.500', ['exception' => $exception]), 500);
-
             return parent::render($request, $exception);
         }
 

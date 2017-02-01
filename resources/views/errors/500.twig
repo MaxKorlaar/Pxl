@@ -8,10 +8,8 @@
 <div class="container">
     <div class="content">
         <img src="{{ asset('img/logo/Px-logo-cut.png') }}">
-
         {{ dump(exception) }}
-
-        <div class="title">{{ exception.name | default('Something went wrong') }}</div>
+        <div class="title">{{ config_get('app.debug') ? exception.message : 'Something went wrong' }}</div>
     </div>
 </div>
 </body>

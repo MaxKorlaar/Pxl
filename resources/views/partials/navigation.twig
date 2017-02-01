@@ -4,7 +4,7 @@
         <ul class="right hide-on-med-and-down">
             {% if auth_user() %}
                 <li>
-                    <a href="#user-dropdown" data-activates="user-dropdown">
+                    <a href="#user-dropdown" class="dropdown-button" data-activates="user-dropdown">
                         <i class="material-icons left">person</i> {{ trans('nav.dropdown_greeting', {name: auth_user().username}) }}
                         <i class="material-icons right">arrow_drop_down</i>
                     </a>
@@ -13,7 +13,6 @@
                         <li class="divider"></li>
                         <li><a href="{{ route('auth/logout', {'token': csrf_token()}) }}">Log out</a></li>
                     </ul>
-                    l
                 </li>
             {% else %}
                 <li><a href="{{ route('auth/login') }}"><i class="material-icons left">input</i> Log in</a></li>
