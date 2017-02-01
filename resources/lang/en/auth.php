@@ -24,7 +24,8 @@ return [
         'username' => 'Username',
         'password' => 'Password',
         'email' => 'Email address',
-        'confirm_email' => 'Confirm email address'
+        'confirm_email' => 'Confirm email address',
+        'register' => 'Register'
     ]
 
 ];
