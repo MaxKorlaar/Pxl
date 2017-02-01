@@ -90,6 +90,7 @@
             $user->email    = $data['email'];
             $user->setPassword($data['password']);
             $user->last_ip = Request::capture()->ip();
+            $user->active = true;
             $user->save();
             return $user;
         }
