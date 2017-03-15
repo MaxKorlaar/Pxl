@@ -1,0 +1,56 @@
+{% extends 'partials/page.twig' %}
+{% block title %}{{ trans('user.account.delete') }}{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col s12">
+            <h2>{{ trans('user.account.delete') }}</h2>
+
+            <div class="card red white-text center-align">
+                <div class="card-content center-align">
+                    <span class="material-icons left">warning</span>
+
+                    <p class="center-align">{{ trans('user.account.deletion_warning') }}</p>
+
+                    <p class="right-align">
+                        <a href="#" class="btn orange waves-effect waves-light disabled ok-btn">OK (<span class="timer">15</span>)</a></p>
+                </div>
+            </div>
+            <form method="POST" action="{{ route('user/do_delete_account') }}">
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+                <div class="row">
+                    <div class="input-field col s12">
+                        <button disabled class="btn red waves-effect waves-light disabled delete-btn" type="submit" name="action">{{ trans('user.account.delete') }}
+                            <i class="material-icons right">delete_forever</i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}{% block scripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function () {
+            var x = 15;
+            var t = setInterval(function () {
+                $('.timer').text(x);
+                x--;
+                if (x < 0) {
+                    clearInterval(t);
+                    $('.ok-btn').removeClass('disabled');
+                }
+            }, 1000);
+            $('.ok-btn').on('click', function (e) {
+                e.preventDefault();
+                if(!$(this).hasClass('disabled')) {
+                    console.info('This cannot be undone!');
+                    $('.delete-btn').removeClass('disabled').attr('disabled', false);
+                    $(this).fadeOut();
+                }
+
+                return false;
+            });
+        });
+    </script>
+{% endblock %}

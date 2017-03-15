@@ -45,11 +45,11 @@
             abort(404);
             // /user/gallery
         })->name('gallery');
-        Route::get('account', function () {
-            abort(404);
-            // /user/account
-            // My account
-        })->name('my-account');
+        Route::get('account', 'AccountController@getView')->name('account');
+        Route::put('account', 'AccountController@update')->name('update_account');
+        Route::get('account/delete', 'AccountController@getDeleteView')->name('account_deletion');
+        Route::delete('account', 'AccountController@delete')->name('do_delete_account');
+
     });
 
     Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin/', 'middleware' => ['auth', 'admin']], function () {
@@ -64,10 +64,6 @@
             // My account
         })->name('settings');
 
-        Route::get('account', 'AccountController@getView')->name('account');
-        Route::put('account', 'AccountController@update')->name('update_account');
-        Route::get('account/delete', 'AccountController@getDeleteView')->name('account_deletion');
-        Route::delete('account', 'AccountController@delete')->name('do_delete_account');
 
     });
 

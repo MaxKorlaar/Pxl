@@ -30,6 +30,17 @@
             Getting compromised on one service could result in losing access to your accounts on others, so please consider your password as highly valuable.',
             'register'         => 'Register',
             'errors_occurred'  => 'An error has occurred. Please correct this error.|Errors have occurred, please correct these errors.'
+        ],
+        'password_reset' => [
+            'title'            => 'Password reset',
+            'email'            => 'Email address',
+            'password'         => 'Password',
+            'confirm_password' => 'Confirm password',
+            'password_help'    => 'Please use a strong, preferably random, password. Do not share this lightly, not even with other websites.
+            Getting compromised on one service could result in losing access to your accounts on others, so please consider your password as highly valuable.',
+            'errors_occurred' => 'An error has occurred. Please correct this error.|Errors have occurred, please correct these errors.',
+            'get_link'         => 'Get reset link',
+            'do_reset'         => 'Reset password'
         ]
 
     ];
