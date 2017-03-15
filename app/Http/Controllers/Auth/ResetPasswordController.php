@@ -1,43 +1,75 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+    namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ResetsPasswords;
-
-/**
- * Class ResetPasswordController
- *
- * @package App\Http\Controllers\Auth
- */
-class ResetPasswordController extends Controller
-{
-    /*
-    |--------------------------------------------------------------------------
-    | Password Reset Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller is responsible for handling password reset requests
-    | and uses a simple trait to include this behavior. You're free to
-    | explore this trait and override any methods you wish to tweak.
-    |
-    */
-
-    use ResetsPasswords;
+    use App\Http\Controllers\Controller;
+    use Illuminate\Foundation\Auth\ResetsPasswords;
+    use Illuminate\Http\Request;
 
     /**
-     * Where to redirect users after resetting their password.
+     * Class ResetPasswordController
      *
-     * @var string
+     * @package App\Http\Controllers\Auth
      */
-    protected $redirectTo = '/user/account';
+    class ResetPasswordController extends Controller {
+        /*
+        |--------------------------------------------------------------------------
+        | Password Reset Controller
+        |--------------------------------------------------------------------------
+        |
+        | This controller is responsible for handling password reset requests
+        | and uses a simple trait to include this behavior. You're free to
+        | explore this trait and override any methods you wish to tweak.
+        |
+        */
 
-    /**
-     * Create a new controller instance.
-     *
-     */
-    public function __construct()
-    {
-        $this->middleware('guest');
+        use ResetsPasswords;
+
+        /**
+         * Where to redirect users after resetting their password.
+         *
+         * @var string
+         */
+        protected $redirectTo = '/';
+
+        /**
+         * Create a new controller instance.
+         *
+         */
+        public function __construct() {
+            $this->middleware('guest');
+            $this->redirectTo = route('admin/index');
+        }
+
+        /**
+         * Display the password reset view for the given token.
+         *
+         * If no token is present, display the link request form.
+         *
+         * @param \Illuminate\Http\Request|Request $request
+         * @param  string|null                     $email
+         *
+         * @param string|null                      $token
+         *
+         * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+         */
+        public function showResetForm(Request $request, $email = null, $token = null) {
+            return view('auth.passwords.reset')->with(
+                ['token' => $token, 'email' => $email]
+            );
+        }
+
+        /**
+         * Get the password reset validation rules.
+         *
+         * @return array
+         */
+        protected function rules() {
+            return [
+                'token'    => 'required',
+                'email'    => 'required|email',
+                'password' => 'required|confirmed|min:6'
+            ];
+        }
+
     }
-}

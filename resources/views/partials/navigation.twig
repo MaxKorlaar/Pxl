@@ -9,9 +9,9 @@
                         <i class="material-icons right">arrow_drop_down</i>
                     </a>
                     <ul id="user-dropdown" class="dropdown-content">
-                        <li><a href="{{ route('user/my-account') }}">My Account</a></li>
+                        <li><a href="{{ route('admin/account') }}">{{ trans('nav.my_account') }}</a></li>
                         <li class="divider"></li>
-                        <li><a href="{{ route('auth/logout', {'token': csrf_token()}) }}">Log out</a></li>
+                        <li><a href="{{ route('auth/logout', {'token': csrf_token()}) }}">{{ trans('nav.log_out') }}</a></li>
                     </ul>
                 </li>
             {% else %}
@@ -23,9 +23,24 @@
         </ul>
         {# Sidebar navigation on small screens #}
         <ul id="nav-mobile" class="side-nav">
-            <li><a href="{{ route('auth/login') }}">Log in</a></li>
-            {% if config_get('pxl.public_signups') %}
-                <li><a href="{{ route('auth/register') }}">Sign up</a></li>
+            {% if not auth_user() %}
+                <li><a href="{{ route('auth/login') }}">Log in</a></li>
+                {% if config_get('pxl.public_signups') %}
+                    <li><a href="{{ route('auth/register') }}">Sign up</a></li>
+                {% endif %}
+            {% else %}
+                <li><a href="{{ route('admin/index') }}"><i class="material-icons left">home</i> {{ trans('admin.manage') }}</a></li>
+                <li>
+                    <a href="#user-dropdown-mobile" class="dropdown-button" data-activates="user-dropdown-mobile">
+                        <i class="material-icons left">person</i> {{ trans('nav.dropdown_greeting', {name: auth_user().username}) }}
+                        <i class="material-icons right">arrow_drop_down</i>
+                    </a>
+                    <ul id="user-dropdown-mobile" class="dropdown-content">
+                        <li><a href="{{ route('admin/account') }}">{{ trans('nav.my_account') }}</a></li>
+                        <li class="divider"></li>
+                        <li><a href="{{ route('auth/logout', {'token': csrf_token()}) }}">{{ trans('nav.log_out') }}</a></li>
+                    </ul>
+                </li>
             {% endif %}
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>

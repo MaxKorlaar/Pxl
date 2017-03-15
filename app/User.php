@@ -2,6 +2,7 @@
 
     namespace App;
 
+    use App\Notifications\ResetPassword;
     use Illuminate\Notifications\Notifiable;
     use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -62,4 +63,25 @@
         function setPassword($password) {
             return $this->password = bcrypt($password);
         }
+
+
+        /**
+         * Send the password reset notification.
+         *
+         * @param  string $token
+         * @param         $email
+         */
+        public function sendPasswordResetNotification($token, $email = null) {
+            if ($email == null) $email = $this->email;
+            $this->notify(new ResetPassword($token, $email));
+        }
+        /**
+         * @param $password
+         *
+         * @return bool
+         */
+        function verifyPassword($password) {
+            return \Hash::check($password, $this->password);
+        }
+
     }

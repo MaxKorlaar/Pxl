@@ -48,7 +48,7 @@
          *
          * @param  \Illuminate\Http\Request $request
          *
-         * @return \Illuminate\Http\Response
+         * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
          */
         public function login(Request $request) {
             $this->validateLogin($request);
@@ -132,7 +132,7 @@
          * @param Request $request
          * @param         $token
          *
-         * @return \Illuminate\Http\Response
+         * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
          */
         public function checkLogoutToken(Request $request, $token) {
             if ($token != $request->session()->token()) {
@@ -185,7 +185,7 @@
         /**
          * @param $request
          *
-         * @return $this|\Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+         * @return LoginController|\Illuminate\Http\RedirectResponse
          */
         protected function sendInactiveAccountResponse(Request $request) {
             if ($request->ajax()) {

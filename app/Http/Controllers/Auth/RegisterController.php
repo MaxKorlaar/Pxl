@@ -33,7 +33,7 @@
          *
          * @var string
          */
-        protected $redirectTo = '/user/account';
+        protected $redirectTo = '/';
 
         /**
          * Create a new controller instance.
@@ -41,6 +41,7 @@
          */
         public function __construct() {
             $this->middleware('guest');
+            $this->redirectTo = route('user/gallery');
         }
 
         /**
@@ -54,7 +55,7 @@
             return Validator::make($data, [
                 'username' => 'required|max:255|unique:users',
                 'email'    => 'required|email|max:255|confirmed|unique:users',
-                'password' => 'required|min:10|confirmed',
+                'password' => 'required|min:6|confirmed',
             ]);
         }
 
@@ -91,7 +92,6 @@
             $user->setPassword($data['password']);
             $user->last_ip = Request::capture()->ip();
             $user->last_login = time();
-            $user->active = true;
             $user->save();
             return $user;
         }

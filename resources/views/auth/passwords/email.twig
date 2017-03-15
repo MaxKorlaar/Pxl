@@ -1,0 +1,48 @@
+{% extends 'partials/empty_page.twig' %}
+{% block html %}
+<html class="login-page">
+{% endblock %}
+{% block title %}{{ trans('auth.password_reset.title') }}{% endblock %}
+{% block body %}
+    <div class="container page-content fullheight">
+        {% block content %}
+            <div class="row fullheight no-margin-bottom">
+                <div class="fullheight col s12 m6 offset-m3 valign-wrapper">
+                    <div class="card login-card valign">
+                        <form method="POST" action="{{ route('auth/do_forgot_password') }}">
+                            <div class="card-content">
+                                <div class="login-form">
+                                    <div class="card-title center-align">{{ trans('auth.password_reset.title') }}</div>
+                                    {#{% if errors.any %}
+                                        <div class="card red white-text center-align">
+                                            <div class="card-content center-align">
+                                                <span class="material-icons left">warning</span>
+
+                                                <p class="center-align">{{ trans_choice('auth.password_reset.errors_occurred', errors.count()) }}</p>
+                                            </div>
+                                        </div>
+                                    {% endif %}#}
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">email</i>
+                                            <input required autofocus name="email" value="{{ old('email') }}" id="email" type="email" class="validate {{ errors.has('email') ? 'invalid' : '' }}">
+                                            <label for="email" id="email_label" data-error="{{ errors.first('email') }}">{{ trans('auth.password_reset.email') }}</label>
+                                        </div>
+                                        {{ csrf_field() }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-action">
+                                <button type="submit" class="btn green">{{ trans('auth.password_reset.get_link') }}</button>
+                                <a href="{{ route('auth/login') }}" class="btn">{{ trans('auth.log_in') }}</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+    </div>
+    {% block scripts %}
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}

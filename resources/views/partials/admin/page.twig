@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% block head %}
+        {% include 'partials/head.twig' %}
+        <title>{% block title %}?{% endblock %} – {{ config_get('app.name') }}</title>
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+    {% block navigation %}
+        {% include 'partials/admin/navigation.twig' %}
+    {% endblock %}
+
+    <div class="container page-content">
+        {% block content %}
+        {% endblock %}
+    </div>
+    {% block footer %}
+        {% include 'partials/admin/footer.twig' %}
+    {% endblock %}
+{% block scripts %}
+    <script src="{{ asset('js/app.js') }}"></script>
+{% endblock %}
+{% endblock %}
+</body>
+</html>
