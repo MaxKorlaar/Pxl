@@ -1,6 +1,6 @@
 <nav class="green lighten-1" role="navigation">
     <div class="nav-wrapper">
-        <a href="{{ url('/') }}"><img class="brand-logo center" src="{{ asset('img/logo/Px-logo-cut-small.png') }}"></a>
+        <a href="{{ route('home') }}"><img class="brand-logo center" src="{{ asset('img/logo/Px-logo-cut-small.png') }}"></a>
         <ul class="right hide-on-med-and-down">
             {% if auth_user() %}
                 <li>
@@ -29,7 +29,7 @@
                     <li><a href="{{ route('auth/register') }}">Sign up</a></li>
                 {% endif %}
             {% else %}
-                <li><a href="{{ route('admin/index') }}"><i class="material-icons left">home</i> {{ trans('admin.manage') }}</a></li>
+                {#<li><a href="{{ route('admin/index') }}"><i class="material-icons left">home</i> {{ trans('admin.manage') }}</a></li>#}
                 <li>
                     <a href="#user-dropdown-mobile" class="dropdown-button" data-activates="user-dropdown-mobile">
                         <i class="material-icons left">person</i> {{ trans('nav.dropdown_greeting', {name: auth_user().username}) }}

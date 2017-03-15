@@ -38,7 +38,7 @@
          */
         public function __construct() {
             $this->middleware('guest');
-            $this->redirectTo = route('admin/index');
+            $this->redirectTo = route('user/gallery');
         }
 
         /**

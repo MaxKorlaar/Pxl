@@ -1,6 +1,6 @@
 <?php
 
-    namespace App\Http\Controllers\Admin;
+    namespace App\Http\Controllers\User;
 
     use App\Http\Controllers\Controller;
     use App\Http\Requests\DeleteAccount;
@@ -14,7 +14,7 @@
     /**
      * Class AccountController
      *
-     * @package App\Http\Controllers\Admin
+     * @package App\Http\Controllers\User
      */
     class AccountController extends Controller {
 
@@ -30,7 +30,7 @@
         /**
          * @param UpdateAccount $request
          *
-         * @return array
+         * @return array|\Illuminate\Http\RedirectResponse
          */
         public function update(UpdateAccount $request) {
             $account = \Auth::getUser();
@@ -45,7 +45,7 @@
                         $account->setPassword($request->get('new_password'));
                     } else {
                         return back()->withInput()->withErrors([
-                            'current_password' => trans('admin.account.current_password_invalid')
+                            'current_password' => trans('user.account.current_password_invalid')
                         ]);
                     }
                 }
@@ -53,13 +53,13 @@
             $account->fill($request->only(['username', 'email']));
             $account->saveOrFail();
 
-            return back()->with('success', trans('admin.account.updated'));
+            return back()->with('success', trans('user.account.updated'));
         }
 
         /**
          * @param DeleteAccount $request
          *
-         * @return array
+         * @return array|int
          */
         function delete(DeleteAccount $request) {
             // Keuze is gemaakt :-(
@@ -68,9 +68,10 @@
                 throw new ModelNotFoundException();
             }
             if($account->delete()) {
-                redirect(route('home'));
+                return redirect(route('home'));
+            } else {
+                return 500;
             }
-
         }
 
         /**
@@ -81,7 +82,7 @@
             if ($account == null) {
                 throw new ModelNotFoundException();
             }
-            return view('admin.account.delete', [
+            return view('user.account.delete', [
                 'user' => $account->jsonSerialize()
             ]);
         }
@@ -94,7 +95,7 @@
             if ($account == null) {
                 throw new ModelNotFoundException();
             }
-            return view('admin.account', [
+            return view('user.account', [
                 'user' => $account->jsonSerialize()
             ]);
         }

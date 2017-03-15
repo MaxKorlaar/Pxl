@@ -31,33 +31,9 @@
         Route::get('/forgot-password', 'ForgotPasswordController@showLinkRequestForm')->name('forgot_password');
         Route::post('/forgot-password', 'ForgotPasswordController@sendResetLinkEmail')->name('do_forgot_password');
 
-        Route::get('/reset-password/{token}', 'ResetPasswordController@showResetForm')->name('reset_password');
+        Route::get('/reset-password/{email}/{token}', 'ResetPasswordController@showResetForm')->name('reset_password');
         Route::post('/reset-password', 'ResetPasswordController@reset')->name('do_reset_password');
 
-        /*Route::get('/forgot-password', function () {
-            return view('auth/password-reset');
-        })->name('forgot-password');
-        Route::get('/register', function () {
-            if (config('pxl.public_signups')) {
-                return view('auth/register');
-            }
-            return response(view('errors.403'), 403);
-        })->name('register');*/
-        /*
-         * $this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
-        $this->post('login', 'Auth\LoginController@login');
-        $this->post('logout', 'Auth\LoginController@logout')->name('logout');
-
-        // Registration Routes...
-        $this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-        $this->post('register', 'Auth\RegisterController@register');
-
-        // Password Reset Routes...
-        $this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
-        $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
-        $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
-        $this->post('password/reset', 'Auth\ResetPasswordController@reset');
-         */
     });
 
     Route::get('/gallery', function () {
@@ -75,7 +51,9 @@
             // My account
         })->name('my-account');
     });
+
     Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin/', 'middleware' => ['auth', 'admin']], function () {
+
         Route::get('users', function () {
             $users = App\User::all();
             return $users;
@@ -85,7 +63,14 @@
             // /user/account
             // My account
         })->name('settings');
+
+        Route::get('account', 'AccountController@getView')->name('account');
+        Route::put('account', 'AccountController@update')->name('update_account');
+        Route::get('account/delete', 'AccountController@getDeleteView')->name('account_deletion');
+        Route::delete('account', 'AccountController@delete')->name('do_delete_account');
+
     });
+
 
 
     //Route::get('/home', 'HomeController@index');
