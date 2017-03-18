@@ -29,7 +29,7 @@
         Route::post('/register', 'RegisterController@register')->name('do_register');
 
         Route::get('/forgot-password', 'ForgotPasswordController@showLinkRequestForm')->name('forgot_password');
-        Route::post('/forgot-password', 'ForgotPasswordController@sendResetLinkEmail')->name('do_forgot_password');
+        Route::post('/forgot-password', 'ForgotPasswordController@requestResetLinkEmail')->name('do_forgot_password');
 
         Route::get('/reset-password/{email}/{token}', 'ResetPasswordController@showResetForm')->name('reset_password');
         Route::post('/reset-password', 'ResetPasswordController@reset')->name('do_reset_password');

@@ -10,6 +10,32 @@
      * Class User
      *
      * @package App
+     * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+     * @mixin \Eloquent
+     * @property int                                                                                                            $id
+     * @property string                                                                                                         $username
+     * @property string                                                                                                         $email
+     * @property string                                                                                                         $password
+     * @property string                                                                                                         $2fa_token
+     * @property string                                                                                                         $remember_token
+     * @property string                                                                                                         $last_ip
+     * @property bool                                                                                                           $active
+     * @property string                                                                                                         $rank
+     * @property int                                                                                                            $last_login
+     * @property \Carbon\Carbon                                                                                                 $created_at
+     * @property \Carbon\Carbon                                                                                                 $updated_at
+     * @method static \Illuminate\Database\Query\Builder|\App\User where2faToken($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\User whereActive($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\User whereCreatedAt($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\User whereEmail($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\User whereId($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\User whereLastIp($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\User whereLastLogin($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\User wherePassword($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\User whereRank($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\User whereRememberToken($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\User whereUpdatedAt($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\User whereUsername($value)
      */
     class User extends Authenticatable {
         use Notifiable;
@@ -75,6 +101,7 @@
             if ($email == null) $email = $this->email;
             $this->notify(new ResetPassword($token, $email));
         }
+
         /**
          * @param $password
          *
