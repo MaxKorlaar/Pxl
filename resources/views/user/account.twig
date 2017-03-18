@@ -8,11 +8,12 @@
                 <div class="card green white-text center-align">
                     <div class="card-content center-align">
                         <span class="material-icons left">check</span>
-
                         <p class="center-align">{{ session('success') }}</p>
                     </div>
                 </div>
             {% endif %}
+        </div>
+        <div class="col m8 s12">
             <form method="POST" action="{{ route('user/update_account') }}">
                 {{ csrf_field() }}
                 {{ method_field('PUT') }}
@@ -52,6 +53,9 @@
                     </div>
                 </div>
             </form>
+        </div>
+        <div class="col m4 s12">
+            <b>{{ trans('user.account.type') }}: </b> {{ trans('user.rank.' ~ user.rank) }}
         </div>
     </div>
 {% endblock %}

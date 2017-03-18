@@ -1,28 +1,22 @@
-<!DOCTYPE html>
+{% extends 'partials/empty_page.twig' %}
+{% block html %}
 <html class="login-page">
-<head>
-    {% include 'partials/head.twig' %}
-    <title>{% block title %}Register{% endblock %} – {{ config_get('app.name') }}</title>
-</head>
-<body>
+{% endblock %}
+{% block title %}{{ trans('auth.register.register') }}{% endblock %}
 {% block body %}
     <div class="container page-content fullheight">
         {% block content %}
-            <div class="row fullheight">
+            <div class="row fullheight no-margin-bottom">
                 <div class="fullheight col s12 m6 offset-m3 valign-wrapper">
                     <div class="card login-card valign">
                         <form method="POST" action="{{ route('auth/do_register') }}">
                             <div class="card-content">
-                                <div class="center-align">
-                                    <img class="login-logo" src="{{ asset('img/logo/Px-logo-cut-small.png') }}" alt="{{ config_get('app.name') }}">
-                                </div>
                                 <div class="login-form">
                                     <div class="card-title center-align">{{ trans('auth.register.register') }}</div>
                                     {% if errors.any %}
                                         <div class="card red white-text center-align">
                                             <div class="card-content center-align">
                                                 <span class="material-icons left">warning</span>
-
                                                 <p class="center-align">{{ trans_choice('auth.register.errors_occurred', errors.count()) }}</p>
                                             </div>
                                         </div>
@@ -35,12 +29,12 @@
                                         </div>
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">email</i>
-                                            <input required autofocus name="email" value="{{ old('email') }}" id="email" type="email" class="validate {{ errors.has('email') ? 'invalid' : '' }}">
+                                            <input required name="email" value="{{ old('email') }}" id="email" type="email" class="validate {{ errors.has('email') ? 'invalid' : '' }}">
                                             <label for="email" id="email_label" data-error="{{ errors.first('email') }}">{{ trans('auth.register.email') }}</label>
                                         </div>
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">email</i>
-                                            <input required autofocus name="email_confirmation" value="{{ old('email_confirmation') }}" id="confirm_email" type="email" class="validate {{ errors.has('email_confirmation') ? 'invalid' : '' }}">
+                                            <input required name="email_confirmation" value="{{ old('email_confirmation') }}" id="confirm_email" type="email" class="validate {{ errors.has('email_confirmation') ? 'invalid' : '' }}">
                                             <label for="confirm_email" id="confirm_email_label" data-error="{{ errors.first('email') }}">{{ trans('auth.register.confirm_email') }}</label>
                                         </div>
                                         <div class="input-field col s12">
@@ -69,9 +63,6 @@
         {% endblock %}
     </div>
 {% block scripts %}
-    <script src="{{ asset('js/app.js?v=1.0') }}"></script>
-    <script src="{{ asset('js/pxl.js?v=13') }}"></script>
+    {{ parent() }}
 {% endblock %}
 {% endblock %}
-</body>
-</html>

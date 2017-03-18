@@ -89,8 +89,9 @@
             $user           = new User;
             $user->username = $data['username'];
             $user->email    = $data['email'];
+            $user->rank     = 'member';
             $user->setPassword($data['password']);
-            $user->last_ip = Request::capture()->ip();
+            $user->last_ip    = Request::capture()->ip();
             $user->last_login = time();
             $user->save();
             return $user;
