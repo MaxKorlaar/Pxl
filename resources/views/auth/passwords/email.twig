@@ -13,15 +13,14 @@
                             <div class="card-content">
                                 <div class="login-form">
                                     <div class="card-title center-align">{{ trans('auth.password_reset.title') }}</div>
-                                    {#{% if errors.any %}
-                                        <div class="card red white-text center-align">
+                                    {% if session('status') %}
+                                        <div class="card blue white-text center-align">
                                             <div class="card-content center-align">
-                                                <span class="material-icons left">warning</span>
-
-                                                <p class="center-align">{{ trans_choice('auth.password_reset.errors_occurred', errors.count()) }}</p>
+                                                <span class="material-icons left">info</span>
+                                                <p class="center-align">{{ session('status') }}</p>
                                             </div>
                                         </div>
-                                    {% endif %}#}
+                                    {% endif %}
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">email</i>
