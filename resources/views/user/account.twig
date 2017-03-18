@@ -15,6 +15,7 @@
         </div>
         <div class="col m4 s12 push-m8">
             <b>{{ trans('user.account.type') }}: </b> {{ trans('user.rank.' ~ user.rank) }}<br/>
+            Temp:
             {{ dump(user) }}
             <b>{{ trans('user.account.last_login') }}:</b> {{ trans('user.account.last_login_from', {timestamp: user.last_login, ip: user.last_ip}) }}
         </div>
