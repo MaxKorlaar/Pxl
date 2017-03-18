@@ -29,7 +29,7 @@
          * @var array
          */
         protected $hidden = [
-            'password', 'remember_token', '2fa_token', 'last_ip'
+            'password', 'remember_token', '2fa_token', 'last_ip', 'last_login'
         ];
 
         /**

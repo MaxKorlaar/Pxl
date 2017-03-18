@@ -70,7 +70,6 @@
             return $this->sendFailedLoginResponse($request);
         }
 
-
         /**
          * Get the failed login response instance.
          *
@@ -162,12 +161,13 @@
          * The user has been authenticated.
          *
          * @param  \Illuminate\Http\Request $request
-         * @param  User                    $user
+         * @param  User                     $user
          *
          * @return mixed
          */
         protected function authenticated(Request $request, User $user) {
             $user->last_login = time();
+            $user->last_ip = $request->ip();
             $user->save();
             if ($request->ajax()) {
                 return response(['success' => true, 'redirect' => redirect()->intended($this->redirectPath())->getTargetUrl()], 200);
