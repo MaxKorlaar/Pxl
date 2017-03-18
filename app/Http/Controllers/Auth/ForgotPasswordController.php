@@ -39,7 +39,7 @@
          *
          * @return \Illuminate\Http\RedirectResponse
          */
-        public function resetRequestLinkEmail(Request $request) {
+        public function requestResetLinkEmail(Request $request) {
             $this->validate($request, ['email' => 'required|email']);
 
             $user = User::whereEmail($request->get('email'))->findOrFail();
