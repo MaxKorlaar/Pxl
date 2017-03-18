@@ -93,7 +93,7 @@
                 throw new ModelNotFoundException();
             }
             return view('user.account', [
-                'user' => $account->jsonSerialize()
+                'user' => $account
             ]);
         }
 
