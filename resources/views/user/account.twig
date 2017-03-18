@@ -13,11 +13,12 @@
                 </div>
             {% endif %}
         </div>
-        <div class="col m4 s12 pull-m8">
+        <div class="col m4 s12 push-m8">
             <b>{{ trans('user.account.type') }}: </b> {{ trans('user.rank.' ~ user.rank) }}
-            <b>{{ trans('user.account.last_login') }}:</b> {{ trans('user.account.last_login_from', {timestamp: user.last_login, ip: user.last_ip}) }}
+            {{ dump(user) }}
+            <br/><b>{{ trans('user.account.last_login') }}:</b> {{ trans('user.account.last_login_from', {timestamp: user.last_login, ip: user.last_ip}) }}
         </div>
-        <div class="col m8 s12 push-m4">
+        <div class="col m8 s12 pull-m4">
             <form method="POST" action="{{ route('user/update_account') }}">
                 {{ csrf_field() }}
                 {{ method_field('PUT') }}

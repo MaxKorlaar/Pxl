@@ -4,10 +4,8 @@
 
     use App\Http\Controllers\Controller;
     use App\Http\Requests\DeleteAccount;
-    use App\Http\Requests\NewYacht;
     use App\Http\Requests\UpdateAccount;
     use App\User;
-    use App\Yacht;
     use Illuminate\Database\Eloquent\ModelNotFoundException;
     use Illuminate\Http\Request;
 
@@ -62,7 +60,6 @@
          * @return array|int
          */
         function delete(DeleteAccount $request) {
-            // Keuze is gemaakt :-(
             $account = \Auth::getUser();
             if ($account == null) {
                 throw new ModelNotFoundException();
