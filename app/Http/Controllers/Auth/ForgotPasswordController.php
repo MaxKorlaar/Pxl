@@ -42,7 +42,7 @@
         public function requestResetLinkEmail(Request $request) {
             $this->validate($request, ['email' => 'required|email']);
 
-            $user = User::whereEmail($request->get('email'))->findOrFail();
+            $user = User::whereEmail($request->get('email'))->first();
             /** @var User $user */
             if ($user->isActive()) {
                 return $this->sendResetLinkEmail($request);
