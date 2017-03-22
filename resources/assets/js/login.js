@@ -1,5 +1,5 @@
 $('form').on('submit', function (e) {
-    var formHeight, formWidth;
+    let formHeight, formWidth;
     e.preventDefault();
     formHeight = $('.login-form').height();
     formWidth  = $('.login-form').width();
@@ -20,11 +20,18 @@ $('form').on('submit', function (e) {
             }
         },
         error:    function (data) {
-            if (typeof data.responseJSON !== 'undefined') {
+            if (typeof data.responseJSON === 'undefined') {
+                if (data.status === 200) {
+                    $('.login-card').addClass('green');
+                    window.location.href = window.auth.homeUrl;
+                } else {
+                    Materialize.toast("Unknown response: " + data.status, 10000);
+                }
+            } else {
                 if (typeof data.responseJSON.success !== 'undefined') {
                     Materialize.toast(data.responseJSON.error, 10000);
                 }
-                if (data.status == 403) {
+                if (data.status === 403) {
                     $('#password').addClass('invalid');
                     $('#username').addClass('invalid');
                 }
@@ -35,13 +42,6 @@ $('form').on('submit', function (e) {
                 if (typeof data.responseJSON.username !== 'undefined') {
                     Materialize.toast(data.responseJSON.username[0], 10000);
                     $('#username').addClass('invalid');
-                }
-            } else {
-                if (data.status !== 200) {
-                    Materialize.toast("Unknown response: " + data.status, 10000);
-                } else {
-                    $('.login-card').addClass('green');
-                    window.location.href = window.auth.homeUrl;
                 }
             }
             $('.card-action .btn').removeClass('disabled');
