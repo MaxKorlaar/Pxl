@@ -8,6 +8,7 @@
     use App\User;
     use Illuminate\Database\Eloquent\ModelNotFoundException;
     use Illuminate\Http\Request;
+    use Jenssegers\Date\Date;
 
     /**
      * Class AccountController
@@ -91,6 +92,7 @@
             if ($account == null) {
                 throw new ModelNotFoundException();
             }
+            Date::setLocale('nl');
             return view('user.account', [
                 'user' => $account
             ]);
