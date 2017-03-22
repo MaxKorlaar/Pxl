@@ -50,7 +50,6 @@
             }
             $account->fill($request->only(['username', 'email']));
             $account->saveOrFail();
-
             return back()->with('success', trans('user.account.updated'));
         }
 
