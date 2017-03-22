@@ -5,7 +5,56 @@
         <div class="row">
             <div class="col s12">
                 <h1>{{ trans('admin.users.title') }}</h1>
-                {{ dump(users, t) }}
+                <table class="striped">
+                    <thead>
+                    <tr>
+                        <th data-field="id">{{ trans('admin.users.id') }}</th>
+                        <th data-field="name">{{ trans('admin.users.username') }}</th>
+                        <th data-field="description">{{ trans('admin.users.last_login') }}</th>
+                        <th data-field="options"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in pagination.items() %}
+                        <tr class="{{ not user.isActive() ? 'grey-text' }}">
+                            <td>{{ user.id }}</td>
+                            <td>
+                                {{ user.username }}
+                                {% if not user.isActive() %}
+                                    <i class="material-icons right tooltipped" data-position="top" data-delay="50" data-tooltip="{{ trans('admin.users.disabled') }}">error_outline</i>
+                                {% elseif user.isAdmin() %}
+                                    <i class="material-icons right tooltipped" data-position="top" data-delay="50" data-tooltip="{{ trans('admin.users.administrator') }}">supervisor_account</i>
+                                {% endif %}
+                            </td>
+                            <td>{{ user.last_login is null ? '-' : user.last_login|date(trans('datetime.format.date_and_time')) }}</td>
+                            <td>
+                                <a class="waves-effect waves-teal btn-flat tooltipped" data-position="top" data-delay="50" data-tooltip="{{ trans('admin.users.edit_user') }}" href="{{ route('admin/users', {user: user}) }}">
+                                    <i class="material-icons">edit</i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4" class="center red-text">
+                                <i class="material-icons middle">info_outline</i> {{ trans('admin.users.no_users') }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <ul class="pagination center-align">
+                    <li class="{{ pagination.currentPage() == 1 ? 'disabled' }}">
+                        <a title="{{ trans('pagination.previous') }}" href="{{ pagination.previousPageUrl()|default('#') }}"><i class="material-icons">chevron_left</i></a>
+                    </li>
+                    {% for page, url in pagination.getUrlRange(1, pagination.lastPage()) %}
+                        <li class="{{ pagination.currentPage() == page ? 'active' : 'waves-effect' }}">
+                            <a href="{{ url }}">{{ page }}</a>
+                        </li>
+                    {% endfor %}
+                    <li class="{{ not pagination.hasMorePages() ? 'disabled' }}">
+                        <a title="{{ trans('pagination.next') }}" href="{{ pagination.nextPageUrl()|default('#') }}"><i class="material-icons">chevron_right</i></a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

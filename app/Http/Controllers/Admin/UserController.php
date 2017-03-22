@@ -18,9 +18,16 @@
         public function getView() {
             $usersPagination = User::paginate(15);
 
+            $usersPagination->hasMorePages();
+            $usersPagination->firstItem();
+            $usersPagination->nextPageUrl();
+            $usersPagination->previousPageUrl();
+            $usersPagination->currentPage();
+            $usersPagination->getUrlRange(0, $usersPagination->lastPage());
+
+
             return view('admin.users', [
-                'users' => $usersPagination->items(),
-                't'     => [$usersPagination->nextPageUrl(), $usersPagination->previousPageUrl()]
+                'pagination' => $usersPagination
             ]);
 
         }
