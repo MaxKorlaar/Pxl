@@ -14,7 +14,7 @@ use Illuminate\Database\Seeder;
      */
     public function run()
     {
-        factory(App\User::class, 10)->create()->each(function ($u) {
+        factory(App\User::class, 20)->create()->each(function ($u) {
 
         });
     }

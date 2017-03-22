@@ -16,7 +16,7 @@
         static $password;
 
         return [
-            'username'       => $faker->name,
+            'username'       => $faker->userName,
             'email'          => $faker->unique()->safeEmail,
             'password'       => $password ?: $password = bcrypt('secret'),
             '2fa_token'      => null,

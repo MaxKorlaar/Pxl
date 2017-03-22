@@ -16,6 +16,7 @@
             'deletion_warning'          => 'Warning: This action cannot be undone! All data associated with your account
             will be permanently removed from this website.',
             'type'                      => 'Account type',
+            'created_at'                => 'Account created on',
             'last_login'                => 'Last login',
             'last_login_from'           => ':timestamp from :ip',
         ],
