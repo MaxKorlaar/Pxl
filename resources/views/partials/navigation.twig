@@ -5,7 +5,7 @@
             {% if auth_user() %}
                 {% if auth_user().isAdmin() %}
                     <li>
-                        <a href="#admin-dropdown" class="dropdown-button" data-activates="user-dropdown">
+                        <a href="#admin-dropdown" class="dropdown-button" data-activates="admin-dropdown">
                             <i class="material-icons left">settings</i> {{ trans('nav.administration') }}
                             <i class="material-icons right">arrow_drop_down</i>
                         </a>
