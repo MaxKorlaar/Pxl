@@ -61,7 +61,7 @@ file is named `composer.phar`, then it's `php composer.phar install`_)
 It's built on top of Laravel, so please do read their (quickstart) documentation,
 on setting up the project on your development machine. (Hint: It also involves composer.)
 
-##### What I said regarding Pxl.lt, the inspiration for this project:
+##### Regarding Pxl.lt, the inspiration for this project:
 
 
 >My wholehearted apologies for everyone who used pxl and enjoyed it for their own domain or just as is. I'm really sorry about making the decision to shut the project down, but it was for the best. After a long night I have decided to reboot the project - not as you would expect it. I'm not going to host anything, but instead I'll do my best to recreate the concept of pxl, fully open sourced on Github.

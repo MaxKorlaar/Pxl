@@ -42,12 +42,13 @@
             {% else %}
 
                 {% if auth_user().isAdmin() %}
+                    {# TODO Is this even useful on mobile? No idea. Lower priority than desktop nav. #}
                     <li>
-                        <a href="#admin-dropdown" class="dropdown-button" data-activates="admin-dropdown">
+                        <a href="#admin-dropdown-mobile" class="dropdown-button" data-activates="admin-dropdown-mobile">
                             <i class="material-icons left">settings</i> {{ trans('nav.administration') }}
                             <i class="material-icons right">arrow_drop_down</i>
                         </a>
-                        <ul id="admin-dropdown" class="dropdown-content">
+                        <ul id="admin-dropdown-mobile" class="dropdown-content">
                             <li><a href="{{ route('admin/users') }}">{{ trans('nav.admin.users') }}</a></li>
                         </ul>
                     </li>
