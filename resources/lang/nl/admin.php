@@ -2,6 +2,7 @@
 
     return [
         'users' => [
+            'title' => 'Gebruikers',
             'id' => 'ID',
             'username' => 'Gebruikersnaam',
             'last_login' => 'Laatste login',
