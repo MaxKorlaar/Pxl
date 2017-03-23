@@ -3,6 +3,17 @@
         <a href="{{ route('home') }}"><img class="brand-logo center" src="{{ asset('img/logo/Px-logo-cut-small.png') }}"></a>
         <ul class="right hide-on-med-and-down">
             {% if auth_user() %}
+                {% if auth_user().isAdmin() %}
+                    <li>
+                        <a href="#admin-dropdown" class="dropdown-button" data-activates="user-dropdown">
+                            <i class="material-icons left">settings</i> {{ trans('nav.administration') }}
+                            <i class="material-icons right">arrow_drop_down</i>
+                        </a>
+                        <ul id="admin-dropdown" class="dropdown-content">
+                            <li><a href="{{ route('admin/users') }}">{{ trans('nav.admin.users') }}</a></li>
+                        </ul>
+                    </li>
+                {% endif %}
                 <li>
                     <a href="#user-dropdown" class="dropdown-button" data-activates="user-dropdown">
                         <i class="material-icons left">person</i> {{ trans('nav.dropdown_greeting', {name: auth_user().username}) }}
