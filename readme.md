@@ -11,13 +11,15 @@ If you plan on helping out, please do get in touch so I can set up a Trello boar
 ### Functions (planned)
 I do plan on keeping the core functionality of the previous Pxl.lt, as that is what made it stand out.
 Task list, not in particular order:
-- [ ] Login, registration system (public and private)
-- [ ] Personal account management
+- [x] Login, registration system (public and private)
+- [x] Personal account management
+- [x] List of users
 - [ ] Admin account management
 - [ ] Admin site settings (different from the settings in .env)
 - [ ] Image upload support
 - [ ] Automatic deletion for images. Default & per-image setting. (A personal favourite, must have for limited space)
 - [ ] Gallery
+- [ ] Preferences per user - This would include default automatic deletion time.
 - [ ] View others' galleries (as admin, make it an option?)
 - [ ] Custom domain support, custom storage location support (This will be difficult with Laravel.
 It would be possible to set up your webserver to link a specific directory to a specific domain,
@@ -62,7 +64,7 @@ on setting up the project on your development machine. (Hint: It also involves c
 ##### What I said regarding Pxl.lt, the inspiration for this project:
 
 
->My wholehearted apologies for everyone who used pxl and enjoyed it for their own domain or just as is. I'm really sorry about it all having happened, and after a sleepless night I have decided to reboot the project - not as you would expect it. I'm not going to host anything, but instead I'll do my best to recreate the concept of pxl, fully open sourced on Github.
+>My wholehearted apologies for everyone who used pxl and enjoyed it for their own domain or just as is. I'm really sorry about making the decision to shut the project down, but it was for the best. After a long night I have decided to reboot the project - not as you would expect it. I'm not going to host anything, but instead I'll do my best to recreate the concept of pxl, fully open sourced on Github.
 
 >Many requested the source or offered to buy it, but I didn't want to. Not because I wanted it strictly private or thought it was worth more, but because the code was just unusable in other situations. This project will allow me to build it to be easily understood. Maybe some people would even care to contribute if they see something odd.
 
