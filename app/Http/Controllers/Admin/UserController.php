@@ -54,11 +54,19 @@
         public function update(UpdateUser $request, User $user) {
 
             if ($request->has('new_password')) {
-                //
+                $user->setPassword($request->new_password);
             }
-            var_dump($request->all());
+
+            if($user->hasTwoFactorAuth()) {
+                if(!$request->has('2fa_status')) {
+                    $user->twoFactorToken = null; // Clear 2fa from account
+                }
+            }
+
+
             $user->fill($request->only(['username', 'email']));
-            $user->rank = $request->rank;
+            $user->rank   = $request->rank;
+            $user->active = $request->has('enabled');
             $user->saveOrFail();
             return back()->with('success', trans('admin.users.edit.updated'));
         }

@@ -16,7 +16,7 @@
      * @property string                                                                                                         $username
      * @property string                                                                                                         $email
      * @property string                                                                                                         $password
-     * @property string                                                                                                         $2fa_token
+     * @property string                                                                                                         $twoFactorToken
      * @property string                                                                                                         $remember_token
      * @property string                                                                                                         $last_ip
      * @property bool                                                                                                           $active
@@ -46,7 +46,7 @@
          * @var array
          */
         protected $fillable = [
-            'username', 'email', 'password', '2fa_token'
+            'username', 'email', 'password', 'twoFactorToken'
         ];
 
         /**
@@ -55,7 +55,7 @@
          * @var array
          */
         protected $hidden = [
-            'password', 'remember_token', '2fa_token', 'last_ip', 'last_login'
+            'password', 'remember_token', 'twoFactorToken', 'last_ip', 'last_login'
         ];
 
         /**
@@ -79,6 +79,13 @@
          */
         function isAdmin() {
             return $this->rank == 'admin';
+        }
+
+        /**
+         * @return bool
+         */
+        function hasTwoFactorAuth() {
+            return $this->twoFactorToken != null;
         }
 
         /**

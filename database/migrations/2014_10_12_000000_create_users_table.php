@@ -21,7 +21,7 @@ use Illuminate\Database\Migrations\Migration;
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('2fa_token')->nullable();
+            $table->string('twoFactorToken')->nullable();
             $table->rememberToken();
             $table->ipAddress('last_ip');
             $table->boolean('active')->default(false);

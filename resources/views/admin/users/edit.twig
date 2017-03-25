@@ -47,11 +47,14 @@
                                 <label for="email" class="{{ errors.has('email') ? 'active' : '' }}" data-error="{{ errors.first('email')|capitalize }}">{{ trans('user.account.email') }}</label>
                             </div>
                             <div class="input-field col s12">
-                                <select name="rank">
+                                <select name="rank" id="rank">
                                     <option value="member" {{ not user.isAdmin() ? 'selected' }}>{{ trans('user.rank.member') }}</option>
                                     <option value="admin" {{ user.isAdmin() ? 'selected' }}>{{ trans('user.rank.admin') }}</option>
                                 </select>
-                                <label>{{ trans('user.account.type') }}</label>
+                                <label for="rank">{{ trans('user.account.type') }}</label>
+                                {% if(errors.has('rank')) %}
+                                    <p class="red-text">{{ errors.first('rank')|capitalize }}</p>
+                                {% endif %}
                             </div>
                             <div class="switch col s12">
                                 <label>
@@ -64,15 +67,16 @@
                             <div class="switch col s12">
                                 <label>
                                     {{ trans('admin.users.edit.2fa_disabled') }}
-                                    <input name="2fa_status" value="1" {{ old('2fa_status', user['2fa_token'] is not null) == '1' ? 'checked' : 'disabled' }} type="checkbox">
+                                    <input name="2fa_status" value="1" {{ old('2fa_status', user['twoFactorToken'] is not null) == '1' ? 'checked' : 'not-disabled' }} type="checkbox">
                                     <span class="lever"></span>
                                     {{ trans('admin.users.edit.2fa_enabled') }}
                                 </label>
-                                <p class="help">{% if old('2fa_status', user['2fa_token'] is not null) == '1' %}
+                                <p class="help">{% if old('2fa_status', user['twoFactorToken'] is not null) == '1' %}
                                         {{ trans('admin.users.edit.2fa_warning') }}
                                     {% else %}
                                         {{ trans('admin.users.edit.2fa_user') }}
-                                    {% endif %}</p>
+                                    {% endif %}
+                                </p>
                             </div>
                             <div class="input-field col s12">
                                 <input id="new_password" name="new_password" value="{{ old('new_password') }}" type="password" class="validate {{ errors.has('new_password') ? 'invalid' : '' }}">

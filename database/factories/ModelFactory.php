@@ -19,7 +19,7 @@
             'username'       => $faker->userName,
             'email'          => $faker->unique()->safeEmail,
             'password'       => $password ?: $password = bcrypt('secret'),
-            '2fa_token'      => null,
+            'twoFactorToken'      => $faker->boolean ? null : str_random(16),
             'last_ip'        => $faker->ipv4,
             'active'         => $faker->boolean,
             'rank'           => $faker->boolean ? 'member' : 'admin',
