@@ -25,7 +25,7 @@
                     </p>
                 </div>
                 <div class="col m8 s12 pull-m4">
-                    <form method="POST" action="{{ route('admin/update_user') }}">
+                    <form method="POST" action="{{ route('admin/update_user', { user: user }) }}">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
                         <div class="row">
@@ -58,14 +58,13 @@
                                 </a>
                             </div>
                             <div class="col s12 center hide" id="delete_container">
-                                <a class="btn red waves-effect waves-red center" href="{{ route('admin/delete_user') }}" id="do_delete">
+                                <a class="btn red waves-effect waves-red center" href="{{ route('admin/delete_user', { user: user }) }}" id="do_delete">
                                     <i class="material-icons left">delete_forever</i> {{ trans('admin.user.edit.delete') }}
                                 </a>
                             </div>
                         </div>
                     </form>
                 </div>
-
             </div>
         </div>
     </div>
