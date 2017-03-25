@@ -23,9 +23,17 @@
             <p>
                 {{ user.hasTwoFactorAuth() ? trans('user.account.2fa.enabled') : trans('user.account.2fa.disabled') }}
             </p>
-            <a href="" class="btn waves-effect {{ user.hasTwoFactorAuth() ? 'red waves-red' : 'blue waves-blue' }}">
-                {{ user.hasTwoFactorAuth() ? trans('user.account.2fa.disable') : trans('user.account.2fa.enable') }}
-            </a>
+            {% if user.hasTwoFactorAuth() %}
+                <form method="POST" action="{{ route('user/2fa_disable') }}">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+                    <button type="submit"class="btn btn-waves-effect red waves-red">{{ trans('user.account.2fa.disable') }}</button>
+                </form>
+            {% else %}
+                <a href="{{ route('user/2fa_setup') }}" class="btn waves-effect blue waves-blue">
+                    {{ trans('user.account.2fa.enable') }}
+                </a>
+            {% endif %}
         </div>
         <div class="col m8 s12 pull-m4">
             <form method="POST" action="{{ route('user/update_account') }}">

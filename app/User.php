@@ -107,10 +107,12 @@
         }
 
         /**
+         * @param null $secret
+         *
          * @return string
          */
-        public function get2faQRCode() {
-            return Google2FA::getQRCodeGoogleUrl(config('app.name'), $this->username, $this->twoFactorToken);
+        public function get2faQRCode($secret = null) {
+            return Google2FA::getQRCodeGoogleUrl(config('app.name'), $this->username, $secret != null ? $secret : $this->twoFactorToken, 250);
         }
 
         /**
