@@ -3,8 +3,9 @@
     namespace App\Http\Controllers\User;
 
     use App\Http\Controllers\Controller;
-    use App\Http\Requests\DeleteAccount;
-    use App\Http\Requests\UpdateAccount;
+
+    use App\Http\Requests\User\DeleteAccount;
+    use App\Http\Requests\User\UpdateAccount;
     use App\User;
     use Illuminate\Database\Eloquent\ModelNotFoundException;
     use Illuminate\Http\Request;
@@ -63,7 +64,7 @@
             if ($account == null) {
                 throw new ModelNotFoundException();
             }
-            if($account->delete()) {
+            if ($account->delete()) {
                 return redirect(route('home'));
             } else {
                 return 500;

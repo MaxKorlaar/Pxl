@@ -1,6 +1,6 @@
 <?php
 
-    namespace App\Http\Requests;
+    namespace App\Http\Requests\User;
 
     use Illuminate\Foundation\Http\FormRequest;
 
@@ -16,7 +16,7 @@
          * @return bool
          */
         public function authorize() {
-            return \Auth::authenticate();
+            return \Auth::check();
         }
 
         /**

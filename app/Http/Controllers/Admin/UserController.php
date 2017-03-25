@@ -2,6 +2,7 @@
 
     namespace App\Http\Controllers\Admin;
 
+    use App\Http\Requests\Admin\UpdateUser;
     use App\User;
     use Illuminate\Http\Request;
     use App\Http\Controllers\Controller;
@@ -41,5 +42,24 @@
             return view('admin.users.edit', [
                 'user' => $user
             ]);
+        }
+
+        /**
+         * @param UpdateUser $request
+         *
+         * @param User       $user
+         *
+         * @return \Illuminate\Http\RedirectResponse
+         */
+        public function update(UpdateUser $request, User $user) {
+
+            if ($request->has('new_password')) {
+                //
+            }
+            var_dump($request->all());
+            $user->fill($request->only(['username', 'email']));
+            $user->rank = $request->rank;
+            $user->saveOrFail();
+            return back()->with('success', trans('admin.users.edit.updated'));
         }
     }

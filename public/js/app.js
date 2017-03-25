@@ -18732,6 +18732,7 @@ if (jQuery) {
 
 /* WEBPACK VAR INJECTION */(function($) {$(document).ready(function () {
     $(".button-collapse").sideNav();
+    $('select').material_select();
 });
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 

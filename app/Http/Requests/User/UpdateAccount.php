@@ -1,6 +1,6 @@
 <?php
 
-    namespace App\Http\Requests;
+    namespace App\Http\Requests\User;
 
     use Illuminate\Validation\Factory as ValidationFactory;
 
@@ -17,10 +17,10 @@
         /**
          * Determine if the user is authorized to make this request.
          *
-         * @return bool
+         * @return \App\User|bool
          */
         public function authorize() {
-            return \Auth::authenticate();
+            return \Auth::check();
         }
 
         /**

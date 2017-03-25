@@ -14,11 +14,20 @@
                             </div>
                         </div>
                     {% endif %}
+                    {% if errors.any %}
+                        <div class="card red white-text center-align">
+                            <div class="card-content center-align">
+                                <span class="material-icons left">warning</span>
+                                <p class="center-align">{{ trans_choice('admin.users.edit.errors_occurred', errors.count()) }}</p>
+                            </div>
+                        </div>
+                        {{ dump(errors.all()) }}
+                    {% endif %}
                 </div>
                 <div class="col m4 s12 push-m8">
                     <b>{{ trans('user.account.type') }}: </b> {{ trans('user.rank.' ~ user.rank) }}<br/>
                     <b>{{ trans('user.account.created_at') }}:</b> {{ user.created_at|date(trans('datetime.format.date_and_time')) }}<br/>
-                    <b>{{ trans('user.account.last_login') }}:</b> {{ trans('user.account.last_login_from', {timestamp: user.last_login|date(trans('datetime.format.date_and_time')), ip: user.last_ip}) }}
+                    <b>{{ trans('user.account.last_login') }}:</b> {{ trans('user.account.last_login_from', {timestamp: user.last_login is null ? trans('datetime.never') : user.last_login|date(trans('datetime.format.date_and_time')), ip: user.last_ip}) }}
                     <p>
                         Temp:
                         {{ dump(user) }}
@@ -38,8 +47,32 @@
                                 <label for="email" class="{{ errors.has('email') ? 'active' : '' }}" data-error="{{ errors.first('email')|capitalize }}">{{ trans('user.account.email') }}</label>
                             </div>
                             <div class="input-field col s12">
-                                <input id="current_password" name="current_password" value="{{ old('current_password') }}" type="password" class="validate {{ errors.has('current_password') ? 'invalid' : '' }}">
-                                <label for="current_password" class="{{ errors.has('current_password') ? 'active' : '' }}" data-error="{{ errors.first('current_password')|capitalize }}">{{ trans('user.account.current_password') }}</label>
+                                <select name="rank">
+                                    <option value="member" {{ not user.isAdmin() ? 'selected' }}>{{ trans('user.rank.member') }}</option>
+                                    <option value="admin" {{ user.isAdmin() ? 'selected' }}>{{ trans('user.rank.admin') }}</option>
+                                </select>
+                                <label>{{ trans('user.account.type') }}</label>
+                            </div>
+                            <div class="switch col s12">
+                                <label>
+                                    {{ trans('admin.users.edit.account_disabled') }}
+                                    <input name="enabled" value="1" {{ old('enabled', user.active) == '1' ? 'checked' }} type="checkbox">
+                                    <span class="lever"></span>
+                                    {{ trans('admin.users.edit.account_enabled') }}
+                                </label>
+                            </div>
+                            <div class="switch col s12">
+                                <label>
+                                    {{ trans('admin.users.edit.2fa_disabled') }}
+                                    <input name="2fa_status" value="1" {{ old('2fa_status', user['2fa_token'] is not null) == '1' ? 'checked' : 'disabled' }} type="checkbox">
+                                    <span class="lever"></span>
+                                    {{ trans('admin.users.edit.2fa_enabled') }}
+                                </label>
+                                <p class="help">{% if old('2fa_status', user['2fa_token'] is not null) == '1' %}
+                                        {{ trans('admin.users.edit.2fa_warning') }}
+                                    {% else %}
+                                        {{ trans('admin.users.edit.2fa_user') }}
+                                    {% endif %}</p>
                             </div>
                             <div class="input-field col s12">
                                 <input id="new_password" name="new_password" value="{{ old('new_password') }}" type="password" class="validate {{ errors.has('new_password') ? 'invalid' : '' }}">
@@ -53,13 +86,13 @@
                                 <button class="btn waves-effect waves-light" type="submit" name="action">{{ trans('user.account.save') }}
                                     <i class="material-icons right">save</i>
                                 </button>
-                                <a class="btn-flat waves-effect waves-red right tooltipped" data-position="top" data-delay="50" data-tooltip="{{ trans('admin.user.edit.delete') }}" href="#" id="account_deletion">
+                                <a class="btn-flat waves-effect waves-red right tooltipped" data-position="top" data-delay="50" data-tooltip="{{ trans('admin.users.edit.delete') }}" href="#" id="account_deletion">
                                     <i class="red-text material-icons">remove_circle</i>
                                 </a>
                             </div>
                             <div class="col s12 center hide" id="delete_container">
                                 <a class="btn red waves-effect waves-red center" href="{{ route('admin/delete_user', { user: user }) }}" id="do_delete">
-                                    <i class="material-icons left">delete_forever</i> {{ trans('admin.user.edit.delete') }}
+                                    <i class="material-icons left">delete_forever</i> {{ trans('admin.users.edit.delete') }}
                                 </a>
                             </div>
                         </div>
@@ -68,4 +101,22 @@
             </div>
         </div>
     </div>
+{% endblock %}
+{% block scripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function () {
+
+            $('#account_deletion').on('click', function (e) {
+                e.preventDefault();
+
+                $('#delete_container').hide().removeClass('hide').slideDown();
+                return false;
+            });
+
+            $("#do_delete").on('click', function (e) {
+                return confirm("{{ trans('admin.users.edit.delete_confirmation', {site: config_get('app.name')}) }}");
+            });
+        });
+    </script>
 {% endblock %}
