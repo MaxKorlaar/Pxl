@@ -53,7 +53,7 @@
          *
          * @param  Notifiable $notifiable
          *
-         * @return \Illuminate\Notifications\Messages\MailMessage
+         * @return PasswordReset|MailMessage
          */
         public function toMail($notifiable) {
             $reset = new PasswordReset($this->email, $this->token);

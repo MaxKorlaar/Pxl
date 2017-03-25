@@ -1,0 +1,12 @@
+{% extends 'partials/page.twig' %}
+{% block title %}{{ trans('admin.users.edit', { name: user.username }) }}{% endblock %}
+{% block content %}
+    <div class="section">
+        <div class="row">
+            <div class="col s12">
+                <h1>{{ trans('admin.users.edit', { name: user.username }) }}</h1>
+                {{ dump(user) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -25,10 +25,21 @@
             $usersPagination->currentPage();
             $usersPagination->getUrlRange(0, $usersPagination->lastPage());
 
-
             return view('admin.users', [
                 'pagination' => $usersPagination
             ]);
 
+        }
+
+        /**
+         * @param Request $request
+         * @param User    $user
+         *
+         * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+         */
+        public function getEditView(Request $request, User $user) {
+            return view('admin.users.edit', [
+                'user' => $user
+            ]);
         }
     }

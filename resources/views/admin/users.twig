@@ -28,7 +28,7 @@
                             </td>
                             <td>{{ user.last_login is null ? '-' : user.last_login|date(trans('datetime.format.date_and_time')) }}</td>
                             <td>
-                                <a class="waves-effect waves-teal btn-flat tooltipped" data-position="top" data-delay="50" data-tooltip="{{ trans('admin.users.edit_user') }}" href="{{ route('admin/users', {user: user}) }}">
+                                <a class="waves-effect waves-teal btn-flat tooltipped" data-position="top" data-delay="50" data-tooltip="{{ trans('admin.users.edit_user') }}" href="{{ route('admin/edit_user', {user: user}) }}">
                                     <i class="material-icons">edit</i>
                                 </a>
                             </td>

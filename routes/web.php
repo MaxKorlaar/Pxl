@@ -55,6 +55,7 @@
     Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin/', 'middleware' => ['auth', 'admin']], function () {
 
         Route::get('users', 'UserController@getView')->name('users');
+        Route::get('users/edit/{user}', 'UserController@getEditView')->name('edit_user');
 
         Route::get('settings', function () {
             abort(404);
