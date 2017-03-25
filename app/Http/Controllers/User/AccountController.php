@@ -54,6 +54,7 @@
             return back()->with('success', trans('user.account.updated'));
         }
 
+
         /**
          * @param DeleteAccount $request
          *

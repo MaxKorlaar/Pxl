@@ -20,6 +20,17 @@
             'created_at'                => 'Account aangemaakt op',
             'last_login'                => 'Laatste login',
             'last_login_from'           => ':timestamp vanaf :ip',
+            '2fa'                       => [
+                'title'    => 'Tweeledige verificatie',
+                'off'      => 'Uit',
+                'on'       => 'Aan',
+                'disabled' => 'Tweeledige verificatie (tweestapsauthenticatie) is momenteel uitgeschakeld. Schakel dit in om uw account beter te beveiligen.
+                Het is hierdoor alleen mogelijk om in te loggen op uw account met uw inlognaam, wachtwoord en speciale code die om de 30 seconden verandert. Deze code
+                wordt gegenereerd door een app op een van uw mobiele apparaten. Het is geheel kostenloos om dit in te schakelen en te gebruiken.',
+                'enabled'  => 'Tweeledige verificatie is momenteel ingeschakeld. Uw account is goed beveiligd.',
+                'enable'   => 'Inschakelen',
+                'disable'  => 'Uitschakelen'
+            ]
         ],
         'rank'    => [
             'member' => 'Gebruiker',

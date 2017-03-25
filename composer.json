@@ -8,6 +8,7 @@
         "guzzlehttp/guzzle": "^6.2",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
+        "pragmarx/google2fa": "^1.0",
         "rcrowe/twigbridge": "^0.9.4",
         "twig/extensions": "^1.4"
     },

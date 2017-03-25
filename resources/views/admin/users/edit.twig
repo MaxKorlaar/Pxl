@@ -68,12 +68,12 @@
                             <div class="switch col s12">
                                 <label>
                                     {{ trans('admin.users.edit.2fa_disabled') }}
-                                    <input name="2fa_status" value="1" {{ old('2fa_status', user.twoFactorToken is not null) == '1' ? 'checked' : 'disabled' }} type="checkbox">
+                                    <input name="2fa_status" value="1" {{ old('2fa_status', user.hasTwoFactorAuth()) == '1' ? 'checked' : 'disabled' }} type="checkbox">
                                     <span class="lever"></span>
                                     {{ trans('admin.users.edit.2fa_enabled') }}
                                 </label>
                                 <p class="help">
-                                    {% if old('2fa_status', user.twoFactorToken is not null) == '1' %}
+                                    {% if old('2fa_status', user.hasTwoFactorAuth()) == '1' %}
                                         {{ trans('admin.users.edit.2fa_warning') }}
                                     {% else %}
                                         {{ trans('admin.users.edit.2fa_user') }}

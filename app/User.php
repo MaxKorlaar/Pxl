@@ -3,6 +3,7 @@
     namespace App;
 
     use App\Notifications\ResetPassword;
+    use Google2FA;
     use Illuminate\Notifications\Notifiable;
     use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -86,6 +87,30 @@
          */
         function hasTwoFactorAuth() {
             return $this->twoFactorToken != null;
+        }
+
+        /**
+         * @return string
+         *
+         */
+        public function generate2faSecret() {
+            return Google2FA::generateSecretKey(32, $this->id);
+        }
+
+        /**
+         * @param           $key
+         *
+         * @return bool
+         */
+        public function verifyKey($key) {
+            return Google2FA::verifyKey($this->twoFactorToken, $key);
+        }
+
+        /**
+         * @return string
+         */
+        public function get2faQRCode() {
+            return Google2FA::getQRCodeGoogleUrl(config('app.name'), $this->username, $this->twoFactorToken);
         }
 
         /**

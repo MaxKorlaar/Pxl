@@ -169,6 +169,7 @@
 
             TwigBridge\ServiceProvider::class,
             Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+            PragmaRX\Google2FA\Vendor\Laravel\ServiceProvider::class,
 
             /*
              * Application Service Providers...
@@ -226,7 +227,8 @@
             'URL'          => Illuminate\Support\Facades\URL::class,
             'Validator'    => Illuminate\Support\Facades\Validator::class,
             'View'         => Illuminate\Support\Facades\View::class,
-            'Twig'         => TwigBridge\Facade\Twig::class
+            'Twig'         => TwigBridge\Facade\Twig::class,
+            'Google2FA'    => PragmaRX\Google2FA\Vendor\Laravel\Facade::class,
         ],
 
     ];

@@ -17,6 +17,15 @@
             <b>{{ trans('user.account.type') }}: </b> {{ trans('user.rank.' ~ user.rank) }}<br/>
             <b>{{ trans('user.account.created_at') }}:</b> {{ user.created_at|date(trans('datetime.format.date_and_time')) }}<br/>
             <b>{{ trans('user.account.last_login') }}:</b> {{ trans('user.account.last_login_from', {timestamp: user.last_login|date(trans('datetime.format.date_and_time')), ip: user.last_ip}) }}
+            <h4>{{ trans('user.account.2fa.title') }}
+                <span class="badge {{ user.hasTwoFactorAuth() ? 'green' : 'red' }} white-text">{{ user.hasTwoFactorAuth() ? trans('user.account.2fa.on') : trans('user.account.2fa.off') }}</span>
+            </h4>
+            <p>
+                {{ user.hasTwoFactorAuth() ? trans('user.account.2fa.enabled') : trans('user.account.2fa.disabled') }}
+            </p>
+            <a href="" class="btn waves-effect {{ user.hasTwoFactorAuth() ? 'red waves-red' : 'blue waves-blue' }}">
+                {{ user.hasTwoFactorAuth() ? trans('user.account.2fa.disable') : trans('user.account.2fa.enable') }}
+            </a>
         </div>
         <div class="col m8 s12 pull-m4">
             <form method="POST" action="{{ route('user/update_account') }}">
