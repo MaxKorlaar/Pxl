@@ -57,12 +57,11 @@
                 $user->setPassword($request->new_password);
             }
 
-            if($user->hasTwoFactorAuth()) {
-                if(!$request->has('2fa_status')) {
+            if ($user->hasTwoFactorAuth()) {
+                if (!$request->has('2fa_status')) {
                     $user->twoFactorToken = null; // Clear 2fa from account
                 }
             }
-
 
             $user->fill($request->only(['username', 'email']));
             $user->rank   = $request->rank;

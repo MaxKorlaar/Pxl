@@ -2,8 +2,10 @@
 
     namespace App\Http\Requests\Admin;
 
+    use App\User;
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Foundation\Http\FormRequest;
+    use Illuminate\Support\Facades\Request;
 
     /**
      * Class UpdateUser
@@ -28,13 +30,16 @@
          * @return array
          */
         public function rules() {
+
             return [
-                'username'     => 'required|max:255|min:2',
-                'email'        => 'required|max:255|email',
+                'id'           => 'bail|required|integer',
+                'username'     => 'required|max:255|min:2|unique:users,username,' . Request::get('id'),
+                'email'        => 'required|max:255|email|unique:users,email,' . Request::get('id'),
                 'rank'         => 'required|in:admin,member',
                 'enabled'      => 'boolean',
                 '2fa_enabled'  => 'boolean',
                 'new_password' => 'nullable|confirmed|required_with:current_password|min:6'
             ];
+
         }
     }

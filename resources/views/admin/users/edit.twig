@@ -37,6 +37,7 @@
                     <form method="POST" action="{{ route('admin/update_user', { user: user }) }}">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
+                        <input type="hidden" name="id" value="{{ user.id }}"/>
                         <div class="row">
                             <div class="input-field col s12">
                                 <input id="username" name="username" value="{{ old('username', user.username) }}" type="text" class="validate {{ errors.has('username') ? 'invalid' : '' }}">
@@ -67,11 +68,12 @@
                             <div class="switch col s12">
                                 <label>
                                     {{ trans('admin.users.edit.2fa_disabled') }}
-                                    <input name="2fa_status" value="1" {{ old('2fa_status', user['twoFactorToken'] is not null) == '1' ? 'checked' : 'not-disabled' }} type="checkbox">
+                                    <input name="2fa_status" value="1" {{ old('2fa_status', user.twoFactorToken is not null) == '1' ? 'checked' : 'disabled' }} type="checkbox">
                                     <span class="lever"></span>
                                     {{ trans('admin.users.edit.2fa_enabled') }}
                                 </label>
-                                <p class="help">{% if old('2fa_status', user['twoFactorToken'] is not null) == '1' %}
+                                <p class="help">
+                                    {% if old('2fa_status', user.twoFactorToken is not null) == '1' %}
                                         {{ trans('admin.users.edit.2fa_warning') }}
                                     {% else %}
                                         {{ trans('admin.users.edit.2fa_user') }}
