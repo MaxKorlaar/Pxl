@@ -1,11 +1,71 @@
 {% extends 'partials/page.twig' %}
-{% block title %}{{ trans('admin.users.edit', { name: user.username }) }}{% endblock %}
+{% block title %}{{ trans('admin.users.edit.title', { name: user.username }) }}{% endblock %}
 {% block content %}
     <div class="section">
         <div class="row">
             <div class="col s12">
-                <h1>{{ trans('admin.users.edit', { name: user.username }) }}</h1>
-                {{ dump(user) }}
+                <div class="col s12">
+                    <h2>{{ trans('admin.users.edit.title', { name: user.username }) }}</h2>
+                    {% if session('success') %}
+                        <div class="card green white-text center-align">
+                            <div class="card-content center-align">
+                                <span class="material-icons left">check</span>
+                                <p class="center-align">{{ session('success') }}</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col m4 s12 push-m8">
+                    <b>{{ trans('user.account.type') }}: </b> {{ trans('user.rank.' ~ user.rank) }}<br/>
+                    <b>{{ trans('user.account.created_at') }}:</b> {{ user.created_at|date(trans('datetime.format.date_and_time')) }}<br/>
+                    <b>{{ trans('user.account.last_login') }}:</b> {{ trans('user.account.last_login_from', {timestamp: user.last_login|date(trans('datetime.format.date_and_time')), ip: user.last_ip}) }}
+                    <p>
+                        Temp:
+                        {{ dump(user) }}
+                    </p>
+                </div>
+                <div class="col m8 s12 pull-m4">
+                    <form method="POST" action="{{ route('admin/update_account') }}">
+                        {{ csrf_field() }}
+                        {{ method_field('PUT') }}
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="username" name="username" value="{{ old('username', user.username) }}" type="text" class="validate {{ errors.has('username') ? 'invalid' : '' }}">
+                                <label for="username" class="{{ errors.has('username') ? 'active' : '' }}" data-error="{{ errors.first('username')|capitalize }}">{{ trans('user.account.username') }}</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="email" name="email" value="{{ old('email', user.email) }}" type="email" class="validate {{ errors.has('email') ? 'invalid' : '' }}">
+                                <label for="email" class="{{ errors.has('email') ? 'active' : '' }}" data-error="{{ errors.first('email')|capitalize }}">{{ trans('user.account.email') }}</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="current_password" name="current_password" value="{{ old('current_password') }}" type="password" class="validate {{ errors.has('current_password') ? 'invalid' : '' }}">
+                                <label for="current_password" class="{{ errors.has('current_password') ? 'active' : '' }}" data-error="{{ errors.first('current_password')|capitalize }}">{{ trans('user.account.current_password') }}</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="new_password" name="new_password" value="{{ old('new_password') }}" type="password" class="validate {{ errors.has('new_password') ? 'invalid' : '' }}">
+                                <label for="new_password" class="{{ errors.has('new_password') ? 'active' : '' }}" data-error="{{ errors.first('new_password')|capitalize }}">{{ trans('user.account.new_password') }}</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="new_password_confirmation" name="new_password_confirmation" value="{{ old('new_password_confirmation') }}" type="password" class="validate {{ errors.has('new_password_confirmation') ? 'invalid' : '' }}">
+                                <label for="new_password_confirmation" class="{{ errors.has('new_password_confirmation') ? 'active' : '' }}" data-error="{{ errors.first('new_password_confirmation')|capitalize }}">{{ trans('user.account.new_password_confirmation') }}</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <button class="btn waves-effect waves-light" type="submit" name="action">{{ trans('user.account.save') }}
+                                    <i class="material-icons right">save</i>
+                                </button>
+                                <a class="btn-flat waves-effect waves-red right tooltipped" data-position="top" data-delay="50" data-tooltip="{{ trans('admin.user.edit.delete') }}" href="#" id="account_deletion">
+                                    <i class="red-text material-icons">remove_circle</i>
+                                </a>
+                            </div>
+                            <div class="col s12 center hide" id="delete_container">
+                                <a class="btn red waves-effect waves-red center" href="{{ route('admin/delete_account') }}" id="do_delete">
+                                    <i class="material-icons left">delete_forever</i> {{ trans('admin.user.edit.delete') }}
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
             </div>
         </div>
     </div>

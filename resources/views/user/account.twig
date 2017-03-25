@@ -17,11 +17,6 @@
             <b>{{ trans('user.account.type') }}: </b> {{ trans('user.rank.' ~ user.rank) }}<br/>
             <b>{{ trans('user.account.created_at') }}:</b> {{ user.created_at|date(trans('datetime.format.date_and_time')) }}<br/>
             <b>{{ trans('user.account.last_login') }}:</b> {{ trans('user.account.last_login_from', {timestamp: user.last_login|date(trans('datetime.format.date_and_time')), ip: user.last_ip}) }}
-
-            <p>
-                Temp:
-                {{ dump(user) }}
-            </p>
         </div>
         <div class="col m8 s12 pull-m4">
             <form method="POST" action="{{ route('user/update_account') }}">
