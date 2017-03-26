@@ -10,6 +10,7 @@
             'disabled'      => 'Gebruikersaccount uitgeschakeld',
             'administrator' => 'Administrator-account. Dit account heeft meer rechten',
             'no_users'      => 'Geen gebruikers',
+            'deleted'       => 'Gebruiker verwijderd',
             'edit'          => [
                 'title'               => 'Gebruiker bewerken: :name',
                 'account_enabled'     => 'Account ingeschakeld',
@@ -21,7 +22,9 @@
                 '2fa_user'            => 'Alleen de gebruiker zelf kan de tweeledige verificatiemethode inschakelen, omdat deze ingesteld moet worden doormiddel van
                 authenticatie-apps die de gebruiker zelf bezit.',
                 'delete'              => 'Gebruiker verwijderen',
-                'delete_confirmation' => 'Weet u zeker dat u dit account wil verwijderen van :site? Dit kan niet ongedaan worden gemaakt'
+                'delete_confirmation' => 'Weet u zeker dat u dit account wil verwijderen van :site? Dit kan niet ongedaan worden gemaakt',
+                'deletion_warning'    => 'Waarschuwing: Het verwijderen van het account van :user kan niet ongedaan worden gemaakt',
+                'updated'             => 'Gebruikersinformatie bijgewerkt'
             ]
         ]
     ];

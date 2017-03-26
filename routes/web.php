@@ -59,9 +59,10 @@
 
         Route::get('users', 'UserController@getView')->name('users');
         Route::get('users/{user}', 'UserController@getEditView')->name('edit_user');
-
-        Route::get('users/{user}/delete', 'UserController@getEditView')->name('delete_user');
         Route::put('users/{user}', 'UserController@update')->name('update_user');
+
+        Route::get('users/{user}/delete', 'UserController@getDeleteView')->name('delete_user');
+        Route::delete('users/{user}', 'UserController@deleteUser')->name('do_delete_user');
 
         Route::get('settings', function () {
             abort(404);

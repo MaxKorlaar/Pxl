@@ -69,4 +69,27 @@
             $user->saveOrFail();
             return back()->with('success', trans('admin.users.edit.updated'));
         }
+
+        /**
+         * @param Request $request
+         * @param User    $user
+         *
+         * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+         */
+        public function getDeleteView(Request $request, User $user) {
+            return view('admin.users.delete', [
+                'user' => $user
+            ]);
+        }
+
+        /**
+         * @param Request $request
+         * @param User    $user
+         *
+         * @return \Illuminate\Http\RedirectResponse
+         */
+        public function deleteUser(Request $request, User $user) {
+            $user->delete();
+            return redirect(route('admin/users'))->with('success', trans('admin.users.deleted'));
+        }
     }
