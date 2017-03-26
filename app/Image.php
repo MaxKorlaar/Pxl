@@ -59,63 +59,6 @@
         ];
 
         /**
-         * Get the format for database stored dates.
-         *
-         * @return string
-         */
-        protected function getDateFormat() {
-            return 'U';
-        }
-
-        /**
-         * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-         */
-        public function user() {
-            return $this->belongsTo('App\User');
-        }
-
-        /**
-         * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-         */
-        public function domain() {
-            return $this->belongsTo('App\Domain');
-        }
-
-        /**
-         * @return string
-         */
-        public function getBaseName() {
-            return $this->filename . '.' . $this->extension;
-        }
-
-        /**
-         * @return string;
-         */
-        public function getUrlToImage() {
-            if (config('filesystems.default') == 'local') {
-                /** @var Domain $domain */
-                $domain = $this->domain()->getResults();
-                //dd($domain);
-                $url = $domain->protocol . '://' . $domain->domain . '/' . $this->getBaseName();
-
-                return $url;
-            } else {
-                return $this->getImageUrlFromStorage();
-            }
-        }
-
-        /**
-         * @return string
-         */
-        public function pathToFile() {
-            return $this->file_path . '/' . $this->getBaseName();
-        }
-
-        public function getImageUrlFromStorage() {
-            Storage::url($this->pathToFile());
-        }
-
-        /**
          * @param UploadedFile $file
          *
          * @return Image
@@ -135,6 +78,54 @@
         }
 
         /**
+         * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+         */
+        public function user() {
+            return $this->belongsTo('App\User');
+        }
+
+        /**
+         * @return string;
+         */
+        public function getUrlToImage() {
+            if (config('filesystems.default') == 'local') {
+                /** @var Domain $domain */
+                $domain = $this->domain()->getResults();
+                //dd($domain);
+                $url = $domain->protocol . '://' . $domain->domain . '/' . $this->getBaseName();
+
+                return $url;
+            } else {
+                return $this->getImageUrlFromStorage();
+            }
+        }
+
+        /**
+         * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+         */
+        public function domain() {
+            return $this->belongsTo('App\Domain');
+        }
+
+        /**
+         * @return string
+         */
+        public function getBaseName() {
+            return $this->filename . '.' . $this->extension;
+        }
+
+        public function getImageUrlFromStorage() {
+            Storage::url($this->pathToFile());
+        }
+
+        /**
+         * @return string
+         */
+        public function pathToFile() {
+            return $this->file_path . '/' . $this->getBaseName();
+        }
+
+        /**
          * @param $path
          *
          * @return false|string
@@ -145,18 +136,18 @@
             return $this->uploadedFile->storePubliclyAs($path, $this->getBaseName());
         }
 
-        protected function makeImage() {
-            if ($this->imageObject === null) {
-                $this->imageObject = \InterventionImage::make(Storage::get($this->pathToFile()));
-            }
-        }
-
         /**
          * @return mixed
          */
         public function width() {
             $this->makeImage();
             return $this->imageObject->width();
+        }
+
+        protected function makeImage() {
+            if ($this->imageObject === null) {
+                $this->imageObject = \InterventionImage::make(Storage::get($this->pathToFile()));
+            }
         }
 
         /**
@@ -185,6 +176,15 @@
          */
         private function deleteImageFile() {
             return Storage::delete($this - $this->pathToFile());
+        }
+
+        /**
+         * Get the format for database stored dates.
+         *
+         * @return string
+         */
+        protected function getDateFormat() {
+            return 'U';
         }
 
     }

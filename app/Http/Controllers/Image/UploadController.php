@@ -25,14 +25,14 @@
          * @param Upload $request
          */
         public function uploadImage(Upload $request) {
-            $image                = Image::processNew($request->file('file'));
+            $image = Image::processNew($request->file('file'));
 
             $image->uploaded_from = $request->ip();
             /** @var User $user */
-            $user           = $request->user();
-            $image->user_id = $user->id;
-            $image->domain_id  = $user->default_domain;
-            $result         = $image->storeImage('uploads'); // This also saves the image to the database
+            $user             = $request->user();
+            $image->user_id   = $user->id;
+            $image->domain_id = $user->default_domain;
+            $result           = $image->storeImage('uploads'); // This also saves the image to the database
             dd($image->getUrlToImage());
             //dd($request->file('file'), $request->file('file')->extension());
         }

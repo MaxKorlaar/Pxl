@@ -5,7 +5,6 @@
     use Illuminate\Bus\Queueable;
     use Illuminate\Mail\Mailable;
     use Illuminate\Queue\SerializesModels;
-    use Illuminate\Contracts\Queue\ShouldQueue;
 
     /**
      * Class PasswordReset
@@ -24,8 +23,8 @@
          * @param $token
          */
         public function __construct($email, $token) {
-            $this->email = $email;
-            $this->token = $token;
+            $this->email   = $email;
+            $this->token   = $token;
             $this->subject = trans('email.password_reset.title');
             return $this;
         }

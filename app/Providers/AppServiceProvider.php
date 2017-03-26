@@ -1,36 +1,33 @@
 <?php
 
-namespace App\Providers;
+    namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
-
-/**
- * Class AppServiceProvider
- *
- * @package App\Providers
- */
-class AppServiceProvider extends ServiceProvider
-{
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        //
-    }
+    use Illuminate\Support\ServiceProvider;
 
     /**
-     * Register any application services.
+     * Class AppServiceProvider
      *
-     * @return void
+     * @package App\Providers
      */
-    public function register()
-    {
-        if ($this->app->environment() !== 'production') {
-            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+    class AppServiceProvider extends ServiceProvider {
+        /**
+         * Bootstrap any application services.
+         *
+         * @return void
+         */
+        public function boot() {
+            //
         }
-        //
+
+        /**
+         * Register any application services.
+         *
+         * @return void
+         */
+        public function register() {
+            if ($this->app->environment() !== 'production') {
+                $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+            }
+            //
+        }
     }
-}

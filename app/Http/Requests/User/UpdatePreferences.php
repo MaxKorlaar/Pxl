@@ -1,25 +1,24 @@
 <?php
 
-    namespace App\Http\Requests\Admin;
+    namespace App\Http\Requests\User;
 
     use Auth;
     use Illuminate\Foundation\Http\FormRequest;
 
     /**
-     * Class NewDomain
+     * Class UpdatePreferences
      *
-     * @package App\Http\Requests\Admin
+     * @package App\Http\Requests\User
      */
-    class NewDomain extends FormRequest {
+    class UpdatePreferences extends FormRequest {
+
         /**
          * Determine if the user is authorized to make this request.
          *
-         * @return bool
+         * @return \App\User|bool
          */
         public function authorize() {
-            $user = Auth::user();
-            if ($user == null) return false;
-            return $user->isAdmin();
+            return Auth::check();
         }
 
         /**
@@ -29,8 +28,9 @@
          */
         public function rules() {
             return [
-                'domain'   => 'required|string|max:255',
-                'protocol' => 'required|in:http,https'
+                'embed_name'       => 'string|nullable|max:255',
+                'embed_name_url'   => 'url|nullable|max:1024',
+                'twitter_username' => 'string|nullable|max:16'
             ];
         }
     }

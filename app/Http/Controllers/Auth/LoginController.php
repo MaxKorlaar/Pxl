@@ -78,6 +78,36 @@
         }
 
         /**
+         * Redirect the user after determining they are locked out.
+         *
+         * @param  \Illuminate\Http\Request $request
+         *
+         * @return \Illuminate\Http\RedirectResponse
+         */
+        protected function sendLockoutResponse(Request $request) {
+            $seconds = $this->limiter()->availableIn(
+                $this->throttleKey($request)
+            );
+
+            $message = trans('auth.throttle', ['seconds' => $seconds]);
+
+            if ($request->ajax()) {
+                return response(['success' => false, 'error' => $message], 403);
+            } else {
+                return redirect()->back()
+                    ->withInput($request->only($this->username(), 'remember'))
+                    ->withErrors([$this->username() => $message]);
+            }
+        }
+
+        /**
+         * @return string
+         */
+        public function username() {
+            return 'username';
+        }
+
+        /**
          * @param Request $request
          * @param User    $user
          *
@@ -114,6 +144,23 @@
         }
 
         /**
+         * @param $request
+         *
+         * @return LoginController|\Illuminate\Http\RedirectResponse
+         */
+        protected function sendInactiveAccountResponse(Request $request) {
+            if ($request->ajax()) {
+                return response(['success' => false, 'error' => trans('auth.account_inactive')], 403);
+            } else {
+                return redirect()->back()
+                    ->withInput($request->only($this->username(), 'remember'))
+                    ->withErrors([
+                        $this->username() => trans('auth.account_inactive'),
+                    ]);
+            }
+        }
+
+        /**
          * Get the failed login response instance.
          *
          * @param  \Illuminate\Http\Request $request
@@ -130,44 +177,6 @@
                         $this->username() => trans('auth.failed'),
                     ]);
             }
-        }
-
-        /**
-         * Redirect the user after determining they are locked out.
-         *
-         * @param  \Illuminate\Http\Request $request
-         *
-         * @return \Illuminate\Http\RedirectResponse
-         */
-        protected function sendLockoutResponse(Request $request) {
-            $seconds = $this->limiter()->availableIn(
-                $this->throttleKey($request)
-            );
-
-            $message = trans('auth.throttle', ['seconds' => $seconds]);
-
-            if ($request->ajax()) {
-                return response(['success' => false, 'error' => $message], 403);
-            } else {
-                return redirect()->back()
-                    ->withInput($request->only($this->username(), 'remember'))
-                    ->withErrors([$this->username() => $message]);
-            }
-        }
-
-        /**
-         * Get the needed authorization credentials from the request.
-         *
-         * @param  \Illuminate\Http\Request $request
-         *
-         * @return array
-         */
-        protected function credentials(Request $request) {
-            if (filter_var($request->input($this->username()), FILTER_VALIDATE_EMAIL)) {
-                $request->merge(['email' => $request->input($this->username())]);
-                return $request->only('email', 'password');
-            }
-            return $request->only($this->username(), 'password');
         }
 
         /**
@@ -201,6 +210,21 @@
         }
 
         /**
+         * Get the needed authorization credentials from the request.
+         *
+         * @param  \Illuminate\Http\Request $request
+         *
+         * @return array
+         */
+        protected function credentials(Request $request) {
+            if (filter_var($request->input($this->username()), FILTER_VALIDATE_EMAIL)) {
+                $request->merge(['email' => $request->input($this->username())]);
+                return $request->only('email', 'password');
+            }
+            return $request->only($this->username(), 'password');
+        }
+
+        /**
          * The user has been authenticated.
          *
          * @param  \Illuminate\Http\Request $request
@@ -216,29 +240,5 @@
                 return response(['success' => true, 'redirect' => redirect()->intended($this->redirectPath())->getTargetUrl()], 200);
             }
             return null;
-        }
-
-        /**
-         * @return string
-         */
-        public function username() {
-            return 'username';
-        }
-
-        /**
-         * @param $request
-         *
-         * @return LoginController|\Illuminate\Http\RedirectResponse
-         */
-        protected function sendInactiveAccountResponse(Request $request) {
-            if ($request->ajax()) {
-                return response(['success' => false, 'error' => trans('auth.account_inactive')], 403);
-            } else {
-                return redirect()->back()
-                    ->withInput($request->only($this->username(), 'remember'))
-                    ->withErrors([
-                        $this->username() => trans('auth.account_inactive'),
-                    ]);
-            }
         }
     }

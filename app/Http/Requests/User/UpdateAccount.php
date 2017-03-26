@@ -2,10 +2,8 @@
 
     namespace App\Http\Requests\User;
 
-    use Illuminate\Support\Facades\Auth;
-    use Illuminate\Validation\Factory as ValidationFactory;
-
     use Illuminate\Foundation\Http\FormRequest;
+    use Illuminate\Support\Facades\Auth;
 
     /**
      * Class UpdateAccount
@@ -34,7 +32,7 @@
                 'username'         => 'required|max:255|min:2|unique:users,username,' . Auth::user()->id,
                 'email'            => 'required|max:255|email|unique:users,email,' . Auth::user()->id,
                 'current_password' => 'nullable|required_with:new_password|min:6',
-                'new_password'         => 'nullable|confirmed|required_with:current_password|min:6'
+                'new_password'     => 'nullable|confirmed|required_with:current_password|min:6'
             ];
         }
 

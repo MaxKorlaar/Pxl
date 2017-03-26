@@ -2,10 +2,10 @@
 
     namespace App\Http\Controllers\Admin;
 
+    use App\Http\Controllers\Controller;
     use App\Http\Requests\Admin\UpdateUser;
     use App\User;
     use Illuminate\Http\Request;
-    use App\Http\Controllers\Controller;
 
     /**
      * Class UserController
@@ -18,7 +18,6 @@
          */
         public function getView() {
             $usersPagination = User::paginate(15);
-
 
             $usersPagination->getUrlRange(0, $usersPagination->lastPage());
 

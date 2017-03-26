@@ -8,46 +8,46 @@
     use Illuminate\Notifications\Notifiable;
 
     /**
- * Class User
- *
- * @package App
- * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
- * @mixin \Eloquent
- * @property int                                                                                                            $id
- * @property string                                                                                                         $username
- * @property string                                                                                                         $email
- * @property string                                                                                                         $password
- * @property string                                                                                                         $twoFactorToken
- * @property string                                                                                                         $remember_token
- * @property string                                                                                                         $last_ip
- * @property bool                                                                                                           $active
- * @property string                                                                                                         $rank
- * @property int                                                                                                            $last_login
- * @property \Carbon\Carbon                                                                                                 $created_at
- * @property \Carbon\Carbon                                                                                                 $updated_at
- * @method static \Illuminate\Database\Query\Builder|\App\User where2faToken($value)
- * @method static \Illuminate\Database\Query\Builder|\App\User whereActive($value)
- * @method static \Illuminate\Database\Query\Builder|\App\User whereCreatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\App\User whereEmail($value)
- * @method static \Illuminate\Database\Query\Builder|\App\User whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\User whereLastIp($value)
- * @method static \Illuminate\Database\Query\Builder|\App\User whereLastLogin($value)
- * @method static \Illuminate\Database\Query\Builder|\App\User wherePassword($value)
- * @method static \Illuminate\Database\Query\Builder|\App\User whereRank($value)
- * @method static \Illuminate\Database\Query\Builder|\App\User whereRememberToken($value)
- * @method static \Illuminate\Database\Query\Builder|\App\User whereUpdatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\App\User whereUsername($value)
- * @method static \Illuminate\Database\Query\Builder|\App\User whereTwoFactorToken($value)
- * @property int                                                                                                            $default_domain
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Image[]                                                     $images
- * @method static \Illuminate\Database\Query\Builder|\App\User whereDefaultDomain($value)
- * @property string                                                                                                         $embed_name
- * @property string                                                                                                         $twitter_username
- * @property string                                                                                                         $embed_name_url
- * @method static \Illuminate\Database\Query\Builder|\App\User whereEmbedName($value)
- * @method static \Illuminate\Database\Query\Builder|\App\User whereEmbedNameUrl($value)
- * @method static \Illuminate\Database\Query\Builder|\App\User whereTwitterUsername($value)
- */
+     * Class User
+     *
+     * @package App
+     * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+     * @mixin \Eloquent
+     * @property int                                                                                                            $id
+     * @property string                                                                                                         $username
+     * @property string                                                                                                         $email
+     * @property string                                                                                                         $password
+     * @property string                                                                                                         $twoFactorToken
+     * @property string                                                                                                         $remember_token
+     * @property string                                                                                                         $last_ip
+     * @property bool                                                                                                           $active
+     * @property string                                                                                                         $rank
+     * @property int                                                                                                            $last_login
+     * @property \Carbon\Carbon                                                                                                 $created_at
+     * @property \Carbon\Carbon                                                                                                 $updated_at
+     * @method static \Illuminate\Database\Query\Builder|\App\User where2faToken($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\User whereActive($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\User whereCreatedAt($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\User whereEmail($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\User whereId($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\User whereLastIp($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\User whereLastLogin($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\User wherePassword($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\User whereRank($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\User whereRememberToken($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\User whereUpdatedAt($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\User whereUsername($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\User whereTwoFactorToken($value)
+     * @property int                                                                                                            $default_domain
+     * @property-read \Illuminate\Database\Eloquent\Collection|\App\Image[]                                                     $images
+     * @method static \Illuminate\Database\Query\Builder|\App\User whereDefaultDomain($value)
+     * @property string                                                                                                         $embed_name
+     * @property string                                                                                                         $twitter_username
+     * @property string                                                                                                         $embed_name_url
+     * @method static \Illuminate\Database\Query\Builder|\App\User whereEmbedName($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\User whereEmbedNameUrl($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\User whereTwitterUsername($value)
+     */
     class User extends Authenticatable {
         use Notifiable;
 
@@ -68,15 +68,6 @@
         protected $hidden = [
             'password', 'remember_token', 'twoFactorToken', 'last_ip', 'last_login'
         ];
-
-        /**
-         * Get the format for database stored dates.
-         *
-         * @return string
-         */
-        protected function getDateFormat() {
-            return 'U';
-        }
 
         /**
          * @return bool
@@ -134,7 +125,6 @@
             return $this->password = bcrypt($password);
         }
 
-
         /**
          * Send the password reset notification.
          *
@@ -160,6 +150,15 @@
          */
         function images() {
             return $this->hasMany('App\Image');
+        }
+
+        /**
+         * Get the format for database stored dates.
+         *
+         * @return string
+         */
+        protected function getDateFormat() {
+            return 'U';
         }
 
     }

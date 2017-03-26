@@ -36,6 +36,23 @@
         }
 
         /**
+         * @param Request $request
+         * @param         $imageUrl
+         *
+         * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+         */
+        function getPreviewPage(Request $request, $imageUrl) {
+
+            list($image, $domain, $author) = $this->getImageMeta($imageUrl);
+
+            return view('image.preview', [
+                'image'  => $image,
+                'domain' => $domain,
+                'author' => $author
+            ]);
+        }
+
+        /**
          * @param $imageUrl
          *
          * @return array
@@ -57,23 +74,6 @@
                 Cache::put('image.' . $imageUrl . '.user', $author, 120);
             }
             return [$image, $domain, $author];
-        }
-
-        /**
-         * @param Request $request
-         * @param         $imageUrl
-         *
-         * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-         */
-        function getPreviewPage(Request $request, $imageUrl) {
-
-            list($image, $domain, $author) = $this->getImageMeta($imageUrl);
-
-            return view('image.preview', [
-                'image'  => $image,
-                'domain' => $domain,
-                'author' => $author
-            ]);
         }
 
         /**
