@@ -50,6 +50,9 @@
         Route::get('account/delete', 'AccountController@getDeleteView')->name('account_deletion');
         Route::delete('account', 'AccountController@delete')->name('do_delete_account');
 
+        Route::get('preferences', 'AccountController@getPreferencesView')->name('preferences');
+        Route::put('preferences', 'AccountController@updatePreferences')->name('update_preferences');
+
         Route::get('account/2fa', 'AccountController@get2faSetupView')->name('2fa_setup');
         Route::post('account/2fa', 'AccountController@finish2faSetup')->name('2fa_confirm');
         Route::delete('account/2fa', 'AccountController@disable2fa')->name('2fa_disable');

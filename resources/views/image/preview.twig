@@ -1,7 +1,23 @@
 {% extends 'partials/empty_page.twig' %}
-{% block title %}{{ trans('preview.title', { name: image.name }) }}{% endblock %}
 {% block head %}
-    {{ parent() }}
+    <meta charset="utf-8">
+    <title>{{ trans('preview.title', { name: image.name }) }} – {{ config_get('app.name') }}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('img/favicon/favicon-32x32.png') }}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{ asset('img/favicon/favicon-16x16.png') }}" sizes="16x16">
+    <link rel="manifest" href="{{ asset('img/favicon/manifest.json') }}">
+    <link rel="mask-icon" href="{{ asset('img/favicon/safari-pinned-tab.svg') }}" color="#5bbad5">
+    <link rel="shortcut icon" href="{{ asset('img/favicon/favicon.ico') }}">
+    <meta name="apple-mobile-web-app-title" content="{{ config_get('app.name') }}">
+    <meta name="application-name" content="{{ config_get('app.name') }}">
+    <meta name="msapplication-config" content="{{ asset('img/favicon/browserconfig.xml') }}">
+    <meta name="theme-color" content="#ffffff">
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/materialize.min.css') }}" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/app.css') }}" media="screen,projection"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="generator" content="Max Korlaar's Pxl <github.com/maxkorlaar/pxl>">
+    <!-- Metadata -->
     <link rel="alternate" type="application/json+oembed" href="{{ route('meta/oEmbed', { image_url: image.url_name }) }}" title="Pxl oEmbed"/>
     <meta property="og:image" content="{{ image.getUrlToImage() }}"/>
     <meta property="og:url" content="{{ image.getUrlToImagePreview() }}"/>
@@ -12,11 +28,12 @@
     <meta name="twitter:url" content="{{ image.getUrlToImagePreview() }}"/>
     <meta property="og:title" content="{{ image.name }} – {{ config_get('app.name') }}"/>
     <meta property="og:author" content="{{ author.embed_name }}"/>
-    <meta property="og:description" content="{{ trans('preview.description') }}"/>
+    <meta property="og:description" content="{{ trans('preview.description', {site: config_get('app.name')}) }}"/>
     <meta property="og:image:width" content="{{ image.width() }}"/>
     <meta property="og:image:height" content="{{ image.height() }}"/>
-    <!--TODO: oEmbed & Social stuff -->
+    <meta name="author" content="{{ author.embed_name }}">
 
+    <!--TODO: oEmbed & Social stuff -->
 {% endblock %}
 {% block body %}
 

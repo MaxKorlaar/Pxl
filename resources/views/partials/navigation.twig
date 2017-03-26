@@ -21,6 +21,7 @@
                     </a>
                     <ul id="user-dropdown" class="dropdown-content">
                         <li><a href="{{ route('user/account') }}">{{ trans('nav.my_account') }}</a></li>
+                        <li><a href="{{ route('user/preferences') }}">{{ trans('nav.preferences') }}</a></li>
                         <li class="divider"></li>
                         <li><a href="{{ route('auth/logout', {'token': csrf_token()}) }}">{{ trans('nav.log_out') }}</a></li>
                     </ul>

@@ -38,12 +38,12 @@
  * @method static \Illuminate\Database\Query\Builder|\App\User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\User whereUsername($value)
  * @method static \Illuminate\Database\Query\Builder|\App\User whereTwoFactorToken($value)
- * @property int $default_domain
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Image[] $images
+ * @property int                                                                                                            $default_domain
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Image[]                                                     $images
  * @method static \Illuminate\Database\Query\Builder|\App\User whereDefaultDomain($value)
- * @property string $embed_name
- * @property string $twitter_username
- * @property string $embed_name_url
+ * @property string                                                                                                         $embed_name
+ * @property string                                                                                                         $twitter_username
+ * @property string                                                                                                         $embed_name_url
  * @method static \Illuminate\Database\Query\Builder|\App\User whereEmbedName($value)
  * @method static \Illuminate\Database\Query\Builder|\App\User whereEmbedNameUrl($value)
  * @method static \Illuminate\Database\Query\Builder|\App\User whereTwitterUsername($value)
@@ -57,7 +57,7 @@
          * @var array
          */
         protected $fillable = [
-            'username', 'email', 'password', 'twoFactorToken'
+            'username', 'email', 'password', 'embed_name', 'twitter_username', 'embed_name_url',
         ];
 
         /**

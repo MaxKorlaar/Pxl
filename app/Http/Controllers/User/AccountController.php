@@ -3,13 +3,11 @@
     namespace App\Http\Controllers\User;
 
     use App\Http\Controllers\Controller;
-
     use App\Http\Requests\User\DeleteAccount;
     use App\Http\Requests\User\Enable2FA;
     use App\Http\Requests\User\UpdateAccount;
-    use App\User;
+    use App\Http\Requests\User\UpdatePreferences;
     use Illuminate\Database\Eloquent\ModelNotFoundException;
-    use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Session;
 
@@ -100,6 +98,29 @@
                 'user' => $account
             ]);
         }
+
+        /**
+         * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+         */
+        public function getPreferencesView() {
+            $account = Auth::user();
+            return view('user.preferences', [
+                'user' => $account
+            ]);
+        }
+
+        /**
+         * @param UpdatePreferences $request
+         *
+         * @return \Illuminate\Http\RedirectResponse
+         */
+        public function updatePreferences(UpdatePreferences $request) {
+            $account = Auth::user();
+            $account->fill($request->only(['embed_name', 'embed_name_url', 'twitter_username']));
+            $account->saveOrFail();
+            return back()->with('success', trans('user.preferences.updated'));
+        }
+
 
         /**
          * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

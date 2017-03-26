@@ -19,7 +19,6 @@
      * @property string         $extension
      * @property string         $filetype
      * @property string         $file_path
-     * @property int            $domain
      * @property string         $uploaded_from
      * @property int            $image_created_on
      * @property \Carbon\Carbon $created_at
@@ -41,6 +40,8 @@
      * @property int            $user_id
      * @property-read \App\User $user
      * @method static \Illuminate\Database\Query\Builder|\App\Image whereUserId($value)
+     * @property int            $domain_id
+     * @method static \Illuminate\Database\Query\Builder|\App\Image whereDomainId($value)
      */
     class Image extends Model {
         use SoftDeletes;
@@ -123,7 +124,7 @@
             $image = new self;
 
             $image->uploadedFile     = $file;
-            $image->name             = $file->getFilename();
+            $image->name             = $file->getClientOriginalName();
             $imageName               = str_random(6);
             $image->url_name         = $imageName;
             $image->filename         = $imageName;
