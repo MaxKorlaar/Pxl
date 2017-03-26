@@ -91,13 +91,23 @@
             if (config('filesystems.default') == 'local') {
                 /** @var Domain $domain */
                 $domain = $this->domain()->getResults();
-                //dd($domain);
-                $url = $domain->protocol . '://' . $domain->domain . '/' . $this->getBaseName();
+                $url    = $domain->protocol . '://' . $domain->domain . '/' . $this->getBaseName();
 
                 return $url;
             } else {
                 return $this->getImageUrlFromStorage();
             }
+        }
+
+        /**
+         * @return string
+         */
+        public function getUrlToImagePreview() {
+            /** @var Domain $domain */
+            $domain = $this->domain()->getResults();
+            //dd($domain);
+            $url = $domain->protocol . '://' . $domain->domain . '/' . $this->url_name;
+            return $url;
         }
 
         /**
