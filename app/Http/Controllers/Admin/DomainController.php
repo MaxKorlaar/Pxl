@@ -20,9 +20,6 @@
             $domainsPagination = Domain::paginate(15);
 
             $domainsPagination->getUrlRange(0, $domainsPagination->lastPage());
-            /** @var Domain $d */
-            $d = $domainsPagination->items()[0];
-            //dd($d->ownedBy()->getResults()->username);
 
             return view('admin.domains', [
                 'pagination' => $domainsPagination
