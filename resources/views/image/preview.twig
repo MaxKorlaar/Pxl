@@ -1,0 +1,35 @@
+{% extends 'partials/empty_page.twig' %}
+{% block title %}{{ trans('preview.title') }}{% endblock %}
+{% block head %}
+    {{ parent() }}
+
+    <!--TODO: oEmbed & Social stuff -->
+
+{% endblock %}
+{% block body %}
+
+    <nav class="green lighten-1" role="navigation">
+        <div class="nav-wrapper">
+            <a href="{{ route('home') }}"><img class="brand-logo center" src="{{ asset('img/logo/Px-logo-cut-small.png') }}"></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="{{ route('home') }}">{{ config_get('app.name') }}</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container page-content" style="height:100%;">
+        {% block content %}
+            <div class="section">
+                <div class="row">
+                    <div class="col s12 center">
+                        <img src="{{ image.getUrlToImage() }}" alt="image.urlName" class="responsive-img">
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+    </div>
+    {% block scripts %}
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}
+

@@ -86,13 +86,17 @@
         }
 
         /**
-         * @return mixed|void
+         * @return string;
          */
         public function getUrlToImage() {
             if (config('filesystems.default') == 'local') {
                 // TODO domain
-                $domain = $this->domain();
-                return $domain->getResults();
+                /** @var Domain $domain */
+                $domain = $this->domain()->getResults();
+
+                $url = $domain->protocol . '://' . $domain->domain . '/' . $this->getBaseName();
+
+                return $url;
             } else {
                 return $this->getImageUrlFromStorage();
             }

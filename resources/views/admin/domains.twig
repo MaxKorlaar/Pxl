@@ -1,0 +1,96 @@
+{% extends 'partials/page.twig' %}
+{% block title %}{{ trans('admin.domains.title') }}{% endblock %}
+{% block content %}
+    <div class="section">
+        <div class="row">
+            <div class="col s12">
+                <h1>{{ trans('admin.domains.title') }}</h1>
+                {% if session('success') %}
+                    <div class="card green white-text center-align">
+                        <div class="card-content center-align">
+                            <span class="material-icons left">check</span>
+                            <p class="center-align">{{ session('success') }}</p>
+                        </div>
+                    </div>
+                {% endif %}
+                <table class="striped">
+                    <thead>
+                    <tr>
+                        <th data-field="id">{{ trans('admin.domains.id') }}</th>
+                        <th data-field="name">{{ trans('admin.domains.name') }}</th>
+                        <th data-field="description">{{ trans('admin.domains.owner') }}</th>
+                        <th data-field="options"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for domain in pagination.items() %}
+                        <tr>
+                            <td>{{ domain.id }}</td>
+                            <td>
+                                {{ domain.domain }}
+                            </td>
+                            <td>{{ domain.ownedBy().getResults().username }}</td>
+                            <td>
+                                <a class="waves-effect waves-red btn-flat tooltipped" data-position="top" data-delay="50" data-tooltip="{{ trans('admin.domains.delete_domain') }}" href="{{ route('admin/delete_domain', {domain: domain}) }}">
+                                    <i class="material-icons">trash</i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4" class="center red-text">
+                                <i class="material-icons middle">info_outline</i> {{ trans('admin.domains.no_domains') }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <ul class="pagination center-align">
+                    <li class="{{ pagination.currentPage() == 1 ? 'disabled' }}">
+                        <a title="{{ trans('pagination.previous') }}" href="{{ pagination.previousPageUrl()|default('#') }}"><i class="material-icons">chevron_left</i></a>
+                    </li>
+                    {% for page, url in pagination.getUrlRange(1, pagination.lastPage()) %}
+                        <li class="{{ pagination.currentPage() == page ? 'active' : 'waves-effect' }}">
+                            <a href="{{ url }}">{{ page }}</a>
+                        </li>
+                    {% endfor %}
+                    <li class="{{ not pagination.hasMorePages() ? 'disabled' }}">
+                        <a title="{{ trans('pagination.next') }}" href="{{ pagination.nextPageUrl()|default('#') }}"><i class="material-icons">chevron_right</i></a>
+                    </li>
+                </ul>
+                {% if errors.any %}
+                    <div class="card red white-text center-align">
+                        <div class="card-content center-align">
+                            <span class="material-icons left">warning</span>
+                            <p class="center-align">{{ trans_choice('admin.domains.errors_occurred', errors.count()) }}</p>
+                        </div>
+                    </div>
+                {% endif %}
+                <form method="post" action="{{ route('admin/new_domain') }}">
+                    {{ csrf_field() }}
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="domain" name="domain" value="{{ old('domain') }}" type="text" class="validate {{ errors.has('domain') ? 'invalid' : '' }}">
+                            <label for="domain" class="{{ errors.has('domain') ? 'active' : '' }}" data-error="{{ errors.first('domain')|capitalize }}">{{ trans('admin.domains.domain') }}</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <select name="protocol" id="protocol">
+                                <option value="http">{{ trans('admin.domains.protocol.http') }}</option>
+                                <option value="https">{{ trans('admin.domains.protocol.https') }}</option>
+                            </select>
+                            <label for="protocol">{{ trans('admin.domains.protocol.protocol') }}</label>
+                            {% if(errors.has('protocol')) %}
+                                <p class="red-text">{{ errors.first('protocol')|capitalize }}</p>
+                            {% endif %}
+                        </div>
+                        <div class="input-field col s12">
+                            <button class="btn waves-effect waves-light" type="submit" name="action">{{ trans('admin.domains.create') }}
+                                <i class="material-icons right">save</i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

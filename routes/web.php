@@ -69,10 +69,15 @@
         Route::get('users/{user}/delete', 'UserController@getDeleteView')->name('delete_user');
         Route::delete('users/{user}', 'UserController@deleteUser')->name('do_delete_user');
 
+        Route::get('domains', 'DomainController@getView')->name('domains');
+        Route::post('domains', 'DomainController@newDomain')->name('new_domain');
+        Route::get('domains/{domain}/delete', 'DomainController@getDeleteView')->name('delete_domain');
+        Route::delete('domains/{domain}', 'DomainController@deleteDomain')->name('do_delete_domain');
         Route::get('settings', function () {
             abort(404);
             // /user/account
             // My account
         })->name('settings');
-
     });
+    Route::get('{image_url}.{extension}', 'Image\ImageController@getImageFromUrl')->name('image_request');
+    Route::get('{image_url}', 'Image\ImageController@getPreviewPage')->name('image_preview_request');

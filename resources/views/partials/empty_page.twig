@@ -3,8 +3,10 @@
 <html>
 {% endblock %}
 <head>
-    {% include 'partials/head.twig' %}
-    <title>{% block title %}?{% endblock %} – {{ config_get('app.name') }}</title>
+    {% block head %}
+        {% include 'partials/head.twig' %}
+        <title>{% block title %}?{% endblock %} – {{ config_get('app.name') }}</title>
+    {% endblock %}
 </head>
 <body>
 {% block body %}

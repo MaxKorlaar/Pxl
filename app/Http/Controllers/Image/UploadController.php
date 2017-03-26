@@ -30,7 +30,7 @@
             /** @var User $user */
             $user           = $request->user();
             $image->user_id = $user->id;
-            $image->domain  = 0;
+            $image->domain  = $user->default_domain;
             $result         = $image->storeImage('uploads');
             dd($image->getUrlToImage());
             //dd($request->file('file'), $request->file('file')->extension());
