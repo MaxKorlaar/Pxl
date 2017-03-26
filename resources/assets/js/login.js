@@ -13,10 +13,24 @@ $('form').on('submit', function (e) {
         dataType: 'json',
         data:     $('form').serialize(),
         success:  function (data) {
-            console.info(data);
             if (data.success) {
                 $('.login-card').addClass('green');
                 window.location.href = data.redirect;
+            } else {
+                if (typeof data.twoFactor !== 'undefined') {
+                    $('.card-action .btn').removeClass('disabled');
+                    $('.login-form').removeClass('hide');
+                    $('.loader-wrapper').addClass('hide');
+                    if (data.twoFactor === 'required') {
+                        if (!$('.login-credentials').hasClass('hide')) {
+                            $('.login-credentials').addClass('hide');
+                            $('.twoFactor-wrapper').removeClass('hide');
+                        }
+                    } else if(data.twoFactor === 'invalid') {
+                        Materialize.toast(data.error, 10000);
+                        $('#2fa_key').addClass('invalid');
+                    }
+                }
             }
         },
         error:    function (data) {

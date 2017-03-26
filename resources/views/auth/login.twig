@@ -23,7 +23,7 @@
                                         </div>
                                     </div>
                                 {% endif %}
-                                <div class="row">
+                                <div class="row login-credentials">
                                     <div class="input-field col s12">
                                         <i class="material-icons prefix">account_circle</i>
                                         <input required autofocus name="username" value="{{ old('username') }}" id="username" type="text" class="validate">
@@ -39,6 +39,13 @@
                                         <label for="remember-me">{{ trans('auth.remember_me') }}</label>
                                     </div>
                                     {{ csrf_field() }}
+                                </div>
+                                <div class="row twoFactor-wrapper hide">
+                                    <div class="input-field col s12">
+                                        <i class="material-icons prefix">phonelink_lock</i>
+                                        <input name="2fa_key" value="{{ old('2fa_key') }}" id="2fa_key" type="text" class="validate">
+                                        <label for="2fa_key" id="2fa_key_label">{{ trans('auth.2fa_key') }}</label>
+                                    </div>
                                 </div>
                             </div>
                             <div class="loader-wrapper hide valign-wrapper">

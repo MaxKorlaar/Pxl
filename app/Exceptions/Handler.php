@@ -4,6 +4,7 @@
 
     use Exception;
     use Illuminate\Auth\AuthenticationException;
+    use Illuminate\Database\QueryException;
     use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
     use Illuminate\Session\TokenMismatchException;
     use Symfony\Component\Debug\Exception\FlattenException;
@@ -47,16 +48,20 @@
          * @param  \Illuminate\Http\Request $request
          * @param  \Exception               $exception
          *
-         * @return \Illuminate\Http\Response
+         * @return \Symfony\Component\HttpFoundation\Response
          */
         public function render($request, Exception $exception) {
             if ($exception instanceof TokenMismatchException) {
                 return response(view('errors.400', ['error' => 'CSRF Token mismatch']), 400);
             }
+
+            if (app()->environment() == 'production' && !$this->isHttpException($exception)) {
+                return response(view('errors.500', ['exception' => $exception]), 500);
+            }
             return parent::render($request, $exception);
         }
 
-            /**
+        /**
          * Convert an authentication exception into an unauthenticated response.
          *
          * @param  \Illuminate\Http\Request                 $request

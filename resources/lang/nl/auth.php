@@ -21,6 +21,9 @@
         'forgot_password'  => 'Wachtwoord vergeten?',
         'remember_me'      => 'Onthoud mij',
         'account_inactive' => 'Dit account is niet ingeschakeld',
+        '2fa_key'          => 'Tweeledige verificatiecode',
+        '2fa_key_invalid'  => 'De tweeledige verificatiecode is ongeldig',
+        '2fa_key_missing'  => 'De tweeledige verificatiecode is vereist om in te loggen',
         'register'         => [
             'username'         => 'Gebruikersnaam',
             'password'         => 'Wachtwoord',

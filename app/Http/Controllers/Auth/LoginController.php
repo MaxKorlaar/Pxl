@@ -57,17 +57,60 @@
 
                 return $this->sendLockoutResponse($request);
             }
-            if ($this->attemptLogin($request)) {
-                if ($this->guard()->user()->isActive()) {
-                    return $this->sendLoginResponse($request);
+            if ($this->guard()->validate($request->only(['username', 'password'])) ||
+                $this->guard()->validate(['email' => $request->username, 'password' => $request->password])
+            ) {
+                $user = User::whereEmail($request->username)->first() ?: User::whereUsername($request->username)->first();
+                if ($user->isActive()) {
+                    if ($user->hasTwoFactorAuth()) {
+                        return $this->checkTwoFactorAuth($request, $user);
+                    } else {
+                        $this->guard()->login($user);
+                        return $this->sendLoginResponse($request);
+                    }
                 } else {
-                    $this->guard()->logout();
                     return $this->sendInactiveAccountResponse($request);
                 }
             }
             $this->incrementLoginAttempts($request);
 
             return $this->sendFailedLoginResponse($request);
+        }
+
+        /**
+         * @param Request $request
+         * @param User    $user
+         *
+         * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+         */
+        public function checkTwoFactorAuth(Request $request, User $user) {
+            if ($request->has('2fa_key')) {
+                if ($user->verifyKey($request->get('2fa_key'))) {
+                    $this->guard()->login($user);
+                    return $this->sendLoginResponse($request);
+                } else {
+                    $this->incrementLoginAttempts($request);
+                    if ($request->ajax()) {
+                        // twoFactor: required, invalid, not required
+                        return response(['success' => false, 'error' => trans('auth.2fa_key_invalid'), 'twoFactor' => 'invalid'], 200);
+                    } else {
+                        return redirect()->back()
+                            ->withInput($request->only($this->username(), 'remember'))
+                            ->withErrors([
+                                '2fa_key' => trans('auth.2fa_key_invalid'),
+                            ]);
+                    }
+                }
+            }
+            if ($request->ajax()) {
+                return response(['success' => false, 'error' => trans('auth.2fa_key_missing'), 'twoFactor' => 'required'], 200);
+            } else {
+                return redirect()->back()
+                    ->withInput($request->only($this->username(), 'remember'))
+                    ->withErrors([
+                        '2fa_key' => trans('auth.2fa_key_missing'),
+                    ]);
+            }
         }
 
         /**
@@ -167,7 +210,7 @@
          */
         protected function authenticated(Request $request, User $user) {
             $user->last_login = time();
-            $user->last_ip = $request->ip();
+            $user->last_ip    = $request->ip();
             $user->save();
             if ($request->ajax()) {
                 return response(['success' => true, 'redirect' => redirect()->intended($this->redirectPath())->getTargetUrl()], 200);

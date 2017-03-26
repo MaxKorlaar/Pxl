@@ -40,7 +40,8 @@
                 'success'              => 'Tweeledige verificatie ingeschakeld',
                 'success_instructions' => 'Tweeledige verificatie is succesvol ingesteld voor uw account. U kan nu nog de QR-code scannen voor gebruik
                 op meerdere apparaten of apps.',
-                'has_been_disabled'    => 'Tweeledige verificatie is nu uitgeschakeld'
+                'has_been_disabled'    => 'Tweeledige verificatie is nu uitgeschakeld',
+                'disable_warning'      => 'Om tweeledige verificatie opnieuw in te schakelen, zal u al uw apparaten opnieuw moeten instellen'
             ]
         ],
         'rank'    => [

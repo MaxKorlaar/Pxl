@@ -27,7 +27,7 @@
                 <form method="POST" action="{{ route('user/2fa_disable') }}">
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
-                    <button type="submit"class="btn btn-waves-effect red waves-red">{{ trans('user.account.2fa.disable') }}</button>
+                    <button type="submit" class="btn btn-waves-effect red waves-red tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{ trans('user.account.2fa.disable_warning') }}">{{ trans('user.account.2fa.disable') }}</button>
                 </form>
             {% else %}
                 <a href="{{ route('user/2fa_setup') }}" class="btn waves-effect blue waves-blue">
