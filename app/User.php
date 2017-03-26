@@ -4,8 +4,8 @@
 
     use App\Notifications\ResetPassword;
     use Google2FA;
-    use Illuminate\Notifications\Notifiable;
     use Illuminate\Foundation\Auth\User as Authenticatable;
+    use Illuminate\Notifications\Notifiable;
 
     /**
      * Class User
@@ -37,6 +37,7 @@
      * @method static \Illuminate\Database\Query\Builder|\App\User whereRememberToken($value)
      * @method static \Illuminate\Database\Query\Builder|\App\User whereUpdatedAt($value)
      * @method static \Illuminate\Database\Query\Builder|\App\User whereUsername($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\User whereTwoFactorToken($value)
      */
     class User extends Authenticatable {
         use Notifiable;
@@ -143,6 +144,13 @@
          */
         function verifyPassword($password) {
             return \Hash::check($password, $this->password);
+        }
+
+        /**
+         * @return \Illuminate\Database\Eloquent\Relations\HasMany
+         */
+        function images() {
+            return $this->hasMany('App\Image');
         }
 
     }

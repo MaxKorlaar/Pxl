@@ -55,6 +55,11 @@
         Route::delete('account/2fa', 'AccountController@disable2fa')->name('2fa_disable');
     });
 
+    Route::group(['middleware' => ['auth']], function () {
+        Route::get('upload', 'Image\UploadController@getFormView')->name('upload');
+        Route::post('upload', 'Image\UploadController@uploadImage')->name('do_upload');
+    });
+
     Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin/', 'middleware' => ['auth', 'admin']], function () {
 
         Route::get('users', 'UserController@getView')->name('users');
