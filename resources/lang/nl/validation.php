@@ -97,7 +97,7 @@
         |
         */
 
-        'custom'               => [
+        'custom' => [
             'attribute-name' => [
                 'rule-name' => 'custom-message',
             ],
@@ -114,7 +114,7 @@
         |
         */
 
-        'attributes'           => [
+        'attributes' => [
             'address'                   => 'adres',
             'age'                       => 'leeftijd',
             'available'                 => 'beschikbaar',

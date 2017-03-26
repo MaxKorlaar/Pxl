@@ -1,17 +1,6 @@
 <?php
 
     return [
-
-        /*
-        |--------------------------------------------------------------------------
-        | Authentication Language Lines
-        |--------------------------------------------------------------------------
-        |
-        | The following language lines are used during authentication for various
-        | messages that we need to display to the user. You are free to modify
-        | these language lines according to your application's requirements.
-        |
-        */
         'log_in'           => 'Log in',
         'username'         => 'Username or email',
         'password'         => 'Password',
@@ -20,27 +9,31 @@
         'failed'           => 'These credentials are invalid.',
         'account_inactive' => 'This account is currently not enabled',
         'throttle'         => 'Too many login attempts. Please try again in :seconds seconds.',
-        'register'         => [
-            'username'         => 'Username',
-            'password'         => 'Password',
-            'email'            => 'Email address',
-            'confirm_email'    => 'Confirm email address',
-            'confirm_password' => 'Confirm password',
-            'password_help'    => 'Please use a strong, preferably random, password. Do not share this lightly, not even with other websites.
+        'register'         =>
+            [
+                'username'         => 'Username',
+                'password'         => 'Password',
+                'email'            => 'Email address',
+                'confirm_email'    => 'Confirm email address',
+                'confirm_password' => 'Confirm password',
+                'password_help'    => 'Please use a strong, preferably random, password. Do not share this lightly, not even with other websites.
+Getting compromised on one service could result in losing access to your accounts on others, so please consider your password as highly valuable.',
+                'register'         => 'Register',
+                'errors_occurred'  => 'An error has occurred. Please correct this error.|Errors have occurred, please correct these errors.',
+            ],
+        'password_reset'   =>
+            [
+                'title'            => 'Password reset',
+                'email'            => 'Email address',
+                'password'         => 'Password',
+                'confirm_password' => 'Confirm password',
+                'password_help'    => 'Please use a strong, preferably random, password. Do not share this lightly, not even with other websites.
             Getting compromised on one service could result in losing access to your accounts on others, so please consider your password as highly valuable.',
-            'register'         => 'Register',
-            'errors_occurred'  => 'An error has occurred. Please correct this error.|Errors have occurred, please correct these errors.'
-        ],
-        'password_reset' => [
-            'title'            => 'Password reset',
-            'email'            => 'Email address',
-            'password'         => 'Password',
-            'confirm_password' => 'Confirm password',
-            'password_help'    => 'Please use a strong, preferably random, password. Do not share this lightly, not even with other websites.
-            Getting compromised on one service could result in losing access to your accounts on others, so please consider your password as highly valuable.',
-            'errors_occurred' => 'An error has occurred. Please correct this error.|Errors have occurred, please correct these errors.',
-            'get_link'         => 'Get reset link',
-            'do_reset'         => 'Reset password'
-        ]
-
+                'errors_occurred'  => 'An error has occurred. Please correct this error.|Errors have occurred, please correct these errors.',
+                'get_link'         => 'Get reset link',
+                'do_reset'         => 'Reset password',
+            ],
+        '2fa_key'          => 'Two-factor-authentication key',
+        '2fa_key_invalid'  => 'The two-factor-authentication key is invalid',
+        '2fa_key_missing'  => 'The two-factor-authentication key is required to log in',
     ];
