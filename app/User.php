@@ -41,6 +41,12 @@
  * @property int $default_domain
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Image[] $images
  * @method static \Illuminate\Database\Query\Builder|\App\User whereDefaultDomain($value)
+ * @property string $embed_name
+ * @property string $twitter_username
+ * @property string $embed_name_url
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereEmbedName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereEmbedNameUrl($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereTwitterUsername($value)
  */
     class User extends Authenticatable {
         use Notifiable;

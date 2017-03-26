@@ -46,6 +46,8 @@
         use SoftDeletes;
         /** @var UploadedFile $uploadedFile */
         protected $uploadedFile;
+        /** @var \Intervention\Image\Facades\Image $imageObject */
+        protected $imageObject;
         /**
          * The attributes that should be hidden for arrays.
          *
@@ -75,7 +77,7 @@
          * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
          */
         public function domain() {
-            return $this->belongsTo('App\Domain', 'domain');
+            return $this->belongsTo('App\Domain');
         }
 
         /**
@@ -90,10 +92,9 @@
          */
         public function getUrlToImage() {
             if (config('filesystems.default') == 'local') {
-                // TODO domain
                 /** @var Domain $domain */
                 $domain = $this->domain()->getResults();
-
+                //dd($domain);
                 $url = $domain->protocol . '://' . $domain->domain . '/' . $this->getBaseName();
 
                 return $url;
@@ -102,8 +103,15 @@
             }
         }
 
+        /**
+         * @return string
+         */
+        public function pathToFile() {
+            return $this->file_path . '/' . $this->getBaseName();
+        }
+
         public function getImageUrlFromStorage() {
-            Storage::url($this->file_path . '/' . $this->getBaseName());
+            Storage::url($this->pathToFile());
         }
 
         /**
@@ -115,6 +123,7 @@
             $image = new self;
 
             $image->uploadedFile     = $file;
+            $image->name             = $file->getFilename();
             $imageName               = str_random(6);
             $image->url_name         = $imageName;
             $image->filename         = $imageName;
@@ -135,6 +144,28 @@
             return $this->uploadedFile->storePubliclyAs($path, $this->getBaseName());
         }
 
+        protected function makeImage() {
+            if ($this->imageObject === null) {
+                $this->imageObject = \InterventionImage::make(Storage::get($this->pathToFile()));
+            }
+        }
+
+        /**
+         * @return mixed
+         */
+        public function width() {
+            $this->makeImage();
+            return $this->imageObject->width();
+        }
+
+        /**
+         * @return mixed
+         */
+        public function height() {
+            $this->makeImage();
+            return $this->imageObject->height();
+        }
+
         /**
          * Delete the model from the database.
          *
@@ -152,7 +183,7 @@
          * @return bool
          */
         private function deleteImageFile() {
-            return Storage::delete($this->file_path . $this->getBaseName());
+            return Storage::delete($this - $this->pathToFile());
         }
 
     }

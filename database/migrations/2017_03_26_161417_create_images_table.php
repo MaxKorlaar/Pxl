@@ -22,7 +22,7 @@
                 $table->string('extension');
                 $table->string('filetype');
                 $table->string('file_path')->nullable(); // Path to directory where the file is located
-                $table->integer('domain')->nullable();
+                $table->integer('domain_id')->nullable();
                 $table->integer('user_id')->nullable();
                 $table->ipAddress('uploaded_from');
                 $table->integer('image_created_on')->nullable(); // Retrieve info from image metadata

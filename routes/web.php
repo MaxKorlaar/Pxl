@@ -75,9 +75,9 @@
         Route::delete('domains/{domain}', 'DomainController@deleteDomain')->name('do_delete_domain');
         Route::get('settings', function () {
             abort(404);
-            // /user/account
-            // My account
+
         })->name('settings');
     });
     Route::get('{image_url}.{extension}', 'Image\ImageController@getImageFromUrl')->name('image_request');
     Route::get('{image_url}', 'Image\ImageController@getPreviewPage')->name('image_preview_request');
+    Route::get('meta/oEmbed/{image_url}', 'Image\ImageController@getOEmbed')->name('meta/oEmbed');

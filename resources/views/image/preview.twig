@@ -1,8 +1,20 @@
 {% extends 'partials/empty_page.twig' %}
-{% block title %}{{ trans('preview.title') }}{% endblock %}
+{% block title %}{{ trans('preview.title', { name: image.name }) }}{% endblock %}
 {% block head %}
     {{ parent() }}
-
+    <link rel="alternate" type="application/json+oembed" href="{{ route('meta/oEmbed', { image_url: image.url_name }) }}" title="Pxl oEmbed"/>
+    <meta property="og:image" content="{{ image.getUrlToImage() }}"/>
+    <meta property="og:url" content="{{ image.getUrlToImagePreview() }}"/>
+    <meta name="twitter:card" content="photo"/>
+    <meta name="twitter:site" content="@{{ author.twitter_username }}"/>
+    <meta name="twitter:title" content="{{ image.name }} – {{ config_get('app.name') }}"/>
+    <meta name="twitter:image" content="{{ image.getUrlToImage() }}"/>
+    <meta name="twitter:url" content="{{ image.getUrlToImagePreview() }}"/>
+    <meta property="og:title" content="{{ image.name }} – {{ config_get('app.name') }}"/>
+    <meta property="og:author" content="{{ author.embed_name }}"/>
+    <meta property="og:description" content="{{ trans('preview.description') }}"/>
+    <meta property="og:image:width" content="{{ image.width() }}"/>
+    <meta property="og:image:height" content="{{ image.height() }}"/>
     <!--TODO: oEmbed & Social stuff -->
 
 {% endblock %}
@@ -16,13 +28,12 @@
             </ul>
         </div>
     </nav>
-
     <div class="container page-content" style="height:100%;">
         {% block content %}
             <div class="section">
                 <div class="row">
                     <div class="col s12 center">
-                        <img src="{{ image.getUrlToImage() }}" alt="image.urlName" class="responsive-img">
+                        <a href="{{ image.getUrlToImage() }}"><img src="{{ image.getUrlToImage() }}" alt="{{ image.url_name }}" class="responsive-img"></a>
                     </div>
                 </div>
             </div>
