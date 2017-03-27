@@ -91,7 +91,7 @@
             $response = [
                 'type'          => 'photo',
                 'version'       => 1.0,
-                'title'         => $image->name . ' | ' . $domain->domain,
+                'title'         => $image->name,
                 'url'           => $image->getUrlToImage(),
                 'provider_name' => config('app.name'),
                 'provider_url'  => config('app.url'),
