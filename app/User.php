@@ -47,6 +47,11 @@
      * @method static \Illuminate\Database\Query\Builder|\App\User whereEmbedName($value)
      * @method static \Illuminate\Database\Query\Builder|\App\User whereEmbedNameUrl($value)
      * @method static \Illuminate\Database\Query\Builder|\App\User whereTwitterUsername($value)
+     * @property int
+     *           $default_image_deletion_time
+     * @property bool                                                                                                           $prefers_preview_link
+     * @method static \Illuminate\Database\Query\Builder|\App\User whereDefaultImageDeletionTime($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\User wherePrefersPreviewLink($value)
      */
     class User extends Authenticatable {
         use Notifiable;

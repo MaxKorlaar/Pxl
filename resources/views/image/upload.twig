@@ -5,11 +5,19 @@
         <div class="row">
             <div class="col s12">
                 <h1>{{ trans('upload.title') }}</h1>
-                {% if errors.any %}
+                {% if session('success') %}
+                    <div class="card green white-text center-align">
+                        <div class="card-content center-align">
+                            <span class="material-icons left">check</span>
+                            <p class="center-align">{{ session('success') }}</p>
+                        </div>
+                    </div>
+                {% endif %}
+                {% if errors.has('error') %}
                     <div class="card red white-text center-align">
                         <div class="card-content center-align">
                             <span class="material-icons left">warning</span>
-                            <p class="center-align">{{ trans_choice('upload.errors_occurred', errors.count()) }}</p>
+                            <p class="center-align">{{ errors.first('error') }}</p>
                         </div>
                     </div>
                 {% endif %}

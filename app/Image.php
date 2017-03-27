@@ -9,41 +9,42 @@
     use Illuminate\Support\Facades\Storage;
 
     /**
-     * Class Image
-     *
-     * @package App
-     * @mixin \Eloquent
-     * @property int            $id
-     * @property string         $name
-     * @property string         $filename
-     * @property string         $url_name
-     * @property string         $extension
-     * @property string         $filetype
-     * @property string         $file_path
-     * @property string         $uploaded_from
-     * @property int            $image_created_on
-     * @property \Carbon\Carbon $created_at
-     * @property \Carbon\Carbon $updated_at
-     * @property int            $deleted_at
-     * @method static \Illuminate\Database\Query\Builder|\App\Image whereCreatedAt($value)
-     * @method static \Illuminate\Database\Query\Builder|\App\Image whereDeletedAt($value)
-     * @method static \Illuminate\Database\Query\Builder|\App\Image whereDomain($value)
-     * @method static \Illuminate\Database\Query\Builder|\App\Image whereExtension($value)
-     * @method static \Illuminate\Database\Query\Builder|\App\Image whereFilePath($value)
-     * @method static \Illuminate\Database\Query\Builder|\App\Image whereFilename($value)
-     * @method static \Illuminate\Database\Query\Builder|\App\Image whereFiletype($value)
-     * @method static \Illuminate\Database\Query\Builder|\App\Image whereId($value)
-     * @method static \Illuminate\Database\Query\Builder|\App\Image whereImageCreatedOn($value)
-     * @method static \Illuminate\Database\Query\Builder|\App\Image whereName($value)
-     * @method static \Illuminate\Database\Query\Builder|\App\Image whereUpdatedAt($value)
-     * @method static \Illuminate\Database\Query\Builder|\App\Image whereUploadedFrom($value)
-     * @method static \Illuminate\Database\Query\Builder|\App\Image whereUrlName($value)
-     * @property int            $user_id
-     * @property-read \App\User $user
-     * @method static \Illuminate\Database\Query\Builder|\App\Image whereUserId($value)
-     * @property int            $domain_id
-     * @method static \Illuminate\Database\Query\Builder|\App\Image whereDomainId($value)
-     */
+ * Class Image
+ *
+ * @package App
+ * @mixin \Eloquent
+ * @property int            $id
+ * @property string         $name
+ * @property string         $filename
+ * @property string         $url_name
+ * @property string         $extension
+ * @property string         $filetype
+ * @property string         $file_path
+ * @property string         $uploaded_from
+ * @property int            $image_created_on
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property int            $deleted_at
+ * @method static \Illuminate\Database\Query\Builder|\App\Image whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Image whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Image whereDomain($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Image whereExtension($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Image whereFilePath($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Image whereFilename($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Image whereFiletype($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Image whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Image whereImageCreatedOn($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Image whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Image whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Image whereUploadedFrom($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Image whereUrlName($value)
+ * @property int            $user_id
+ * @property-read \App\User $user
+ * @method static \Illuminate\Database\Query\Builder|\App\Image whereUserId($value)
+ * @property int            $domain_id
+ * @method static \Illuminate\Database\Query\Builder|\App\Image whereDomainId($value)
+ * @property-read \App\Domain $domain
+ */
     class Image extends Model {
         use SoftDeletes;
         /** @var UploadedFile $uploadedFile */
