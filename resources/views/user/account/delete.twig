@@ -4,13 +4,10 @@
     <div class="row">
         <div class="col s12">
             <h2>{{ trans('user.account.delete') }}</h2>
-
             <div class="card red white-text center-align">
                 <div class="card-content center-align">
                     <span class="material-icons left">warning</span>
-
                     <p class="center-align">{{ trans('user.account.deletion_warning') }}</p>
-
                     <p class="right-align">
                         <a href="#" class="btn orange waves-effect waves-light disabled ok-btn">OK (<span class="timer">15</span>)</a></p>
                 </div>
@@ -43,7 +40,7 @@
             }, 1000);
             $('.ok-btn').on('click', function (e) {
                 e.preventDefault();
-                if(!$(this).hasClass('disabled')) {
+                if (!$(this).hasClass('disabled')) {
                     console.info('This cannot be undone!');
                     $('.delete-btn').removeClass('disabled').attr('disabled', false);
                     $(this).fadeOut();

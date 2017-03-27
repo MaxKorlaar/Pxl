@@ -62,7 +62,7 @@
          * @var array
          */
         protected $fillable = [
-            'username', 'email', 'password', 'embed_name', 'twitter_username', 'embed_name_url',
+            'username', 'email', 'password', 'embed_name', 'twitter_username', 'embed_name_url', 'prefers_preview_link', 'default_image_deletion_time'
         ];
 
         /**

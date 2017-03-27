@@ -9,7 +9,7 @@
                     <div class="card green white-text center-align">
                         <div class="card-content center-align">
                             <span class="material-icons left">check</span>
-                            <p class="center-align">{{ session('success') }}</p>
+                            <p class="center-align">{{ session('success')|raw }}</p>
                         </div>
                     </div>
                 {% endif %}

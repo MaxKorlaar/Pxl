@@ -28,9 +28,10 @@
          */
         public function rules() {
             return [
-                'embed_name'       => 'string|nullable|max:255',
-                'embed_name_url'   => 'url|nullable|max:1024',
-                'twitter_username' => 'string|nullable|max:16'
+                'embed_name'           => 'string|nullable|max:255',
+                'embed_name_url'       => 'url|nullable|max:1024',
+                'twitter_username'     => 'string|nullable|max:16',
+                'prefers_preview_link' => 'boolean'
             ];
         }
     }

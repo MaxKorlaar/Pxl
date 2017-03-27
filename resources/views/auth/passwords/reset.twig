@@ -17,7 +17,6 @@
                                     <div class="card red white-text center-align">
                                         <div class="card-content center-align">
                                             <span class="material-icons left">warning</span>
-
                                             <p class="center-align">{{ trans_choice('auth.password_reset.errors_occurred', errors.count()) }}</p>
                                         </div>
                                     </div>
@@ -27,7 +26,6 @@
                                         <i class="material-icons prefix">lock</i>
                                         <input required id="password" name="password" type="password" value="{{ old('password') }}" class="validate {{ errors.has('password') ? 'invalid' : '' }}">
                                         <label class="{{ errors.has('password') ? 'active' : '' }}" for="password" id="password_label" data-error="{{ errors.first('password') }}">{{ trans('auth.password_reset.password') }}</label>
-
                                         <p class="help">{{ trans('auth.password_reset.password_help') }}</p>
                                     </div>
                                     <div class="input-field col s12">

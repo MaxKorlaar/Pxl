@@ -4,64 +4,64 @@
 {% endblock %}
 {% block title %}{{ trans('auth.register.register') }}{% endblock %}
 {% block body %}
-    <div class="container page-content fullheight">
-        {% block content %}
-            <div class="row fullheight no-margin-bottom">
-                <div class="fullheight col s12 m6 offset-m3 valign-wrapper">
-                    <div class="card login-card valign">
-                        <form method="POST" action="{{ route('auth/do_register') }}">
-                            <div class="card-content">
-                                <div class="login-form">
-                                    <div class="card-title center-align">{{ trans('auth.register.register') }}</div>
-                                    {% if errors.any %}
-                                        <div class="card red white-text center-align">
-                                            <div class="card-content center-align">
-                                                <span class="material-icons left">warning</span>
-                                                <p class="center-align">{{ trans_choice('auth.register.errors_occurred', errors.count()) }}</p>
-                                            </div>
+<div class="container page-content fullheight">
+    {% block content %}
+        <div class="row fullheight no-margin-bottom">
+            <div class="fullheight col s12 m6 offset-m3 valign-wrapper">
+                <div class="card login-card valign">
+                    <form method="POST" action="{{ route('auth/do_register') }}">
+                        <div class="card-content">
+                            <div class="login-form">
+                                <div class="card-title center-align">{{ trans('auth.register.register') }}</div>
+                                {% if errors.any %}
+                                    <div class="card red white-text center-align">
+                                        <div class="card-content center-align">
+                                            <span class="material-icons left">warning</span>
+                                            <p class="center-align">{{ trans_choice('auth.register.errors_occurred', errors.count()) }}</p>
                                         </div>
-                                    {% endif %}
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <i class="material-icons prefix">account_circle</i>
-                                            <input required autofocus name="username" value="{{ old('username') }}" id="username" type="text" class="validate {{ errors.has('username') ? 'invalid' : '' }}">
-                                            <label for="username" id="username_label" data-error="{{ errors.first('username') }}">{{ trans('auth.register.username') }}</label>
-                                        </div>
-                                        <div class="input-field col s12">
-                                            <i class="material-icons prefix">email</i>
-                                            <input required name="email" value="{{ old('email') }}" id="email" type="email" class="validate {{ errors.has('email') ? 'invalid' : '' }}">
-                                            <label for="email" id="email_label" data-error="{{ errors.first('email') }}">{{ trans('auth.register.email') }}</label>
-                                        </div>
-                                        <div class="input-field col s12">
-                                            <i class="material-icons prefix">email</i>
-                                            <input required name="email_confirmation" value="{{ old('email_confirmation') }}" id="confirm_email" type="email" class="validate {{ errors.has('email_confirmation') ? 'invalid' : '' }}">
-                                            <label for="confirm_email" id="confirm_email_label" data-error="{{ errors.first('email') }}">{{ trans('auth.register.confirm_email') }}</label>
-                                        </div>
-                                        <div class="input-field col s12">
-                                            <i class="material-icons prefix">lock</i>
-                                            <input required id="password" name="password" type="password" value="{{ old('password') }}" class="validate {{ errors.has('password') ? 'invalid' : '' }}">
-                                            <label class="{{ errors.has('password') ? 'active' : '' }}" for="password" id="password_label" data-error="{{ errors.first('password') }}">{{ trans('auth.register.password') }}</label>
-                                            <p class="help">{{ trans('auth.register.password_help') }}</p>
-                                        </div>
-                                        <div class="input-field col s12">
-                                            <i class="material-icons prefix">lock</i>
-                                            <input required id="confirm_password" name="password_confirmation" type="password" value="{{ old('password_confirmation') }}" class="validate {{ errors.has('password_confirmation') ? 'invalid' : '' }}">
-                                            <label class="{{ errors.has('password_confirmation') ? 'active' : '' }}" for="confirm_password" id="confirm_password_label" data-error="{{ errors.first('password_confirmation') }}">{{ trans('auth.register.confirm_password') }}</label>
-                                        </div>
-                                        {{ csrf_field() }}
                                     </div>
+                                {% endif %}
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <i class="material-icons prefix">account_circle</i>
+                                        <input required autofocus name="username" value="{{ old('username') }}" id="username" type="text" class="validate {{ errors.has('username') ? 'invalid' : '' }}">
+                                        <label for="username" id="username_label" data-error="{{ errors.first('username') }}">{{ trans('auth.register.username') }}</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <i class="material-icons prefix">email</i>
+                                        <input required name="email" value="{{ old('email') }}" id="email" type="email" class="validate {{ errors.has('email') ? 'invalid' : '' }}">
+                                        <label for="email" id="email_label" data-error="{{ errors.first('email') }}">{{ trans('auth.register.email') }}</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <i class="material-icons prefix">email</i>
+                                        <input required name="email_confirmation" value="{{ old('email_confirmation') }}" id="confirm_email" type="email" class="validate {{ errors.has('email_confirmation') ? 'invalid' : '' }}">
+                                        <label for="confirm_email" id="confirm_email_label" data-error="{{ errors.first('email') }}">{{ trans('auth.register.confirm_email') }}</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <i class="material-icons prefix">lock</i>
+                                        <input required id="password" name="password" type="password" value="{{ old('password') }}" class="validate {{ errors.has('password') ? 'invalid' : '' }}">
+                                        <label class="{{ errors.has('password') ? 'active' : '' }}" for="password" id="password_label" data-error="{{ errors.first('password') }}">{{ trans('auth.register.password') }}</label>
+                                        <p class="help">{{ trans('auth.register.password_help') }}</p>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <i class="material-icons prefix">lock</i>
+                                        <input required id="confirm_password" name="password_confirmation" type="password" value="{{ old('password_confirmation') }}" class="validate {{ errors.has('password_confirmation') ? 'invalid' : '' }}">
+                                        <label class="{{ errors.has('password_confirmation') ? 'active' : '' }}" for="confirm_password" id="confirm_password_label" data-error="{{ errors.first('password_confirmation') }}">{{ trans('auth.register.confirm_password') }}</label>
+                                    </div>
+                                    {{ csrf_field() }}
                                 </div>
                             </div>
-                            <div class="card-action">
-                                <button type="submit" class="btn green">{{ trans('auth.register.register') }}</button>
-                                <a href="{{ route('auth/login') }}" class="btn">{{ trans('auth.log_in') }}</a>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="card-action">
+                            <button type="submit" class="btn green">{{ trans('auth.register.register') }}</button>
+                            <a href="{{ route('auth/login') }}" class="btn">{{ trans('auth.log_in') }}</a>
+                        </div>
+                    </form>
                 </div>
             </div>
-        {% endblock %}
-    </div>
+        </div>
+    {% endblock %}
+</div>
 {% block scripts %}
     {{ parent() }}
 {% endblock %}

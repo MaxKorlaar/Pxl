@@ -1,8 +1,8 @@
 <?php
 
-    return [
-        'account' =>
-            [
+    return array(
+        'account'     =>
+            array(
                 'title'                     => 'Mijn account',
                 'current_password_invalid'  => 'Het huidige wachtwoord is incorrect.',
                 'updated'                   => 'Accountinformatie bijgewerkt.',
@@ -23,7 +23,7 @@
                 'last_login_from'           => ':timestamp vanaf :ip',
                 'errors_occurred'           => 'Er is een fout opgetreden.|Er zijn meerdere fouten opgetreden.',
                 '2fa'                       =>
-                    [
+                    array(
                         'title'                => 'Tweeledige verificatie',
                         'off'                  => 'Uit',
                         'on'                   => 'Aan',
@@ -44,11 +44,23 @@ Bekende authenticatie-apps zijn OTP Auth voor iOS, Google Authenticator voor And
                         'disable_warning'      => 'Om tweeledige verificatie opnieuw in te schakelen, zal u al uw apparaten opnieuw moeten instellen',
                         'missing_secret'       => 'Geheime sleutel mist in aanvraag',
                         'invalid_key'          => 'Code ongeldig',
-                    ],
-            ],
-        'rank'    =>
-            [
+                    ),
+            ),
+        'rank'        =>
+            array(
                 'member' => 'Gebruiker',
                 'admin'  => 'Administrator',
-            ],
-    ];
+            ),
+        'preferences' =>
+            array(
+                'updated'               => 'Voorkeuren bijgewerkt',
+                'title'                 => 'Voorkeuren',
+                'embed_name'            => 'Weergavenaam bij ingesloten afbeeldingen',
+                'embed_name_help'       => 'In verschillende chatapplicaties zoals Discord en Slack kunnen afbeeldingen al worden weergegeven in de applicatie zelf. Hierbij komt ook de naam van de auteur te staan. Deze naam is aanpasbaar.',
+                'embed_name_url'        => 'URL gekoppeld aan ingesloten naam',
+                'embed_name_url_help'   => 'Wanneer de naam van de auteur wordt weergegeven, is het mogelijk om deze te koppelen aan een aangepaste URL voor wanneer men op deze naam klikt.',
+                'twitter_username'      => 'Twitter-gebruikersnaam',
+                'twitter_username_help' => 'Het is mogelijk om links naar afbeeldingen te delen op Twitter. Deze zullen dan worden weergegeven in Twitter-cards. Het is mogelijk om deze cards te linken aan je eigen Twitter-account.',
+                'save'                  => 'Opslaan',
+            ),
+    );

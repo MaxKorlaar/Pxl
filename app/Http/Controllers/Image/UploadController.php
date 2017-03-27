@@ -50,10 +50,7 @@
                 ]);
             }
 
-            dd($image->getUrlToImage());
-
             return back()->with('success', trans('upload.success.with_url', ['url' => $user->prefers_preview_link ? $image->getUrlToImagePreview() : $image->getUrlToImage()]));
-            //dd($request->file('file'), $request->file('file')->extension());
         }
 
     }

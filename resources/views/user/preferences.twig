@@ -39,6 +39,17 @@
                             {{ trans('user.preferences.twitter_username_help') }}
                         </p>
                     </div>
+                    <div class="switch col s12">
+                        <label>
+                            {{ trans('user.preferences.default_url_exclude_gallery_extension') }}
+                            <input name="prefers_preview_link" value="1" {{ old('prefers_preview_link', user.prefers_preview_link) ? 'checked' }} type="checkbox">
+                            <span class="lever"></span>
+                            {{ trans('user.preferences.default_url_include_gallery_extension') }}
+                        </label>
+                        <p class="help">
+                            {{ trans('user.preferences.default_url_help') }}
+                        </p>
+                    </div>
                     <div class="input-field col s12">
                         <button class="btn waves-effect waves-light" type="submit" name="action">{{ trans('user.preferences.save') }}
                             <i class="material-icons right">save</i>

@@ -117,6 +117,7 @@
         public function updatePreferences(UpdatePreferences $request) {
             $account = Auth::user();
             $account->fill($request->only(['embed_name', 'embed_name_url', 'twitter_username']));
+            $account->prefers_preview_link = $request->has('prefers_preview_link');
             $account->saveOrFail();
             return back()->with('success', trans('user.preferences.updated'));
         }

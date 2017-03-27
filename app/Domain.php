@@ -5,27 +5,27 @@
     use Illuminate\Database\Eloquent\Model;
 
     /**
- * Class Domain
- *
- * @package App
- * @property int                                                        $id
- * @property string                                                     $domain
- * @property string                                                     $protocol
- * @property string                                                     $user
- * @property \Carbon\Carbon                                             $created_at
- * @property \Carbon\Carbon                                             $updated_at
- * @method static \Illuminate\Database\Query\Builder|\App\Domain whereCreatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Domain whereDomain($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Domain whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Domain whereProtocol($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Domain whereUpdatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Domain whereUser($value)
- * @mixin \Eloquent
- * @property-read \App\User                                             $ownedBy
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Image[] $images
- * @property string                                                     $domain_id
- * @method static \Illuminate\Database\Query\Builder|\App\Domain whereDomainId($value)
- */
+     * Class Domain
+     *
+     * @package App
+     * @property int                                                        $id
+     * @property string                                                     $domain
+     * @property string                                                     $protocol
+     * @property string                                                     $user
+     * @property \Carbon\Carbon                                             $created_at
+     * @property \Carbon\Carbon                                             $updated_at
+     * @method static \Illuminate\Database\Query\Builder|\App\Domain whereCreatedAt($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\Domain whereDomain($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\Domain whereId($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\Domain whereProtocol($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\Domain whereUpdatedAt($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\Domain whereUser($value)
+     * @mixin \Eloquent
+     * @property-read \App\User                                             $ownedBy
+     * @property-read \Illuminate\Database\Eloquent\Collection|\App\Image[] $images
+     * @property string                                                     $domain_id
+     * @method static \Illuminate\Database\Query\Builder|\App\Domain whereDomainId($value)
+     */
     class Domain extends Model {
         protected $uploadedFile;
         /**

@@ -26,7 +26,7 @@ $('form').on('submit', function (e) {
                             $('.login-credentials').addClass('hide');
                             $('.twoFactor-wrapper').removeClass('hide');
                         }
-                    } else if(data.twoFactor === 'invalid') {
+                    } else if (data.twoFactor === 'invalid') {
                         Materialize.toast(data.error, 10000);
                         $('#2fa_key').addClass('invalid');
                     }

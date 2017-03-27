@@ -1,12 +1,14 @@
 <?php
 
-    return [
+    return array(
         'dropdown_greeting' => 'Hallo, :name!',
         'my_account'        => 'Mijn account',
         'log_out'           => 'Log uit',
         'administration'    => 'Administratie',
         'admin'             =>
-            [
-                'users' => 'Gebruikers',
-            ],
-    ];
+            array(
+                'users'   => 'Gebruikers',
+                'domains' => 'Domeinnamen',
+            ),
+        'preferences'       => 'Voorkeuren',
+    );

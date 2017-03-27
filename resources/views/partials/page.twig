@@ -14,9 +14,9 @@
         {% block content %}
         {% endblock %}
     </div>
-{% block footer %}
-    {% include 'partials/footer.twig' %}
-{% endblock %}
+    {% block footer %}
+        {% include 'partials/footer.twig' %}
+    {% endblock %}
 {% block scripts %}
     <script src="{{ asset('js/app.js?v=1.0') }}"></script>
 {% endblock %}
