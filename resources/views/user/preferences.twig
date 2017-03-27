@@ -50,6 +50,25 @@
                             {{ trans('user.preferences.default_url_help') }}
                         </p>
                     </div>
+                    {% if user.domains().getResults().empty() %}
+                        <div class="card yellow red-text center-align col s12">
+                            <div class="card-content center-align">
+                                <span class="material-icons left">warning</span>
+                                <p class="center-align">{{ trans('user.preferences.no_domains_available') }}</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <div class="input-field col s12">
+                        <select name="default_domain" id="default_domain">
+                            {% for domain in user.domains().getResults() %}
+                                <option value="{{ domain.id }}" {{ domain.id == user.default_domain ? 'selected' }}>{{ domain.domain }}</option>
+                            {% endfor %}
+                        </select>
+                        <label for="default_domain">{{ trans('user.preferences.default_domain') }}</label>
+                        {% if(errors.has('default_domain')) %}
+                            <p class="red-text">{{ errors.first('default_domain')|capitalize }}</p>
+                        {% endif %}
+                    </div>
                     <div class="input-field col s12">
                         <button class="btn waves-effect waves-light" type="submit" name="action">{{ trans('user.preferences.save') }}
                             <i class="material-icons right">save</i>

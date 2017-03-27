@@ -1,8 +1,8 @@
 <?php
 
-    return array(
+    return [
         'account'     =>
-            array(
+            [
                 'title'                     => 'Mijn account',
                 'current_password_invalid'  => 'Het huidige wachtwoord is incorrect.',
                 'updated'                   => 'Accountinformatie bijgewerkt.',
@@ -23,7 +23,7 @@
                 'last_login_from'           => ':timestamp vanaf :ip',
                 'errors_occurred'           => 'Er is een fout opgetreden.|Er zijn meerdere fouten opgetreden.',
                 '2fa'                       =>
-                    array(
+                    [
                         'title'                => 'Tweeledige verificatie',
                         'off'                  => 'Uit',
                         'on'                   => 'Aan',
@@ -44,15 +44,15 @@ Bekende authenticatie-apps zijn OTP Auth voor iOS, Google Authenticator voor And
                         'disable_warning'      => 'Om tweeledige verificatie opnieuw in te schakelen, zal u al uw apparaten opnieuw moeten instellen',
                         'missing_secret'       => 'Geheime sleutel mist in aanvraag',
                         'invalid_key'          => 'Code ongeldig',
-                    ),
-            ),
+                    ],
+            ],
         'rank'        =>
-            array(
+            [
                 'member' => 'Gebruiker',
                 'admin'  => 'Administrator',
-            ),
+            ],
         'preferences' =>
-            array(
+            [
                 'updated'                               => 'Voorkeuren bijgewerkt',
                 'title'                                 => 'Voorkeuren',
                 'embed_name'                            => 'Weergavenaam bij ingesloten afbeeldingen',
@@ -65,5 +65,5 @@ Bekende authenticatie-apps zijn OTP Auth voor iOS, Google Authenticator voor And
                 'default_url_exclude_gallery_extension' => 'Standaard URL direct naar afbeelding',
                 'default_url_include_gallery_extension' => 'Standaard URL naar voorvertoning van afbeelding',
                 'default_url_help'                      => 'Het is mogelijk om na het uploaden van een afbeelding direct een URL te krijgen naar de afbeelding zelf, of naar een voorvertoningspagina welke de afbeelding bevat.',
-            ),
-    );
+            ],
+    ];

@@ -2,6 +2,7 @@
 
     namespace App\Http\Controllers\User;
 
+    use App\Domain;
     use App\Http\Controllers\Controller;
     use App\Http\Requests\User\DeleteAccount;
     use App\Http\Requests\User\Enable2FA;
@@ -118,6 +119,15 @@
             $account = Auth::user();
             $account->fill($request->only(['embed_name', 'embed_name_url', 'twitter_username']));
             $account->prefers_preview_link = $request->has('prefers_preview_link');
+
+            /** @var Domain $domain */
+            $domain = Domain::find($request->default_domain);
+            if ($domain == null || $domain->user != $account->id) {
+                return back()->withErrors([
+                    'default_domain' => trans('user.preferences.domain_not_found')
+                ]);
+            }
+            $account->default_domain = $domain->id;
             $account->saveOrFail();
             return back()->with('success', trans('user.preferences.updated'));
         }

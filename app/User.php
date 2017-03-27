@@ -158,6 +158,13 @@
         }
 
         /**
+         * @return \Illuminate\Database\Eloquent\Relations\HasMany
+         */
+        function domains() {
+            return $this->hasMany('App\Domain', 'user');
+        }
+
+        /**
          * Get the format for database stored dates.
          *
          * @return string

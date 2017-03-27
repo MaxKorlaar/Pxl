@@ -1,8 +1,8 @@
 <?php
 
-    return array(
+    return [
         'users'   =>
-            array(
+            [
                 'title'         => 'Gebruikers',
                 'id'            => 'ID',
                 'username'      => 'Gebruikersnaam',
@@ -13,7 +13,7 @@
                 'no_users'      => 'Geen gebruikers',
                 'deleted'       => 'Gebruiker verwijderd',
                 'edit'          =>
-                    array(
+                    [
                         'title'               => 'Gebruiker bewerken: :name',
                         'account_enabled'     => 'Account ingeschakeld',
                         'account_disabled'    => 'Account uitgeschakeld',
@@ -28,10 +28,10 @@
                         'deletion_warning'    => 'Waarschuwing: Het verwijderen van het account van :user kan niet ongedaan worden gemaakt',
                         'updated'             => 'Gebruikersinformatie bijgewerkt',
                         'errors_occurred'     => 'Er is een fout opgetreden.|Er zijn meerdere fouten opgetreden.',
-                    ),
-            ),
+                    ],
+            ],
         'domains' =>
-            array(
+            [
                 'added'           => 'Domein toegevoegd',
                 'deleted'         => 'Domein verwijderd',
                 'title'           => 'Domeinnamen',
@@ -43,11 +43,11 @@
                 'errors_occurred' => 'Er is een fout opgetreden.|Er zijn meerdere fouten opgetreden.',
                 'domain'          => 'Domein',
                 'protocol'        =>
-                    array(
+                    [
                         'http'     => 'http',
                         'https'    => 'https',
                         'protocol' => 'Protocol',
-                    ),
+                    ],
                 'create'          => 'Toevoegen',
-            ),
-    );
+            ],
+    ];

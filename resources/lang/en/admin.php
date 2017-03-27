@@ -1,14 +1,14 @@
 <?php
 
-    return array(
+    return [
         'users'   =>
-            array(
+            [
                 'administrator' => 'Administrator account. This account has more privileges',
                 'deleted'       => 'User deleted',
                 'disabled'      => 'User account disabled',
                 'edit_user'     => 'Edit user',
                 'edit'          =>
-                    array(
+                    [
                         '2fa_disabled'        => 'Two-factor-authentication disabled',
                         '2fa_enabled'         => 'Two-factor-authentication enabled',
                         '2fa_user'            => 'Only the user can enable two-factor-authentication, because this has to be set up using authentication apps owned by the user.',
@@ -21,15 +21,15 @@
                         'errors_occurred'     => 'An error has occurred. Please correct this error.|Errors have occurred, please correct these errors.',
                         'title'               => 'Edit user: :name',
                         'updated'             => 'User information updated',
-                    ),
+                    ],
                 'id'            => 'ID',
                 'last_login'    => 'Last login',
                 'no_users'      => 'No users',
                 'title'         => 'Users',
                 'username'      => 'Username',
-            ),
+            ],
         'domains' =>
-            array(
+            [
                 'added'           => 'Domain added',
                 'create'          => 'Add',
                 'delete_domain'   => 'Remove domain',
@@ -41,11 +41,11 @@
                 'no_domains'      => 'No domains',
                 'owner'           => 'Owner',
                 'protocol'        =>
-                    array(
+                    [
                         'http'     => 'http',
                         'https'    => 'https',
                         'protocol' => 'Protocol',
-                    ),
+                    ],
                 'title'           => 'Domains',
-            ),
-    );
+            ],
+    ];

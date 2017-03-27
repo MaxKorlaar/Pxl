@@ -31,7 +31,8 @@
                 'embed_name'           => 'string|nullable|max:255',
                 'embed_name_url'       => 'url|nullable|max:1024',
                 'twitter_username'     => 'string|nullable|max:16',
-                'prefers_preview_link' => 'boolean'
+                'prefers_preview_link' => 'boolean',
+                'default_domain'       => 'required|integer|min:1'
             ];
         }
     }
