@@ -4,6 +4,7 @@
 
     use Illuminate\Database\Eloquent\Model;
     use Illuminate\Database\Eloquent\SoftDeletes;
+    use Illuminate\Http\Response;
     use Illuminate\Http\UploadedFile;
     use Illuminate\Support\Facades\Storage;
 
@@ -47,7 +48,7 @@
         use SoftDeletes;
         /** @var UploadedFile $uploadedFile */
         protected $uploadedFile;
-        /** @var \Intervention\Image\Facades\Image $imageObject */
+        /** @var \InterventionImage $imageObject */
         protected $imageObject;
         /**
          * The attributes that should be hidden for arrays.
@@ -166,6 +167,19 @@
         public function height() {
             $this->makeImage();
             return $this->imageObject->height();
+        }
+
+        /**
+         * @return Response
+         */
+        public function getThumbnail() {
+            return \InterventionImage::cache(function ($image) {
+                /** @var \InterventionImage $image */
+                $image->make(Storage::get($this->pathToFile()))->fit(400, 400, function ($constraint) {
+                    /** @var \Intervention\Image\Constraint $constraint */
+                    $constraint->upsize();
+                });
+            }, 120, true)->response();
         }
 
         /**

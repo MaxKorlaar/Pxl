@@ -61,6 +61,7 @@
     Route::group(['middleware' => ['auth']], function () {
         Route::get('upload', 'Image\UploadController@getFormView')->name('upload');
         Route::post('upload', 'Image\UploadController@uploadImage')->name('do_upload');
+        Route::get('gallery/thumb/{image_url}', 'Image\ImageController@getThumbnail')->name('image_thumbnail');
     });
 
     Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin/', 'middleware' => ['auth', 'admin']], function () {

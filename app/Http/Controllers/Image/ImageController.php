@@ -106,4 +106,16 @@
 
         }
 
+        /**
+         * @param Request $request
+         * @param         $imageUrl
+         *
+         * @return \Illuminate\Http\Response
+         */
+        function getThumbnail(Request $request, $imageUrl) {
+            /** @var Image $image */
+            list($image, $domain, $author) = $this->getImageMeta($imageUrl);
+            return $image->getThumbnail();
+        }
+
     }
