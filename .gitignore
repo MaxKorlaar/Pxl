@@ -10,3 +10,4 @@ Homestead.yaml
 _ide_helper.php
 *.lock
 .DS_STORE
+npm-debug.log
