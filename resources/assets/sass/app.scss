@@ -30,3 +30,52 @@ nav .brand-logo {
 .token {
   word-wrap: break-word;
 }
+
+.terminal-view {
+  display: block;
+  padding: 1em;
+  border-radius: 6px;
+  border-top: #E1E1E1 22px solid;
+}
+
+.terminal-view .close-btn-wrapper {
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+.terminal-view .close-btn-wrapper > .close-btn {
+  content: " ";
+  display: block;
+  position: absolute;
+  left: -0.5em;
+  top: -32px;
+  background: rgb(252, 99, 93);
+  border-radius: 100%;
+  width: 13px;
+  height: 13px;
+}
+
+.terminal-view .close-btn-wrapper > .min-btn {
+  content: " ";
+  display: block;
+  position: absolute;
+  left: 0.9em;
+  top: -32px;
+  background: rgb(254, 192, 65);
+  border-radius: 100%;
+  width: 13px;
+  height: 13px;
+}
+
+.terminal-view .close-btn-wrapper > .fullscreen-btn {
+  content: " ";
+  display: block;
+  position: absolute;
+  left: 2.3em;
+  top: -32px;
+  background: rgb(53, 205, 75);
+  border-radius: 100%;
+  width: 13px;
+  height: 13px;
+}

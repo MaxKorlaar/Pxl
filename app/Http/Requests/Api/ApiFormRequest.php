@@ -20,7 +20,8 @@
          */
         public function response(array $errors) {
 
-            if ($this->expectsJson() || $this->get('return', false) == 'json') { // Return JSON when expected via 'Accept: application/json' header or ?return=json in the url
+            if ($this->expectsJson() || $this->get('return', false) == 'json' || $this->get('return', false) == 'json_on_error') {
+                // Return JSON when expected via 'Accept: application/json' header or ?return=json, ?return=json_on_error in the url
                 return new JsonResponse($errors, 422);
             }
 

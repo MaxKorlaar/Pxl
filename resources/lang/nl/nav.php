@@ -11,4 +11,5 @@
                 'domains' => 'Domeinnamen',
             ],
         'preferences'       => 'Voorkeuren',
+        'upload'            => 'Uploaden'
     ];

@@ -66,7 +66,6 @@
         Route::get('gallery/thumb/{image_url}', 'Image\ImageController@getThumbnail')->name('image_thumbnail');
     });
 
-
     Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin/', 'middleware' => ['auth', 'admin']], function () {
 
         Route::get('users', 'UserController@getView')->name('users');
@@ -87,6 +86,9 @@
 
         })->name('settings');
     });
+
+    Route::get('help/setup', 'Help\HelpController@getSetupHelpView')->name('setup_help');
+
     Route::get('{image_url}.{extension}', 'Image\ImageController@getImageFromUrl')->name('image_request');
     Route::get('{image_url}', 'Image\ImageController@getPreviewPage')->name('image_preview_request');
     Route::get('meta/oEmbed/{image_url}', 'Image\ImageController@getOEmbed')->name('meta/oEmbed');

@@ -1,0 +1,60 @@
+{% extends 'partials/page.twig' %}
+{% block title %}{{ trans('help.setup.title') }}{% endblock %}
+{% block content %}
+    <div class="section">
+        <div class="row">
+            <div class="col s12">
+                <h1>{{ trans('help.setup.title') }}</h1>
+                <h3>{{ trans('help.setup.sharex.heading') }}</h3>
+                <p>
+                    {{ trans('help.setup.sharex.instructions') }}
+                    //TODO: Link that can be pasted in ShareX (ShareX allows custom configurations to be imported via URL, expects JSON)//
+                </p>
+                <h3>{{ trans('help.setup.curl.heading') }}</h3>
+                <p>
+                    {{ trans('help.setup.curl.instructions') }}
+                </p>
+                <code class="darken-4 grey white-text terminal-view">
+                    <span class="close-btn-wrapper"><span class="close-btn"></span><span class="min-btn"></span><span class="fullscreen-btn"></span></span>
+                    <span class="light-blue-text">{{ user.username|default('Max') }}</span>@<span class="green-text">MacBook-Pro:</span><span class="yellow-text">Pxl</span>$ curl -F "upload-token={{ user.upload_token|default('LOG_IN_TO_SEE_YOUR_TOKEN') }}" -F "user={{ user.id|default('LOG_IN') }}"
+                    -H "Accept: application/json" -F "file=@/direct/path/to/file.png" {{ route('api/upload') }}
+                </code>
+                <h3>{{ trans('help.setup.data.heading') }}</h3>
+                <p>
+                    {{ trans('help.setup.data.instructions') }}
+                </p>
+                <table>
+                    <tbody>
+                    <tr>
+                        <td><b>{{ trans('help.setup.data.target') }}</b></td>
+                        <td>
+                            <code>{{ route('api/upload') }}</code>
+                            <p>{{ trans('help.setup.data.target_help') }}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>{{ trans('help.setup.data.method') }}</b></td>
+                        <td><code>POST</code></td>
+                    </tr>
+                    <tr>
+                        <td><b>user</b></td>
+                        <td><code>{{ user.id|default(trans('help.setup.data.log_in')) }}</code></td>
+                    </tr>
+                    <tr>
+                        <td><b>upload-key</b></td>
+                        <td><code>{{ user.upload_token|default(trans('help.setup.data.log_in')) }}</code></td>
+                    </tr>
+                    <tr>
+                        <td><b>file</b></td>
+                        <td>{{ trans('help.setup.data.file') }}</code></td>
+                    </tr>
+                    <tr>
+                        <td><b>name</b></td>
+                        <td>{{ trans('help.setup.data.name') }}</code></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

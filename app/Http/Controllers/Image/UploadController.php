@@ -46,13 +46,18 @@
                 response(['success' => false, 'error' => trans('upload.failed.could_not_save_image')], 422);
             }
 
-            return response([
-                'success'     => true,
-                'url'         => $user->prefers_preview_link ? $image->getUrlToImagePreview() : $image->getUrlToImage(),
-                'image_url'   => $image->getUrlToImage(),
-                'preview_url' => $image->getUrlToImagePreview(),
-                'name'        => $image->name
-            ], 422);
+            if ($request->get('return', false) == 'json_on_error') {
+                return response($user->prefers_preview_link ? $image->getUrlToImagePreview() : $image->getUrlToImage(), 200);
+            } else {
+                return response([
+                    'success'     => true,
+                    'url'         => $user->prefers_preview_link ? $image->getUrlToImagePreview() : $image->getUrlToImage(),
+                    'image_url'   => $image->getUrlToImage(),
+                    'preview_url' => $image->getUrlToImagePreview(),
+                    'name'        => $image->name
+                ], 200);
+            }
+
         }
 
         /**

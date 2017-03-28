@@ -41,8 +41,13 @@
                             </div>
                         </div>
                     {% endif %}
-                    <button type="submit" class="btn btn-waves-effect green waves-green">{{ trans('upload.upload') }}</button>
+                    <button type="submit" class="btn btn-waves-effect green waves-green"><i class="material-icons left">cloud_upload</i>{{ trans('upload.upload') }}</button>
                 </form>
+                <h3>{{ trans('upload.software.heading') }}</h3>
+                <p>
+                    {{ trans('upload.software.description') }}
+                </p>
+                <a href="{{ route('setup_help') }}" class="btn blue btn-waves waves-blue"><i class="material-icons left">help</i>{{ trans('upload.setup_help') }}</a>
             </div>
         </div>
     </div>

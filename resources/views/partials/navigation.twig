@@ -1,6 +1,11 @@
 <nav class="green lighten-1" role="navigation">
     <div class="nav-wrapper">
         <a href="{{ route('home') }}"><img class="brand-logo center" src="{{ asset('img/logo/Px-logo-cut-small.png') }}"></a>
+        <ul class="left hide-on-med-and-down">
+            {% if auth_user() %}
+                <li><a href="{{ route('upload') }}"><i class="material-icons left">cloud_upload</i> {{ trans('nav.upload') }}</a></li>
+            {% endif %}
+        </ul>
         <ul class="right hide-on-med-and-down">
             {% if auth_user() %}
                 {% if auth_user().isAdmin() %}
