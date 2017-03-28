@@ -45,6 +45,10 @@ Bekende authenticatie-apps zijn OTP Auth voor iOS, Google Authenticator voor And
                         'missing_secret'       => 'Geheime sleutel mist in aanvraag',
                         'invalid_key'          => 'Code ongeldig',
                     ],
+                'upload_token_reset'        => 'De upload-token is gereset',
+                'upload_token'              => 'Upload-token',
+                'upload_token_warning'      => 'Deze upload-token is gekoppeld aan jouw account en dient als geheim te worden beschouwd. Deel deze code net zo min als dat je je wachtwoorden zou delen! Deze code is vereist om afbeeldingen te uploaden zonder ingelogd te zijn op de website, bijvoorbeeld door een applicatie.',
+                'reset_upload_token'        => 'Reset upload-token',
             ],
         'rank'        =>
             [
@@ -66,5 +70,7 @@ Bekende authenticatie-apps zijn OTP Auth voor iOS, Google Authenticator voor And
                 'default_url_include_gallery_extension' => 'Standaard URL naar voorvertoning van afbeelding',
                 'default_url_help'                      => 'Het is mogelijk om na het uploaden van een afbeelding direct een URL te krijgen naar de afbeelding zelf, of naar een voorvertoningspagina welke de afbeelding bevat.',
                 'no_domains_available'                  => 'Geen domeinnamen beschikbaar',
+                'domain_not_found'                      => 'Het domein kan niet gevonden worden',
+                'default_domain'                        => 'Standaard domein',
             ],
     ];

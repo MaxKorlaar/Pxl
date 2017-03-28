@@ -36,8 +36,8 @@
          */
         public function getEditView(Request $request, User $user) {
             return view('admin.users.edit', [
-                'user'    => $user,
-                'domains' => Domain::all(),
+                'user'                => $user,
+                'domains'             => Domain::all(),
                 'upload_token_masked' => substr($user->upload_token, 0, 10) . '**********'
             ]);
         }
@@ -83,6 +83,20 @@
          * @param Request $request
          * @param User    $user
          *
+         * @return \Illuminate\Http\RedirectResponse
+         */
+        public function resetToken(Request $request, User $user) {
+            $user->upload_token = $user->id . str_random(60);
+            $user->delete_token = $user->id . str_random(60);
+            $user->saveOrFail();
+            return back()->with('success', trans('admin.users.edit.upload_token_reset'));
+        }
+
+
+        /**
+         * @param Request $request
+         * @param User    $user
+         *
          * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
          */
         public function getDeleteView(Request $request, User $user) {
@@ -90,6 +104,7 @@
                 'user' => $user
             ]);
         }
+
 
         /**
          * @param Request $request

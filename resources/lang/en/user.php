@@ -42,6 +42,10 @@ Well known authentication apps are OTP Auth for iOS, Google Authenticator for An
                         'validate'             => 'Validate',
                     ],
                 'errors_occurred'           => 'An error has occurred. Please correct this error.|Errors have occurred, please correct these errors.',
+                'reset_upload_token'        => 'Reset upload token',
+                'upload_token'              => 'Upload token',
+                'upload_token_reset'        => 'The upload token has been reset',
+                'upload_token_warning'      => 'This upload token is linked to your account and should be considered secret. Do not share this token with anyone you would not share your password with! This code is required and serves as authentication when uploading pictures via external applications or when not logged into the site.',
             ],
         'rank'        =>
             [
@@ -63,5 +67,7 @@ Well known authentication apps are OTP Auth for iOS, Google Authenticator for An
                 'default_url_include_gallery_extension' => 'Link to image preview page by default',
                 'embed_name'                            => 'Display name added to embedded images',
                 'no_domains_available'                  => 'No domains available',
+                'default_domain'                        => 'Default domain',
+                'domain_not_found'                      => 'The domain cannot be found',
             ],
     ];

@@ -27,7 +27,12 @@
                     <b>{{ trans('user.account.type') }}: </b> {{ trans('user.rank.' ~ user.rank) }}<br/>
                     <b>{{ trans('user.account.created_at') }}:</b> {{ user.created_at|date(trans('datetime.format.date_and_time')) }}<br/>
                     <b>{{ trans('user.account.last_login') }}:</b> {{ trans('user.account.last_login_from', {timestamp: user.last_login is null ? trans('datetime.never') : user.last_login|date(trans('datetime.format.date_and_time')), ip: user.last_ip}) }}
-                    <b>{{ trans('user.account.upload_token') }}:</b> {{ upload_token_masked }}
+                    <br/>
+                    <b>{{ trans('user.account.upload_token') }}:</b> <code class="token">{{ upload_token_masked }}</code>
+                    <form method="POST" action="{{ route('admin/reset_token', { user: user }) }}">
+                        {{ csrf_field() }}
+                        <button type="submit" class="btn btn-waves-effect red waves-red">{{ trans('admin.users.edit.reset_upload_token') }}</button>
+                    </form>
                 </div>
                 <div class="col m8 s12 pull-m4">
                     <form method="POST" action="{{ route('admin/update_user', { user: user }) }}">

@@ -47,6 +47,8 @@
                                 'default_url_help'                      => 'Het is mogelijk om na het uploaden van een afbeelding direct een URL te krijgen naar de afbeelding zelf, of naar een voorvertoningspagina welke de afbeelding bevat.',
                             ],
                         'save'                => 'Opslaan',
+                        'upload_token_reset'  => 'De upload-token is gereset',
+                        'reset_upload_token'  => 'Reset upload-token',
                     ],
             ],
         'domains' =>

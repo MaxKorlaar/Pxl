@@ -40,6 +40,8 @@
                                 'no_domains_available'                  => 'No domains available',
                                 'default_domain'                        => 'Default domain',
                             ],
+                        'reset_upload_token'  => 'Reset upload token',
+                        'upload_token_reset'  => 'The upload token has been reset',
                     ],
                 'id'            => 'ID',
                 'last_login'    => 'Last login',
