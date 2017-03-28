@@ -14,12 +14,13 @@ Task list, not in particular order:
 - [x] Login, registration system (public and private)
 - [x] Personal account management
 - [x] List of users
-- [ ] Admin account management
+- [x] Admin account management
 - [ ] Admin site settings (different from the settings in .env)
-- [ ] Image upload support
+- [x] Image upload support
 - [ ] Automatic deletion for images. Default & per-image setting. (A personal favourite, must have for limited space)
 - [ ] Gallery
-- [ ] Preferences per user - This would include default automatic deletion time.
+- [x] Preferences per user
+- [ ] Automatic deletion time default per user
 - [ ] View others' galleries (as admin, make it an option?)
 - [ ] Custom domain support, custom storage location support (This will be difficult with Laravel.
 It would be possible to set up your webserver to link a specific directory to a specific domain,
@@ -27,10 +28,10 @@ but additional configuration **will** be required for setting up preview pages -
 - [ ] Image preview page, somehow linked to that custom location most likely
 - [ ] Image preview page that can be overridden via template. Custom template name or database?
 - [ ] ShareX support via copy/paste JSON-based config
-- [ ] Access tokens for users, resettable. Required for uploading
+- [x] Access tokens for users, resettable. Required for uploading
 - [ ] JSON-based API for simple requests, mostly for ShareX support
-- [ ] Social media metadata on the image preview page (OpenGraph, oEmbed)
-- [ ] Account deletion (Admin setting?)
+- [x] Social media metadata on the image preview page (OpenGraph, oEmbed)
+- [x] Account deletion ~~(Admin setting?)~~
 - [ ] Enforce limits on accounts? Images / space / etc?
 - [ ] Amazon S3 support via Laravel (Maybe?)
 - [ ] Pxl-goodbye: Zip download of all your data? (Note:
