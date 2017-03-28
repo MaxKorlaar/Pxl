@@ -4,6 +4,7 @@
 
     use App\Domain;
     use App\Http\Controllers\Controller;
+    use App\Http\Requests\Admin\NewUser;
     use App\Http\Requests\Admin\UpdateUser;
     use App\User;
     use Illuminate\Http\Request;
@@ -77,6 +78,32 @@
 
             $user->saveOrFail();
             return back()->with('success', trans('admin.users.edit.updated'));
+        }
+
+        /**
+         * @param Request $request
+         *
+         * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+         */
+        public function getNewUserView(Request $request) {
+            return view('admin.users.new', []);
+        }
+
+        /**
+         * @param NewUser $request
+         */
+        public function newUser(NewUser $request) {
+            $user = new User;
+            $user->fill($request->only(['email', 'username']));
+            $password = str_random(16);
+            $user->setPassword($password);
+            $user->rank         = 'member';
+            $user->id = 1;
+            $user->saveOrFail();
+dd($user);
+            $user->embed_name   = $request->username;
+            $user->upload_token = $user->id . str_random(60);
+            $user->delete_token = $user->id . str_random(60);
         }
 
         /**

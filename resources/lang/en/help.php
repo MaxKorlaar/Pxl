@@ -32,7 +32,7 @@
                         'method'       => 'HTTP method',
                         'name'         => 'This field is not required. If this field is present, its value will be used for naming the image instead of the original filename. The name of the image can be seen in the gallery and when sharing the preview page of the image.',
                         'target'       => 'Target',
-                        'target_help'  => 'Use the header \'Accept: application/json\' to retrieve all errors in JSON. If it is not possible to set headers, you may append \'?return=json\' to the url. If it is not desired to receive the link to the image in a JSON response, add \'?return=json_on_errors\' to receive only a link to the image on success.',
+                        'target_help'  => 'Use the header \'Accept: application/json\' to retrieve all errors in JSON. If it is not possible to set headers, you may append \'?return=json\' to the url. If it is not desired to receive the link to the image in a JSON response, add \'?return=json_on_error\' to receive only a link to the image on success.',
                     ],
             ],
     ];

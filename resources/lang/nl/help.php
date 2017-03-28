@@ -28,7 +28,7 @@
                         'heading'      => 'Aangepaste uploader',
                         'instructions' => 'Om een aangepaste uploader te gebruiken, zijn de volgende gegevens vereist in je aanvraag:',
                         'target'       => 'Doel (target)',
-                        'target_help'  => 'Gebruik de header \'Accept: application/json\' om aan te geven dat alle foutmeldingen in JSON weergegeven moeten worden. Indien het niet mogelijk is om headers in te stellen, is het mogelijk om \'?return=json\' aan het einde van de url toe te voegen. Als het gewenst is om alleen de url naar de afbeelding zelf terug te krijgen als resultaat, zonder JSON, dient \'?return=json_on_errors\' toegevoegd te worden aan de url.',
+                        'target_help'  => 'Gebruik de header \'Accept: application/json\' om aan te geven dat alle foutmeldingen in JSON weergegeven moeten worden. Indien het niet mogelijk is om headers in te stellen, is het mogelijk om \'?return=json\' aan het einde van de url toe te voegen. Als het gewenst is om alleen de url naar de afbeelding zelf terug te krijgen als resultaat, zonder JSON, dient \'?return=json_on_error\' toegevoegd te worden aan de url.',
                         'method'       => 'HTTP-methode',
                         'log_in'       => 'Log in om dit te zien',
                         'file'         => 'Dit is de afbeelding die je wil uploaden',

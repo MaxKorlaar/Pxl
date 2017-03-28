@@ -72,6 +72,9 @@
         Route::get('users/{user}', 'UserController@getEditView')->name('edit_user');
         Route::put('users/{user}', 'UserController@update')->name('update_user');
 
+        Route::get('users/new', 'UserController@newUser')->name('new_user');
+        Route::post('users/new', 'UserController@newUser')->name('create_user');
+
         Route::post('users/{user}/token', 'UserController@resetToken')->name('reset_token');
 
         Route::get('users/{user}/delete', 'UserController@getDeleteView')->name('delete_user');
