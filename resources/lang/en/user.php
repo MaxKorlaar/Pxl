@@ -62,5 +62,6 @@ Well known authentication apps are OTP Auth for iOS, Google Authenticator for An
                 'default_url_help'                      => 'It is possible to get the URL to an image preview page after uploading, or directly to the image itself.',
                 'default_url_include_gallery_extension' => 'Link to image preview page by default',
                 'embed_name'                            => 'Display name added to embedded images',
+                'no_domains_available'                  => 'No domains available',
             ],
     ];

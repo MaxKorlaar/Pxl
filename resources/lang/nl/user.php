@@ -56,7 +56,7 @@ Bekende authenticatie-apps zijn OTP Auth voor iOS, Google Authenticator voor And
                 'updated'                               => 'Voorkeuren bijgewerkt',
                 'title'                                 => 'Voorkeuren',
                 'embed_name'                            => 'Weergavenaam bij ingesloten afbeeldingen',
-                'embed_name_help'                       => 'In verschillende chatapplicaties zoals Discord, Slack en ook WhatsApp kunnen afbeeldingen al worden weergegeven in de applicatie zelf. Hierbij komt ook de naam van de auteur te staan. Deze naam is aanpasbaar.',
+                'embed_name_help'                       => 'In verschillende chatapplicaties zoals Discord en Slack kunnen afbeeldingen al worden weergegeven in de applicatie zelf. Hierbij komt ook de naam van de auteur te staan. Deze naam is aanpasbaar.',
                 'embed_name_url'                        => 'URL gekoppeld aan ingesloten naam',
                 'embed_name_url_help'                   => 'Wanneer de naam van de auteur wordt weergegeven, is het mogelijk om deze te koppelen aan een aangepaste URL voor wanneer men op deze naam klikt.',
                 'twitter_username'                      => 'Twitter-gebruikersnaam',
@@ -65,5 +65,6 @@ Bekende authenticatie-apps zijn OTP Auth voor iOS, Google Authenticator voor And
                 'default_url_exclude_gallery_extension' => 'Standaard URL direct naar afbeelding',
                 'default_url_include_gallery_extension' => 'Standaard URL naar voorvertoning van afbeelding',
                 'default_url_help'                      => 'Het is mogelijk om na het uploaden van een afbeelding direct een URL te krijgen naar de afbeelding zelf, of naar een voorvertoningspagina welke de afbeelding bevat.',
+                'no_domains_available'                  => 'Geen domeinnamen beschikbaar',
             ],
     ];

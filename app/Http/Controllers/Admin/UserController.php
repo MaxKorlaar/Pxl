@@ -2,6 +2,7 @@
 
     namespace App\Http\Controllers\Admin;
 
+    use App\Domain;
     use App\Http\Controllers\Controller;
     use App\Http\Requests\Admin\UpdateUser;
     use App\User;
@@ -35,7 +36,8 @@
          */
         public function getEditView(Request $request, User $user) {
             return view('admin.users.edit', [
-                'user' => $user
+                'user'    => $user,
+                'domains' => Domain::all()
             ]);
         }
 
@@ -58,9 +60,20 @@
                 }
             }
 
-            $user->fill($request->only(['username', 'email']));
-            $user->rank   = $request->rank;
-            $user->active = $request->has('enabled');
+            $user->fill($request->only(['username', 'email', 'embed_name', 'embed_name_url', 'twitter_username']));
+            $user->rank                 = $request->rank;
+            $user->active               = $request->has('enabled');
+            $user->prefers_preview_link = $request->has('prefers_preview_link');
+
+            /** @var Domain $domain */
+            $domain = Domain::find($request->default_domain);
+            if ($domain == null) {
+                return back()->withErrors([
+                    'default_domain' => trans('user.preferences.domain_not_found')
+                ]);
+            }
+            $user->default_domain = $domain->id;
+
             $user->saveOrFail();
             return back()->with('success', trans('admin.users.edit.updated'));
         }

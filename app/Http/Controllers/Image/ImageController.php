@@ -21,6 +21,8 @@
          * @param Request $request
          * @param         $imageUrl
          *
+         * @param         $imageExtension
+         *
          * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
          */
         function getImageFromUrl(Request $request, $imageUrl, $imageExtension) {
