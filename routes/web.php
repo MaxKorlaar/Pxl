@@ -42,9 +42,11 @@
 
     Route::group(['prefix' => 'user', 'namespace' => 'User', 'as' => 'user/', 'middleware' => ['auth']], function () {
         Route::get('gallery', function () {
-            abort(404);
-            // /user/gallery
+            $user = Auth::user();
+            return $user->images()->getResults();
         })->name('gallery');
+        Route::get('gallery/thumb/{image_url}', 'Image\ImageController@getThumbnail')->name('image_thumbnail');
+
         Route::get('account', 'AccountController@getView')->name('account');
         Route::put('account', 'AccountController@update')->name('update_account');
         Route::get('account/delete', 'AccountController@getDeleteView')->name('account_deletion');
@@ -63,7 +65,6 @@
     Route::group(['middleware' => ['auth']], function () {
         Route::get('upload', 'Image\UploadController@getFormView')->name('upload');
         Route::post('upload', 'Image\UploadController@uploadImageFromSite')->name('do_upload');
-        Route::get('gallery/thumb/{image_url}', 'Image\ImageController@getThumbnail')->name('image_thumbnail');
     });
 
     Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin/', 'middleware' => ['auth', 'admin']], function () {
