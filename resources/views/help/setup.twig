@@ -12,8 +12,7 @@
                 </p>
                 {% if user is not null %}
                     <p>
-                        {{ trans('help.setup.sharex.custom_uploader') }}
-                        // Instructions for adding the custom uploader from an url
+                        {{ trans('help.setup.sharex.custom_uploader')|raw }}
                     </p>
                     <code class="token">
                         <a href="{{ route('setup_sharex_config', { user_id: user.id, upload_token: user.upload_token}) }}">
