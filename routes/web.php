@@ -69,11 +69,11 @@
     Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin/', 'middleware' => ['auth', 'admin']], function () {
 
         Route::get('users', 'UserController@getView')->name('users');
+        Route::get('users/new', 'UserController@getNewUserView')->name('new_user');
+        Route::post('users/new', 'UserController@newUser')->name('create_user');
+
         Route::get('users/{user}', 'UserController@getEditView')->name('edit_user');
         Route::put('users/{user}', 'UserController@update')->name('update_user');
-
-        Route::get('users/create', 'UserController@getNewUserView')->name('new_user');
-        Route::post('users/create', 'UserController@newUser')->name('create_user');
 
         Route::post('users/{user}/token', 'UserController@resetToken')->name('reset_token');
 
