@@ -14,4 +14,10 @@
                 'could_not_save_image' => 'The image could not be saved',
                 'no_default_domain'    => 'No default domain has been set up with your account',
             ],
+        'software'        =>
+            [
+                'heading'     => 'Uploading from software',
+                'description' => 'It is possible to upload images from software, without having to be logged in on the website itself.',
+            ],
+        'setup_help'      => 'Setup guide',
     ];

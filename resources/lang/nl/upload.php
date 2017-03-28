@@ -14,4 +14,10 @@
             [
                 'with_url' => 'De afbeelding is succesvol geüpload en te vinden op <a href=\':url\'>:url</a>',
             ],
+        'software'        =>
+            [
+                'heading'     => 'Uploaden vanuit software',
+                'description' => 'Het is mogelijk om afbeeldingen te uploaden vanuit software. Hiervoor is het dan ook niet nodig om ingelogd te zijn op de website zelf.',
+            ],
+        'setup_help'      => 'Hulp bij instellen',
     ];
