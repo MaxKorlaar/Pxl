@@ -26,7 +26,8 @@
          */
         public function rules() {
             return [
-                'file' => 'required|file|image'
+                'file' => 'required|file|image',
+                //'name' => 'string|nullable|max:256'
             ];
         }
     }

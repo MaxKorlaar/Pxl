@@ -27,6 +27,7 @@
                     <b>{{ trans('user.account.type') }}: </b> {{ trans('user.rank.' ~ user.rank) }}<br/>
                     <b>{{ trans('user.account.created_at') }}:</b> {{ user.created_at|date(trans('datetime.format.date_and_time')) }}<br/>
                     <b>{{ trans('user.account.last_login') }}:</b> {{ trans('user.account.last_login_from', {timestamp: user.last_login is null ? trans('datetime.never') : user.last_login|date(trans('datetime.format.date_and_time')), ip: user.last_ip}) }}
+                    <b>{{ trans('user.account.upload_token') }}:</b> {{ upload_token_masked }}
                 </div>
                 <div class="col m8 s12 pull-m4">
                     <form method="POST" action="{{ route('admin/update_user', { user: user }) }}">
@@ -86,7 +87,6 @@
                                 <input id="new_password_confirmation" name="new_password_confirmation" value="{{ old('new_password_confirmation') }}" type="password" class="validate {{ errors.has('new_password_confirmation') ? 'invalid' : '' }}">
                                 <label for="new_password_confirmation" class="{{ errors.has('new_password_confirmation') ? 'active' : '' }}" data-error="{{ errors.first('new_password_confirmation')|capitalize }}">{{ trans('user.account.new_password_confirmation') }}</label>
                             </div>
-
                         </div>
                         <div class="row">
                             <div class="col s12">
@@ -131,7 +131,6 @@
                                     <p class="red-text">{{ errors.first('default_domain')|capitalize }}</p>
                                 {% endif %}
                             </div>
-
                             <div class="input-field col s12">
                                 <button class="btn waves-effect waves-light" type="submit" name="action">{{ trans('admin.users.edit.save') }}
                                     <i class="material-icons right">save</i>

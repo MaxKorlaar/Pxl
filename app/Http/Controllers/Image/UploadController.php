@@ -27,7 +27,7 @@
          *
          * @return \Illuminate\Http\RedirectResponse
          */
-        public function uploadImage(Upload $request) {
+        public function uploadImageFromSite(Upload $request) {
             /** @var User $user */
             $user   = $request->user();
             $domain = Domain::find($user->default_domain);

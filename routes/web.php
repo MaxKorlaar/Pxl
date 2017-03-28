@@ -56,11 +56,13 @@
         Route::get('account/2fa', 'AccountController@get2faSetupView')->name('2fa_setup');
         Route::post('account/2fa', 'AccountController@finish2faSetup')->name('2fa_confirm');
         Route::delete('account/2fa', 'AccountController@disable2fa')->name('2fa_disable');
+
+        Route::post('account/token', 'AccountController@resetToken')->name('reset_token');
     });
 
     Route::group(['middleware' => ['auth']], function () {
         Route::get('upload', 'Image\UploadController@getFormView')->name('upload');
-        Route::post('upload', 'Image\UploadController@uploadImage')->name('do_upload');
+        Route::post('upload', 'Image\UploadController@uploadImageFromSite')->name('do_upload');
         Route::get('gallery/thumb/{image_url}', 'Image\ImageController@getThumbnail')->name('image_thumbnail');
     });
 

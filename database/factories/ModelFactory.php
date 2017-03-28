@@ -24,6 +24,8 @@
             'active'         => $faker->boolean,
             'rank'           => $faker->boolean ? 'member' : 'admin',
             'remember_token' => str_random(10),
+            'upload_token'   => str_random(60),
+            'delete_token'   => str_random(60)
         ];
     });
     $factory->define(App\Domain::class, function (Faker\Generator $faker) {

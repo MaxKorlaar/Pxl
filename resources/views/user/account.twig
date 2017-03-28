@@ -17,6 +17,14 @@
             <b>{{ trans('user.account.type') }}: </b> {{ trans('user.rank.' ~ user.rank) }}<br/>
             <b>{{ trans('user.account.created_at') }}:</b> {{ user.created_at|date(trans('datetime.format.date_and_time')) }}<br/>
             <b>{{ trans('user.account.last_login') }}:</b> {{ trans('user.account.last_login_from', {timestamp: user.last_login|date(trans('datetime.format.date_and_time')), ip: user.last_ip}) }}
+            <br/>
+            <b>{{ trans('user.account.upload_token') }}:</b> {{ user.upload_token }}
+            <p class="help">{{ trans('user.account.upload_token_warning') }}</p>
+            <form method="POST" action="{{ route('user/reset_token') }}">
+                {{ csrf_field() }}
+                <button type="submit" class="btn btn-waves-effect red waves-red" >{{ trans('user.account.reset_upload_token') }}</button>
+            </form>
+
             <h4>{{ trans('user.account.2fa.title') }}
                 <span class="badge {{ user.hasTwoFactorAuth() ? 'green' : 'red' }} white-text">{{ user.hasTwoFactorAuth() ? trans('user.account.2fa.on') : trans('user.account.2fa.off') }}</span>
             </h4>

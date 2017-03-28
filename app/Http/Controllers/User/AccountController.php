@@ -195,4 +195,15 @@
             return back()->with('success', trans('user.account.2fa.has_been_disabled'));
         }
 
+        /**
+         * @return \Illuminate\Http\RedirectResponse
+         */
+        public function resetToken() {
+            $account                 = Auth::user();
+            $account->upload_token = $account->id . str_random(60);
+            $account->delete_token = $account->id . str_random(60);
+            $account->saveOrFail();
+            return back()->with('success', trans('user.account.upload_token_reset'));
+        }
+
     }

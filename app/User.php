@@ -52,6 +52,11 @@
      * @property bool                                                                                                           $prefers_preview_link
      * @method static \Illuminate\Database\Query\Builder|\App\User whereDefaultImageDeletionTime($value)
      * @method static \Illuminate\Database\Query\Builder|\App\User wherePrefersPreviewLink($value)
+     * @property string                                                                                                         $upload_token
+     * @property string                                                                                                         $delete_token
+     * @property-read \Illuminate\Database\Eloquent\Collection|\App\Domain[]                                                    $domains
+     * @method static \Illuminate\Database\Query\Builder|\App\User whereDeleteToken($value)
+     * @method static \Illuminate\Database\Query\Builder|\App\User whereUploadToken($value)
      */
     class User extends Authenticatable {
         use Notifiable;

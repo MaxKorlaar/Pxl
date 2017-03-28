@@ -37,7 +37,8 @@
         public function getEditView(Request $request, User $user) {
             return view('admin.users.edit', [
                 'user'    => $user,
-                'domains' => Domain::all()
+                'domains' => Domain::all(),
+                'upload_token_masked' => substr($user->upload_token, 0, 10) . '**********'
             ]);
         }
 
