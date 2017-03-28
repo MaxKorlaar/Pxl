@@ -90,11 +90,11 @@
             $user->email    = $data['email'];
             $user->rank     = 'member';
             $user->setPassword($data['password']);
-            $user->last_ip    = Request::capture()->ip();
-            $user->last_login = time();
-            $user->embed_name = $data['username'];
-            $user->upload_token = str_random(60);
-            $user->delete_token = str_random(60);
+            $user->last_ip      = Request::capture()->ip();
+            $user->last_login   = time();
+            $user->embed_name   = $data['username'];
+            $user->upload_token = $user->id . str_random(60);
+            $user->delete_token = $user->id . str_random(60);
             $user->save();
             return $user;
         }
