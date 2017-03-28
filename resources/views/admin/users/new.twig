@@ -28,11 +28,11 @@
                         {{ csrf_field() }}
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="username" name="username" value="{{ old('username') }}" type="text" class="validate {{ errors.has('username') ? 'invalid' : '' }}">
+                                <input required id="username" name="username" value="{{ old('username') }}" type="text" class="validate {{ errors.has('username') ? 'invalid' : '' }}">
                                 <label for="username" class="{{ errors.has('username') ? 'active' : '' }}" data-error="{{ errors.first('username')|capitalize }}">{{ trans('user.account.username') }}</label>
                             </div>
                             <div class="input-field col s12">
-                                <input id="email" name="email" value="{{ old('email') }}" type="email" class="validate {{ errors.has('email') ? 'invalid' : '' }}">
+                                <input required id="email" name="email" value="{{ old('email') }}" type="email" class="validate {{ errors.has('email') ? 'invalid' : '' }}">
                                 <label for="email" class="{{ errors.has('email') ? 'active' : '' }}" data-error="{{ errors.first('email')|capitalize }}">{{ trans('user.account.email') }}</label>
                             </div>
                             <div class="input-field col s12">

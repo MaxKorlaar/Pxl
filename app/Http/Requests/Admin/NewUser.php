@@ -29,8 +29,8 @@
          */
         public function rules() {
             return [
-                'username' => 'required|max:255|min:2|unique',
-                'email'    => 'required|max:255|email|unique'
+                'username' => 'required|max:255|min:2|unique:users',
+                'email'    => 'required|max:255|email|unique:users'
             ];
         }
     }

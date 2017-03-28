@@ -91,19 +91,23 @@
 
         /**
          * @param NewUser $request
+         *
+         * @return \Illuminate\Http\RedirectResponse
          */
         public function newUser(NewUser $request) {
             $user = new User;
             $user->fill($request->only(['email', 'username']));
             $password = str_random(16);
             $user->setPassword($password);
-            $user->rank         = 'member';
-            $user->id = 1;
+            $user->rank    = 'member';
+            $user->last_ip = '-';
+            $user->active = true;
             $user->saveOrFail();
-dd($user);
             $user->embed_name   = $request->username;
             $user->upload_token = $user->id . str_random(60);
             $user->delete_token = $user->id . str_random(60);
+            $user->saveOrFail();
+            return back()->with('success', trans('admin.users.new.created', ['user' => $user->username, 'password' => $password]));
         }
 
         /**
