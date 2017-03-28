@@ -37,7 +37,7 @@
     });
 
     Route::get('/gallery', function () {
-        redirect('user/gallery');
+        return redirect('user/gallery');
     });
 
     Route::group(['prefix' => 'user', 'namespace' => 'User', 'as' => 'user/', 'middleware' => ['auth']], function () {
