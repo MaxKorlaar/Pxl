@@ -14,7 +14,7 @@
 <li>Scroll naar beneden in de lijst links en klik op \'Aangepaste uploaders\'</li>
 <li>Klik op de knop \'Importeer\' en kies voor \'Van URL...\'</li>
 <li>Plak de URL die onder deze instructies staat in het tekstvak en klik op OK</li>
-<li>Controleer of de afbeeldingsuploader op :uploader_name staat en sluit het venster</li>
+<li>Controleer of de afbeeldingsuploader op \':uploader_name\' staat en sluit het venster</li>
 <li>Kies bestemmingen links in het hoofdvenster van ShareX, dan afbeeldingsuploader en selecteer vervolgens \'Aangepaste afbeeldingsuploader\'</li></ol>',
                         'log_in'          => 'Log in om de aangepaste configuratie voor ShareX te zien.',
                     ],

@@ -14,7 +14,7 @@
 <li> Scroll down in the list on the left and select \'Custom uploaders\'</li>
 <li>Click the \'Import\' button and select \'From URL...\'</li>
 <li>Paste the url from beneath these instructions and click on OK</li>
-<li>Check and see if the selected image uploader is :uploader_name and close the window</li>
+<li>Check and see if the selected image uploader is \':uploader_name\' and close the window</li>
 <li>In the main window of ShareX select destinations on the left hand side of the window, then select image uploader and click on \'Custom image uploader\'</li></ol>',
                     ],
                 'title'  => 'Setting up',

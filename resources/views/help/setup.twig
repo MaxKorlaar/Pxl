@@ -8,11 +8,10 @@
                 <h3>{{ trans('help.setup.sharex.heading') }}</h3>
                 <p>
                     {{ trans('help.setup.sharex.instructions') }}
-                    //TODO: Link that can be pasted in ShareX (ShareX allows custom configurations to be imported via URL, expects JSON)//
                 </p>
                 {% if user is not null %}
                     <p>
-                        {{ trans('help.setup.sharex.custom_uploader')|raw }}
+                        {{ trans('help.setup.sharex.custom_uploader', { uploader_name: 'Pxl Custom Uploader - ' ~ config_get('app.name')})|raw }}
                     </p>
                     <code class="token">
                         <a href="{{ route('setup_sharex_config', { user_id: user.id, upload_token: user.upload_token}) }}">
