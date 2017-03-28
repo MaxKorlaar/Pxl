@@ -66,6 +66,7 @@
         Route::get('gallery/thumb/{image_url}', 'Image\ImageController@getThumbnail')->name('image_thumbnail');
     });
 
+
     Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin/', 'middleware' => ['auth', 'admin']], function () {
 
         Route::get('users', 'UserController@getView')->name('users');

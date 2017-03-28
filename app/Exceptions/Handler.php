@@ -6,6 +6,7 @@
     use Illuminate\Auth\AuthenticationException;
     use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
     use Illuminate\Session\TokenMismatchException;
+    use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
     /**
      * Class Handler
@@ -51,6 +52,10 @@
         public function render($request, Exception $exception) {
             if ($exception instanceof TokenMismatchException) {
                 return response(view('errors.400', ['error' => 'CSRF Token mismatch']), 400);
+            }
+
+            if($exception instanceof MethodNotAllowedHttpException) {
+                return response(view('errors.400', ['error' => 'Request method not allowed']), 400);
             }
 
             if (app()->environment() == 'production' && !$this->isHttpException($exception)) {

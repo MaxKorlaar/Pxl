@@ -23,6 +23,39 @@
         }
 
         /**
+         * @param \App\Http\Requests\Api\Image\Upload|Upload $request
+         *
+         * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+         */
+        public function uploadImage(\App\Http\Requests\Api\Image\Upload $request) {
+            /** @var User $user */
+            $user   = $request->user();
+            $domain = Domain::find($user->default_domain);
+            if ($domain == null) {
+                return response(['success' => false, 'error' => trans('upload.failed.no_default_domain')], 422);
+            }
+
+            $image                = Image::processNew($request->file('file'));
+            $image->uploaded_from = $request->ip();
+
+            $image->user_id   = $user->id;
+            $image->domain_id = $domain->id;
+            if ($request->has('name')) $image->name = $request->name;
+            $result = $image->storeImage('uploads'); // This also saves the image to the database
+            if (!$result) {
+                response(['success' => false, 'error' => trans('upload.failed.could_not_save_image')], 422);
+            }
+
+            return response([
+                'success'     => true,
+                'url'         => $user->prefers_preview_link ? $image->getUrlToImagePreview() : $image->getUrlToImage(),
+                'image_url'   => $image->getUrlToImage(),
+                'preview_url' => $image->getUrlToImagePreview(),
+                'name'        => $image->name
+            ], 422);
+        }
+
+        /**
          * @param Upload $request
          *
          * @return \Illuminate\Http\RedirectResponse

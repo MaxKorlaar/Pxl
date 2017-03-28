@@ -6,7 +6,7 @@
     use Illuminate\Support\Facades\Auth;
 
     /**
-     * Class RedirectIfAuthenticated
+     * Class Admin
      *
      * @package App\Http\Middleware
      */

@@ -46,6 +46,7 @@
             'api' => [
                 'throttle:60,1',
                 'bindings',
+                'api_middleware'
             ],
         ];
 
@@ -57,12 +58,13 @@
          * @var array
          */
         protected $routeMiddleware = [
-            'auth'       => \Illuminate\Auth\Middleware\Authenticate::class,
-            'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-            'bindings'   => \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            'can'        => \Illuminate\Auth\Middleware\Authorize::class,
-            'guest'      => \App\Http\Middleware\RedirectIfAuthenticated::class,
-            'throttle'   => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-            'admin'      => \App\Http\Middleware\Admin::class
+            'auth'           => \Illuminate\Auth\Middleware\Authenticate::class,
+            'auth.basic'     => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+            'bindings'       => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            'can'            => \Illuminate\Auth\Middleware\Authorize::class,
+            'guest'          => \App\Http\Middleware\RedirectIfAuthenticated::class,
+            'throttle'       => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+            'admin'          => \App\Http\Middleware\Admin::class,
+            'api_middleware' => \App\Http\Middleware\Api::class
         ];
     }

@@ -4,6 +4,11 @@
 
     use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
+    /**
+     * Class AuthServiceProvider
+     *
+     * @package App\Providers
+     */
     class AuthServiceProvider extends ServiceProvider {
         /**
          * The policy mappings for the application.
