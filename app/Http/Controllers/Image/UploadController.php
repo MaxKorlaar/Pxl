@@ -54,7 +54,8 @@
                     'url'         => $user->prefers_preview_link ? $image->getUrlToImagePreview() : $image->getUrlToImage(),
                     'image_url'   => $image->getUrlToImage(),
                     'preview_url' => $image->getUrlToImagePreview(),
-                    'name'        => $image->name
+                    'name'        => $image->name,
+                    'delete_url' => 'TODO'//TODO
                 ], 200);
             }
 

@@ -88,6 +88,7 @@
     });
 
     Route::get('help/setup', 'Help\HelpController@getSetupHelpView')->name('setup_help');
+    Route::get('help/setup/sharex/{user_id}/{upload_token}.json', 'Help\HelpController@getShareXConfiguration')->name('setup_sharex_config');
 
     Route::get('{image_url}.{extension}', 'Image\ImageController@getImageFromUrl')->name('image_request');
     Route::get('{image_url}', 'Image\ImageController@getPreviewPage')->name('image_preview_request');
