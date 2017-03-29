@@ -168,8 +168,6 @@
              */
 
             TwigBridge\ServiceProvider::class,
-            Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-            Barryvdh\TranslationManager\ManagerServiceProvider::class,
             PragmaRX\Google2FA\Vendor\Laravel\ServiceProvider::class,
             Intervention\Image\ImageServiceProvider::class,
 

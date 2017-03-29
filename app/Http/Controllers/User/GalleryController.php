@@ -34,7 +34,30 @@
          * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
          */
         public function deleteImage(Request $request, $imageUrl) {
-            return response([$imageUrl]);
+            $user = Auth::user();
+
+            /** @var Image $image */
+            $image = Image::whereUrlName($imageUrl)->where('user_id', '=', $user->id)->get()->first();
+
+            if ($image == null) {
+                return response([
+                    'success' => false,
+                    'error'   => trans('gallery.image_not_found')
+                ]);
+            }
+
+            $result = $image->delete();
+            if (!$result) {
+                return response([
+                    'success' => false,
+                    'error'   => trans('gallery.image_could_not_be_deleted')
+                ]);
+            }
+
+            return response([
+                'success' => true,
+                'message' => trans('gallery.image_deleted')
+            ]);
         }
 
     }

@@ -11,5 +11,6 @@
         'log_out'           => 'Log off',
         'my_account'        => 'My account',
         'preferences'       => 'Preferences',
-        'upload'            => 'Upload'
+        'upload'            => 'Upload',
+        'gallery'           => 'Gallery',
     ];

@@ -5,6 +5,7 @@
     use Illuminate\Database\Eloquent\Model;
     use Illuminate\Database\Eloquent\SoftDeletes;
     use Illuminate\Http\UploadedFile;
+    use Illuminate\Support\Facades\Cache;
     use Illuminate\Support\Facades\Storage;
 
     /**
@@ -201,16 +202,23 @@
          * @throws \Exception
          */
         public function delete() {
+            $this->clearCachedData();
             $deleteFile = $this->deleteImageFile();
             if (!$deleteFile) return false;
             return parent::delete();
+        }
+
+        private function clearCachedData() {
+            Cache::forget('image.' . $this->url_name . '.preview');
+            Cache::forget('image.' . $this->url_name . '.domain');
+            Cache::forget('image.' . $this->url_name . '.user');
         }
 
         /**
          * @return bool
          */
         private function deleteImageFile() {
-            return Storage::delete($this - $this->pathToFile());
+            return Storage::delete($this->pathToFile());
         }
 
         /**

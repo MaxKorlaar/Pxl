@@ -11,5 +11,6 @@
                 'domains' => 'Domeinnamen',
             ],
         'preferences'       => 'Voorkeuren',
-        'upload'            => 'Uploaden'
+        'upload'            => 'Uploaden',
+        'gallery'           => 'Galerij',
     ];
