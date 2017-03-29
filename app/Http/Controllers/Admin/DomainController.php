@@ -18,9 +18,6 @@
          */
         public function getView() {
             $domainsPagination = Domain::paginate(15);
-
-            $domainsPagination->getUrlRange(0, $domainsPagination->lastPage());
-
             return view('admin.domains', [
                 'pagination' => $domainsPagination
             ]);

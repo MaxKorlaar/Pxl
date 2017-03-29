@@ -20,9 +20,6 @@
          */
         public function getView() {
             $usersPagination = User::paginate(15);
-
-            $usersPagination->getUrlRange(0, $usersPagination->lastPage());
-
             return view('admin.users', [
                 'pagination' => $usersPagination
             ]);

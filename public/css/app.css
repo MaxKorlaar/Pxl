@@ -184,3 +184,12 @@ nav .brand-logo {
 .gallery-img:hover {
   opacity: .8;
 }
+
+.image-title {
+  font-size: 18px;
+}
+
+.gallery-icon {
+  display: block;
+  font-size: 74px;
+}

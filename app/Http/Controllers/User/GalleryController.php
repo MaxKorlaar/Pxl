@@ -3,6 +3,7 @@
     namespace App\Http\Controllers\User;
 
     use App\Http\Controllers\Controller;
+    use App\Image;
     use Auth;
 
     /**
@@ -16,11 +17,12 @@
          * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
          */
         public function getView() {
-            $account = Auth::user();
-            $images  = $account->images()->getResults();
+            $account          = Auth::user();
+            $imagesPagination = Image::whereUserId($account->id)->paginate(20);
+
             return view('user.gallery', [
                 'user'   => $account,
-                'images' => $images
+                'pagination' => $imagesPagination
             ]);
         }
 
