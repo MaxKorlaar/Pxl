@@ -17,15 +17,15 @@ Task list, not in particular order:
 - [x] Admin account management
 - [ ] Admin site settings (different from the settings in .env)
 - [x] Image upload support
-- [ ] Automatic deletion for images. Default & per-image setting. (A personal favourite, must have for limited space)
-- [ ] Gallery
+- [x] Automatic deletion for images. Default & per-image setting. (A personal favourite, must have for limited space)
+- [x] Gallery
 - [x] Preferences per user
-- [ ] Automatic deletion time default per user
+- [x] Automatic deletion time default per user
 - [ ] View others' galleries (as admin, make it an option?)
 - [ ] Custom domain support, custom storage location support (This will be difficult with Laravel.
 It would be possible to set up your webserver to link a specific directory to a specific domain,
 but additional configuration **will** be required for setting up preview pages - aka links without extensions)
-- [ ] Image preview page, somehow linked to that custom location most likely
+- [x] Image preview page, somehow linked to that custom location most likely
 - [ ] Image preview page that can be overridden via template. Custom template name or database?
 - [ ] ShareX support via copy/paste JSON-based config
 - [x] Access tokens for users, resettable. Required for uploading
