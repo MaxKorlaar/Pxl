@@ -44,6 +44,8 @@
      * @property int              $domain_id
      * @method static \Illuminate\Database\Query\Builder|\App\Image whereDomainId($value)
      * @property-read \App\Domain $domain
+     * @property int              $deletion_timestamp
+     * @method static \Illuminate\Database\Query\Builder|\App\Image whereDeletionTimestamp($value)
      */
     class Image extends Model {
         use SoftDeletes;
@@ -135,6 +137,14 @@
             //dd($domain);
             $url = $domain->protocol . '://' . $domain->domain . '/' . $this->url_name;
             return $url;
+        }
+
+        /**
+         * @return bool|int
+         */
+        public function getEstimatedDeletionTimestamp() {
+            if ($this->deletion_timestamp === null) return false;
+            return $this->deletion_timestamp;
         }
 
         /**

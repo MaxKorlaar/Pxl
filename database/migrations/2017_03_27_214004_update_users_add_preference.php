@@ -10,7 +10,7 @@
     class UpdateUsersAddPreference extends Migration {
         public function up() {
             Schema::table('users', function (Blueprint $table) {
-                $table->integer('default_image_deletion_time')->nullable();
+                $table->integer('default_deletion_time')->nullable();
                 $table->boolean('prefers_preview_link')->default(false);
             });
         }
@@ -22,7 +22,7 @@
          */
         public function down() {
             Schema::table('users', function (Blueprint $table) {
-                $table->dropColumn('default_image_deletion_time');
+                $table->dropColumn('default_deletion_time');
                 $table->dropColumn('prefers_preview_link');
             });
         }

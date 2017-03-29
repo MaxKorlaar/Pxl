@@ -47,8 +47,6 @@
      * @method static \Illuminate\Database\Query\Builder|\App\User whereEmbedName($value)
      * @method static \Illuminate\Database\Query\Builder|\App\User whereEmbedNameUrl($value)
      * @method static \Illuminate\Database\Query\Builder|\App\User whereTwitterUsername($value)
-     * @property int
-     *           $default_image_deletion_time
      * @property bool                                                                                                           $prefers_preview_link
      * @method static \Illuminate\Database\Query\Builder|\App\User whereDefaultImageDeletionTime($value)
      * @method static \Illuminate\Database\Query\Builder|\App\User wherePrefersPreviewLink($value)
@@ -57,6 +55,8 @@
      * @property-read \Illuminate\Database\Eloquent\Collection|\App\Domain[]                                                    $domains
      * @method static \Illuminate\Database\Query\Builder|\App\User whereDeleteToken($value)
      * @method static \Illuminate\Database\Query\Builder|\App\User whereUploadToken($value)
+     * @property int                                                                                                            $default_deletion_time
+     * @method static \Illuminate\Database\Query\Builder|\App\User whereDefaultDeletionTime($value)
      */
     class User extends Authenticatable {
         use Notifiable;

@@ -54,7 +54,7 @@
                 return response(view('errors.400', ['error' => 'CSRF Token mismatch']), 400);
             }
 
-            if($exception instanceof MethodNotAllowedHttpException) {
+            if ($exception instanceof MethodNotAllowedHttpException) {
                 return response(view('errors.400', ['error' => 'Request method not allowed']), 400);
             }
 

@@ -40,6 +40,7 @@
 
             $image->user_id   = $user->id;
             $image->domain_id = $domain->id;
+            $image->deletion_timestamp = $user->default_deletion_time;
             if ($request->has('name')) $image->name = $request->name;
             $result = $image->storeImage('uploads'); // This also saves the image to the database
             if (!$result) {
@@ -55,7 +56,7 @@
                     'image_url'   => $image->getUrlToImage(),
                     'preview_url' => $image->getUrlToImagePreview(),
                     'name'        => $image->name,
-                    'delete_url' => 'TODO'//TODO
+                    'delete_url'  => 'TODO'//TODO
                 ], 200);
             }
 
@@ -79,9 +80,10 @@
             $image                = Image::processNew($request->file('file'));
             $image->uploaded_from = $request->ip();
 
-            $image->user_id   = $user->id;
-            $image->domain_id = $domain->id;
-            $result           = $image->storeImage('uploads'); // This also saves the image to the database
+            $image->user_id            = $user->id;
+            $image->deletion_timestamp = $user->default_deletion_time;
+            $image->domain_id          = $domain->id;
+            $result                    = $image->storeImage('uploads'); // This also saves the image to the database
 
             if (!$result) {
                 return back()->withErrors([

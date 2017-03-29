@@ -199,7 +199,7 @@
          * @return \Illuminate\Http\RedirectResponse
          */
         public function resetToken() {
-            $account                 = Auth::user();
+            $account               = Auth::user();
             $account->upload_token = $account->id . str_random(60);
             $account->delete_token = $account->id . str_random(60);
             $account->saveOrFail();

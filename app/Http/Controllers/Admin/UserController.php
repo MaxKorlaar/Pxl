@@ -101,7 +101,7 @@
             $user->setPassword($password);
             $user->rank    = 'member';
             $user->last_ip = '-';
-            $user->active = true;
+            $user->active  = true;
             $user->saveOrFail();
             $user->embed_name   = $request->username;
             $user->upload_token = $user->id . str_random(60);
