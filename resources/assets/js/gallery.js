@@ -23,7 +23,7 @@ $('.delete-button').on('click', function () {
             success:  function (data) {
                 console.info(data);
                 if (data.success) {
-                    //container.fadeOut();
+                    container.fadeOut();
                     Materialize.toast(data.message, 5000);
                 } else {
                     Materialize.toast(data.error, 5000);
