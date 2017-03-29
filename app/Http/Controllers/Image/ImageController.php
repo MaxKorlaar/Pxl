@@ -30,10 +30,17 @@
             /** @var Builder $builder */
             $builder = Image::whereUrlName($imageUrl);
             /** @var Image $image */
-            $image = $builder->firstOrFail();
-
-            return response(\Storage::get($image->file_path . '/' . $image->getBaseName()), 200, [
-                'Content-Type' => $image->filetype
+            $image       = $builder->firstOrFail();
+            $fileContent = \Storage::get($image->pathToFile());
+            return response()->stream(function () use ($fileContent) {
+                echo $fileContent;
+            }, 200, [
+                'Content-Type'   => $image->filetype,
+                'Cache-Control'  => 'public, max-age=604800, must-revalidate',
+                'Pragma'         => 'public',
+                'Etag'           => md5($image->pathToFile()),
+                'Content-Length' => \Storage::size($image->pathToFile()),
+                'Expires'        => gmdate('D, d M Y H:i:s', time() + ($image->deletion_timestamp == null ? 604800 : $image->deletion_timestamp)) . ' GMT'
             ]);
         }
 
