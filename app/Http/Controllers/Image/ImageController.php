@@ -40,7 +40,7 @@
                 'Pragma'         => 'public',
                 'Etag'           => md5($image->pathToFile()),
                 'Content-Length' => \Storage::size($image->pathToFile()),
-                'Expires'        => gmdate('D, d M Y H:i:s', time() + ($image->deletion_timestamp == null ? 604800 : $image->deletion_timestamp)) . ' GMT'
+                'Expires'        => gmdate('D, d M Y H:i:s', ($image->deletion_timestamp == null ? time() + 604800 : $image->deletion_timestamp)) . ' GMT'
             ]);
         }
 
@@ -124,7 +124,17 @@
         function getThumbnail(Request $request, $imageUrl) {
             /** @var Image $image */
             list($image, $domain, $author) = $this->getImageMeta($imageUrl);
-            return $image->getThumbnail();
+            $fileContent = $image->getThumbnail();
+            return response()->stream(function () use ($fileContent) {
+                echo $fileContent;
+            }, 200, [
+                'Content-Type'   => $image->filetype,
+                'Cache-Control'  => 'public, max-age=604800, must-revalidate',
+                'Pragma'         => 'public',
+                'Etag'           => md5($image->pathToFile()),
+                'Content-Length' => strlen($image->getThumbnail()),
+                'Expires'        => gmdate('D, d M Y H:i:s', time() + 604800) . ' GMT'
+            ]);
         }
 
     }

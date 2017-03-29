@@ -181,7 +181,7 @@
         }
 
         /**
-         * @return Response
+         * @return \Intervention\Image\Image
          */
         public function getThumbnail() {
             return \InterventionImage::cache(function ($image) {
@@ -190,7 +190,7 @@
                     /** @var \Intervention\Image\Constraint $constraint */
                     $constraint->upsize();
                 });
-            }, 120, true)->response();
+            }, 120, false);
         }
 
         /**
