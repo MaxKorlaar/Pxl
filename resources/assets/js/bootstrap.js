@@ -5,6 +5,7 @@ window._ = require('lodash');
  * for JavaScript based Bootstrap features such as modals and tabs. This
  * code may be modified to fit the specific needs of your application.
  */
+//window.Materialize = require('materialize-css/js/materialize.js');
 
 window.$ = window.jQuery = require('jquery');
 /**
@@ -13,10 +14,11 @@ window.$ = window.jQuery = require('jquery');
  * and simple, leaving you to focus on building your next great project.
  */
 
+//require('materialize-css/dist/js/materialize.js');
+
 window.Vue = require('vue');
 require('vue-resource');
 
-window.Materialize = require('materialize-css');
 
 /**
  * We'll register a HTTP interceptor to attach the "CSRF" header to each of

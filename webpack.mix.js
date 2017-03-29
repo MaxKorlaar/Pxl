@@ -12,9 +12,12 @@ const {mix} = require('laravel-mix');
  */
 // npm run dev
 
+mix.copy('node_modules/materialize-css/dist/js/materialize.js', 'resources/assets/js/materialize.js');
+
 mix.js([
     'resources/assets/js/app.js',
-    'resources/assets/js/pxl.js'
+    'resources/assets/js/pxl.js',
+    'resources/assets/js/materialize.js'
 ], 'public/js');
 mix.combine([
     'resources/assets/js/login.js'
