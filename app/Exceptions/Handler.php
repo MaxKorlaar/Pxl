@@ -7,6 +7,7 @@
     use Illuminate\Database\Eloquent\ModelNotFoundException;
     use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
     use Illuminate\Session\TokenMismatchException;
+    use Illuminate\Validation\ValidationException;
     use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
     /**
@@ -59,7 +60,8 @@
                 return response(view('errors.400', ['error' => 'Request method not allowed']), 400);
             }
 
-            if (app()->environment() == 'production' && !$this->isHttpException($exception) && !$exception instanceof ModelNotFoundException) {
+            if (app()->environment() == 'production' && !$this->isHttpException($exception) &&
+                (!$exception instanceof ModelNotFoundException && !$exception instanceof ValidationException)) {
                 return response(view('errors.500', ['exception' => $exception]), 500);
             }
             return parent::render($request, $exception);
