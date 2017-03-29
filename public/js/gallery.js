@@ -10308,20 +10308,47 @@ $('.delete-button').on('click', function () {
     var that = $(this);
     var imageUrl = that.data('image-url');
     var container = that.parents('.image-card-container');
-
+    var deleteUrl = that.data('delete-url');
+    var csrfToken = window.csrf_token;
     if (that.data('confirm')) {
-        console.info('Confirmed');
+        that.removeClass('pulse');
+        clearTimeout(that.data('confirm-timeout'));
+
+        $.ajax({
+            url: deleteUrl,
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                _token: csrfToken,
+                _method: 'DELETE'
+            },
+            success: function success(data) {
+                console.info(data);
+                if (data.success) {
+                    container.fadeOut();
+                }
+            },
+            error: function error(data) {
+                console.error(data);
+            }
+        });
     } else {
         icon = that.find('.material-icons');
-        that.addClass('pulse');
         icon.fadeOut(250, function () {
+            var timeout = void 0;
             icon.text('help').fadeIn(250);
             that.data('confirm', true);
+            that.addClass('pulse');
+            timeout = setTimeout(function () {
+                icon.fadeOut(250, function () {
+                    icon.text('delete').fadeIn(250);
+                    that.data('confirm', false);
+                    that.removeClass('pulse');
+                });
+            }, 5000);
+            that.data('confirm-timeout', timeout);
         });
     }
-
-    //container.fadeOut();
-    console.log();
 });
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
