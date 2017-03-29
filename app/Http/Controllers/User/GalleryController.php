@@ -60,4 +60,12 @@
             ]);
         }
 
+        /**
+         * @param Request $request
+         * @param         $imageUrl
+         */
+        public function setImageDeletionTimestamp(Request $request, $imageUrl) {
+
+        }
+
     }

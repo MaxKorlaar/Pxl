@@ -10301,64 +10301,78 @@ return jQuery;
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {var Clipboard = __webpack_require__(10);
-var cp = new Clipboard('.clipboard');
+$(document).ready(function () {
+    var cp = new Clipboard('.clipboard');
+    $('.delete-button').on('click', function () {
+        var icon = void 0;
+        var that = $(this);
+        var imageUrl = that.data('image-url');
+        var container = that.parents('.image-card-container');
+        var deleteUrl = that.data('delete-url');
+        var csrfToken = window.csrf_token;
+        if (that.data('confirm')) {
+            that.removeClass('pulse').addClass('disabled').attr('disabled', true);
+            clearTimeout(that.data('confirm-timeout'));
 
-$('.delete-button').on('click', function () {
-    var icon = void 0;
-    var that = $(this);
-    var imageUrl = that.data('image-url');
-    var container = that.parents('.image-card-container');
-    var deleteUrl = that.data('delete-url');
-    var csrfToken = window.csrf_token;
-    if (that.data('confirm')) {
-        that.removeClass('pulse').addClass('disabled').attr('disabled', true);
-        clearTimeout(that.data('confirm-timeout'));
+            $.ajax({
+                url: deleteUrl,
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    _token: csrfToken,
+                    _method: 'DELETE'
+                },
+                success: function success(data) {
+                    console.info(data);
+                    if (data.success) {
+                        container.fadeOut();
+                        Materialize.toast(data.message, 5000);
+                    } else {
+                        Materialize.toast(data.error, 5000);
+                    }
+                },
+                error: function error(data) {
+                    if (typeof data.responseJSON === 'undefined') {
+                        Materialize.toast("An unknown error has occurred");
+                    } else {
+                        Materialize.toast(data.error, 10000);
+                    }
+                },
+                complete: function complete(data) {
+                    that.removeClass('disabled').attr('disabled', false);
+                }
+            });
+        } else {
+            icon = that.find('.material-icons');
+            icon.fadeOut(250, function () {
+                var timeout = void 0;
+                icon.text('help').fadeIn(250);
+                that.data('confirm', true);
+                that.addClass('pulse');
+                timeout = setTimeout(function () {
+                    icon.fadeOut(250, function () {
+                        icon.text('delete').fadeIn(250);
+                        that.data('confirm', false);
+                        that.removeClass('pulse');
+                    });
+                }, 5000);
+                that.data('confirm-timeout', timeout);
+            });
+        }
+    });
 
-        $.ajax({
-            url: deleteUrl,
-            type: 'POST',
-            dataType: 'json',
-            data: {
-                _token: csrfToken,
-                _method: 'DELETE'
-            },
-            success: function success(data) {
-                console.info(data);
-                if (data.success) {
-                    container.fadeOut();
-                    Materialize.toast(data.message, 5000);
-                } else {
-                    Materialize.toast(data.error, 5000);
-                }
-            },
-            error: function error(data) {
-                if (typeof data.responseJSON === 'undefined') {
-                    Materialize.toast("An unknown error has occurred");
-                } else {
-                    Materialize.toast(data.error, 10000);
-                }
-            },
-            complete: function complete(data) {
-                that.removeClass('disabled').attr('disabled', false);
-            }
-        });
-    } else {
-        icon = that.find('.material-icons');
-        icon.fadeOut(250, function () {
-            var timeout = void 0;
-            icon.text('help').fadeIn(250);
-            that.data('confirm', true);
-            that.addClass('pulse');
-            timeout = setTimeout(function () {
-                icon.fadeOut(250, function () {
-                    icon.text('delete').fadeIn(250);
-                    that.data('confirm', false);
-                    that.removeClass('pulse');
-                });
-            }, 5000);
-            that.data('confirm-timeout', timeout);
-        });
-    }
+    $('.auto-delete-button').on('click', function () {
+        var that = $(this);
+        var container = that.parents('.image-card-container');
+        var visibleTimestamp = container.find('.autodelete');
+        var autoDeleteUrl = that.data('auto-delete-url');
+        var csrfToken = window.csrf_token;
+        var autoDeletionModal = $('#auto-deletion-modal');
+        $('#auto-deletion-modal').modal();
+        autoDeletionModal.data('auto-delete-url', autoDeleteUrl);
+        autoDeletionModal.modal();
+        autoDeletionModal.modal('open');
+    });
 });
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 

@@ -44,6 +44,7 @@
         Route::get('gallery', 'GalleryController@getView')->name('gallery');
         Route::get('gallery/thumb/{image_url}.{ext}', '\App\Http\Controllers\Image\ImageController@getThumbnail')->name('image_thumbnail');
 
+        Route::put('image/{image_url}', 'GalleryController@setImageDeletionTimestamp')->name('update_image_deletion_time');
         Route::delete('image/{image_url}', 'GalleryController@deleteImage')->name('delete_image');
 
         Route::get('account', 'AccountController@getView')->name('account');
