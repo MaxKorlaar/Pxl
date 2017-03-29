@@ -4,10 +4,8 @@
 
     use Exception;
     use Illuminate\Auth\AuthenticationException;
-    use Illuminate\Database\Eloquent\ModelNotFoundException;
     use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
     use Illuminate\Session\TokenMismatchException;
-    use Illuminate\Validation\ValidationException;
     use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
     /**
@@ -28,6 +26,10 @@
             \Illuminate\Database\Eloquent\ModelNotFoundException::class,
             \Illuminate\Session\TokenMismatchException::class,
             \Illuminate\Validation\ValidationException::class,
+        ];
+        protected $exemptFrom500 = [
+            \Illuminate\Validation\ValidationException::class,
+            \Illuminate\Database\Eloquent\ModelNotFoundException::class
         ];
 
         /**
@@ -60,8 +62,8 @@
                 return response(view('errors.400', ['error' => 'Request method not allowed']), 400);
             }
 
-            if (app()->environment() == 'production' && !$this->isHttpException($exception) &&
-                (!$exception instanceof ModelNotFoundException && !$exception instanceof ValidationException)) {
+            $rc = new \ReflectionClass($exception);
+            if (app()->environment() == 'production' && !$this->isHttpException($exception) && !isset(array_flip($this->exemptFrom500)[$rc->name])) {
                 return response(view('errors.500', ['exception' => $exception]), 500);
             }
             return parent::render($request, $exception);
