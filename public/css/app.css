@@ -174,3 +174,13 @@ nav .brand-logo {
 .col:hover > .help {
   color: rgba(0, 0, 0, 0.87);
 }
+
+.gallery-img {
+  -webkit-transition: opacity .4s;
+  transition: opacity .4s;
+  opacity: 1;
+}
+
+.gallery-img:hover {
+  opacity: .8;
+}
