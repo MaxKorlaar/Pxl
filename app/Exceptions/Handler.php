@@ -29,7 +29,9 @@
         ];
         protected $exemptFrom500 = [
             \Illuminate\Validation\ValidationException::class,
-            \Illuminate\Database\Eloquent\ModelNotFoundException::class
+            \Illuminate\Database\Eloquent\ModelNotFoundException::class,
+            \Illuminate\Auth\AuthenticationException::class,
+            \Illuminate\Auth\Access\AuthorizationException::class,
         ];
 
         /**
