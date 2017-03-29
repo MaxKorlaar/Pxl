@@ -27,7 +27,15 @@
         public function fire() {
             $this->info('Looking up images with `deletion_timestamp` < ' . time() .'...');
             $images = Image::where('deletion_timestamp', '<', time())->get();
-            $this->info($images->count());
+            $this->info('Found ' . $images->count() . ' images to delete.');
+            $deleted = 0;
+            /** @var Image $image */
+            foreach ($images->all() as $image) {
+                if($image->delete()) {$deleted++;} else {
+                    $this->warn('Could not delete image ' . $image->id);
+                }
+            }
+            $this->info('Deleted ' . $deleted . ' images automatically.');
         }
 
         /**
