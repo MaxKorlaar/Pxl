@@ -43,6 +43,9 @@
                                 <button class="waves-effect waves-light red btn btn-floating tooltipped delete-button" data-image-url="{{ image.url_name }}" data-delete-url="{{ route('user/delete_image', {image_url: image.url_name}) }}" data-position="top" data-delay="50" data-tooltip="{{ trans('gallery.image.delete') }}">
                                     <i class="material-icons">delete</i>
                                 </button>
+                                <button class="waves-effect waves-light red btn btn-floating tooltipped delete-button" data-image-url="{{ image.url_name }}" data-delete-url="{{ route('user/delete_image', {image_url: image.url_name}) }}" data-position="top" data-delay="50" data-tooltip="{{ trans('gallery.image.delete') }}">
+                                    <i class="material-icons">delete</i>
+                                </button>
                                 <p class="tooltipped" data-position="top" data-delay="50" data-tooltip="{{ trans('gallery.image.scheduled_deletion_time') }}">
                                     <i class="material-icons">timer</i>
                                     {{ image.deletion_timestamp is null ? trans('datetime.never') : image.deletion_timestamp|date(trans('datetime.format.date_and_time')) }}
