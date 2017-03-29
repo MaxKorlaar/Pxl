@@ -4,6 +4,7 @@
         <ul class="left hide-on-med-and-down">
             {% if auth_user() %}
                 <li><a href="{{ route('upload') }}"><i class="material-icons left">cloud_upload</i> {{ trans('nav.upload') }}</a></li>
+                <li><a href="{{ route('user/gallery') }}"><i class="material-icons left">collections</i> {{ trans('nav.gallery') }}</a></li>
             {% endif %}
         </ul>
         <ul class="right hide-on-med-and-down">

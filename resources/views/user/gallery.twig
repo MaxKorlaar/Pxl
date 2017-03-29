@@ -7,25 +7,25 @@
                 <h3>{{ trans('gallery.title') }}</h3>
             </div>
             {% if pagination.total == 0 %}
-            <div class="col s12">
-                <div class="col s12 m8 offset-m2">
-                    <div class="card blue darken-1">
-                        <div class="card-content white-text center">
-                            <i class="material-icons gallery-icon ">collections</i>
-                            <span class="card-title">{{ trans('gallery.no_images') }}</span>
-                            <p>{{ trans('gallery.gallery_description') }}</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="{{ route('upload') }}">{{ trans('gallery.upload') }}</a>
-                            <a href="{{ route('setup_help') }}">{{ trans('gallery.setup_instructions') }}</a>
+                <div class="col s12">
+                    <div class="col s12 m8 offset-m2">
+                        <div class="card blue darken-1">
+                            <div class="card-content white-text center">
+                                <i class="material-icons gallery-icon ">collections</i>
+                                <span class="card-title">{{ trans('gallery.no_images') }}</span>
+                                <p>{{ trans('gallery.gallery_description') }}</p>
+                            </div>
+                            <div class="card-action">
+                                <a href="{{ route('upload') }}">{{ trans('gallery.upload') }}</a>
+                                <a href="{{ route('setup_help') }}">{{ trans('gallery.setup_instructions') }}</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             {% endif %}
             <div class="col s12 images">
                 {% for image in pagination.items() %}
-                    <div class="col s6 m3">
+                    <div class="col s6 m3 image-card-container">
                         <div class="card hoverable">
                             <div class="card-image waves-effect waves-block waves-light">
                                 <img class="activator gallery-img" title="{{ image.name }}" src="{{ route('user/image_thumbnail', { image_url: image.url_name, ext: image.extension }) }}">
@@ -34,12 +34,15 @@
                                 <span class="card-title grey-text text-darken-4 truncate tooltipped image-title" data-position="top" data-delay="50" data-tooltip="{{ image.name }}">{{ image.name }}
                                     <i class="material-icons right">close</i>
                                 </span>
-                                <a class="waves-effect waves-light btn btn-floating tooltipped" data-position="top" data-delay="50" data-tooltip="{{ trans('gallery.image.link') }}">
+                                <a href="{{ user.prefers_preview_link ? image.getUrlToImagePreview() : image.getUrlToImage() }}" class="waves-effect waves-light btn btn-floating tooltipped" data-position="top" data-delay="50" data-tooltip="{{ trans('gallery.image.link') }}">
                                     <i class="material-icons">link</i>
                                 </a>
-                                <a class="waves-effect waves-light red btn btn-floating tooltipped" data-position="top" data-delay="50" data-tooltip="{{ trans('gallery.image.delete') }}">
+                                <button data-clipboard-text="{{ user.prefers_preview_link ? image.getUrlToImagePreview() : image.getUrlToImage() }}" class="waves-effect waves-light purple btn btn-floating tooltipped clipboard" data-position="top" data-delay="50" data-tooltip="{{ trans('gallery.image.copy') }}">
+                                    <i class="material-icons">content_copy</i>
+                                </button>
+                                <button class="waves-effect waves-light red btn btn-floating tooltipped delete-button" data-image-url="{{ image.url_name }}" data-position="top" data-delay="50" data-tooltip="{{ trans('gallery.image.delete') }}">
                                     <i class="material-icons">delete</i>
-                                </a>
+                                </button>
                                 <p class="tooltipped" data-position="top" data-delay="50" data-tooltip="{{ trans('gallery.image.scheduled_deletion_time') }}">
                                     <i class="material-icons">timer</i>
                                     {{ image.deletion_timestamp is null ? trans('datetime.never') : image.deletion_timestamp|date(trans('datetime.format.date_and_time')) }}
@@ -66,4 +69,8 @@
             {% endif %}
         </div>
     </div>
+{% endblock %}
+{% block scripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/gallery.js') }}"></script>
 {% endblock %}

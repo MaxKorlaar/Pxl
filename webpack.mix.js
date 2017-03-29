@@ -1,4 +1,4 @@
-const { mix } = require('laravel-mix');
+const {mix} = require('laravel-mix');
 
 /*
  |--------------------------------------------------------------------------
@@ -14,10 +14,13 @@ const { mix } = require('laravel-mix');
 
 mix.js([
     'resources/assets/js/app.js',
-    'resources/assets/js/pxl.js',
-    'resources/assets/js/materialize.js'
+    'resources/assets/js/pxl.js'
 ], 'public/js');
 mix.combine([
     'resources/assets/js/login.js'
 ], 'public/js/login.js');
+mix.js([
+    'resources/assets/js/gallery.js'
+], 'public/js');
 mix.sass('resources/assets/sass/app.scss', 'public/css');
+mix.sass('node_modules/materialize-css/sass/materialize.scss', 'public/css');

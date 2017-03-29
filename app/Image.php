@@ -4,7 +4,6 @@
 
     use Illuminate\Database\Eloquent\Model;
     use Illuminate\Database\Eloquent\SoftDeletes;
-    use Illuminate\Http\Response;
     use Illuminate\Http\UploadedFile;
     use Illuminate\Support\Facades\Storage;
 
@@ -95,7 +94,8 @@
             if (config('filesystems.default') == 'local') {
                 /** @var Domain $domain */
                 $domain = $this->domain()->getResults();
-                $url    = $domain->protocol . '://' . $domain->domain . '/' . $this->getBaseName();
+                if ($domain == null) return false;
+                $url = $domain->protocol . '://' . $domain->domain . '/' . $this->getBaseName();
 
                 return $url;
             } else {
@@ -134,7 +134,7 @@
         public function getUrlToImagePreview() {
             /** @var Domain $domain */
             $domain = $this->domain()->getResults();
-            //dd($domain);
+            if ($domain == null) return false;
             $url = $domain->protocol . '://' . $domain->domain . '/' . $this->url_name;
             return $url;
         }
@@ -190,7 +190,7 @@
                     /** @var \Intervention\Image\Constraint $constraint */
                     $constraint->upsize();
                 });
-            }, 120, false);
+            }, 900, false);
         }
 
         /**
