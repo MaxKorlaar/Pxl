@@ -42,7 +42,7 @@
 
     Route::group(['prefix' => 'user', 'namespace' => 'User', 'as' => 'user/', 'middleware' => ['auth']], function () {
         Route::get('gallery', 'GalleryController@getView')->name('gallery');
-        Route::get('gallery/thumb/{image_url}', '\App\Http\Controllers\Image\ImageController@getThumbnail')->name('image_thumbnail');
+        Route::get('gallery/thumb/{image_url}.{ext}', '\App\Http\Controllers\Image\ImageController@getThumbnail')->name('image_thumbnail');
 
         Route::get('account', 'AccountController@getView')->name('account');
         Route::put('account', 'AccountController@update')->name('update_account');
