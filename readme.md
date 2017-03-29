@@ -57,6 +57,8 @@ file is named `composer.phar`, then it's `php composer.phar install`_)
 * Execute `php artisan key:generate` to automatically generate a secure key that will be put into `.env`
 (should be the one where this readme is located).
 * Blank screen? Check if you have set up everything. To be sure, check Laravel's docs and make sure all directory permissions are set up correctly!
+* After setting up your `.env` variables, MySQL database and user, and directory permissions, Pxl should work.
+If you get error 500, it might be possible that you haven't set up the tables yet. Do so by executing `php artisan migrate`.
 * Using `php artisan up` and `php artisan down` you may toggle maintenance mode.
 * You may update your database by using `php artisan migrate` and clean it by using `php artisan migrate:reset` **Warning!** This will most likely clear your database. Don't execute this on your PRODUCTION machine.
 
