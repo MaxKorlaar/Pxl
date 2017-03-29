@@ -51,9 +51,10 @@ It should be similar to the small guide below.
 * Upload all files, except for the ones listed in the .gitignore file, to your server
     * If you can use `git`, then use this instead. Clone this repo in the location.
 * In your web server, change the root directory to '/path/to/pxl-project-directory/**public**'.
-* Configure Pxl by renaming env.example to .env and editing the environment configuration.
 * Set up Pxl by installing composer **first** and executing `php composer install` in Pxl's directory (_Unless your composer
 file is named `composer.phar`, then it's `php composer.phar install`_)
+* Configure Pxl by copying `env.example` to `.env` and editing the environment configuration.
+* Execute `php artisan key:generate` to automatically generate a secure key that will be put into `.env`
 (should be the one where this readme is located).
 * Blank screen? Check if you have set up everything. To be sure, check Laravel's docs and make sure all directory permissions are set up correctly!
 * Using `php artisan up` and `php artisan down` you may toggle maintenance mode.
