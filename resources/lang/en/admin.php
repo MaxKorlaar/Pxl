@@ -39,6 +39,16 @@
                                 'embed_name'                            => 'Display name added to embedded images',
                                 'no_domains_available'                  => 'No domains available',
                                 'default_domain'                        => 'Default domain',
+                                'default_deletion_time'                 =>
+                                    [
+                                        'days'    => 'Days',
+                                        'help'    => 'It is possible to automatically delete uploaded images after a certain amount of time since they have been uploaded. If you set all fields to 0, this function will be turned off. It is possible to change the automatic deletion time per image afterwards.',
+                                        'hours'   => 'Hours',
+                                        'minutes' => 'Minutes',
+                                        'months'  => 'Months',
+                                        'name'    => 'Default deletion time',
+                                        'years'   => 'Years',
+                                    ],
                             ],
                         'reset_upload_token'  => 'Reset upload token',
                         'upload_token_reset'  => 'The upload token has been reset',

@@ -36,10 +36,35 @@
          * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
          */
         public function getEditView(Request $request, User $user) {
+
+            if ($user->default_deletion_time != null) {
+
+                $ref = new \DateTimeImmutable();
+                $end = $ref->setTimestamp($ref->getTimestamp() + $user->default_deletion_time);
+
+                $deletionTimeInterval = $ref->diff($end);
+                $defaultDeletionTime  = [
+                    'minutes' => $deletionTimeInterval->i,
+                    'hours'   => $deletionTimeInterval->h,
+                    'days'    => $deletionTimeInterval->d,
+                    'months'  => $deletionTimeInterval->m,
+                    'years'   => $deletionTimeInterval->y
+                ];
+            } else {
+                $defaultDeletionTime = [
+                    'minutes' => 0,
+                    'hours'   => 0,
+                    'days'    => 0,
+                    'months'  => 0,
+                    'years'   => 0,
+                ];
+            }
             return view('admin.users.edit', [
-                'user'                => $user,
-                'domains'             => Domain::all(),
-                'upload_token_masked' => substr($user->upload_token, 0, 10) . '**********'
+                'user'                  => $user,
+                'domains'               => Domain::all(),
+                'upload_token_masked'   => substr($user->upload_token, 0, 10) . '**********',
+                'default_deletion_time' => $defaultDeletionTime
+
             ]);
         }
 
@@ -66,6 +91,18 @@
             $user->rank                 = $request->rank;
             $user->active               = $request->has('enabled');
             $user->prefers_preview_link = $request->has('prefers_preview_link');
+
+            $i = $request->default_deletion_time['minutes'];
+            $h = $request->default_deletion_time['hours'];
+            $d = $request->default_deletion_time['days'];
+            $m = $request->default_deletion_time['months'];
+            $y = $request->default_deletion_time['years'];
+
+            $deletionTimeInterval = new \DateInterval("P{$y}Y{$m}M{$d}DT{$h}H{$i}M");
+            $ref                  = new \DateTimeImmutable();
+            $end                  = $ref->add($deletionTimeInterval);
+
+            $user->default_deletion_time = ($end->getTimestamp() - $ref->getTimestamp() == 0) ? null : $end->getTimestamp() - $ref->getTimestamp();
 
             /** @var Domain $domain */
             $domain = Domain::find($request->default_domain);

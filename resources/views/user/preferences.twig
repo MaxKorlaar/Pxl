@@ -12,6 +12,14 @@
                     </div>
                 </div>
             {% endif %}
+            {% if errors.any %}
+                <div class="card red white-text center-align">
+                    <div class="card-content center-align">
+                        <span class="material-icons left">warning</span>
+                        <p class="center-align">{{ trans_choice('user.account.errors_occurred', errors.count()) }}</p>
+                    </div>
+                </div>
+            {% endif %}
         </div>
         <div class="col s12">
             <form method="POST" action="{{ route('user/update_preferences') }}">
@@ -68,6 +76,32 @@
                         {% if(errors.has('default_domain')) %}
                             <p class="red-text">{{ errors.first('default_domain')|capitalize }}</p>
                         {% endif %}
+                    </div>
+                    <div class="col s12">
+                        {{ trans('user.preferences.default_deletion_time.name') }}
+                        <div class="input-field col s12">
+                            <input value="{{ old('default_deletion_time.minutes', default_deletion_time.minutes) }}" id="default_deletion_time[minutes]" name="default_deletion_time[minutes]" type="number" min="0" max="59" class="validate {{ errors.has('default_deletion_time.minutes') ? 'invalid' }}">
+                            <label for="default_deletion_time[minutes]" class="{{ errors.has('default_deletion_time.minutes') ? 'active' : '' }}" data-error="{{ errors.first('default_deletion_time.minutes')|capitalize }}">{{ trans('user.preferences.default_deletion_time.minutes') }}</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input value="{{ old('default_deletion_time.hours', default_deletion_time.hours) }}" id="default_deletion_time[hours]" name="default_deletion_time[hours]" type="number" min="0" max="23" class="validate {{ errors.has('default_deletion_time.hours') ? 'invalid' }}">
+                            <label for="default_deletion_time[hours]" class="{{ errors.has('default_deletion_time.hours') ? 'active' : '' }}" data-error="{{ errors.first('default_deletion_time.hours')|capitalize }}">{{ trans('user.preferences.default_deletion_time.hours') }}</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input value="{{ old('default_deletion_time.days', default_deletion_time.days) }}" id="default_deletion_time[days]" name="default_deletion_time[days]" type="number" min="0" max="30" class="validate {{ errors.has('default_deletion_time.days') ? 'invalid' }}">
+                            <label for="default_deletion_time[days]" class="{{ errors.has('default_deletion_time.days') ? 'active' : '' }}" data-error="{{ errors.first('default_deletion_time.days')|capitalize }}">{{ trans('user.preferences.default_deletion_time.days') }}</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input value="{{ old('default_deletion_time.months', default_deletion_time.months) }}" id="default_deletion_time[months]" name="default_deletion_time[months]" type="number" min="0" max="24" class="validate {{ errors.has('default_deletion_time.months') ? 'invalid' }}">
+                            <label for="default_deletion_time[months]" class="{{ errors.has('default_deletion_time.months') ? 'active' : '' }}" data-error="{{ errors.first('default_deletion_time.months')|capitalize }}">{{ trans('user.preferences.default_deletion_time.months') }}</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input value="{{ old('default_deletion_time.years', default_deletion_time.years) }}" id="default_deletion_time[years]" name="default_deletion_time[years]" type="number" min="0" max="3" class="validate {{ errors.has('default_deletion_time.years') ? 'invalid' }}">
+                            <label for="default_deletion_time[years]" class="{{ errors.has('default_deletion_time.years') ? 'active' : '' }}" data-error="{{ errors.first('default_deletion_time.years')|capitalize }}">{{ trans('user.preferences.default_deletion_time.years') }}</label>
+                        </div>
+                        <p class="help">
+                            {{ trans('user.preferences.default_deletion_time.help') }}
+                        </p>
                     </div>
                     <div class="input-field col s12">
                         <button class="btn waves-effect waves-light" type="submit" name="action">{{ trans('user.preferences.save') }}

@@ -105,8 +105,33 @@
          */
         public function getPreferencesView() {
             $account = Auth::user();
+
+            if ($account->default_deletion_time != null) {
+
+                $ref = new \DateTimeImmutable();
+                $end = $ref->setTimestamp($ref->getTimestamp() + $account->default_deletion_time);
+
+                $deletionTimeInterval = $ref->diff($end);
+                $defaultDeletionTime  = [
+                    'minutes' => $deletionTimeInterval->i,
+                    'hours'   => $deletionTimeInterval->h,
+                    'days'    => $deletionTimeInterval->d,
+                    'months'  => $deletionTimeInterval->m,
+                    'years'   => $deletionTimeInterval->y
+                ];
+            } else {
+                $defaultDeletionTime = [
+                    'minutes' => 0,
+                    'hours'   => 0,
+                    'days'    => 0,
+                    'months'  => 0,
+                    'years'   => 0,
+                ];
+            }
+
             return view('user.preferences', [
-                'user' => $account
+                'user'                  => $account,
+                'default_deletion_time' => $defaultDeletionTime
             ]);
         }
 
@@ -117,8 +142,21 @@
          */
         public function updatePreferences(UpdatePreferences $request) {
             $account = Auth::user();
+
+            $i = $request->default_deletion_time['minutes'];
+            $h = $request->default_deletion_time['hours'];
+            $d = $request->default_deletion_time['days'];
+            $m = $request->default_deletion_time['months'];
+            $y = $request->default_deletion_time['years'];
+
+            $deletionTimeInterval = new \DateInterval("P{$y}Y{$m}M{$d}DT{$h}H{$i}M");
+            $ref                  = new \DateTimeImmutable();
+            $end                  = $ref->add($deletionTimeInterval);
+
             $account->fill($request->only(['embed_name', 'embed_name_url', 'twitter_username']));
             $account->prefers_preview_link = $request->has('prefers_preview_link');
+
+            $account->default_deletion_time = ($end->getTimestamp() - $ref->getTimestamp() == 0) ? null : $end->getTimestamp() - $ref->getTimestamp();
 
             /** @var Domain $domain */
             $domain = Domain::find($request->default_domain);

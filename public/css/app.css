@@ -131,7 +131,6 @@ nav .brand-logo {
 }
 
 .terminal-view .close-btn-wrapper > .close-btn {
-  content: " ";
   display: block;
   position: absolute;
   left: -0.5em;
@@ -143,7 +142,6 @@ nav .brand-logo {
 }
 
 .terminal-view .close-btn-wrapper > .min-btn {
-  content: " ";
   display: block;
   position: absolute;
   left: 0.9em;
@@ -155,7 +153,6 @@ nav .brand-logo {
 }
 
 .terminal-view .close-btn-wrapper > .fullscreen-btn {
-  content: " ";
   display: block;
   position: absolute;
   left: 2.3em;
@@ -164,4 +161,16 @@ nav .brand-logo {
   border-radius: 100%;
   width: 13px;
   height: 13px;
+}
+
+.help {
+  margin-top: 0;
+  color: gray;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.input-field:hover > .help,
+.col:hover > .help {
+  color: rgba(0, 0, 0, 0.87);
 }

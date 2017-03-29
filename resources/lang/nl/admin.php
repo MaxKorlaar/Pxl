@@ -45,6 +45,17 @@
                                 'twitter_username_help'                 => 'Het is mogelijk om links naar afbeeldingen te delen op Twitter. Deze zullen dan worden weergegeven in Twitter-cards. Het is mogelijk om deze cards te linken aan je eigen Twitter-account.',
                                 'save'                                  => 'Opslaan',
                                 'default_url_help'                      => 'Het is mogelijk om na het uploaden van een afbeelding direct een URL te krijgen naar de afbeelding zelf, of naar een voorvertoningspagina welke de afbeelding bevat.',
+                                'default_deletion_time'                 =>
+                                    [
+                                        'name'    => 'Standaard verwijderen na tijdsverloop',
+                                        'minutes' => 'Minuten',
+                                        'hours'   => 'Uren',
+                                        'days'    => 'Dagen',
+                                        'months'  => 'Maanden',
+                                        'years'   => 'Jaren',
+                                        'help'    => 'Het is mogelijk om geüploade afbeeldingen automatisch na een bepaald verloop van tijd te laten verwijderen. Als je alle velden op 0 zet, staat deze functie uit.
+Het is mogelijk om de automatische verwijdertijd per afbeelding later aan te passen.',
+                                    ],
                             ],
                         'save'                => 'Opslaan',
                         'upload_token_reset'  => 'De upload-token is gereset',

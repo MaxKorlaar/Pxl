@@ -68,5 +68,15 @@ Well known authentication apps are OTP Auth for iOS, Google Authenticator for An
                 'no_domains_available'                  => 'No domains available',
                 'default_domain'                        => 'Default domain',
                 'domain_not_found'                      => 'The domain cannot be found',
+                'default_deletion_time'                 =>
+                    [
+                        'days'    => 'Days',
+                        'help'    => 'It is possible to automatically delete uploaded images after a certain amount of time since they have been uploaded. If you set all fields to 0, this function will be turned off. It is possible to change the automatic deletion time per image afterwards.',
+                        'hours'   => 'Hours',
+                        'minutes' => 'Minutes',
+                        'months'  => 'Months',
+                        'name'    => 'Default deletion time',
+                        'years'   => 'Years',
+                    ],
             ],
     ];

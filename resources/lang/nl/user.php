@@ -70,5 +70,16 @@ Bekende authenticatie-apps zijn OTP Auth voor iOS, Google Authenticator voor And
                 'no_domains_available'                  => 'Geen domeinnamen beschikbaar',
                 'domain_not_found'                      => 'Het domein kan niet gevonden worden',
                 'default_domain'                        => 'Standaard domein',
+                'default_deletion_time'                 =>
+                    [
+                        'name'    => 'Standaard verwijderen na tijdsverloop',
+                        'minutes' => 'Minuten',
+                        'hours'   => 'Uren',
+                        'days'    => 'Dagen',
+                        'months'  => 'Maanden',
+                        'years'   => 'Jaren',
+                        'help'    => 'Het is mogelijk om geüploade afbeeldingen automatisch na een bepaald verloop van tijd te laten verwijderen. Als je alle velden op 0 zet, staat deze functie uit.
+Het is mogelijk om de automatische verwijdertijd per afbeelding later aan te passen.',
+                    ],
             ],
     ];
