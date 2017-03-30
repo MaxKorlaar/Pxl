@@ -36,7 +36,7 @@
                                 <span class="card-title grey-text text-darken-4 truncate tooltipped image-title" data-position="top" data-delay="50" data-tooltip="{{ image.name }}">{{ image.name }}
                                     <i class="material-icons right">close</i>
                                 </span>
-                                        <a href="{{ user.prefers_preview_link ? image.getUrlToImagePreview() : image.getUrlToImage() }}" class="waves-effect waves-light btn btn-floating tooltipped" data-position="top" data-delay="50" data-tooltip="{{ trans('gallery.image.link') }}">
+                                        <a target="_blank" href="{{ user.prefers_preview_link ? image.getUrlToImagePreview() : image.getUrlToImage() }}" class="waves-effect waves-light btn btn-floating tooltipped" data-position="top" data-delay="50" data-tooltip="{{ trans('gallery.image.link') }}">
                                             <i class="material-icons">link</i>
                                         </a>
                                         <button data-clipboard-text="{{ user.prefers_preview_link ? image.getUrlToImagePreview() : image.getUrlToImage() }}" class="waves-effect waves-light purple btn btn-floating tooltipped clipboard" data-position="top" data-delay="50" data-tooltip="{{ trans('gallery.image.copy') }}">

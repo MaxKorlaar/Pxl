@@ -7,7 +7,7 @@
         'upload'          => 'Upload',
         'success'         =>
             [
-                'with_url' => 'The image has been uploaded successfully and can be found at <a href=\':url\'>:url</a>',
+                'with_url' => 'The image has been uploaded successfully and can be found at <a target="_blank" href=\':url\'>:url</a>',
             ],
         'failed'          =>
             [

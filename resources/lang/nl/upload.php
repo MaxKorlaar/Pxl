@@ -12,7 +12,7 @@
             ],
         'success'         =>
             [
-                'with_url' => 'De afbeelding is succesvol geüpload en te vinden op <a href=\':url\'>:url</a>',
+                'with_url' => 'De afbeelding is succesvol geüpload en te vinden op <a target="_blank" href=\':url\'>:url</a>',
             ],
         'software'        =>
             [
