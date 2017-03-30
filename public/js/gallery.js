@@ -142,10 +142,13 @@ $(document).ready(function () {
         var autoDeleteUrl = that.data('auto-delete-url');
         var csrfToken = window.csrf_token;
         var autoDeletionModal = $('#auto-deletion-modal');
-        $('#auto-deletion-modal').modal();
         autoDeletionModal.data('auto-delete-url', autoDeleteUrl);
         autoDeletionModal.modal();
         autoDeletionModal.modal('open');
+    });
+    $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 3
     });
 });
 

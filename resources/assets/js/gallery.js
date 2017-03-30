@@ -67,10 +67,12 @@ $(document).ready(function () {
         let autoDeleteUrl     = that.data('auto-delete-url');
         let csrfToken         = window.csrf_token;
         let autoDeletionModal = $('#auto-deletion-modal');
-        $('#auto-deletion-modal').modal();
         autoDeletionModal.data('auto-delete-url', autoDeleteUrl);
         autoDeletionModal.modal();
         autoDeletionModal.modal('open');
-
+    });
+    $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears:  3
     });
 });

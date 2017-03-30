@@ -1,5 +1,5 @@
 $('form').on('submit', function (e) {
-    let formHeight, formWidth;
+    let formHeight = 0, formWidth = 0;
     e.preventDefault();
     formHeight = $('.login-form').height();
     formWidth  = $('.login-form').width();

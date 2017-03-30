@@ -74,10 +74,14 @@
         <div id="auto-deletion-modal" class="modal">
             <div class="modal-content">
                 <h4>{{ trans('gallery.image.change_scheduled_deletion_time') }}</h4>
-                <p>. . .</p>
+                <input type="date" class="datepicker">
+                <!-- TODO http://materializecss.com/forms.html datepicker + time -->
+                {{ trans('gallery.image.from_now') }}
             </div>
             <div class="modal-footer">
-                <button class="waves-effect waves-green btn-flat">{{ trans('gallery.image.apply') }}</button>
+                <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">{{ trans('gallery.cancel') }}</a>
+                <button class="waves-effect blue waves-blue btn-flat">{{ trans('gallery.image.disable_automatic_deletion') }}</button>
+                <button class="waves-effect green waves-green btn-flat">{{ trans('gallery.apply') }}</button>
             </div>
         </div>
     </div>
