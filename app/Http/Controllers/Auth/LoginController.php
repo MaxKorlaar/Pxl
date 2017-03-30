@@ -65,7 +65,7 @@
                     if ($user->hasTwoFactorAuth()) {
                         return $this->checkTwoFactorAuth($request, $user);
                     } else {
-                        $this->guard()->login($user);
+                        $this->guard()->login($user, $request->has('remember'));
                         return $this->sendLoginResponse($request);
                     }
                 } else {
@@ -116,7 +116,7 @@
         public function checkTwoFactorAuth(Request $request, User $user) {
             if ($request->has('2fa_key')) {
                 if ($user->verifyKey($request->get('2fa_key'))) {
-                    $this->guard()->login($user);
+                    $this->guard()->login($user, $request->has('remember'));
                     return $this->sendLoginResponse($request);
                 } else {
                     $this->incrementLoginAttempts($request);
