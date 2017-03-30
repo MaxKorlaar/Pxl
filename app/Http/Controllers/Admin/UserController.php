@@ -140,6 +140,7 @@
             $user->embed_name   = $request->username;
             $user->upload_token = $user->id . str_random(60);
             $user->delete_token = $user->id . str_random(60);
+            $user->default_deletion_time = null;
             $user->saveOrFail();
             return back()->with('success', trans('admin.users.new.created', ['user' => $user->username, 'password' => $password]));
         }

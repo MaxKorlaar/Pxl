@@ -96,6 +96,7 @@
             $user->embed_name   = $data['username'];
             $user->upload_token = $user->id . str_random(60);
             $user->delete_token = $user->id . str_random(60);
+            $user->default_deletion_time = null;
             $user->save();
             return $user;
         }
