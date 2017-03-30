@@ -62,7 +62,7 @@
                     'image_url'   => $image->getUrlToImage(),
                     'preview_url' => $image->getUrlToImagePreview(),
                     'name'        => $image->name,
-                    'delete_url'  => 'TODO'//TODO
+                    'delete_url'  => route('user/gallery')//TODO Link directly to some kind of confirmation prompt
                 ], 200);
             }
 
