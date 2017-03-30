@@ -244,7 +244,6 @@ $(document).ready(function () {
                 scheduled_deletion_timestamp: timestamp
             },
             success: function success(data) {
-                console.info(data);
                 if (data.success) {
                     Materialize.toast(data.message, 5000);
                     window.gallery.autoDeleteVisibleTimestamp.text(data.readableTimestamp);
