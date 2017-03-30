@@ -73,25 +73,6 @@
                         </ul>
                     {% endif %}
                 </div>
-                <div id="auto-deletion-modal" class="modal">
-                    <div class="modal-content">
-                        <h4>{{ trans('gallery.image.change_scheduled_deletion_time') }}</h4>
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <input value="" id="datepicker" type="date" name="date" class="validate">
-                            </div>
-                            <div class="input-field col s6">
-                                <input value="" id="timepicker" type="time" name="time" class="validate">
-                            </div>
-                        </div>
-                        {{ trans('gallery.image.from_now') }}
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">{{ trans('gallery.cancel') }}</a>
-                        <button class="waves-effect blue waves-blue btn-flat"></button>
-                        <button class="waves-effect green waves-green btn-flat">{{ trans('gallery.apply') }}</button>
-                    </div>
-                </div>
             </div>
         {% endblock %}
     </div>
