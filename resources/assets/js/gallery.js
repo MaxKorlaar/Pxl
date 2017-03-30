@@ -1,5 +1,10 @@
 let Clipboard = require('Clipboard');
+
+import MaterialDateTimePicker from "material-datetime-picker";
+import moment from "moment";
+
 $(document).ready(function () {
+
     let cp = new Clipboard('.clipboard');
     $('.delete-button').on('click', function () {
         let icon;
@@ -21,7 +26,6 @@ $(document).ready(function () {
                     _method: 'DELETE'
                 },
                 success:  function (data) {
-                    console.info(data);
                     if (data.success) {
                         container.fadeOut();
                         Materialize.toast(data.message, 5000);
@@ -59,20 +63,71 @@ $(document).ready(function () {
             });
         }
     });
-
+    window.editingImage = {};
+    const picker        = new MaterialDateTimePicker()
+        .on('submit', (val) => {
+            let moment    = picker.get();
+            let timestamp = moment.unix();
+            updateDeletionTimestamp(timestamp);
+        });
     $('.auto-delete-button').on('click', function () {
-        let that              = $(this);
-        let container         = that.parents('.image-card-container');
-        let visibleTimestamp  = container.find('.autodelete');
-        let autoDeleteUrl     = that.data('auto-delete-url');
-        let csrfToken         = window.csrf_token;
-        let autoDeletionModal = $('#auto-deletion-modal');
-        autoDeletionModal.data('auto-delete-url', autoDeleteUrl);
-        autoDeletionModal.modal();
-        autoDeletionModal.modal('open');
+        let that                                  = $(this);
+        let container                             = that.parents('.image-card-container');
+        let visibleTimestamp                      = container.find('.autodelete');
+        let autoDeleteUrl                         = that.data('auto-delete-url');
+        let currentTimestamp                      = that.data('timestamp');
+        let csrfToken                             = window.csrf_token;
+        window.gallery.autoDeleteUrl              = autoDeleteUrl;
+        window.gallery.autoDeleteVisibleTimestamp = visibleTimestamp;
+        picker.open();
+
+        let neverButton = $(`<a class="c-btn c-btn--flat js-never">${window.gallery.never}</a>`);
+        $('.modal-btns').prepend(neverButton);
+
+        neverButton.on('click', function () {
+            updateDeletionTimestamp(-1);
+            picker.close();
+        });
+
+        if (currentTimestamp === null) {
+            console.info('Current timestamp is null');
+            picker.value = moment();
+            picker.set(new Date());
+        } else {
+            picker.value = moment(currentTimestamp);
+            picker.set(new Date(currentTimestamp * 1000));
+        }
+
+        return true;
     });
-    $('.datepicker').pickadate({
-        selectMonths: true, // Creates a dropdown to control month
-        selectYears:  3
-    });
+    function updateDeletionTimestamp(timestamp) {
+
+        $.ajax({
+            url:      window.gallery.autoDeleteUrl,
+            type:     'POST',
+            dataType: 'json',
+            data:     {
+                _token:                       window.csrf_token,
+                _method:                      'PUT',
+                scheduled_deletion_timestamp: timestamp
+            },
+            success:  function (data) {
+                console.info(data);
+                if (data.success) {
+                    Materialize.toast(data.message, 5000);
+                    window.gallery.autoDeleteVisibleTimestamp.text(data.readableTimestamp);
+                } else {
+                    Materialize.toast(data.error, 10000);
+                }
+            },
+            error:    function (data) {
+                if (typeof data.responseJSON === 'undefined') {
+                    Materialize.toast("An unknown error has occurred");
+                } else {
+                    Materialize.toast(data.error, 10000);
+                }
+            }
+        });
+    }
+
 });

@@ -10,10 +10,12 @@
 </head>
 <body>
 {% block body %}
+{% block container %}
     <div class="container page-content">
         {% block content %}
         {% endblock %}
     </div>
+{% endblock %}
 {% block scripts %}
     <script src="{{ asset('js/app.js') }}"></script>
 {% endblock %}

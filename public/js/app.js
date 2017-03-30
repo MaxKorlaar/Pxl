@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 25);
+/******/ 	return __webpack_require__(__webpack_require__.s = 17);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -10391,7 +10391,7 @@ module.exports = function(module) {
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-__webpack_require__(10);
+__webpack_require__(8);
 console.info('Pxl by Max Korlaar – github/MaxKorlaar/pxl');
 
 /***/ }),
@@ -11679,13 +11679,13 @@ jQuery.Velocity ? console.log("Velocity is already loaded. You may be needlessly
       }
     }, destroy: function destroy() {
       this.element && lc(this, !1), this.handlers = {}, this.session = {}, this.input.destroy(), this.element = null;
-    } }, n(hc, { INPUT_START: O, INPUT_MOVE: P, INPUT_END: Q, INPUT_CANCEL: R, STATE_POSSIBLE: Rb, STATE_BEGAN: Sb, STATE_CHANGED: Tb, STATE_ENDED: Ub, STATE_RECOGNIZED: Vb, STATE_CANCELLED: Wb, STATE_FAILED: Xb, DIRECTION_NONE: S, DIRECTION_LEFT: T, DIRECTION_RIGHT: U, DIRECTION_UP: V, DIRECTION_DOWN: W, DIRECTION_HORIZONTAL: X, DIRECTION_VERTICAL: Y, DIRECTION_ALL: Z, Manager: kc, Input: ab, TouchAction: Pb, TouchInput: Eb, MouseInput: rb, PointerEventInput: wb, TouchMouseInput: Gb, SingleTouchInput: Ab, Recognizer: Yb, AttrRecognizer: ac, Tap: gc, Pan: bc, Swipe: fc, Pinch: cc, Rotate: ec, Press: dc, on: t, off: u, each: m, merge: o, extend: n, inherit: p, bindFn: q, prefixed: B }), ( false ? 'undefined' : _typeof(__webpack_require__(22))) == g && __webpack_require__(23) ? !(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
+    } }, n(hc, { INPUT_START: O, INPUT_MOVE: P, INPUT_END: Q, INPUT_CANCEL: R, STATE_POSSIBLE: Rb, STATE_BEGAN: Sb, STATE_CHANGED: Tb, STATE_ENDED: Ub, STATE_RECOGNIZED: Vb, STATE_CANCELLED: Wb, STATE_FAILED: Xb, DIRECTION_NONE: S, DIRECTION_LEFT: T, DIRECTION_RIGHT: U, DIRECTION_UP: V, DIRECTION_DOWN: W, DIRECTION_HORIZONTAL: X, DIRECTION_VERTICAL: Y, DIRECTION_ALL: Z, Manager: kc, Input: ab, TouchAction: Pb, TouchInput: Eb, MouseInput: rb, PointerEventInput: wb, TouchMouseInput: Gb, SingleTouchInput: Ab, Recognizer: Yb, AttrRecognizer: ac, Tap: gc, Pan: bc, Swipe: fc, Pinch: cc, Rotate: ec, Press: dc, on: t, off: u, each: m, merge: o, extend: n, inherit: p, bindFn: q, prefixed: B }), ( false ? 'undefined' : _typeof(__webpack_require__(14))) == g && __webpack_require__(15) ? !(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
     return hc;
   }.call(exports, __webpack_require__, exports, module),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : "undefined" != typeof module && module.exports ? module.exports = hc : a[c] = hc;
 }(window, document, "Hammer");;(function (factory) {
   if (true) {
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(0), __webpack_require__(15)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(0), __webpack_require__(9)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -19204,12 +19204,10 @@ $(document).ready(function () {
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 8 */,
-/* 9 */,
-/* 10 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
-window._ = __webpack_require__(16);
+window._ = __webpack_require__(10);
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -19227,8 +19225,8 @@ window.$ = window.jQuery = __webpack_require__(0);
 
 //require('materialize-css/dist/js/materialize.js');
 
-window.Vue = __webpack_require__(21);
-__webpack_require__(20);
+window.Vue = __webpack_require__(13);
+__webpack_require__(12);
 
 /**
  * We'll register a HTTP interceptor to attach the "CSRF" header to each of
@@ -19256,11 +19254,7 @@ Vue.http.interceptors.push(function (request, next) {
 // });
 
 /***/ }),
-/* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;/*! Hammer.JS - v2.0.7 - 2016-04-22
@@ -21910,7 +21904,7 @@ if (true) {
 
 
 /***/ }),
-/* 16 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -39002,7 +38996,7 @@ if (true) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)(module)))
 
 /***/ }),
-/* 17 */
+/* 11 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -39188,9 +39182,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 18 */,
-/* 19 */,
-/* 20 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40271,7 +40263,7 @@ var xhrClient = function (request) {
 
 var nodeClient = function (request) {
 
-    var client = __webpack_require__(24);
+    var client = __webpack_require__(16);
 
     return new PromiseObj(function (resolve) {
 
@@ -40725,7 +40717,7 @@ module.exports = plugin;
 
 
 /***/ }),
-/* 21 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50050,10 +50042,10 @@ Vue$3.compile = compileToFunctions;
 
 module.exports = Vue$3;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17), __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11), __webpack_require__(1)))
 
 /***/ }),
-/* 22 */
+/* 14 */
 /***/ (function(module, exports) {
 
 module.exports = function() {
@@ -50062,7 +50054,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 23 */
+/* 15 */
 /***/ (function(module, exports) {
 
 /* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals __webpack_amd_options__ */
@@ -50071,13 +50063,13 @@ module.exports = __webpack_amd_options__;
 /* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ }),
-/* 24 */
+/* 16 */
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
-/* 25 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(3);

@@ -1,3 +1,5 @@
+@import "~material-datetime-picker/lib/scss/material-datetime-picker.scss";
+
 .gallery-img {
   transition: opacity .4s;
   opacity: 1;
@@ -13,4 +15,48 @@
 .gallery-icon {
   display: block;
   font-size: 74px;
+}
+
+.c-scrim {
+  z-index: 10;
+}
+
+.c-datepicker {
+  z-index: 20;
+}
+
+.c-datepicker__header {
+  box-sizing: content-box;
+}
+
+.c-datepicker__header-date {
+  span {
+    line-height: 1.2;
+  }
+}
+
+.c-datepicker__day-head, .c-datepicker__day-body {
+  padding: 0;
+  text-align: center;
+}
+
+.c-datepicker__days {
+  width: auto;
+  .c-datepicker__days-head {
+    border: none;
+  }
+}
+
+.c-datepicker__toggle {
+  &:checked {
+    opacity: 1;
+  }
+}
+
+.c-datepicker__toggle--right {
+  left: initial;
+}
+
+.c-datepicker__clock {
+  box-sizing: content-box;
 }

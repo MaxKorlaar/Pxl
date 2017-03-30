@@ -18,6 +18,7 @@
     "jquery": "^3.1.1",
     "laravel-mix": "0.*",
     "lodash": "^4.17.4",
+    "material-datetime-picker": "^2.3.0",
     "materialize-css": "^0.98.1",
     "uglifyjs": "^2.4.10",
     "vue": "^2.1.10",

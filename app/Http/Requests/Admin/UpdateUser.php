@@ -47,7 +47,7 @@
                 'default_deletion_time.hours'   => 'required|integer|min:0|max:23',
                 'default_deletion_time.days'    => 'required|integer|min:0|max:30',
                 'default_deletion_time.months'  => 'required|integer|min:0|max:11',
-                'default_deletion_time.years'   => 'required|integer|min:0|max:3'
+                'default_deletion_time.years'   => 'required|integer|min:0|max:5'
             ];
 
         }

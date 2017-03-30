@@ -9,11 +9,12 @@
     {% block navigation %}
         {% include 'partials/navigation.twig' %}
     {% endblock %}
-
+{% block container %}
     <div class="container page-content">
         {% block content %}
         {% endblock %}
     </div>
+{% endblock %}
     {% block footer %}
         {% include 'partials/footer.twig' %}
     {% endblock %}

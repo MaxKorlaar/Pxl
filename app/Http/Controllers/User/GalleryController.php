@@ -3,6 +3,7 @@
     namespace App\Http\Controllers\User;
 
     use App\Http\Controllers\Controller;
+    use App\Http\Requests\Image\UpdateDeletionTimestamp;
     use App\Image;
     use Auth;
     use Request;
@@ -61,11 +62,50 @@
         }
 
         /**
-         * @param Request $request
-         * @param         $imageUrl
+         * @param UpdateDeletionTimestamp|Request $request
+         * @param                                 $imageUrl
+         *
+         * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
          */
-        public function setImageDeletionTimestamp(Request $request, $imageUrl) {
+        public function setImageDeletionTimestamp(UpdateDeletionTimestamp $request, $imageUrl) {
+            $user = Auth::user();
 
+            /** @var Image $image */
+            $image = Image::whereUrlName($imageUrl)->where('user_id', '=', $user->id)->get()->first();
+
+            if ($image == null) {
+                return response([
+                    'success' => false,
+                    'error'   => trans('gallery.image_not_found')
+                ]);
+            }
+
+            if ($request->scheduled_deletion_timestamp < time()) {
+                if ($request->scheduled_deletion_timestamp == -1) {
+                    $image->deletion_timestamp = null;
+                } else {
+                    return response([
+                        'success' => false,
+                        'error'   => trans('gallery.timestamp_in_the_past')
+                    ]);
+                }
+            } else {
+                $image->deletion_timestamp = $request->scheduled_deletion_timestamp;
+            }
+
+            $result = $image->save();
+            if (!$result) {
+                return response([
+                    'success' => false,
+                    'error'   => trans('gallery.deletion_time_could_not_be_saved')
+                ]);
+            }
+
+            return response([
+                'success'           => true,
+                'message'           => trans('gallery.deletion_time_updated'),
+                'readableTimestamp' => $image->deletion_timestamp == null ? trans('datetime.never') : date(trans('datetime.format.date_and_time'), $image->deletion_timestamp)
+            ]);
         }
 
     }
