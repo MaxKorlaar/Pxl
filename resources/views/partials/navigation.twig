@@ -48,6 +48,8 @@
                     <li><a href="{{ route('auth/register') }}">Sign up</a></li>
                 {% endif %}
             {% else %}
+                <li><a href="{{ route('upload') }}"><i class="material-icons left">cloud_upload</i> {{ trans('nav.upload') }}</a></li>
+                <li><a href="{{ route('user/gallery') }}"><i class="material-icons left">collections</i> {{ trans('nav.gallery') }}</a></li>
 
                 {% if auth_user().isAdmin() %}
                     {# TODO Is this even useful on mobile? No idea. Lower priority than desktop nav. #}
@@ -58,6 +60,7 @@
                         </a>
                         <ul id="admin-dropdown-mobile" class="dropdown-content">
                             <li><a href="{{ route('admin/users') }}">{{ trans('nav.admin.users') }}</a></li>
+                            <li><a href="{{ route('admin/domains') }}">{{ trans('nav.admin.domains') }}</a></li>
                         </ul>
                     </li>
                 {% endif %}
