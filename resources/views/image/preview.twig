@@ -34,8 +34,7 @@
     <meta name="author" content="{{ author.embed_name }}">
 {% endblock %}
 {% block body %}
-
-    <nav class="green lighten-1" role="navigation">
+    <nav class="red lighten-1" role="navigation">
         <div class="nav-wrapper">
             <a href="{{ route('home') }}"><img class="brand-logo center" src="{{ asset('img/logo/Px-logo-cut-small.png') }}"></a>
             <ul class="right hide-on-med-and-down">
@@ -43,12 +42,12 @@
             </ul>
         </div>
     </nav>
-    <div class="container page-content">
+    <div class="container page-content preview-page">
         {% block content %}
             <div class="section">
                 <div class="row">
                     <div class="col s12 center">
-                        <a href="{{ image.getUrlToImage() }}"><img src="{{ image.getUrlToImage() }}" alt="{{ image.url_name }}" class="responsive-img"></a>
+                        <a href="{{ image.getUrlToImage() }}"><img src="{{ image.getUrlToImage() }}" alt="{{ image.url_name }}" class="responsive-img hoverable"></a>
                     </div>
                 </div>
             </div>
