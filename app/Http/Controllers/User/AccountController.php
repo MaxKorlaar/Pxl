@@ -8,6 +8,7 @@
     use App\Http\Requests\User\Enable2FA;
     use App\Http\Requests\User\UpdateAccount;
     use App\Http\Requests\User\UpdatePreferences;
+    use Illuminate\Database\Eloquent\Collection;
     use Illuminate\Database\Eloquent\ModelNotFoundException;
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Session;
@@ -129,8 +130,19 @@
                 ];
             }
 
+            /** @var Collection $domains */
+            $domains = $account->domains()->getResults();
+
+            if ($account->default_domain != null) {
+                $domain = Domain::find($account->default_domain);
+                if ($domain != null) {
+                    $domains->add($domain); // Add domain to list of available domains, even though the user does not own it, if it is on their account
+                }
+            }
+
             return view('user.preferences', [
                 'user'                  => $account,
+                'domains'               => $domains,
                 'default_deletion_time' => $defaultDeletionTime
             ]);
         }
@@ -160,7 +172,8 @@
 
             /** @var Domain $domain */
             $domain = Domain::find($request->default_domain);
-            if ($domain == null || $domain->user != $account->id) {
+            if ($domain == null || ($domain->user != $account->id && $account->default_domain != $domain->id)) {
+                // Check if the user is not already associated with a domain they do not own, an admin could have set it for them
                 return back()->withErrors([
                     'default_domain' => trans('user.preferences.domain_not_found')
                 ]);

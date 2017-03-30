@@ -67,7 +67,7 @@ Well known authentication apps are OTP Auth for iOS, Google Authenticator for An
                 'embed_name'                            => 'Display name added to embedded images',
                 'no_domains_available'                  => 'No domains available',
                 'default_domain'                        => 'Default domain',
-                'domain_not_found'                      => 'The domain cannot be found',
+                'domain_not_found'                      => 'This domain cannot be found',
                 'default_deletion_time'                 =>
                     [
                         'days'    => 'Days',

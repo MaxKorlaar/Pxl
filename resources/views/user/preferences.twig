@@ -58,7 +58,7 @@
                             {{ trans('user.preferences.default_url_help') }}
                         </p>
                     </div>
-                    {% if user.domains().getResults().empty() %}
+                    {% if domains.empty() %}
                         <div class="card yellow red-text center-align col s12">
                             <div class="card-content center-align">
                                 <span class="material-icons left">warning</span>
@@ -68,7 +68,7 @@
                     {% endif %}
                     <div class="input-field col s12">
                         <select name="default_domain" id="default_domain">
-                            {% for domain in user.domains().getResults() %}
+                            {% for domain in domains %}
                                 <option value="{{ domain.id }}" {{ domain.id == user.default_domain ? 'selected' }}>{{ domain.domain }}</option>
                             {% endfor %}
                         </select>

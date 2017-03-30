@@ -68,7 +68,7 @@ Bekende authenticatie-apps zijn OTP Auth voor iOS, Google Authenticator voor And
                 'default_url_include_gallery_extension' => 'Standaard URL naar voorvertoning van afbeelding',
                 'default_url_help'                      => 'Het is mogelijk om na het uploaden van een afbeelding direct een URL te krijgen naar de afbeelding zelf, of naar een voorvertoningspagina welke de afbeelding bevat.',
                 'no_domains_available'                  => 'Geen domeinnamen beschikbaar',
-                'domain_not_found'                      => 'Het domein kan niet gevonden worden',
+                'domain_not_found'                      => 'Dit domein kan niet worden gevonden',
                 'default_domain'                        => 'Standaard domein',
                 'default_deletion_time'                 =>
                     [
