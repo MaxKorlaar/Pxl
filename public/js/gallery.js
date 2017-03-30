@@ -200,6 +200,7 @@ $(document).ready(function () {
     var picker = new __WEBPACK_IMPORTED_MODULE_0_material_datetime_picker__["a" /* default */]().on('submit', function (val) {
         var moment = picker.get();
         var timestamp = moment.unix();
+        window.gallery.lastUsedDeleteButton.data('timestamp', timestamp);
         updateDeletionTimestamp(timestamp);
     });
     $('.auto-delete-button').on('click', function () {
@@ -211,18 +212,19 @@ $(document).ready(function () {
         var csrfToken = window.csrf_token;
         window.gallery.autoDeleteUrl = autoDeleteUrl;
         window.gallery.autoDeleteVisibleTimestamp = visibleTimestamp;
+        window.gallery.lastUsedDeleteButton = that;
         picker.open();
 
         var neverButton = $("<a class=\"c-btn c-btn--flat js-never\">" + window.gallery.never + "</a>");
         $('.modal-btns').prepend(neverButton);
 
         neverButton.on('click', function () {
+            window.gallery.lastUsedDeleteButton.data('timestamp', null);
             updateDeletionTimestamp(-1);
             picker.close();
         });
 
         if (currentTimestamp === null) {
-            console.info('Current timestamp is null');
             picker.value = __WEBPACK_IMPORTED_MODULE_1_moment___default()();
             picker.set(new Date());
         } else {

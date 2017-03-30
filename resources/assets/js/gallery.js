@@ -68,6 +68,7 @@ $(document).ready(function () {
         .on('submit', (val) => {
             let moment    = picker.get();
             let timestamp = moment.unix();
+            window.gallery.lastUsedDeleteButton.data('timestamp', timestamp);
             updateDeletionTimestamp(timestamp);
         });
     $('.auto-delete-button').on('click', function () {
@@ -79,18 +80,19 @@ $(document).ready(function () {
         let csrfToken                             = window.csrf_token;
         window.gallery.autoDeleteUrl              = autoDeleteUrl;
         window.gallery.autoDeleteVisibleTimestamp = visibleTimestamp;
+        window.gallery.lastUsedDeleteButton = that;
         picker.open();
 
         let neverButton = $(`<a class="c-btn c-btn--flat js-never">${window.gallery.never}</a>`);
         $('.modal-btns').prepend(neverButton);
 
         neverButton.on('click', function () {
+            window.gallery.lastUsedDeleteButton.data('timestamp', null);
             updateDeletionTimestamp(-1);
             picker.close();
         });
 
         if (currentTimestamp === null) {
-            console.info('Current timestamp is null');
             picker.value = moment();
             picker.set(new Date());
         } else {
