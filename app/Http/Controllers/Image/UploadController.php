@@ -19,7 +19,21 @@
          * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
          */
         public function getFormView() {
-            return view('image.upload', []);
+
+            return view('image.upload', [
+                'max_upload_size' => $this->getMaxUploadSize(),
+                'max_files' => ini_get('max_file_uploads')
+            ]);
+        }
+
+
+        /**
+         * @return string
+         */
+        public function getMaxUploadSize() {
+            $postMax = ini_get('post_max_size');
+            $uploadMax = ini_get('upload_max_filesize');
+            return $uploadMax < $postMax ? $uploadMax : $postMax;
         }
 
         /**

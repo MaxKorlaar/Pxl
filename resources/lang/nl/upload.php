@@ -20,4 +20,5 @@
                 'description' => 'Het is mogelijk om afbeeldingen te uploaden vanuit software. Hiervoor is het dan ook niet nodig om ingelogd te zijn op de website zelf.',
             ],
         'setup_help'      => 'Hulp bij instellen',
+        'help'            => 'Er kunnen maximaal :max_files bestanden tegelijkertijd worden geüpload. Het bestandslimiet is :max_upload_size.'
     ];
