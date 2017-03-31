@@ -187,7 +187,7 @@
         public function getThumbnail() {
             return \InterventionImage::cache(function ($image) {
                 /** @var \InterventionImage $image */
-                $image->make(Storage::get($this->pathToFile()))->fit(400, 400, function ($constraint) {
+                $image->make(Storage::get($this->pathToFile()))->fit(300, 300, function ($constraint) {
                     /** @var \Intervention\Image\Constraint $constraint */
                     $constraint->upsize();
                 });

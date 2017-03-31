@@ -20,7 +20,7 @@
          */
         public function getView() {
             $account          = Auth::user();
-            $imagesPagination = Image::whereUserId($account->id)->orderBy('id', 'desc')->paginate(20);
+            $imagesPagination = Image::whereUserId($account->id)->orderBy('id', 'desc')->paginate(24);
 
             return view('user.gallery', [
                 'user'       => $account,
