@@ -26,7 +26,7 @@
          */
         public function rules() {
             return [
-                'file' => 'required|file|image',
+                'images.*' => 'required|file|image',
             ];
         }
     }

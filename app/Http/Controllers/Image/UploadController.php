@@ -73,7 +73,7 @@
          *
          * @return \Illuminate\Http\RedirectResponse
          */
-        public function uploadImageFromSite(Upload $request) {
+        public function uploadImagesFromSite(Upload $request) {
             /** @var User $user */
             $user   = $request->user();
             $domain = Domain::find($user->default_domain);
@@ -83,25 +83,33 @@
                     'error' => trans('upload.failed.no_default_domain')
                 ]);
             }
-            $image                = Image::processNew($request->file('file'));
-            $image->uploaded_from = $request->ip();
 
-            $image->user_id = $user->id;
-            if ($user->default_deletion_time != null) {
-                $image->deletion_timestamp = time() + $user->default_deletion_time;
-            } else {
-                $image->deletion_timestamp = null;
+            $images = $request->file('images');
+
+            $success = [];
+
+            foreach ($images as $requestImage) {
+                $image                = Image::processNew($requestImage);
+                $image->uploaded_from = $request->ip();
+
+                $image->user_id = $user->id;
+                if ($user->default_deletion_time != null) {
+                    $image->deletion_timestamp = time() + $user->default_deletion_time;
+                } else {
+                    $image->deletion_timestamp = null;
+                }
+                $image->domain_id = $domain->id;
+                $result           = $image->storeImage('uploads'); // This also saves the image to the database
+
+                if (!$result) {
+                    return back()->withErrors([
+                        'error' => trans('upload.failed.could_not_save_image')
+                    ]);
+                }
+                $success[] = trans('upload.success.with_url', ['url' => $user->prefers_preview_link ? $image->getUrlToImagePreview() : $image->getUrlToImage()]);
             }
-            $image->domain_id = $domain->id;
-            $result           = $image->storeImage('uploads'); // This also saves the image to the database
 
-            if (!$result) {
-                return back()->withErrors([
-                    'error' => trans('upload.failed.could_not_save_image')
-                ]);
-            }
-
-            return back()->with('success', trans('upload.success.with_url', ['url' => $user->prefers_preview_link ? $image->getUrlToImagePreview() : $image->getUrlToImage()]));
+            return back()->with('success', $success);
         }
 
     }

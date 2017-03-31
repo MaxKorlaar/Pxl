@@ -9,7 +9,15 @@
                     <div class="card green white-text center-align">
                         <div class="card-content center-align">
                             <span class="material-icons left">check</span>
-                            <p class="center-align">{{ session('success')|raw }}</p>
+                            {% if session('success') is iterable %}
+                                <ul class="center-align">
+                                    {% for success in session('success') %}
+                                        <li>{{ success|raw }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <p class="center-align">{{ session('success')|raw }}</p>
+                            {% endif %}
                         </div>
                     </div>
                 {% endif %}
@@ -26,28 +34,29 @@
                     <div class="file-field input-field">
                         <div class="btn">
                             <span>{{ trans('upload.pick_image') }}</span>
-                            <input required name="file" type="file">
+                            <input multiple="multiple" required name="images[]" type="file">
                         </div>
-                        <div data-error="{{ errors.first('file') }}" class="file-path-wrapper">
-                            <input name="filepath" class="file-path validate {{ errors.has('file') ? 'invalid' : '' }}" type="text">
+                        <div data-error="{{ errors.first('images.*') }}" class="file-path-wrapper">
+                            <input name="filepath" class="file-path validate {{ errors.has('images.*') ? 'invalid' : '' }}" type="text">
                         </div>
                     </div>
-                    {% if(errors.has('file')) %}
-
+                    {% if(errors.has('images.*')) %}
                         <div class="card red white-text">
                             <div class="card-content center-align">
                                 <span class="material-icons left">warning</span>
-                                <p class="center-align">{{ errors.first('file')|capitalize }}</p>
+                                <p class="center-align">{{ errors.first('images.*')|capitalize }}</p>
                             </div>
                         </div>
                     {% endif %}
-                    <button type="submit" class="btn btn-waves-effect green waves-green"><i class="material-icons left">cloud_upload</i>{{ trans('upload.upload') }}</button>
+                    <button type="submit" class="btn btn-waves-effect green waves-green">
+                        <i class="material-icons left">cloud_upload</i>{{ trans('upload.upload') }}</button>
                 </form>
                 <h3>{{ trans('upload.software.heading') }}</h3>
                 <p>
                     {{ trans('upload.software.description') }}
                 </p>
-                <a href="{{ route('setup_help') }}" class="btn blue btn-waves waves-blue"><i class="material-icons left">help</i>{{ trans('upload.setup_help') }}</a>
+                <a href="{{ route('setup_help') }}" class="btn blue btn-waves waves-blue"><i class="material-icons left">help</i>{{ trans('upload.setup_help') }}
+                </a>
             </div>
         </div>
     </div>
