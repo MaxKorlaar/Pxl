@@ -178,4 +178,17 @@
             return 'U';
         }
 
+        /**
+         * Delete the model from the database, and set all of its owned images to be deleted in 3 days (259200 seconds)
+         *
+         * @return bool|null
+         *
+         * @throws \Exception
+         */
+        public function delete() {
+            $images = Image::whereUserId($this->id);
+            $r = $images->update(['deletion_timestamp' => time() + 259200]);
+            return parent::delete();
+        }
+
     }

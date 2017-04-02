@@ -17,7 +17,7 @@
                         'account_enabled'     => 'Account enabled',
                         'delete'              => 'Delete user',
                         'delete_confirmation' => 'Are you certain you want to delete this account from :site? This cannot be undone',
-                        'deletion_warning'    => 'Warning: The deletion of :user\'s account cannot be undone',
+                        'deletion_warning'    => 'Warning: The deletion of :user\'s account cannot be undone. All of this user\'s images will be deleted permanently in 3 days',
                         'errors_occurred'     => 'An error has occurred. Please correct this error.|Errors have occurred, please correct these errors.',
                         'title'               => 'Edit user: :name',
                         'updated'             => 'User information updated',

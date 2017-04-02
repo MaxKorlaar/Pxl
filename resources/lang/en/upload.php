@@ -20,5 +20,5 @@
                 'description' => 'It is possible to upload images from software, without having to be logged in on the website itself.',
             ],
         'setup_help'      => 'Setup guide',
-        'help' => 'A maximum of :max_files files can be uploaded at once. The filesize limit is :max_upload_size.'
+        'help'            => 'A maximum of :max_files files can be uploaded at once. The filesize limit is :max_upload_size.'
     ];

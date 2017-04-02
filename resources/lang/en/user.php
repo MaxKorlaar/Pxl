@@ -45,6 +45,8 @@ Well known authentication apps are OTP Auth for iOS, Google Authenticator for An
                 'upload_token'              => 'Upload token',
                 'upload_token_reset'        => 'The upload token has been reset',
                 'upload_token_warning'      => 'This upload token is linked to your account and should be considered secret. Do not share this token with anyone you would not share your password with! This code is required and serves as authentication when uploading pictures via external applications or when not logged into the site.',
+                'images_on_account'         => 'Images on this account',
+                'images'                    => ':amount images',
             ],
         'rank'        =>
             [

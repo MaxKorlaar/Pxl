@@ -33,6 +33,7 @@
                         {{ csrf_field() }}
                         <button type="submit" class="btn btn-waves-effect red waves-red">{{ trans('admin.users.edit.reset_upload_token') }}</button>
                     </form>
+                    <b>{{ trans('user.account.images_on_account') }}:</b> {{ trans('user.account.images', { amount: user.images().count}) }}
                 </div>
                 <div class="col m8 s12 pull-m4">
                     <form method="POST" action="{{ route('admin/update_user', { user: user }) }}">

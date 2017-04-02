@@ -47,6 +47,8 @@ Bekende authenticatie-apps zijn OTP Auth voor iOS, Google Authenticator voor And
                 'upload_token'              => 'Upload-token',
                 'upload_token_warning'      => 'Deze upload-token is gekoppeld aan jouw account en dient als geheim te worden beschouwd. Deel deze code net zo min als dat je je wachtwoorden zou delen! Deze code is vereist om afbeeldingen te uploaden zonder ingelogd te zijn op de website, bijvoorbeeld door een applicatie.',
                 'reset_upload_token'        => 'Reset upload-token',
+                'images_on_account'         => 'Afbeeldingen van gebruiker',
+                'images'                    => ':amount afbeeldingen',
             ],
         'rank'        =>
             [

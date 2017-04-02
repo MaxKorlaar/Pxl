@@ -25,7 +25,7 @@
                 authenticatie-apps die de gebruiker zelf bezit.',
                         'delete'              => 'Gebruiker verwijderen',
                         'delete_confirmation' => 'Weet u zeker dat u dit account wil verwijderen van :site? Dit kan niet ongedaan worden gemaakt',
-                        'deletion_warning'    => 'Waarschuwing: Het verwijderen van het account van :user kan niet ongedaan worden gemaakt',
+                        'deletion_warning'    => 'Waarschuwing: Het verwijderen van het account van :user kan niet ongedaan worden gemaakt. Alle afbeeldingen van deze gebruiker zullen onherroepelijk worden verwijderd over 3 dagen',
                         'updated'             => 'Gebruikersinformatie bijgewerkt',
                         'errors_occurred'     => 'Er is een fout opgetreden.|Er zijn meerdere fouten opgetreden.',
                         'new_password_help'   => 'Laat dit leeg om het wachtwoord van de gebruiker niet te wijzigen.',
