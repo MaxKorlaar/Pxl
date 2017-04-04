@@ -15,9 +15,10 @@ nav .brand-logo {
   padding: 10px 10px 10px;
 }
 
-.welcome-msg, .welcome-msg h2 {
-  font-family: Lato, serif;
-  font-weight: 100;
+.welcome-msg {
+  h2 {
+    font-weight: 200;
+  }
   img {
     max-height: 400px;
   }
