@@ -25,8 +25,10 @@
 
         Route::get('/logout/{token}', 'LoginController@checkLogoutToken')->name('logout');
 
-        Route::get('/register', 'RegisterController@showRegistrationForm')->name('register');
-        Route::post('/register', 'RegisterController@register')->name('do_register');
+        if (config('pxl.public_signups')) {
+            Route::get('/register', 'RegisterController@showRegistrationForm')->name('register');
+            Route::post('/register', 'RegisterController@register')->name('do_register');
+        }
 
         Route::get('/forgot-password', 'ForgotPasswordController@showLinkRequestForm')->name('forgot_password');
         Route::post('/forgot-password', 'ForgotPasswordController@requestResetLinkEmail')->name('do_forgot_password');
