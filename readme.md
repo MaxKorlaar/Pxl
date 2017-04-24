@@ -27,9 +27,9 @@ It would be possible to set up your webserver to link a specific directory to a 
 but additional configuration **will** be required for setting up preview pages - aka links without extensions)
 - [x] Image preview page, somehow linked to that custom location most likely
 - [ ] Image preview page that can be overridden via template. Custom template name or database?
-- [ ] ShareX support via copy/paste JSON-based config
+- [x] ShareX support via copy/paste JSON-based config
 - [x] Access tokens for users, resettable. Required for uploading
-- [ ] JSON-based API for simple requests, mostly for ShareX support
+- [x] JSON-based API for simple requests, mostly for ShareX support
 - [x] Social media metadata on the image preview page (OpenGraph, oEmbed)
 - [x] Account deletion ~~(Admin setting?)~~
 - [ ] Enforce limits on accounts? Images / space / etc?
