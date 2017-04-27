@@ -3,6 +3,7 @@
     namespace App\Console;
 
     use App\Console\Commands\Image\AutoDelete;
+    use App\Console\Commands\Setup;
     use Illuminate\Console\Scheduling\Schedule;
     use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -18,7 +19,8 @@
          * @var array
          */
         protected $commands = [
-            AutoDelete::class
+            AutoDelete::class,
+            Setup::class
         ];
 
         /**

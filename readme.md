@@ -62,6 +62,8 @@ If you get error 500, it might be possible that you haven't set up the tables ye
 * Using `php artisan up` and `php artisan down` you may toggle maintenance mode.
 * You may update your database by using `php artisan migrate` and clean it by using `php artisan migrate:reset` **Warning!** This will most likely clear your database. Don't execute this on your PRODUCTION machine.
 * In order to set up the automatic deletion of (specified) images, add this to your crontab: `* * * * * php /path-to-pxl/artisan schedule:run >> /dev/null 2>&1`.
+* If the site is working correctly, you may now add an admin user by executing the following command in your terminal: `php artisan pxl:setup`.
+It is important that you change the username, password and email address of this account **immediately**.
 
 It's built on top of Laravel, so please do read their (quickstart) documentation,
 on setting up the project on your development machine. (Hint: It also involves composer.)
