@@ -9,6 +9,8 @@
     margin: auto;
   }
   @media only screen and (max-width: 600px) {
-    .row.valign-wrapper { display: inherit; }
+    .row .valign-wrapper {
+      display: inherit;
+    }
   }
 }
