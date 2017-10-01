@@ -49,6 +49,10 @@
                 return response(['success' => false, 'error' => trans('upload.failed.no_default_domain')], 422);
             }
 
+            if (config('force_2fa') && !$user->hasTwoFactorAuth()) {
+                return response(['success' => false, 'error' => trans('upload.failed.2fa_must_be_enabled')], 403);
+            }
+
             $image                = Image::processNew($request->file('file'));
             $image->uploaded_from = $request->ip();
 
@@ -95,6 +99,12 @@
                 // User does not have a (valid) default domain - Cancel request
                 return back()->withErrors([
                     'error' => trans('upload.failed.no_default_domain')
+                ]);
+            }
+
+            if (config('force_2fa') && !$user->hasTwoFactorAuth()) {
+                return back()->withErrors([
+                    'error' => trans('upload.failed.2fa_must_be_enabled')
                 ]);
             }
 

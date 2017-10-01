@@ -13,6 +13,7 @@
             [
                 'could_not_save_image' => 'The image could not be saved',
                 'no_default_domain'    => 'No default domain has been set up with your account',
+                '2fa_must_be_enabled'  => 'Two factor authentication must be enabled in order to upload images'
             ],
         'software'        =>
             [
