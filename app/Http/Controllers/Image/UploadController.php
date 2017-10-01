@@ -105,7 +105,7 @@
             }
 
             if (config('pxl.force_2fa') && !$user->hasTwoFactorAuth()) {
-              // User hasn't enabled 2FA
+              // User hasn't enabled 2FA, but it is required - Cancel request
               return back()->withErrors([
                   'error' => trans('upload.failed.2fa_must_be_enabled')
               ]);
