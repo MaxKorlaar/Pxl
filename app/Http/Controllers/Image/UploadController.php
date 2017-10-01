@@ -45,11 +45,13 @@
             /** @var User $user */
             $user   = $request->user();
             $domain = Domain::find($user->default_domain);
-            if (config('pxl.force_2fa') && !$user->hasTwoFactorAuth()) {
-                return response(['succes' => false, 'error' => trans('upload.failed.no_2fa_but_required')],422);
-            }
+            
             if ($domain == null) {
                 return response(['success' => false, 'error' => trans('upload.failed.no_default_domain')], 422);
+            }
+
+            if (config('pxl.force_2fa') && !$user->hasTwoFactorAuth()) {
+                return response(['success' => false, 'error' => trans('upload.failed.2fa_must_be_enabled')], 403);
             }
 
             $image                = Image::processNew($request->file('file'));
@@ -95,18 +97,20 @@
             $user   = $request->user();
             $domain = Domain::find($user->default_domain);
 
-            if (config('pxl.force_2fa') && !$user->hasTwoFactorAuth()) {
-                // User does not have 2FA enabled
-                return back()->withErrors([
-                    'error' => trans('upload.failed.no_2fa_but_required')
-                ]);
-            }
             if ($domain == null) {
                 // User does not have a (valid) default domain - Cancel request
                 return back()->withErrors([
                     'error' => trans('upload.failed.no_default_domain')
                 ]);
             }
+
+            if (config('pxl.force_2fa') && !$user->hasTwoFactorAuth()) {
+              // User hasn't enabled 2FA
+              return back()->withErrors([
+                  'error' => trans('upload.failed.2fa_must_be_enabled')
+              ]);
+            }
+
             $images = $request->file('images');
 
             $success = [];
