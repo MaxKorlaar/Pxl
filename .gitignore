@@ -11,3 +11,4 @@ _ide_helper.php
 *.lock
 .DS_STORE
 npm-debug.log
+package-lock\.json
