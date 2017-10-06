@@ -5,5 +5,5 @@
             [
                 'date_and_time' => 'j/m/Y H:i',
             ],
-        'never'  => 'Never',
+        'never'  => 'Nunca',
     ];

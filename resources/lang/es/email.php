@@ -1,10 +1,10 @@
 <?php
 
     return [
-        'not_monitored'  => 'This message has been sent automatically. Please do not reply.',
+        'not_monitored'  => 'Este mensaje ha sido enviado automáticamente. Por favor, no respondas.',
         'password_reset' => [
-            'title'   => 'Password reset',
-            'message' => 'A password reset for your account has been requested on :site.
-            To reset your password, please click <a href=":reset_link">here</a>. This link will only be valid for 1 hour.'
+            'title'   => 'Reestablecimiento de contraseña',
+            'message' => 'Has pedido el reestablecimiento de la contraseña de tu cuenta en :site.
+            Para reestablecer tu contraseña, por favor haz click <a href=":reset_link">aquí</a>. Este enlace sólo es válido por 1 hora.'
         ]
     ];

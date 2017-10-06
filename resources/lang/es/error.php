@@ -1,5 +1,5 @@
 <?php
 
     return [
-        'something_went_wrong' => 'Something went wrong',
+        'something_went_wrong' => 'Algo ha salido mal',
     ];
