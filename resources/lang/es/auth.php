@@ -1,39 +1,39 @@
 <?php
 
     return [
-        'log_in'           => 'Log in',
-        'username'         => 'Username or email',
-        'password'         => 'Password',
-        'forgot_password'  => 'Forgot password?',
-        'remember_me'      => 'Remember me',
-        'failed'           => 'These credentials are invalid.',
-        'account_inactive' => 'This account is currently not enabled',
-        'throttle'         => 'Too many login attempts. Please try again in :seconds seconds.',
+        'log_in'           => 'Iniciar sesión',
+        'username'         => 'Usuario o email',
+        'password'         => 'Contraseña',
+        'forgot_password'  => '¿Olvidada?',
+        'remember_me'      => 'Recuérdame',
+        'failed'           => 'Estas credenciales son incorrectas.',
+        'account_inactive' => 'Esta cuenta ha sido desactivada',
+        'throttle'         => 'Demasiados intentos de inicio de sesión. Por favor, vuelve a intentarlo en :seconds segundos.',
         'register'         =>
             [
-                'username'         => 'Username',
-                'password'         => 'Password',
-                'email'            => 'Email address',
-                'confirm_email'    => 'Confirm email address',
-                'confirm_password' => 'Confirm password',
-                'password_help'    => 'Please use a strong, preferably random, password. Do not share this lightly, not even with other websites.
-Getting compromised on one service could result in losing access to your accounts on others, so please consider your password as highly valuable.',
-                'register'         => 'Register',
-                'errors_occurred'  => 'An error has occurred. Please correct this error.|Errors have occurred, please correct these errors.',
+                'username'         => 'Nombre de usuario',
+                'password'         => 'Contraseña',
+                'email'            => 'Dirección email',
+                'confirm_email'    => 'Confirma tu dirección email',
+                'confirm_password' => 'Confirma tu contraseña',
+                'password_help'    => 'Por favor, usa una contraseña segura, preferiblemente aleatoria. No la compartas libremente, ni con otros sitios web.
+Si tu información es comprometida en un servicio, podrías perder el acceso a tus cuentas, así que considera tu contraseña como algo de gran valor.',
+                'register'         => 'Registrarse',
+                'errors_occurred'  => 'Ha ocurrido un error. Por favor corrige este error.|Han ocurrido varios errores, por favor corrígelos.',
             ],
         'password_reset'   =>
             [
-                'title'            => 'Password reset',
-                'email'            => 'Email address',
-                'password'         => 'Password',
-                'confirm_password' => 'Confirm password',
-                'password_help'    => 'Please use a strong, preferably random, password. Do not share this lightly, not even with other websites.
-            Getting compromised on one service could result in losing access to your accounts on others, so please consider your password as highly valuable.',
-                'errors_occurred'  => 'An error has occurred. Please correct this error.|Errors have occurred, please correct these errors.',
-                'get_link'         => 'Get reset link',
-                'do_reset'         => 'Reset password',
+                'title'            => 'Reestablecimiento de contraseña',
+                'email'            => 'Dirección de correo',
+                'password'         => 'Contraseña',
+                'confirm_password' => 'Confirmar contraseña',
+                'password_help'    => 'Por favor, usa una contraseña segura, preferiblemente aleatoria. No la compartas libremente, ni con otros sitios web.
+                Si tu información es comprometida en un servicio, podrías perder el acceso a tus cuentas, así que considera tu contraseña como algo de gran valor.',
+                'errors_occurred'  => 'Ha ocurrido un error. Por favor corrige este error.|Han ocurrido varios errores, por favor corrígelos.',
+                'get_link'         => 'Obtener enlace de reestablecimiento',
+                'do_reset'         => 'Restablecer contraseña',
             ],
-        '2fa_key'          => 'Two-factor-authentication key',
-        '2fa_key_invalid'  => 'The two-factor-authentication key is invalid',
-        '2fa_key_missing'  => 'The two-factor-authentication key is required to log in',
+        '2fa_key'          => 'Código de autentificación de dos factores',
+        '2fa_key_invalid'  => 'El código de autentificación de dos factores es incorrecto',
+        '2fa_key_missing'  => 'El código de autentificación de dos factores es necesario para iniciar sesión',
     ];
