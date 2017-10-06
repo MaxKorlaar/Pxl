@@ -5,34 +5,34 @@
             [
                 'sharex' =>
                     [
-                        'heading'         => 'Setting up ShareX',
-                        'log_in'          => 'Log in to view the custom uploader configuration for ShareX.',
-                        'instructions'    => 'Support for the application ShareX (Windows only) is directly built into Pxl. It is a very advanced and free application which works great when used together with Pxl. It is easy to set this application up to use Pxl.',
-                        'custom_uploader' => 'In order to set up ShareX in combination with Pxl, the following instructions will have to be followed:<ol>
-<li>Open ShareX and choose destinations on the left hand side of the window</li>
-<li>Choose destination settings</li>
-<li> Scroll down in the list on the left and select \'Custom uploaders\'</li>
-<li>Click the \'Import\' button and select \'From URL...\'</li>
-<li>Paste the url from beneath these instructions and click on OK</li>
-<li>Check and see if the selected image uploader is \':uploader_name\' and close the window</li>
-<li>In the main window of ShareX select destinations on the left hand side of the window, then select image uploader and click on \'Custom image uploader\'</li></ol>',
+                        'heading'         => 'Configurando ShareX',
+                        'log_in'          => 'Inicia sesión para ver la configuración personalizada para ShareX.',
+                        'instructions'    => 'El soporte para la aplicación ShareX (para Windows) está directamente integrado en Pxl. Es una aplicación muy avanzada y gratuita que se integra muy bien con Pxl. Es muy fácil de configurar para funcionar con Pxl.',
+                        'custom_uploader' => 'Para configurar ShareX en conjunto de Pxl, debes de seguir las siguientes instrucciones:<ol>
+<li>Abre ShareX y selecciona Destinaciones en la parte izquierda de la ventana</li>
+<li>Pulsa en configuración de destinación</li>
+<li>Baja en la lista de la izquierda y pulsa en \'Cargadores personalizados\'</li>
+<li>Haz click en el botón de \'Importar\' y selecciona \'Desde URL...\'</li>
+<li>Copia el enlace mostrado debajo de estas instrucciones y haz click en OK</li>
+<li>Revisa que el nombre del cargador de imágenes sea \':uploader_name\' y cierra la ventana</li>
+<li>En la ventana principal de ShareX, selecciona destinaciones en la parte izquierda de la ventana, después selecciona cargador de imágenes, y haz click en \'Cargador de imágenes personalizado\'</li></ol>',
                     ],
-                'title'  => 'Setting up',
+                'title'  => 'Instalando',
                 'curl'   =>
                     [
-                        'heading'      => 'Using cURL',
-                        'instructions' => 'It is possible to upload files using cURL in your terminal on Mac and Linux systems. For this it is required to use the parameters \'user\', \'upload-token\' and \'file\', which are explained under the heading \'Custom uploader\'. It is also important to use the \'Accept: application/json\' header, because otherwise you will be redirected to the home page if an error occurs.',
+                        'heading'      => 'Usando cURL',
+                        'instructions' => 'Es posible subir archivos usando cURL en tu terminal en Mac y Linux. Para ello, se requieren los parámetros \'user\', \'upload-token\' y \'file\', que están explicados debajo en la categoría de \'Subidor personalizado\'. También es importante que uses el header \'Accept: application/json\', porque si no serás redireccionado a la página principal si ocurre un error.',
                     ],
                 'data'   =>
                     [
-                        'heading'      => 'Custom uploader',
-                        'instructions' => 'To use a custom uploader, the following data will be required in your request:',
-                        'file'         => 'This is the image that you are uploading',
-                        'log_in'       => 'Log in to view this',
-                        'method'       => 'HTTP method',
-                        'name'         => 'This field is not required. If this field is present, its value will be used for naming the image instead of the original filename. The name of the image can be seen in the gallery and when sharing the preview page of the image.',
-                        'target'       => 'Target',
-                        'target_help'  => 'Use the header \'Accept: application/json\' to retrieve all errors in JSON. If it is not possible to set headers, you may append \'?return=json\' to the url. If it is not desired to receive the link to the image in a JSON response, add \'?return=json_on_error\' to receive only a link to the image on success.',
+                        'heading'      => 'Subidor personalizado',
+                        'instructions' => 'Para usar un subidor personalizado, se requieren los siguiente parámetros en tu petición:',
+                        'file'         => 'Esta es la imagen que quieres subir',
+                        'log_in'       => 'Inicia sesión para ver esto',
+                        'method'       => 'Método HTTP',
+                        'name'         => 'Este campo no es necesario. Si este campo está presente, su valor se usará para nombrar la imagen en vez de usar el nombre del archivo. El nombre de la imagen puede ser visto en tu Galería y al compartir la página de previsualización de tu imagen.',
+                        'target'       => 'URL',
+                        'target_help'  => 'Usa el header \'Accept: application/json\' para recibir todos los errores en JSON. Si no te es posible cambiar los headers, puedes añadir \'?return=json\' a la URL. Si no necesitas recibir el enlace de una imagen en una petición JSON, añade \'?return=json_on_error\' para sólo recibir el link de la imagen cuando se suba correctamente.',
                     ],
             ],
     ];
