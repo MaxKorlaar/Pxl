@@ -36,13 +36,13 @@
                                 'default_url_exclude_gallery_extension' => 'Enlazar directamente a la imagen por defecto',
                                 'default_url_help'                      => 'Es posible obtener la URL de la página de previsualización de la imagen después de subirla, o directamente de la propia imagen.',
                                 'default_url_include_gallery_extension' => 'Enlazar a la previsualización de la imagen por defecto',
-                                'embed_name'                            => 'Mostrar nombre añadido a las imágenes previsualizadas',
+                                'embed_name'                            => 'Mostrar el nombre añadido a las imágenes previsualizadas',
                                 'no_domains_available'                  => 'No hay dominios disponibles',
                                 'default_domain'                        => 'Dominio por defecto',
                                 'default_deletion_time'                 =>
                                     [
                                         'days'    => 'Días',
-                                        'help'    => 'Es posible borrar automáticamente imágenes subidas después de cierto tiempo. Si rellenas todos los campos con 0, esta función será desactivada. Es posible cambiar el tiempo de borrado de cada imagen después.',
+                                        'help'    => 'Es posible borrar automáticamente las imágenes subidas después de cierto tiempo. Si rellenas todos los campos con 0, esta función será desactivada. Es posible cambiar el tiempo de borrado de cada imagen después.',
                                         'hours'   => 'Horas',
                                         'minutes' => 'Minutos',
                                         'months'  => 'Meses',

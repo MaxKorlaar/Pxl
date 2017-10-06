@@ -1,6 +1,6 @@
 <?php
 
     return [
-        'title'       => 'Image: :name',
-        'description' => 'This image has been uploaded to :site by :author_name.'
+        'title'       => 'Imagen: :name',
+        'description' => 'Esta imagen ha sido subida a :site por :author_name.'
     ];

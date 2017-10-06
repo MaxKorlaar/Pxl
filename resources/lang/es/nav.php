@@ -1,16 +1,16 @@
 <?php
 
     return [
-        'dropdown_greeting' => 'Hello, :name!',
+        'dropdown_greeting' => '¡Hola, :name!',
         'admin'             =>
             [
-                'users'   => 'Users',
-                'domains' => 'Domains',
+                'users'   => 'Usuarios',
+                'domains' => 'Dominios',
             ],
-        'administration'    => 'Administration',
-        'log_out'           => 'Log off',
-        'my_account'        => 'My account',
-        'preferences'       => 'Preferences',
-        'upload'            => 'Upload',
-        'gallery'           => 'Gallery',
+        'administration'    => 'Administración',
+        'log_out'           => 'Cerrar sesión',
+        'my_account'        => 'Mi cuenta',
+        'preferences'       => 'Preferencias',
+        'upload'            => 'Subir',
+        'gallery'           => 'Galería',
     ];
