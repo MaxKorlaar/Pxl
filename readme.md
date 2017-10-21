@@ -55,7 +55,7 @@ It should be similar to the small guide below.
 file is named `composer.phar`, then it's `php composer.phar install`_)
 * Configure Pxl by copying `env.example` to `.env` and editing the environment configuration.
 * Generate a database by executing `mysql -p -u root`, and execute `CREATE DATABASE homestead;`
-* In your `.env` variables, set `DB_DATABASE = homestead`, `DB_USERNAME=root` and `DB_PASSWORD=password`. For additional security, you can create a new user with access to the Pxl database only. 
+* In your `.env` variables, set `DB_DATABASE = homestead`, `DB_USERNAME=root` and `DB_PASSWORD=password`. For additional security, you can create a new user with access to the Pxl database only. Feel free to choose your own database name, it doesn't have to be `homestead`, as long as it is changed in the `.env` file.
 * Change ownership of the `Pxl` folder to group `site [1001]` recursively, and grant write permission.
 * Execute `php artisan key:generate` to automatically generate a secure key that will be put into `.env`
 (should be the one where this readme is located).
