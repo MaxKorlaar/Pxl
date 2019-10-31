@@ -226,7 +226,7 @@
          *
          * @return string
          */
-        protected function getDateFormat() {
+        public function getDateFormat() {
             return 'U';
         }
 

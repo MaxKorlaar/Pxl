@@ -8,7 +8,7 @@ Homestead.yaml
 .env
 .phpstorm.meta.php
 _ide_helper.php
-*.lock
 .DS_STORE
 npm-debug.log
-package-lock\.json
+/.vagrant
+package-lock.json
