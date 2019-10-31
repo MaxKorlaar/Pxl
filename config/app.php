@@ -168,7 +168,6 @@
              */
 
             TwigBridge\ServiceProvider::class,
-            PragmaRX\Google2FA\Vendor\Laravel\ServiceProvider::class,
             Intervention\Image\ImageServiceProvider::class,
 
             /*

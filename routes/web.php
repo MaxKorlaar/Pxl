@@ -39,6 +39,7 @@
     });
 
     Route::get('/gallery', function () {
+        // todo: remove closure
         return redirect('user/gallery');
     });
 

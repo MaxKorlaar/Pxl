@@ -1,6 +1,7 @@
 <?php namespace App\Http\Middleware;
 
 use Closure;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class CloudFlareProxies
@@ -34,7 +35,7 @@ class CloudFlareProxies {
             '198.41.128.0/17',
             '162.158.0.0/15',
             '104.16.0.0/12'
-        ]);
+        ], Request::HEADER_X_FORWARDED_ALL);
 
         return $next($request);
     }
