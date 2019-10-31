@@ -11,3 +11,4 @@ _ide_helper.php
 .DS_STORE
 npm-debug.log
 /.vagrant
+package-lock.json
